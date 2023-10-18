@@ -1,0 +1,64 @@
+site_name: watsonx.data Lab
+# theme:
+#   name: material
+nav:
+  - Introduction: "wxd-intro.md"
+  - What's New: "wxd-revisions.md"
+  # - Quick Start: "wxd-quick.md"
+  - Getting Started:
+    - Requesting an IBMid: "wxd-reference-ibmid.md"
+    - Requesting an image: "wxd-reference-techzone.md"
+    - Accessing the reservation: "wxd-reference-access.md"
+    - Available Ports: "wxd-reference-ports.md"
+    - VM Remote Console: "wxd-reference-vnc.md"
+    - SSH and SCP Commands: "wxd-reference-ssh.md"
+    - Userids and Passwords: "wxd-reference-passwords.md"
+    - Documentation: "wxd-reference-documentation.md"
+  - Lab Instructions: "wxd-lab-instructions.md"
+  - Jupyter Notebook: "wxd-jupyter.md"
+  - Core Components: 
+    - Presto CLI: "wxd-prestocli.md"
+    - watsonx.data UI: "wxd-watsonui.md"
+    - Presto UI: "wxd-presto.md"
+    - MinIO UI: "wxd-minio.md"
+  - Presto SQL:
+    - Analytic Workloads: "wxd-analytics.md"
+    - Advanced Functions: "wxd-advanced.md"
+    - Time Travel: "wxd-timetravel.md"
+    - Federation: "wxd-federation.md"
+    - System Connector: "wxd-systemconnector.md"
+  - Optional Tools:
+    - Apache Superset: "wxd-superset.md"
+    - dBeaver: "wxd-dbeaver.md"
+    - Portainer Console: "wxd-reference-portainer.md"
+  - Working with Object Store Buckets: "wxd-objectstore.md"
+  - Ingesting Data: "wxd-ingest.md"
+  - Documentation: "wxd-reference-documentation.md"
+  - Troubleshooting: "wxd-troubleshooting.md"
+  - Dataset Details: 
+    - Dataset Overview: "wxd-datasets-intro.md"
+    - Loading External Datasets: "wxd-datasets-load.md"
+    - Great Outdoors Company: "wxd-datasets-gosales.md"
+    - Ontime Flight Performance: "wxd-datasets-ontime.md"
+    - Taxi Rides: "wxd-datasets-taxi.md"
+  - Database Connections: "wxd-connections.md"
+  - VMWare Image: "wxd-vmware.md"
+  - Appendix: 
+    - Disclaimer: "wxd-disclaimer.md"
+    - Acknowledgements: "wxd-acknowledgements.md"
+  - Glossary: "wxd-glossary.md"
+
+  # Copyright
+copyright: Copyright &copy; 2023 IBM 
+
+# Theme
+theme:
+  name: material
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  logo: wxd-images/IBM_logo®_rev_RGB.png  
+  palette:
+    scheme: default
+    primary: black
+    accent: black

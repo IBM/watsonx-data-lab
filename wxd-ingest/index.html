@@ -724,6 +724,33 @@
     Start the IBM tools Container
   </a>
   
+    <nav class="md-nav" aria-label="Start the IBM tools Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watsonxdata-version-103" class="md-nav__link">
+    Watsonx.data Version 1.0.3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#watsonxdata-version-110" class="md-nav__link">
+    Watsonx.data Version 1.1.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-ingest-process" class="md-nav__link">
+    Start the Ingest Process
+  </a>
+  
 </li>
       
     </ul>
@@ -1020,6 +1047,33 @@
     Start the IBM tools Container
   </a>
   
+    <nav class="md-nav" aria-label="Start the IBM tools Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#watsonxdata-version-103" class="md-nav__link">
+    Watsonx.data Version 1.0.3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#watsonxdata-version-110" class="md-nav__link">
+    Watsonx.data Version 1.1.0
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-the-ingest-process" class="md-nav__link">
+    Start the Ingest Process
+  </a>
+  
 </li>
       
     </ul>
@@ -1052,7 +1106,7 @@ export LH_KEYSTORE_PASSWORD=$(docker exec ibm-lh-presto printenv | grep LH_KEYST
 <p>We need to generate three export lines and create a directory that will be used later in another script. The <code>staging</code> directory is used to move files between this system and the docker container that the <code>ibm-lh</code> tool is running in.</p>
 <pre><code>export staging=/root/ibm-lh-client/localstorage/volumes/infra/staging
 
-mkdir ${staging}
+mkdir -p ${staging}
 cat &lt;&lt;EOF &gt; ${staging}/keys.sh
 #!/bin/bash
 export access_key=$LH_S3_ACCESS_KEY
@@ -1102,7 +1156,8 @@ chmod +x ${staging}/keys.sh
 <p>Exit from the tools container by using the <code>exit</code> command.</p>
 <pre><code>exit
 </code></pre>
-<p>The following script is used to ingest the taxi data (yellow_tripdata_2022_01) into watsonx.data.  </p>
+<p>The following script is used to ingest the taxi data (yellow_tripdata_2022_01) into watsonx.data. Choose the script which corresponds to the release of watsonx.data that you are currently running. </p>
+<h4 id="watsonxdata-version-103">Watsonx.data Version 1.0.3</h4>
 <pre><code>cat &lt;&lt;EOF &gt; ${staging}/ingest-local.sh
 #!/bin/bash
 dir=/mnt/infra/staging
@@ -1133,6 +1188,38 @@ EOF
 sed -i '/^$/d' ${staging}/ingest-local.sh
 chmod +x ${staging}/ingest-local.sh
 </code></pre>
+<h4 id="watsonxdata-version-110">Watsonx.data Version 1.1.0</h4>
+<p>In version 1.1.0, the <code>--staging-s3-creds</code> are replaced with an environment variable called <code>STAGING_S3_CREDS</code>.</p>
+<pre><code>cat &lt;&lt;EOF &gt; ${staging}/ingest-local.sh
+#!/bin/bash
+dir=/mnt/infra/staging
+cd \${dir}
+source ./keys.sh
+table_name=&quot;iceberg_data.ingest.yellow_tripdata_2022_01_localfile&quot;
+file=&quot;yellow_tripdata_2022-01.parquet&quot;
+export STAGING_S3_CREDS=&quot;AWS_SECRET_ACCESS_KEY=\${secret_key}\\
+,AWS_ACCESS_KEY_ID=\${access_key}\\
+,AWS_REGION=us-east-1\\
+,BUCKET_NAME=iceberg-bucket\\
+,ENDPOINT_URL=http://ibm-lh-minio:9000&quot;
+
+ibm-lh data-copy \\
+   --source-data-files \${dir}/\${file} \\
+   --target-tables \${table_name} \\
+   --ingestion-engine-endpoint &quot;hostname=ibm-lh-presto-svc,port=8443&quot; \\
+   --staging-location s3://iceberg-bucket/ingest/ \\
+   --staging-hive-catalog hive_data \\
+   --staging-hive-schema staging \\
+   --create-if-not-exist \\
+   --trust-store-path \${dir}/lh-ssl-ts.jks \\
+   --trust-store-password \${keystore_password} \\
+   --dbuser ibmlhadmin \\
+   --dbpassword password
+EOF
+sed -i '/^$/d' ${staging}/ingest-local.sh
+chmod +x ${staging}/ingest-local.sh
+</code></pre>
+<h3 id="start-the-ingest-process">Start the Ingest Process</h3>
 <p>Start the <code>ibm-lh</code> container again:</p>
 <pre><code>./ibm-lh data-copy
 </code></pre>

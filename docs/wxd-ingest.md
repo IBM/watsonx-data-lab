@@ -21,7 +21,7 @@ We need to generate three export lines and create a directory that will be used 
 ```
 export staging=/root/ibm-lh-client/localstorage/volumes/infra/staging
 
-mkdir ${staging}
+mkdir -p ${staging}
 cat <<EOF > ${staging}/keys.sh
 #!/bin/bash
 export access_key=$LH_S3_ACCESS_KEY
@@ -96,7 +96,10 @@ Exit from the tools container by using the `exit` command.
 exit
 ```
 
-The following script is used to ingest the taxi data (yellow_tripdata_2022_01) into watsonx.data.  
+The following script is used to ingest the taxi data (yellow_tripdata_2022_01) into watsonx.data. Choose the script which corresponds to the release of watsonx.data that you are currently running. 
+
+#### Watsonx.data Version 1.0.3
+
 ```
 cat <<EOF > ${staging}/ingest-local.sh
 #!/bin/bash
@@ -128,6 +131,42 @@ EOF
 sed -i '/^$/d' ${staging}/ingest-local.sh
 chmod +x ${staging}/ingest-local.sh
 ```
+#### Watsonx.data Version 1.1.0
+
+In version 1.1.0, the `--staging-s3-creds` are replaced with an environment variable called `STAGING_S3_CREDS`.
+
+```
+cat <<EOF > ${staging}/ingest-local.sh
+#!/bin/bash
+dir=/mnt/infra/staging
+cd \${dir}
+source ./keys.sh
+table_name="iceberg_data.ingest.yellow_tripdata_2022_01_localfile"
+file="yellow_tripdata_2022-01.parquet"
+export STAGING_S3_CREDS="AWS_SECRET_ACCESS_KEY=\${secret_key}\\
+,AWS_ACCESS_KEY_ID=\${access_key}\\
+,AWS_REGION=us-east-1\\
+,BUCKET_NAME=iceberg-bucket\\
+,ENDPOINT_URL=http://ibm-lh-minio:9000"
+
+ibm-lh data-copy \\
+   --source-data-files \${dir}/\${file} \\
+   --target-tables \${table_name} \\
+   --ingestion-engine-endpoint "hostname=ibm-lh-presto-svc,port=8443" \\
+   --staging-location s3://iceberg-bucket/ingest/ \\
+   --staging-hive-catalog hive_data \\
+   --staging-hive-schema staging \\
+   --create-if-not-exist \\
+   --trust-store-path \${dir}/lh-ssl-ts.jks \\
+   --trust-store-password \${keystore_password} \\
+   --dbuser ibmlhadmin \\
+   --dbpassword password
+EOF
+sed -i '/^$/d' ${staging}/ingest-local.sh
+chmod +x ${staging}/ingest-local.sh
+```
+
+### Start the Ingest Process
 
 Start the `ibm-lh` container again:
 ```

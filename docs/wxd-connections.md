@@ -13,6 +13,7 @@ In order to access these images outside the Virtual machine image, you need the 
    * [Accessing watsonx.data via Python](#accessing-watsonxdata-via-python)
    * [Accessing watsonx.data via Pandas Dataframes](#accessing-watsonxdata-via-pandas-dataframes)
    * [Generating a Certificate](#generating-a-certificate)
+   * [Adding a Service](#adding-a-service)
 
 ## Watsonx.data Connection Certificate
 
@@ -362,3 +363,79 @@ plt.show()
 ```
 
 ![Browser](wxd-images/connection-graph.png)
+
+## Adding a Service
+
+The watsonx.data developer edition includes two open ports which can be used to externalize a service that you create in the image. For instance, you may choose to create a MongoDB or MSSQL container using Docker and want to access this service from your own dBeaver or Mongo tooling.
+
+Since port numbers vary between different databases, the watsonx.data system provides two port numbers that can be used by your service.
+
+* Open Port 1 - Server: region.techzone-services.com: Port: 12345
+* Open Port 2 - Server: region.techzone-services.com: Port: 23456
+
+The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following steps are required to use these ports with your service.
+
+### Open the local Firewall
+
+Ports 10000/1 are not open by default in the image. You must explicitly open these ports with the `firewall-cmd` command. In a command line shell, as the root user, enter the following commands:
+```
+sudo su -
+firewall-cmd --add-port={10000/tcp,10001/tcp} --zone=public --permanent
+firewall-cmd --reload
+```
+
+You can use the following command to check that the ports are now open.
+```
+firewall-cmd --list-ports
+```
+
+### Create your Service
+
+When creating your service, make sure to map the internal Docker port to either port 10000 or 10001. If you cannot remap the port, see the section on port redirection.
+
+For instance, the following command will start Microsoft SQLServer in Docker by mapping the host port 10000 to the SQLServer port of 1433 to 10000 (`-p 10000:1443`).  
+
+```
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Passw0rd12345678!" \
+-p 10000:1433 --name mssql-server --hostname mssql-server \
+-d mcr.microsoft.com/mssql/server:2019-latest
+```
+
+You can check the port mapping with the following command.
+```
+docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a | grep mssql-server
+```
+
+When creating a connection to this database using an external tool, make sure to use the port number supplied in the reservation details (Open Port 1 is for port 10000 and Open Port 2 is for port 10001).
+
+### Port Redirection
+
+If you already have an existing service mapped to a different port, you can use port redirection to use either port 10000 or 10001. For instance, assume that the previous creation of the SQLServer database used port 1433.
+
+```
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Passw0rd12345678!" \
+-p 1433:1433 --name mssql-server --hostname mssql-server \
+-d mcr.microsoft.com/mssql/server:2019-latest
+```
+
+Once the service is up and running, you can redirect the traffic on port 10000/1 to the port of your docker service.
+
+``````
+firewall-cmd --add-forward-port=port=10000:proto=tcp:toport=1433 --permanent --zone=public
+firewall-cmd --reload
+``````
+
+If you need to remove the redirection, use the following command.
+``````
+firewall-cmd --remove-forward-port=port=10000:proto=tcp:toport=1433:toaddr= --permanent --zone=public
+firewall-cmd --reload
+``````
+
+### Accessing your Service
+
+When referring to your service from an external location, always use the port numbers that are provided for Open Port 1 or 2. 
+
+* Open Port 1 - Server: region.techzone-services.com: Port: 12345
+* Open Port 2 - Server: region.techzone-services.com: Port: 23456
+
+Your server will be `region.techzone-services.com` and the port number will be either of the two port numbers provided. Remember that this port number will need to be opened in the server and a Docker mapping to the open port or a firewall port redirection will be required.

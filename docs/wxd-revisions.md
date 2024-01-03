@@ -1,5 +1,11 @@
 # Revisions
 
+### January 3, 2024
+
+* Added two open ports to the image
+
+    Sometimes there is a requirement to add another service to the watsonx.data image. For instance, you may want to add MongoDB or MSSQL to the system in order to demonstrate federations with these data source. Since we do not know what your requirements are, we have opened up two ports that can be assigned to any service. The documentation has been updated to describe what steps are needed to use these open up and use these ports.
+
 ### December 6, 2023
 
 * Updated the lab to GA 1.1.0 code

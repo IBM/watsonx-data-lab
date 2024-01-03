@@ -21,6 +21,11 @@ These URLs and Port numbers are needed to access the watsonx.data services. The 
 * Watsonx UI - https://region.techzone-services.com:37997
 * Db2 Port - Server: region.techzone-services.com Port: 21361
 
+There are two additional ports which are available for use with any service you install in the system. These ports are:
+
+* Open Port 1 - Server: region.techzone-services.com: Port: 45779
+* Open Port 2 - Server: region.techzone-services.com: Port: 43151
+
 The server URL will be different for each region and data center that your machine is provisioned on. The server name is usually in the format:
 ```bash
 region.techzone-services.com:port

@@ -997,6 +997,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adding-a-service" class="md-nav__link">
+    Adding a Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-local-firewall" class="md-nav__link">
+    Open the local Firewall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-your-service" class="md-nav__link">
+    Create your Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-redirection" class="md-nav__link">
+    Port Redirection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-your-service" class="md-nav__link">
+    Accessing your Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1266,6 +1307,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adding-a-service" class="md-nav__link">
+    Adding a Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-local-firewall" class="md-nav__link">
+    Open the local Firewall
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-your-service" class="md-nav__link">
+    Create your Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-redirection" class="md-nav__link">
+    Port Redirection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-your-service" class="md-nav__link">
+    Accessing your Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1293,6 +1375,7 @@
 <li><a href="#accessing-watsonxdata-via-python">Accessing watsonx.data via Python</a></li>
 <li><a href="#accessing-watsonxdata-via-pandas-dataframes">Accessing watsonx.data via Pandas Dataframes</a></li>
 <li><a href="#generating-a-certificate">Generating a Certificate</a></li>
+<li><a href="#adding-a-service">Adding a Service</a></li>
 </ul>
 <h2 id="watsonxdata-connection-certificate">Watsonx.data Connection Certificate</h2>
 <p>When connecting to the watsonx.data Presto database, you will need to have the connection certificate available to the client that you are using. Usually this location is your workstation, but it could be another service like CP4D.</p>
@@ -1545,6 +1628,55 @@ connect_args={
 plt.show()
 </code></pre>
 <p><img alt="Browser" src="../wxd-images/connection-graph.png" /></p>
+<h2 id="adding-a-service">Adding a Service</h2>
+<p>The watsonx.data developer edition includes two open ports which can be used to externalize a service that you create in the image. For instance, you may choose to create a MongoDB or MSSQL container using Docker and want to access this service from your own dBeaver or Mongo tooling.</p>
+<p>Since port numbers vary between different databases, the watsonx.data system provides two port numbers that can be used by your service.</p>
+<ul>
+<li>Open Port 1 - Server: region.techzone-services.com: Port: 12345</li>
+<li>Open Port 2 - Server: region.techzone-services.com: Port: 23456</li>
+</ul>
+<p>The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following steps are required to use these ports with your service.</p>
+<h3 id="open-the-local-firewall">Open the local Firewall</h3>
+<p>Ports 10000/1 are not open by default in the image. You must explicitly open these ports with the <code>firewall-cmd</code> command. In a command line shell, as the root user, enter the following commands:</p>
+<pre><code>sudo su -
+firewall-cmd --add-port={10000/tcp,10001/tcp} --zone=public --permanent
+firewall-cmd --reload
+</code></pre>
+<p>You can use the following command to check that the ports are now open.</p>
+<pre><code>firewall-cmd --list-ports
+</code></pre>
+<h3 id="create-your-service">Create your Service</h3>
+<p>When creating your service, make sure to map the internal Docker port to either port 10000 or 10001. If you cannot remap the port, see the section on port redirection.</p>
+<p>For instance, the following command will start Microsoft SQLServer in Docker by mapping the host port 10000 to the SQLServer port of 1433 to 10000 (<code>-p 10000:1443</code>).  </p>
+<pre><code>docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot; \
+-p 10000:1433 --name mssql-server --hostname mssql-server \
+-d mcr.microsoft.com/mssql/server:2019-latest
+</code></pre>
+<p>You can check the port mapping with the following command.</p>
+<pre><code>docker container ls --format &quot;table {{.ID}}\t{{.Names}}\t{{.Ports}}&quot; -a | grep mssql-server
+</code></pre>
+<p>When creating a connection to this database using an external tool, make sure to use the port number supplied in the reservation details (Open Port 1 is for port 10000 and Open Port 2 is for port 10001).</p>
+<h3 id="port-redirection">Port Redirection</h3>
+<p>If you already have an existing service mapped to a different port, you can use port redirection to use either port 10000 or 10001. For instance, assume that the previous creation of the SQLServer database used port 1433.</p>
+<pre><code>docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot; \
+-p 1433:1433 --name mssql-server --hostname mssql-server \
+-d mcr.microsoft.com/mssql/server:2019-latest
+</code></pre>
+<p>Once the service is up and running, you can redirect the traffic on port 10000/1 to the port of your docker service.</p>
+<pre><code>firewall-cmd --add-forward-port=port=10000:proto=tcp:toport=1433 --permanent --zone=public
+firewall-cmd --reload
+</code></pre>
+<p>If you need to remove the redirection, use the following command.</p>
+<pre><code>firewall-cmd --remove-forward-port=port=10000:proto=tcp:toport=1433:toaddr= --permanent --zone=public
+firewall-cmd --reload
+</code></pre>
+<h3 id="accessing-your-service">Accessing your Service</h3>
+<p>When referring to your service from an external location, always use the port numbers that are provided for Open Port 1 or 2. </p>
+<ul>
+<li>Open Port 1 - Server: region.techzone-services.com: Port: 12345</li>
+<li>Open Port 2 - Server: region.techzone-services.com: Port: 23456</li>
+</ul>
+<p>Your server will be <code>region.techzone-services.com</code> and the port number will be either of the two port numbers provided. Remember that this port number will need to be opened in the server and a Docker mapping to the open port or a firewall port redirection will be required.</p>
 
               
             </article>

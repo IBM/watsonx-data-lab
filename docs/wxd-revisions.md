@@ -1,5 +1,47 @@
 # Revisions
 
+### January 8, 2024
+
+* Updated the lab to GA watsonx.data 1.1.1 code
+
+    - [What's new in watsonx.data version 1.1.1 Reference](https://www.ibm.com/docs/en/watsonxdata/1.1.x?topic=watsonxdata-whats-new-in)
+
+    - Audit logging
+    
+    IBM watsonx.data now integrates with the Cloud Pak for Data audit logging service. Auditable events for watsonx.data are forwarded to the security information and event management (SIEM) solution that you integrate with.
+    
+    - Use self-signed certificates and CA certificates to connect to object stores
+    
+    Previously, watsonx.data could connect to HTTPS endpoints that used certificates signed by well-known certificate authorities, such as IBM Cloud® Object Storage and Amazon S3. Now, you can connect to object stores that use self-signed certificates or certificates that are signed by other certificate authorities.
+    
+    - Integration with Db2® and Netezza®
+    
+    You can now register Db2 or Netezza engines with valid console URL. You can use the metastore URL shown in Engine detail page to sync the respective engines with appropriate bucket catalog-based table.
+    
+    - IBM Data Virtualization Manager for z/OS® connector
+    
+    You can use the new IBM Data Virtualization Manager for z/OS® connector to read and write IBM Z® without having to move, replicate, or transform the data. For more information, see Connecting to an IBM Data Virtualization Manager (DVM) data source.
+    
+    - Better memory management
+    
+    Metastore caching and metadata caching (header and footer caching) are now enabled by default to optimize the memory usage. Also, now you can create a local staging directory to optimize the use of resources during data operations. For more information, see Enhancing the query performance through caching and Configuring a local staging directory.
+    
+    - Presto case-sensitive behavior
+    
+    The Presto behavior is changed from case-insensitive to case-sensitive. Now you can provide the object names in original case format as in the database. You can also create Schemas, Tables and Columns in mixed case that is, uppercase and lowercase through Presto if the database supports it.
+    
+    - Teradata connector is enabled for multiple ALTER TABLE statements
+    
+    Teradata connector now supports the ALTER TABLE RENAME TO, ALTER TABLE DROP COLUMN, ALTER TABLE RENAME COLUMN column_name TO new_column_name statements.
+    
+    - Removal of development (*-devel) packages
+    
+    For security reasons, the *-devel packages are removed from watsonx.data. If you are already using the development packages, the programs that use the development packages cannot be compiled . For any queries, contact IBM Support.
+    
+    - SSL is enabled for PostgreSQL
+    
+    Now ingestion can use mounted certificates when connecting to PostgreSQL.
+
 ### January 3, 2024
 
 * Added two open ports to the image

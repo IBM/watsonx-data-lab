@@ -375,9 +375,11 @@ Since port numbers vary between different databases, the watsonx.data system pro
 
 The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following steps are required to use these ports with your service.
 
-### Open the local Firewall
+### Open the local Firewall (Version 1.1.0 Only)
 
-Ports 10000/1 are not open by default in the image. You must explicitly open these ports with the `firewall-cmd` command. In a command line shell, as the root user, enter the following commands:
+Ports 10000/1 are not open by default in the 1.1.0 image. For release 1.1.1, you can skip this step.
+
+You must explicitly open ports 10000/1 with the `firewall-cmd` command. In a command line shell, as the root user, enter the following commands:
 ```
 sudo su -
 firewall-cmd --add-port={10000/tcp,10001/tcp} --zone=public --permanent

@@ -1006,8 +1006,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#open-the-local-firewall" class="md-nav__link">
-    Open the local Firewall
+  <a href="#open-the-local-firewall-version-110-only" class="md-nav__link">
+    Open the local Firewall (Version 1.1.0 Only)
   </a>
   
 </li>
@@ -1316,8 +1316,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#open-the-local-firewall" class="md-nav__link">
-    Open the local Firewall
+  <a href="#open-the-local-firewall-version-110-only" class="md-nav__link">
+    Open the local Firewall (Version 1.1.0 Only)
   </a>
   
 </li>
@@ -1636,8 +1636,9 @@ plt.show()
 <li>Open Port 2 - Server: region.techzone-services.com: Port: 23456</li>
 </ul>
 <p>The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following steps are required to use these ports with your service.</p>
-<h3 id="open-the-local-firewall">Open the local Firewall</h3>
-<p>Ports 10000/1 are not open by default in the image. You must explicitly open these ports with the <code>firewall-cmd</code> command. In a command line shell, as the root user, enter the following commands:</p>
+<h3 id="open-the-local-firewall-version-110-only">Open the local Firewall (Version 1.1.0 Only)</h3>
+<p>Ports 10000/1 are not open by default in the 1.1.0 image. For release 1.1.1, you can skip this step.</p>
+<p>You must explicitly open ports 10000/1 with the <code>firewall-cmd</code> command. In a command line shell, as the root user, enter the following commands:</p>
 <pre><code>sudo su -
 firewall-cmd --add-port={10000/tcp,10001/tcp} --zone=public --permanent
 firewall-cmd --reload

@@ -1,6 +1,6 @@
 # Revisions
 
-### January 8, 2024
+### January 8, 2024 (1.1.1)
 
 * Updated the lab to GA watsonx.data 1.1.1 code
 
@@ -8,47 +8,47 @@
 
     - Audit logging
     
-    IBM watsonx.data now integrates with the Cloud Pak for Data audit logging service. Auditable events for watsonx.data are forwarded to the security information and event management (SIEM) solution that you integrate with.
+        IBM watsonx.data now integrates with the Cloud Pak for Data audit logging service. Auditable events for watsonx.data are forwarded to the security information and event management (SIEM) solution that you integrate with.
     
     - Use self-signed certificates and CA certificates to connect to object stores
     
-    Previously, watsonx.data could connect to HTTPS endpoints that used certificates signed by well-known certificate authorities, such as IBM Cloud® Object Storage and Amazon S3. Now, you can connect to object stores that use self-signed certificates or certificates that are signed by other certificate authorities.
+        Previously, watsonx.data could connect to HTTPS endpoints that used certificates signed by well-known certificate authorities, such as IBM Cloud® Object Storage and Amazon S3. Now, you can connect to object stores that use self-signed certificates or certificates that are signed by other certificate authorities.
     
     - Integration with Db2® and Netezza®
     
-    You can now register Db2 or Netezza engines with valid console URL. You can use the metastore URL shown in Engine detail page to sync the respective engines with appropriate bucket catalog-based table.
+        You can now register Db2 or Netezza engines with valid console URL. You can use the metastore URL shown in Engine detail page to sync the respective engines with appropriate bucket catalog-based table.
     
     - IBM Data Virtualization Manager for z/OS® connector
     
-    You can use the new IBM Data Virtualization Manager for z/OS® connector to read and write IBM Z® without having to move, replicate, or transform the data. For more information, see Connecting to an IBM Data Virtualization Manager (DVM) data source.
+        You can use the new IBM Data Virtualization Manager for z/OS® connector to read and write IBM Z® without having to move, replicate, or transform the data. For more information, see Connecting to an IBM Data Virtualization Manager (DVM) data source.
     
     - Better memory management
     
-    Metastore caching and metadata caching (header and footer caching) are now enabled by default to optimize the memory usage. Also, now you can create a local staging directory to optimize the use of resources during data operations. For more information, see Enhancing the query performance through caching and Configuring a local staging directory.
+        Metastore caching and metadata caching (header and footer caching) are now enabled by default to optimize the memory usage. Also, now you can create a local staging directory to optimize the use of resources during data operations. For more information, see Enhancing the query performance through caching and Configuring a local staging directory.
     
     - Presto case-sensitive behavior
     
-    The Presto behavior is changed from case-insensitive to case-sensitive. Now you can provide the object names in original case format as in the database. You can also create Schemas, Tables and Columns in mixed case that is, uppercase and lowercase through Presto if the database supports it.
+        The Presto behavior is changed from case-insensitive to case-sensitive. Now you can provide the object names in original case format as in the database. You can also create Schemas, Tables and Columns in mixed case that is, uppercase and lowercase through Presto if the database supports it.
     
     - Teradata connector is enabled for multiple ALTER TABLE statements
     
-    Teradata connector now supports the ALTER TABLE RENAME TO, ALTER TABLE DROP COLUMN, ALTER TABLE RENAME COLUMN column_name TO new_column_name statements.
+        Teradata connector now supports the ALTER TABLE RENAME TO, ALTER TABLE DROP COLUMN, ALTER TABLE RENAME COLUMN column_name TO new_column_name statements.
     
     - Removal of development (*-devel) packages
     
-    For security reasons, the *-devel packages are removed from watsonx.data. If you are already using the development packages, the programs that use the development packages cannot be compiled . For any queries, contact IBM Support.
+        For security reasons, the *-devel packages are removed from watsonx.data. If you are already using the development packages, the programs that use the development packages cannot be compiled . For any queries, contact IBM Support.
     
     - SSL is enabled for PostgreSQL
     
-    Now ingestion can use mounted certificates when connecting to PostgreSQL.
+        Now ingestion can use mounted certificates when connecting to PostgreSQL.
 
-### January 3, 2024
+### January 3, 2024 (1.1.0)
 
 * Added two open ports to the image
 
     Sometimes there is a requirement to add another service to the watsonx.data image. For instance, you may want to add MongoDB or MSSQL to the system in order to demonstrate federations with these data source. Since we do not know what your requirements are, we have opened up two ports that can be assigned to any service. The documentation has been updated to describe what steps are needed to use these open up and use these ports.
 
-### December 6, 2023
+### December 6, 2023 (1.1.0)
 
 * Updated the lab to GA 1.1.0 code
 
@@ -101,7 +101,7 @@
 
     
 
-### October 6, 2023
+### October 6, 2023 (1.0.3)
 
 * Updated the lab to GA 1.0.3 code
 
@@ -153,22 +153,22 @@
 
     - [Ingesting Data](wxd-ingest.md)
 
-### July 25, 2023
+### July 25, 2023 (1.0.1)
 
 * Updated the lab to GA 1.0.1 code
 * Automated start of watsonx.data and simplification of many of the sections
 * Removed the Ingest section until a new version is available
 * Added Db2 and PostgreSQL connection details
 
-### June 12, 2023
+### June 12, 2023 (1.0.0)
 
 Clarified some commands and added an Appendix on common issues.
 
-### June 6, 2023
+### June 6, 2023 (1.0.0)
 
 Updated instructions for new TechZone image and added Ingest lab instructions.
 
-### May 25th, 2023
+### May 25th, 2023 (1.0.0)
 
 Initial publication.
 

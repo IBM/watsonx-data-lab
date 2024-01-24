@@ -746,6 +746,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#roles-and-policies" class="md-nav__link">
+    Roles and Policies
+  </a>
+  
+    <nav class="md-nav" aria-label="Roles and Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    Access Control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#granting-access" class="md-nav__link">
+    Granting Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policies" class="md-nav__link">
+    Policies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-policy-enforcement" class="md-nav__link">
+    Testing Policy Enforcement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1077,6 +1118,47 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#roles-and-policies" class="md-nav__link">
+    Roles and Policies
+  </a>
+  
+    <nav class="md-nav" aria-label="Roles and Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    Access Control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#granting-access" class="md-nav__link">
+    Granting Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policies" class="md-nav__link">
+    Policies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-policy-enforcement" class="md-nav__link">
+    Testing Policy Enforcement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1097,6 +1179,7 @@
 <p>Access to the data itself is managed through data control policies. Policies can be created to permit or deny access to schemas, tables, and columns.
 User account management and access management varies between the different deployment options for watsonx.data. For instance, in the managed cloud service (SaaS), the service owner would need to invite other users to the environment and give them appropriate service access.</p>
 <p>With the standalone software, users can be added within the console’s Access control page. In the Developer Edition, users can be added using a command line tool.</p>
+<p><strong>Credits:</strong> Portions of text found in this section were copied from Kelly Schlamb's watsonx.data L3 course.</p>
 <h2 id="user-administration">User Administration</h2>
 <p>This lab is using the Developer edition of the watsonx.data software, which means that the Access control panel is not available. In order to manage users, the <code>user-mgmt</code> command will need to be used. The <code>user-mgmt</code> command is found in the <code>/root/ibm-lh-dev/bin</code> directory. Examples of using the command are found below.</p>
 <h3 id="add-a-user">Add a User</h3>
@@ -1141,6 +1224,96 @@ User account management and access management varies between the different deplo
 <p>The following command will remove our watsonx user.</p>
 <pre><code class="language-bash">./user-mgmt delete-user watsonx
 </code></pre>
+<h2 id="roles-and-policies">Roles and Policies</h2>
+<p>In this section you will add a new user and provide them with privileges over the infrastructure and data. First start by adding a new user to the watsonx.data system.</p>
+<p>If you haven't already, make sure you are connected to the server as the root user and are in the <code>/root/ibm-lh-dev/bin</code> directory. Add <code>user1</code> to the system with a password of <code>password</code>.</p>
+<pre><code class="language-bash">./user-mgmt add-user user1 User password
+</code></pre>
+<h3 id="access-control">Access Control</h3>
+<p>To view what users are currently authorized to use the system, select the Access control icon found on the left side of the watsonx.data UI.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-accessicon.png" /></p>
+<p>A list of objects that make up the watsonx.data infrastructure are displayed.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-infrastructure.png" /></p>
+<p>You can see that the objects are made up of:</p>
+<ul>
+<li>Engines</li>
+<li>Catalogs</li>
+<li>Buckets</li>
+</ul>
+<p>In a real-world scenario where a user will be querying data from a table, that user will need to be given a minimum of User access to an engine (to be able to run the query), User access for the catalog associated with the data (to be able to see the schema information associated with the table), and Reader access to the bucket associated with the data (to be able to read the data
+from object storage).</p>
+<p>Additionally, a policy has to be created to permit the user to access the table in question. </p>
+<h3 id="granting-access">Granting Access</h3>
+<p>Select the presto-01 engine (highlighted in red above) to view the current users that have access to the engine. </p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentengine.png" /></p>
+<p>At this point, only the administrative user (ibmlhadmin) can use the Presto engine. Click on the Add Access button to add a new authorized user to the list.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-adduser.png" /></p>
+<p>The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant Manager or User privileges. For this lab, grant <code>user1</code> "user" privileges and then press Add.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-useradded.png" /></p>
+<p>Close the dialog by clicking on the [x] on the top right of the screen. Now <code>user1</code> needs to be granted access to a catalog. In this case, the <code>iceberg_data</code> and <code>hive_data</code> catalogs are required for the Presto engine and are implicitly granted to the user.  Click on the <code>iceberg_data</code> line to confirm that this is the case.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentcatalog.png" /></p>
+<p>You should see that <code>user1</code> has already been granted access to the catalog. If your version of watsonx.data Developer Edition does <strong>not</strong> have access granted to <code>user1</code>, add it manually using the same steps as for engine access.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentcataloguser.png" /></p>
+<p>Close the dialog to return to the Access control screen. The final step is to grant access to the underlying buckets. Because <code>user</code> was implicitly granted access to the <code>iceberg_data</code> and <code>hive_data</code> catalogs, the underlying buckets <code>iceberg-bucket</code> and <code>hive-bucket</code> were also added to their access list. Click on <code>iceberg-bucket</code> to view the access control.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentbucket.png" /></p>
+<p>Again, if <code>user1</code> does not have access to the bucket, add access using the same steps as adding engine access. When done viewing the screen, close the dialog to return to the Access control dialog.</p>
+<h3 id="policies">Policies</h3>
+<p>After access has been granted to engines, catalogs, and buckets, the final step is to create a policy to grant access to tables. Click on the Policy tab to display the current policies in place (there should be none).</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policies.png" /></p>
+<p>The Add Policy button is highlighted on the far right side of the screen. Pressing the button will display the new Access Control Policy dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-newpolicy.png" /></p>
+<p>Fill in the following information:</p>
+<ul>
+<li>Policy name: selectflights</li>
+<li>Description: blank</li>
+<li>Policy status: active</li>
+</ul>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-1.png" /></p>
+<p>You can always activate a policy after you have created it. Click Next.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-2.png" /></p>
+<p>Here we need to select which schemas that the user will be able to access. For this example, select the <code>ontime</code> schema. After selecting the schema, a set of tables associated with the schema will be listed.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-3.png" /></p>
+<p>You can choose which tables can be searched. If you choose an individual table, you can restrict which columns can be searched. Select the <code>ontime</code> table and then select the following columns (you will need to scroll down the page):</p>
+<ul>
+<li><code>flightdate</code></li>
+<li><code>reporting_airline</code></li>
+<li><code>flight_number_reporting_airline</code></li>
+<li><code>originairportid</code></li>
+<li><code>destairportid</code></li>
+</ul>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-4.png" /></p>
+<p>Once you have selected the columns, press the Next button to display the Rules dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-5.png" /></p>
+<p>The Rules dialog allows you to fine-tune what actions can be done by a user against the data. Press the Add Rule button to display the Add Rule dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-6.png" /></p>
+<p>Rules can be used to <strong>Allow</strong> actions or to <strong>Deny</strong> actions. In our example, we want to allow <code>user1</code> to SELECT data from the data, but with no other options. Note that you can provide access to a group which makes it simpler to create a set of rules that apply to a group and then add a user to a group. That way a user will inherit the permissions that were applied to the group rather than having to create rules for each individual.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-7.png" /></p>
+<p>Once the fields are filled in, press the Add button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-8.png" /></p>
+<p>You can continue to add additional rules to the list. Since we only want the one rule, select the Review button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-9.png" /></p>
+<p>Once you have confirmed that the data objects and rules look correct, press the Save button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-10.png" /></p>
+<p>The <code>selectflights</code> policy is now in place and is actively enforced. Before testing the policy enforcement, use the SQL icon on the left side to navigate to the <code>hive_data</code> catalog and view the schemas that are associated with it. Expand the <code>ontime</code> schema to view the tables and the columns that are available in the <code>ontime</code> table.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-admin-view.png" /></p>
+<p>When you connect as <code>user1</code>, you will be able to compare what objects can be accessed from that userid.</p>
+<h3 id="testing-policy-enforcement">Testing Policy Enforcement</h3>
+<p>To test whether the rules are enforced, you will need to log out of the current watsonx.data UI session. At the top of the Access Control screen, you will see the user icon on the top right. Clicking on the icon will display the logout dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-11.png" /></p>
+<p>Log out to the main watsonx.data UI screen. You will be prompted to confirm log out.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-logout.png" /></p>
+<p>Once back to the main log in panel, enter <code>user</code> and <code>password</code> into the dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-login.png" /></p>
+<p>Your watsonx.data UI should now display <code>user1</code>.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-user1.png" /></p>
+<p>Navigate to the SQL icon and then select <code>hive_data</code> -&gt; <code>ontime</code> -&gt; <code>ontime</code>. </p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy.png" /></p>
+<p>You should notice that <code>user1</code> was restricted to seeing only the <code>ontime</code> schema in the <code>hive_data</code> catalog. In addition, the user was restricted to accessing one of the tables (<code>ontime</code>) and 5 columns. Attempting to run a SELECT statement against all the data will result in a policy error.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy-error.png" /></p>
+<p>Correcting the SQL to include only permitted columns results in an answer set.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy-okay.png" /></p>
+<p>The policy rules have been enforced for <code>user1</code>, preventing them from viewing any other schemas or tables in the system. In addition, the SQL that they could execute was restricted to specific columns in the table.</p>
+<p>Before moving onto any other sections, make sure to log out as <code>user1</code> and reconnect as the <code>ibmlhadmin</code> user.</p>
 
               
             </article>

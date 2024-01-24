@@ -127,7 +127,7 @@ At this point, only the administrative user (ibmlhadmin) can use the Presto engi
 
 ![Browser](wxd-images/watsonx-access-adduser.png)
 
-The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant Manager or User privileges. For this lab, grant `user1` "user" privileges and then press Add.
+The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant User privileges. For this lab, grant `user1` "user" privileges and then press Add.
 
 ![Browser](wxd-images/watsonx-access-useradded.png)
 
@@ -189,7 +189,9 @@ The Rules dialog allows you to fine-tune what actions can be done by a user agai
 
 ![Browser](wxd-images/watsonx-access-policy-6.png)
 
-Rules can be used to **Allow** actions or to **Deny** actions. In our example, we want to allow `user1` to SELECT data from the data, but with no other options. Note that you can provide access to a group which makes it simpler to create a set of rules that apply to a group and then add a user to a group. That way a user will inherit the permissions that were applied to the group rather than having to create rules for each individual.
+Rules can be used to **Allow** actions or to **Deny** actions. In our example, we want to allow `user1` to SELECT data from the data, but with no other options. 
+
+**Note**: In production versions of watsonx.data, you can provide access to a group which makes it simpler to create a set of rules that apply to a group and then add a user to a group. That way a user will inherit the rules that were applied to the group rather than having to create rules for that individual. The developer edition displays GROUP as an option, but it is not implemented.
 
 ![Browser](wxd-images/watsonx-access-policy-7.png)
 

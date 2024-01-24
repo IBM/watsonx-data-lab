@@ -1248,7 +1248,7 @@ from object storage).</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-currentengine.png" /></p>
 <p>At this point, only the administrative user (ibmlhadmin) can use the Presto engine. Click on the Add Access button to add a new authorized user to the list.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-adduser.png" /></p>
-<p>The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant Manager or User privileges. For this lab, grant <code>user1</code> "user" privileges and then press Add.</p>
+<p>The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant User privileges. For this lab, grant <code>user1</code> "user" privileges and then press Add.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-useradded.png" /></p>
 <p>Close the dialog by clicking on the [x] on the top right of the screen. Now <code>user1</code> needs to be granted access to a catalog. In this case, the <code>iceberg_data</code> and <code>hive_data</code> catalogs are required for the Presto engine and are implicitly granted to the user.  Click on the <code>iceberg_data</code> line to confirm that this is the case.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-currentcatalog.png" /></p>
@@ -1286,7 +1286,8 @@ from object storage).</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-policy-5.png" /></p>
 <p>The Rules dialog allows you to fine-tune what actions can be done by a user against the data. Press the Add Rule button to display the Add Rule dialog.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-policy-6.png" /></p>
-<p>Rules can be used to <strong>Allow</strong> actions or to <strong>Deny</strong> actions. In our example, we want to allow <code>user1</code> to SELECT data from the data, but with no other options. Note that you can provide access to a group which makes it simpler to create a set of rules that apply to a group and then add a user to a group. That way a user will inherit the permissions that were applied to the group rather than having to create rules for each individual.</p>
+<p>Rules can be used to <strong>Allow</strong> actions or to <strong>Deny</strong> actions. In our example, we want to allow <code>user1</code> to SELECT data from the data, but with no other options. </p>
+<p><strong>Note</strong>: In production versions of watsonx.data, you can provide access to a group which makes it simpler to create a set of rules that apply to a group and then add a user to a group. That way a user will inherit the rules that were applied to the group rather than having to create rules for that individual. The developer edition displays GROUP as an option, but it is not implemented.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-policy-7.png" /></p>
 <p>Once the fields are filled in, press the Add button.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-access-policy-8.png" /></p>

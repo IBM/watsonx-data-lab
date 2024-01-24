@@ -32,6 +32,7 @@ nav:
     - dBeaver: "wxd-dbeaver.md"
     - Portainer Console: "wxd-reference-portainer.md"
   - Working with Object Store Buckets: "wxd-objectstore.md"
+  - User Administration and Roles: "wxd-useradmin.md"
   - Ingesting Data: "wxd-ingest.md"
   - Documentation: "wxd-reference-documentation.md"
   - Troubleshooting: "wxd-troubleshooting.md"

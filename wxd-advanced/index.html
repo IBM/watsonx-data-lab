@@ -1140,7 +1140,7 @@
 <pre><code>./presto-cli --catalog iceberg_data --schema workshop
 </code></pre>
 <h3 id="concatenation-of-one-or-more-stringvarchar-values">Concatenation of one or more string/varchar values</h3>
-<p>Note: We are using a combination of the “concat” string function and the “cast” conversion function as part of this query.</p>
+<p>Note: We are using a combination of the <code>concat</code> string function and the <code>cast</code> conversion function as part of this query.</p>
 <pre><code>select 
    concat(cast(custkey as varchar),'--',name) 
 from 
@@ -1335,7 +1335,7 @@ distance_in_miles
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 IBM
+      Copyright &copy; 2024 IBM
     </div>
   
   

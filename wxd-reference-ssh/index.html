@@ -1092,7 +1092,7 @@
 <h2 id="ssh-command">SSH Command</h2>
 <p>Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.</p>
 <p>You have the choice of using the VM Remote console and logging in as the watsonx user to issues commands, or using a local terminal shell (iTerm, Hyper, terminal) to run commands against the watsonx.data server. You can have multiple connections into the machine at any one time. </p>
-<p>You may find it is easier to cut-and-paste commands into a local terminal shell rather than using the VM Remote Console because the console does not support cut-and-paste operation from your workstation to the remote desktop.</p>
+<p>It will be easier to cut-and-paste commands into a local terminal shell. The VM Remote Console does not support cut-and-paste operation from outside the virtual console environment.</p>
 <p>Open a terminal window and use the following syntax to connect as the <code style="font-size: medium;color:blue;">watsonx</code> userid.</p>
 <pre><code>ssh -p port watsonx@region.techzone-server.com
 </code></pre>
@@ -1115,7 +1115,7 @@
 <p>You are now using a terminal session inside the watsonx.data server. By default, you are already the <code>root</code> user, so there is no need to run a <code>sudo su -</code> command. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.</p>
 <pre><code class="language-bash">cd /root/ibm-lh-dev/bin
 </code></pre>
-<p>All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentily close this window, you can open another one using the Jupyter notebook File menu.</p>
+<p>All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentally close this window, you can open another one using the Jupyter notebook File menu.</p>
 <h2 id="terminal-window-in-the-vm">Terminal Window in the VM</h2>
 <p>If you use the <a href="../wxd-reference-console/">Remote VM Console</a>, you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. </p>
 <p>Select the Terminal application in the virtual machine to issue commands. </p>
@@ -1191,7 +1191,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 IBM
+      Copyright &copy; 2024 IBM
     </div>
   
   

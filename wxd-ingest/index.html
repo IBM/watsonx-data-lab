@@ -1120,14 +1120,13 @@
 
 
 <h1 id="ingesting-data">Ingesting Data</h1>
-<p>In this lab we will use the ingest tool (lh-tool) alongside the IBM watsonx.data developer edition that is running in this lab. The Ingest tool is a separate install and currently needs to be downloaded after IBM watsonx.data is started. The lab image contains a copy of this code so you will not need to download it.</p>
+<p>In this lab we will use the ingest tool (lh-tool) alongside the IBM watsonx.data developer edition that is running in this lab. The Ingest tool is a separate install and currently needs to be downloaded after IBM watsonx.data is started. The lab image contains a copy of this code, so you will not need to download it.</p>
 <p>In addition, there is a staging file (yellowtaxi-parquet) found in the sample data directory that will be used for loading data into the system.</p>
 <p>As the <code>root</code> user, switch to the client bin directory.</p>
 <pre><code>cd /root/ibm-lh-client/bin
 </code></pre>
 <h3 id="ingest-data-into-the-ibm-watsonxdata">Ingest data into the IBM watsonx.data</h3>
-<p>Before running the utility, we need to retrieve several credentials for MinIO and the 
-keystore password. </p>
+<p>Before running the utility, we need to retrieve several credentials for MinIO and the keystore password. </p>
 <pre><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
 export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
 export LH_KEYSTORE_PASSWORD=$(docker exec ibm-lh-presto printenv | grep LH_KEYSTORE_PASSWORD | sed 's/.*=//')
@@ -1341,7 +1340,7 @@ Complete migration
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 IBM
+      Copyright &copy; 2024 IBM
     </div>
   
   

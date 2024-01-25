@@ -8,7 +8,7 @@ The title of the workshop may be different, but the steps to access the lab will
 
 ![Browser](wxd-images/watsonx-workshop-password.png)
 
-When the connection is successful, the details over your environment will be shown in the browser.
+When the connection is successful, the details of your environment will be shown in the browser.
 
 ![Browser](wxd-images/watsonx-workshop-details-1.png)
 

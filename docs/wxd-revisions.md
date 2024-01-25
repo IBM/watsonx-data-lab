@@ -1,5 +1,13 @@
 # Revisions
 
+### January 25, 2024 (1.1.1)
+
+* Updated Lab Documentation
+
+    - [Instructions for using a Workshop environment](wxd-reference-workshop.md)
+    - [New section on user administration and creating policies](wxd-useradmin.md)
+    - [Update to running terminal commands uses Jupyter notebook shell](wxd-reference-ssh.md#jupyter-notebook-terminal)
+
 ### January 8, 2024 (1.1.1)
 
 * Updated the lab to GA watsonx.data 1.1.1 code

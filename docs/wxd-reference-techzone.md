@@ -1,4 +1,7 @@
 # Requesting a TechZone image
+
+If you are part of a workshop, you do not have to request a reservation. Instead, go to the [Accessing a Workshop](wxd-reference-workshop.md) section.
+
 Log into TechZone (<a href="https://techzone.ibm.com" target="_blank">https://techzone.ibm.com</a>) and search for the watsonx.data
 Developer Base Image or use the following link.
 

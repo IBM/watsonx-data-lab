@@ -14,7 +14,7 @@ Your TechZone reservation will include the server name and port number to use wh
 
 You have the choice of using the VM Remote console and logging in as the watsonx user to issues commands, or using a local terminal shell (iTerm, Hyper, terminal) to run commands against the watsonx.data server. You can have multiple connections into the machine at any one time. 
 
-You may find it is easier to cut-and-paste commands into a local terminal shell rather than using the VM Remote Console because the console does not support cut-and-paste operation from your workstation to the remote desktop.
+It will be easier to cut-and-paste commands into a local terminal shell. The VM Remote Console does not support cut-and-paste operation from outside the virtual console environment.
 
 Open a terminal window and use the following syntax to connect as the <code style="font-size: medium;color:blue;">watsonx</code> userid.
 
@@ -58,7 +58,7 @@ You are now using a terminal session inside the watsonx.data server. By default,
 cd /root/ibm-lh-dev/bin
 ```
 
-All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentily close this window, you can open another one using the Jupyter notebook File menu.
+All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentally close this window, you can open another one using the Jupyter notebook File menu.
 
 ## Terminal Window in the VM
 

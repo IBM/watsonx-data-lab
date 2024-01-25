@@ -71,7 +71,7 @@ show schemas in tpch;
  tiny               
 (10 rows)
 </pre>
-Quit the presto-cli interface by executing the “quit;” command.
+Quit the presto-cli interface by executing the "quit;" command.
 ```
 quit;
 ```

@@ -8,7 +8,7 @@ The following link provides more information on the dataset and the columns that
 
 ## Disclaimer
 
-Except as expressly set forth in this agreement, the data (including enhanced data) is provided on an “as is” basis, without warranties or conditions of any kind, either express or implied including, without limitation, any warranties or conditions of title, non-infringement, merchantability or fitness for a particular purpose.
+Except as expressly set forth in this agreement, the data (including enhanced data) is provided on an "as is" basis, without warranties or conditions of any kind, either express or implied including, without limitation, any warranties or conditions of title, non-infringement, merchantability or fitness for a particular purpose.
 
 Neither you nor any data providers shall have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation lost profits), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or distribution of the data or the exercise of any rights granted hereunder, even if advised of the possibility of such damages.
 

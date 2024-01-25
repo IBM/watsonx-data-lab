@@ -32,7 +32,7 @@ We will use the PrestoDB JDBC connector (NOT PrestoSQL). This is the other name 
 
 ![Browser](wxd-images/dbeaver-selectpresto.png)
  
-Select PrestoDB and then press “Next”. The following screen will be displayed.
+Select PrestoDB and then press "Next". The following screen will be displayed.
 
 ![Browser](wxd-images/dbeaver-credentials.png)
  
@@ -49,7 +49,7 @@ Then select the Driver Properties tab. You might be asked to download the databa
 
 ![Browser](wxd-images/dbeaver-download.png) 
 
-Make sure select “Force Download” otherwise it will not properly download the driver. Once downloaded it will display the Driver properties dialog.
+Make sure select "Force Download" otherwise it will not properly download the driver. Once downloaded it will display the Driver properties dialog.
 
 ![Browser](wxd-images/dbeaver-settings.png)
  

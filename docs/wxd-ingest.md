@@ -1,6 +1,6 @@
 # Ingesting Data
 
-In this lab we will use the ingest tool (lh-tool) alongside the IBM watsonx.data developer edition that is running in this lab. The Ingest tool is a separate install and currently needs to be downloaded after IBM watsonx.data is started. The lab image contains a copy of this code so you will not need to download it.
+In this lab we will use the ingest tool (lh-tool) alongside the IBM watsonx.data developer edition that is running in this lab. The Ingest tool is a separate install and currently needs to be downloaded after IBM watsonx.data is started. The lab image contains a copy of this code, so you will not need to download it.
 
 In addition, there is a staging file (yellowtaxi-parquet) found in the sample data directory that will be used for loading data into the system.
 
@@ -10,8 +10,7 @@ cd /root/ibm-lh-client/bin
 ```
 
 ### Ingest data into the IBM watsonx.data
-Before running the utility, we need to retrieve several credentials for MinIO and the 
-keystore password. 
+Before running the utility, we need to retrieve several credentials for MinIO and the keystore password. 
 ```
 export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
 export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')

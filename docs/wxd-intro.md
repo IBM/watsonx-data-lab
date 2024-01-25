@@ -9,7 +9,7 @@ The next-gen watsonx.data lakehouse is designed to overcome the costs and comple
    * Deploy anywhere with full support for hybrid-cloud and multi cloud environments.
    * Shared metadata across multiple engines eliminates the need to re-catalog, accelerating time to value while ensuring governance and eliminating costly implementation efforts.
 
-This lab uses the watsonx.data developer package. The Developer package is meant to be used on single nodes. While it uses the same code base, there are some restrictions, especially on scale. In this lab, we will open some additional ports as well to understand how everything works. We will also use additional utilities to illustrate connectivity and what makes the watsonx.data system “open”. 
+This lab uses the watsonx.data developer package. The Developer package is meant to be used on single nodes. While it uses the same code base, there are some restrictions, especially on scale. In this lab, we will open some additional ports as well to understand how everything works. We will also use additional utilities to illustrate connectivity and what makes the watsonx.data system "open". 
 
 We organized this lab into a number of sections that cover many of the highlights and key features of watsonx.data.
 

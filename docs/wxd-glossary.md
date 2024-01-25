@@ -28,7 +28,7 @@ Application Programming Interface (API)**: Application Programming Interface (AP
 
 **Presto**: Presto is a distributed database query engine (written in Java) that uses the SQL query language. Its architecture allows users to query data sources such as Hadoop, Cassandra, Kafka, AWS S3, Alluxio, MySQL, MongoDB and Teradata, and allows use of multiple data sources within a query. Presto is community-driven open-source software released under the Apache License. Presto's architecture is very similar to other database management systems using cluster computing, sometimes called massively parallel processing (MPP).
 
-**SPARK**: Apache Spark is an open-source unified analytics engine for large-scale data processing. Spark provides an interface for programming clusters with implicit data parallelism and fault tolerance. Spark can be used with watsonx.data but is not included in the watsonsx.data environment image provided.
+**SPARK**: Apache Spark is an open-source unified analytics engine for large-scale data processing. Spark provides an interface for programming clusters with implicit data parallelism and fault tolerance. Spark can be used with watsonx.data but is not included in the watsonx.data environment image provided.
 
 **TechZone (IBM Technology Zone)**: IBM Technology Zone is the platform where the developer edition of watsonx.data with the sample data sets has been provisioned. Generally, it allows Go To Market teams and Business Partners to easily build technical 'Show Me' live environments, POTs, prototypes, and MVPs, which can then be customized and shared with peers and customers to experience IBM Technology.
 

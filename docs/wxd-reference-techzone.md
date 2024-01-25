@@ -24,11 +24,11 @@ Press the Reserve button.
 
 ![Browser](wxd-images/techzone-reservenow.png)
  
-Select “reserve now” (why wait?).
+Select "reserve now" (why wait?).
 
 ![Browser](wxd-images/techzone-menu.png)
  
-For “Purpose” select Self Education. This will expand to request additional information.
+For "Purpose" select Self Education. This will expand to request additional information.
 
 ![Browser](wxd-images/techzone-reason.png)
  

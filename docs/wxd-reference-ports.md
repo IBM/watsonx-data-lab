@@ -78,6 +78,6 @@ Select Advanced.
 
 ![Browser](wxd-images/browser-warning-2.png)
  
-Choose “Accept the Risk and Continue”. If you are using Google Chrome, you can bypass the error message by typing in “thisisunsafe” or clicking on the "Proceed to 192.168.252.2 (unsafe)" link.
+Choose "Accept the Risk and Continue". If you are using Google Chrome, you can bypass the error message by typing in "thisisunsafe" or clicking on the "Proceed to 192.168.252.2 (unsafe)" link.
 
 ![Browser](wxd-images/chrome-browser.png)

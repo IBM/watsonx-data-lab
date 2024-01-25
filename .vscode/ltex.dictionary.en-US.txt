@@ -1,0 +1,7 @@
+TechZone
+watsonx
+Portainer
+MinIO
+dBeaver
+eBook
+use dBeaver

@@ -60,7 +60,7 @@ Next, check that your network connection is up and running. You will be able to 
 
 ![Browser](wxd-images/wxd-internet.png)
  
-If it shows Wired Off, make sure to turn it on by clicking on the arrow and choosing “Connect”.
+If it shows Wired Off, make sure to turn it on by clicking on the arrow and choosing "Connect".
 
 ![Browser](wxd-images/wxd-interneton.png)
 

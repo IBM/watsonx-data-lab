@@ -214,7 +214,7 @@ cur = conn.cursor()
 
 In the above connection string, you will need to replace the following values:
 
-   * host - `watsonxdata` when connecting to the image externally, and  `ibm-lh-presto-svc` when connecting internally 
+   * host - `watsonxdata` when connecting to the image externally, and `ibm-lh-presto-svc` when connecting internally 
    * catalog - What is the name of the catalog that we are accessing
    * schema - The schema inside the catalog that will be used
 

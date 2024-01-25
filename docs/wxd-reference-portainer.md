@@ -9,7 +9,7 @@ Open your browser and navigate to:
    * Portainer console - https://region.techzone-server.com:port
    * Credentials: userid:<code style="color:blue;font-size:medium;">admin</code> password: <code style="color:blue;font-size:medium;">watsonx.data</code>
 
-Once you have logged in, you should select “Get Started”.
+Once you have logged in, you should select "Get Started".
 
 ![Browser](wxd-images/portainer-main.png)
 

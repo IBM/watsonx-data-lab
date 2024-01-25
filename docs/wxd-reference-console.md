@@ -26,6 +26,6 @@ Select the <code style="color:blue;font-size:medium;">watsonx</code> user and us
 
 ![Browser](wxd-images/desktop-newwindow.png)
 
-You can open this window in a separate browser window, or place it into fullscreen mode. Note that you may need to increase the size of your browser window (or change the scaling in the browser) to see all the virtual desktop.
+You can open this window in a separate browser window, or place it into full-screen mode. Note that you may need to increase the size of your browser window (or change the scaling in the browser) to see all the virtual desktop.
 
 At this point you have access to the desktop of the watsonx user and can issue commands from within this environment. As mentioned previously, you do not need to use this interface to use the lab.

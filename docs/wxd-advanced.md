@@ -22,7 +22,8 @@ Connect to the Workshop Schema.
 ./presto-cli --catalog iceberg_data --schema workshop
 ```
 ### Concatenation of one or more string/varchar values
-Note: We are using a combination of the “concat” string function and the “cast” conversion function as part of this query.
+
+Note: We are using a combination of the `concat` string function and the `cast` conversion function as part of this query.
 ```
 select 
    concat(cast(custkey as varchar),'--',name) 
@@ -39,6 +40,7 @@ limit 2;
 </pre>
  
 ### Date functions
+
 Date functions can be used as part of the projected columns or in the predicate/where clause.
 Select orders from the last 2 days.
 ```

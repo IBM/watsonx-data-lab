@@ -357,6 +357,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ssh-command" class="md-nav__link">
+    SSH Command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jupyter-notebook-terminal" class="md-nav__link">
+    Jupyter Notebook Terminal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-window-in-the-vm" class="md-nav__link">
+    Terminal Window in the VM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#copying-files" class="md-nav__link">
     Copying Files
   </a>
@@ -1019,6 +1040,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ssh-command" class="md-nav__link">
+    SSH Command
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jupyter-notebook-terminal" class="md-nav__link">
+    Jupyter Notebook Terminal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-window-in-the-vm" class="md-nav__link">
+    Terminal Window in the VM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#copying-files" class="md-nav__link">
     Copying Files
   </a>
@@ -1040,6 +1082,14 @@
 
 
 <h1 id="ssh-access">SSH Access</h1>
+<p>All the commands in the lab will require you execute commands in a terminal window. Access to a terminal window can be accomplished in the three ways as described below:</p>
+<ul>
+<li><a href="#ssh-command">Use the SSH Command Locally</a></li>
+<li><a href="#jupyter-notebook-terminal">Use Jupyter notebook terminal</a></li>
+<li><a href="#terminal-window-in-the-vm">Terminal window in the VM</a></li>
+</ul>
+<p>If you are unable to use <code>ssh</code> because of connection restrictions, the Jupyter notebook option is the easiest one to use.</p>
+<h2 id="ssh-command">SSH Command</h2>
 <p>Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.</p>
 <p>You have the choice of using the VM Remote console and logging in as the watsonx user to issues commands, or using a local terminal shell (iTerm, Hyper, terminal) to run commands against the watsonx.data server. You can have multiple connections into the machine at any one time. </p>
 <p>You may find it is easier to cut-and-paste commands into a local terminal shell rather than using the VM Remote Console because the console does not support cut-and-paste operation from your workstation to the remote desktop.</p>
@@ -1051,6 +1101,31 @@
 <pre><code>sudo su -
 </code></pre>
 <p>Password for both users is <code style="color:blue;font-size:medium;">watsonx.data</code>.</p>
+<h2 id="jupyter-notebook-terminal">Jupyter Notebook Terminal</h2>
+<p>The Jupyter Notebook lab environment provided as part of lab also provides a way of issuing terminal commands. To access this environment, you must find the Jupyter notebook URL provided in the lab reservation.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-url.png" /></p>
+<p>When you initially open the link, it will request a password to view the Table of Contents:</p>
+<p><img alt="Browser" src="../wxd-images/jupyter-password.png" /></p>
+<p>The default password for the notebook is <code>watsonx.data</code>. Once you enter the password, the Table of Contents will be displayed.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-toc.png" /></p>
+<p>Select the File menu at the top of the screen and then select New - Terminal.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-file.png" /></p>
+<p>A terminal window will be displayed in the browser.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-terminal.png" /></p>
+<p>You are now using a terminal session inside the watsonx.data server. By default, you are already the <code>root</code> user, so there is no need to run a <code>sudo su -</code> command. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.</p>
+<pre><code class="language-bash">cd /root/ibm-lh-dev/bin
+</code></pre>
+<p>All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentily close this window, you can open another one using the Jupyter notebook File menu.</p>
+<h2 id="terminal-window-in-the-vm">Terminal Window in the VM</h2>
+<p>If you use the <a href="../wxd-reference-console/">Remote VM Console</a>, you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. </p>
+<p>Select the Terminal application in the virtual machine to issue commands. </p>
+<p><img alt="Browser" src="../wxd-images/terminal-vmware-command.png" /></p>
+<p>This will open up the terminal window.</p>
+<p><img alt="Browser" src="../wxd-images/terminal-vmware.png" /></p>
+<p>At this point you are connected as the watsonx user. You can ignore any lab instructions that ask you to <code>ssh</code> into the watsonx server. To become the root user, you must enter the following command in the terminal window.</p>
+<pre><code>sudo su -
+</code></pre>
+<p>Now as the root user you will be ready to run the commands found in the lab.</p>
 <h2 id="copying-files">Copying Files</h2>
 <p>If you need to move files into or out of the virtual machine, you can use the following commands.</p>
 <p>To copy a file into the virtual machine use the following syntax:</p>

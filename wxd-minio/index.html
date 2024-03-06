@@ -210,22 +210,37 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../wxd-certificate/" class="md-nav__link">
+        Watsonx.data Certificates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_4">
           Getting Started
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Getting Started
         </label>
@@ -406,18 +421,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_7">
           Core Components
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Core Components" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Core Components
         </label>
@@ -605,18 +620,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_8">
           Presto SQL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Presto SQL" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Presto SQL
         </label>
@@ -709,18 +724,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8">
+        <label class="md-nav__link" for="__nav_9">
           Optional Tools
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Optional Tools" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Optional Tools
         </label>
@@ -860,18 +875,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_14">
+        <label class="md-nav__link" for="__nav_15">
           Dataset Details
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Dataset Details" data-md-level="1">
-        <label class="md-nav__title" for="__nav_14">
+        <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
           Dataset Details
         </label>
@@ -994,18 +1009,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_17">
+        <label class="md-nav__link" for="__nav_18">
           Appendix
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Appendix" data-md-level="1">
-        <label class="md-nav__title" for="__nav_17">
+        <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
           Appendix
         </label>
@@ -1177,21 +1192,21 @@
 
 <h1 id="using-the-minio-console-ui">Using the MinIO console UI</h1>
 <p>MinIO is a high-performance, S3 compatible object store. Rather than connect to an external S3 object store, we are going to use MinIO locally to run with  watsonx.data.</p>
-<p>To connect to MinIO, you will need to extract the MinIO credentials by querying the docker container. You must be the <code>root</code> user to issue these commands.</p>
-<pre><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+<p>To connect to MinIO, you will need to extract the MinIO credentials by querying the docker container. You must be the <code>root</code> user to issue these commands.
+<div class="highlight"><pre><span></span><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed &#39;s/.*=//&#39;)
+export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed &#39;s/.*=//&#39;)
 echo &quot;MinIO Userid  : &quot; $LH_S3_ACCESS_KEY
 echo &quot;MinIO Password: &quot; $LH_S3_SECRET_KEY
-</code></pre>
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 MinIO Userid  :  c4643026087cc21989eb5c12
 MinIO Password:  93da45c5af87abd86c9dbc83
 </pre>
 
-<p>You can get all passwords for the system when you are logged in as the <code style="color:blue;font-size:medium;">watsonx</code> user by using the following command.</p>
-<pre><code>cat /certs/passwords
-</code></pre>
-<p>Your TechZone reservation will include the server name and port number to use when connecting to the MinIO. The default port number is 9001, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.</p>
+<p>You can get all passwords for the system when you are logged in as the <code style="color:blue;font-size:medium;">watsonx</code> user by using the following command.
+<div class="highlight"><pre><span></span><code>cat /certs/passwords
+</code></pre></div>
+Your TechZone reservation will include the server name and port number to use when connecting to the MinIO. The default port number is 9001, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.</p>
 <p>Open your browser and navigate to:</p>
 <ul>
 <li>Minio console - http://region.techzone-server.com:port</li>
@@ -1204,17 +1219,17 @@ MinIO Password:  93da45c5af87abd86c9dbc83
 <h2 id="creating-schemas-and-tables">Creating Schemas and Tables</h2>
 <p>Not all catalogs support creation of schemas - as an example, the TPCH catalog is not writeable. We will use the iceberg_data catalog for this exercise. We will need to get some details before we continue.</p>
 <p>Make sure you are connected as the root user and are in the proper directory.</p>
-<pre><code>cd /root/ibm-lh-dev/bin
-</code></pre>
-<p>Login to the Presto CLI.</p>
-<pre><code>./presto-cli --catalog iceberg_data
-</code></pre>
-<p>Create schema <code style="color:blue;font-size:medium;">workshop</code> in catalog<code style="color:blue;font-size:medium;">iceberg_data</code>. Note how we are using the <code style="color:blue;font-size:medium;">iceberg-bucket</code> bucket which you should have seen in the MinIO object browser.</p>
-<pre><code>CREATE SCHEMA IF NOT EXISTS workshop with (location='s3a://iceberg-bucket/');
-</code></pre>
-<p>Show the schemas available.</p>
-<pre><code>show schemas;
-</code></pre>
+<div class="highlight"><pre><span></span><code>cd /root/ibm-lh-dev/bin
+</code></pre></div>
+<p>Login to the Presto CLI.
+<div class="highlight"><pre><span></span><code>./presto-cli --catalog iceberg_data
+</code></pre></div>
+Create schema <code style="color:blue;font-size:medium;">workshop</code> in catalog<code style="color:blue;font-size:medium;">iceberg_data</code>. Note how we are using the <code style="color:blue;font-size:medium;">iceberg-bucket</code> bucket which you should have seen in the MinIO object browser.
+<div class="highlight"><pre><span></span><code>CREATE SCHEMA IF NOT EXISTS workshop with (location=&#39;s3a://iceberg-bucket/&#39;);
+</code></pre></div>
+Show the schemas available.
+<div class="highlight"><pre><span></span><code>show schemas;
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
   Schema  
 ----------
@@ -1222,16 +1237,16 @@ MinIO Password:  93da45c5af87abd86c9dbc83
 (1 row)
 </pre>
 
-<p>Use the workshop schema.</p>
-<pre><code>use workshop;
-</code></pre>
+<p>Use the workshop schema.
+<div class="highlight"><pre><span></span><code>use workshop;
+</code></pre></div></p>
 <h3 id="creating-tables">Creating tables</h3>
-<p>Create a new Apache Iceberg table using existing data in the sample Customer table as part of the TPCH catalog schema called TINY.</p>
-<pre><code>create table customer as select * from tpch.tiny.customer;
-</code></pre>
-<p>Show the tables.</p>
-<pre><code>show tables;
-</code></pre>
+<p>Create a new Apache Iceberg table using existing data in the sample Customer table as part of the TPCH catalog schema called TINY.
+<div class="highlight"><pre><span></span><code>create table customer as select * from tpch.tiny.customer;
+</code></pre></div></p>
+<p>Show the tables.
+<div class="highlight"><pre><span></span><code>show tables;
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
   Table   
 ----------
@@ -1239,10 +1254,11 @@ MinIO Password:  93da45c5af87abd86c9dbc83
 (1 row)
 </pre>
 
-<p>Quit Presto.</p>
-<pre><code>quit;
-</code></pre>
-<p>Refresh the Minio screen (see button on the far-right side).</p>
+<p>Quit Presto.
+<div class="highlight"><pre><span></span><code>quit;
+</code></pre></div>
+ 
+Refresh the Minio screen (see button on the far-right side).</p>
 <p><img alt="Browser" src="../wxd-images/minio-refresh.png" /></p>
 <p>You should now see new objects under <code style="color:blue;font-size:medium;">iceberg-bucket</code> Click on the bucket name and you will see the customer table.</p>
 <p><img alt="Browser" src="../wxd-images/minio-customer.png" /></p>
@@ -1252,19 +1268,19 @@ MinIO Password:  93da45c5af87abd86c9dbc83
 <p><img alt="Browser" src="../wxd-images/minio-customer-metadata.png" /></p>
 <h3 id="do-i-really-need-apache-iceberg">Do I really need Apache Iceberg?</h3>
 <p>YES, YOU DO! However, it is good to understand why? Metadata is also stored in the Parquet file format but only for the single parquet file. If we add more data/partitions, the data is split into multiple Parquet files, and we don’t have a mechanism to get the table to parquet files mapping. Run the following example to understand this better.</p>
-<p>You need to get the access keys for MinIO before running the following lab. Make sure you are still connected as <code>root</code>.</p>
-<pre><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
-</code></pre>
-<p>Open the developer sandbox to connect to MinIO, download the selected parquet file and inspect the parquet file contents.</p>
-<pre><code>./dev-sandbox.sh
-</code></pre>
-<p>Update the Python files to be executable (makes our commands more convenient).</p>
-<pre><code>chmod +x /scripts/*.py
-</code></pre>
-<p>List all files in the object store (MinIO).</p>
-<pre><code>/scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket
-</code></pre>
+<p>You need to get the access keys for MinIO before running the following lab. Make sure you are still connected as <code>root</code>.
+<div class="highlight"><pre><span></span><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed &#39;s/.*=//&#39;)
+export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed &#39;s/.*=//&#39;)
+</code></pre></div>
+Open the developer sandbox to connect to MinIO, download the selected parquet file and inspect the parquet file contents.
+<div class="highlight"><pre><span></span><code>./dev-sandbox.sh
+</code></pre></div></p>
+<p>Update the Python files to be executable (makes our commands more convenient).
+<div class="highlight"><pre><span></span><code>chmod +x /scripts/*.py
+</code></pre></div></p>
+<p>List all files in the object store (MinIO).
+<div class="highlight"><pre><span></span><code>/scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 iceberg-bucket b'customer/data/e9536a5e-14a1-4823-98ed-cc22d6fc38db.parquet' 2023-06-06 14:31:47.778000+00:00 6737d7268fcb3eb459b675f27f716f48 75373 None
 iceberg-bucket b'customer/metadata/00000-e26c56e0-c4d7-4625-8b06-422429f6ba8d.metadata.json' 2023-06-06 14:31:48.629000+00:00 2e722c7dd83c1dd260a7e6c9503c0e04 3272 None
@@ -1272,16 +1288,17 @@ iceberg-bucket b'customer/metadata/7cb074a4-3da7-4184-9db8-567383bb588a-m0.avro'
 iceberg-bucket b'customer/metadata/snap-6143645832277262458-1-7cb074a4-3da7-4184-9db8-567383bb588a.avro' 2023-06-06 14:31:48.445000+00:00 0c3714299d43ae86a46eabdcaac1351e 3753 None
 </pre>
 
-<p>You can extract the string with the following command.</p>
-<pre><code>PARQUET=$(/scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket | grep -o -m 1 &quot;.*'customer.*parquet&quot; | sed -n &quot;s/.*b'//p&quot;)
-</code></pre>
+<p>You can extract the string with the following command.
+<div class="highlight"><pre><span></span><code>PARQUET=$(/scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket | grep -o -m 1 &quot;.*&#39;customer.*parquet&quot; | sed -n &quot;s/.*b&#39;//p&quot;)
+</code></pre></div></p>
 <p>The file name that is retrieved is substituted into the next command.
-Note: The file name found in $PARQUET will be different on your system.</p>
-<pre><code>/scripts/s3-download.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket --srcFile $PARQUET --destFile /tmp/x.parquet
-</code></pre>
-<p>Describe the File Contents.</p>
-<pre><code>/scripts/describe-parquet.py /tmp/x.parquet
-</code></pre>
+Note: The file name found in $PARQUET will be different on your system.
+<div class="highlight"><pre><span></span><code>/scripts/s3-download.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket --srcFile $PARQUET --destFile /tmp/x.parquet
+</code></pre></div>
+ 
+Describe the File Contents.
+<div class="highlight"><pre><span></span><code>/scripts/describe-parquet.py /tmp/x.parquet
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 ----------------------
 metadata: 
@@ -1345,23 +1362,23 @@ row group 0, column 1:
 </pre>
 
 <p><strong>Note</strong>: In this instance we used an <code>insert into select * from customer</code> with no partitioning defined there was only 1 parquet file and only 1 row group. This is not the norm, and we deliberately did this to show you the value of using Apache Iceberg file format which can be used by multiple runtimes to access Iceberg data stored in parquet format and managed by hive metastore.</p>
-<p>Exit from the Sandbox.</p>
-<pre><code>exit
-</code></pre>
+<p>Exit from the Sandbox.
+<div class="highlight"><pre><span></span><code>exit
+</code></pre></div></p>
 <h2 id="minio-cli">MinIO CLI</h2>
 <p>The MinIO Client <code>mc</code> command line tool provides an alternative to UNIX commands like <code>ls</code>, <code>cat</code>, <code>cp</code>, <code>mirror</code>, and <code>diff</code> with support for both file systems and Amazon S3-compatible cloud storage services.</p>
 <p>The <code>mc</code> commandline tool is built for compatibility with the AWS S3 API and is tested with MinIO and AWS S3 for expected functionality and behavior. Complete details and restrictions around the use of the CLI command can be found on the <a href="https://min.io/docs/minio/linux/reference/minio-mc.html">MinIO Client</a> page.</p>
 <p>You can use the MinIO CLI from a variety of clients. The MinIO ports are open in the developer edition image, which provides an alternative to loading data directly from your workstation rather than using the MinIO UI interface.</p>
 <h3 id="minio-system-alias">Minio System Alias</h3>
 <p>Before running commands against the MinIO server, an alias must be created that includes the access and secret key. The values can be extracted from the system by listing the contents of the <code>/certs/passwords</code> file or by running the <code>passwords</code> command as the root user.</p>
-<pre><code>cat /certs/passwords
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat /certs/passwords
+</code></pre></div>
 <p>The values for the MinIO access and secret key can also be exported with the following code:</p>
-<pre><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+<div class="highlight"><pre><span></span><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed &#39;s/.*=//&#39;)
+export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed &#39;s/.*=//&#39;)
 echo &quot;MinIO Userid  : &quot; $LH_S3_ACCESS_KEY
 echo &quot;MinIO Password: &quot; $LH_S3_SECRET_KEY
-</code></pre>
+</code></pre></div>
 <p>The <code>alias</code> command has the following syntax:</p>
 <p><code style="color:blue;font-size:medium;">mc alias set alias-name hostname:port access_key secret_key</code></p>
 <p>For a local connection, we will use the following values:</p>
@@ -1378,24 +1395,24 @@ echo &quot;MinIO Password: &quot; $LH_S3_SECRET_KEY
 <li>Port – <code style="color:blue;font-size:medium;">12345</code></li>
 </ul>
 <p>The alias for local access is found below.</p>
-<pre><code>mc alias set watsonxdata http://watsonxdata:9000 $LH_S3_ACCESS_KEY $LH_S3_SECRET_KEY
-</code></pre>
+<div class="highlight"><pre><span></span><code>mc alias set watsonxdata http://watsonxdata:9000 $LH_S3_ACCESS_KEY $LH_S3_SECRET_KEY
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Added `watsonxdata` successfully.
 </pre>
 
 <h3 id="list-buckets">List Buckets</h3>
 <p>The <code>mc</code> command provides us with a number of commands that allows us to manage buckets and files within them. The following command checks to see what buckets currently exist in the system. </p>
-<pre><code>mc ls tree watsonxdata
-</code></pre>
+<div class="highlight"><pre><span></span><code>mc ls tree watsonxdata
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 [2023-09-29 14:38:19 EDT]     0B hive-bucket/
 [2023-09-29 14:38:19 EDT]     0B iceberg-bucket/
 </pre>
 
 <p>You can view the contents of a bucket by traversing down the path.</p>
-<pre><code>mc ls tree watsonxdata/hive-bucket
-</code></pre>
+<div class="highlight"><pre><span></span><code>mc ls tree watsonxdata/hive-bucket
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 [2023-10-13 10:34:36 EDT]     0B gosalesdw/
 [2023-10-13 10:34:36 EDT]     0B hive_sql/
@@ -1409,15 +1426,15 @@ Added `watsonxdata` successfully.
 mc mb alias-name/new-bucket
 </code></p>
 <p>The following code will create a new bucket in the system called <code>sampledata</code>.</p>
-<pre><code>mc mb watsonxdata/sampledata
-</code></pre>
+<div class="highlight"><pre><span></span><code>mc mb watsonxdata/sampledata
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Bucket created successfully `watsonxdata/sampledata`.
 </pre>
 
-<p>We can double check that the bucket it there.</p>
-<pre><code>mc ls tree watsonxdata
-</code></pre>
+<p>We can double check that the bucket it there.
+<div class="highlight"><pre><span></span><code>mc ls tree watsonxdata
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 [2023-09-29 14:38:19 EDT]     0B hive-bucket/
 [2023-09-29 14:38:19 EDT]     0B iceberg-bucket/
@@ -1427,23 +1444,23 @@ Bucket created successfully `watsonxdata/sampledata`.
 <h3 id="loading-data">Loading Data</h3>
 <p>One of the most powerful features of the MinIO CLI is its ability to load data directory from your workstation into the bucket, rather than having to use the MinIO UI. It is also significantly faster than using the UI interface.</p>
 <p>The next example will load data into the bucket that was just created. The directory that we will be using to load data from is called <code>/sampledata</code> and found in the root directory of the watsonx.data server.</p>
-<pre><code>ls /sampledata/csv
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls /sampledata/csv
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 gosales  ontime  taxi
 </pre>
 
 <p>Next we will load the data from each one of these directories into the <code>sampledata</code> bucket. The <code>mc</code> command allows you to select which files to place into a bucket, or an entire directory with recursion. In this case we are loading all three directories the files into the bucket. Note the use of the
 <code>/</code> at the end of the directory name to prevent the directory name <code>csv</code> from being used as the high-level directory name in the target bucket.</p>
-<pre><code>mc cp --recursive /sampledata/csv/ watsonxdata/sampledata/
-</code></pre>
+<div class="highlight"><pre><span></span><code>mc cp --recursive /sampledata/csv/ watsonxdata/sampledata/
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 ...data/csv/taxi/taxi.csv: 306.16 MiB / 306.16 MiB ━━━━━━━━━━━━━━━━━━ 147.91 MiB/s 2s
 </pre>
 
 <p>We can double-check that our files are there with the <code>--files</code> option:</p>
-<pre><code>mc tree --files watsonxdata/sampledata/
-</code></pre>
+<div class="highlight"><pre><span></span><code>mc tree --files watsonxdata/sampledata/
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 watsonxdata/sampledata/
 ├─ gosales
@@ -1468,24 +1485,24 @@ watsonxdata/sampledata/
 
 <h3 id="delete-a-file-or-bucket">Delete a File or Bucket</h3>
 <p>Use the <code>rb</code> (Remove bucket) command to remove a bucket and its contents. You can remove individual objects by using the <code>rm</code> (Remove) command by fully qualifying the object. The next command will remove the <code>ontime.csv</code> file from the <code>ontime</code> folder.</p>
-<pre><code>mc rm watsonxdata/sampledata/ontime/ontime.csv
-</code></pre>
+<div class="highlight"><pre><span></span><code>mc rm watsonxdata/sampledata/ontime/ontime.csv
+</code></pre></div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Removed `watsonxdata/sampledata/ontime/ontime.csv`.
 </pre>
 
-<p>The delete bucket command will fail if you still have data in the bucket.</p>
-<pre><code>mc rb watsonxdata/sampledata
-</code></pre>
+<p>The delete bucket command will fail if you still have data in the bucket.
+<div class="highlight"><pre><span></span><code>mc rb watsonxdata/sampledata
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 mc: <ERROR> `watsonxdata/sampledata` is not empty. 
 Retry this command with ‘--force’ flag if you want to remove 
 `watsonxdata/sampledata` and all its contents 
 </pre>
 
-<p>Adding the <code>--force</code> option will remove the bucket and all the data in it. Use with caution!</p>
-<pre><code>mc rb --force watsonxdata/sampledata
-</code></pre>
+<p>Adding the <code>--force</code> option will remove the bucket and all the data in it. Use with caution!
+<div class="highlight"><pre><span></span><code>mc rb --force watsonxdata/sampledata
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Removed `watsonxdata/sampledata` successfully.
 </pre>

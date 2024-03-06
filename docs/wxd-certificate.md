@@ -1,6 +1,6 @@
 # Watsonx.Data Certificates
 
-!!! error "Watsonx.Data Certificate Failure"
+!!! error "Watsonx.data Certificate Failure"
 
 Due to an **unexpected** and **unannounced** change to TechZone URLs, all self-signed certificates in the watsonx.data Developer image are now invalid.
 

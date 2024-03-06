@@ -58,14 +58,14 @@ docker cp ibm-lh-presto:/mnt/infra/tls/cert.crt /certs/lh-ssl-ts.crt
 Next we need to generate the certificate file that is used by a number of the examples in the lab instructions.
 
 ```bash
-rm -f presto.cert
-echo QUIT | openssl s_client -showcerts -connect 127.0.0.1:8443 | awk '/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}' > presto.cert
+rm -f presto.crt
+echo QUIT | openssl s_client -showcerts -connect 127.0.0.1:8443 | awk '/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}' > presto.crt
 ```
 
 You can print the certificate if you need it for connections from CP4D.
 
 ```bash
-cat presto.cert
+cat presto.crt
 ```
 
 ### Step 5: Generate Java Keystore File
@@ -74,7 +74,7 @@ The next step will create the Java Keystore file. When prompted, use a password 
 
 ```bash
 rm -f presto-key.jks
-keytool -import -alias presto-cert -file ./presto.cert -keystore ./presto-key.jks
+keytool -import -alias presto-crt -file ./presto.crt -keystore ./presto-key.jks
 ```
 
 The following is an example of the output from the `keytool` command.
@@ -127,10 +127,10 @@ Certificate was added to keystore
 The final step is to copy the certs and keystore values in a central location so they can be used in various scripts and notebooks.
 
 ```bash
-cp presto-key.jks /certs
+\cp -f presto-key.jks /certs
+\cp -f presto.crt /certs
 
-cd /certs
-chmod +r *.*
+chmod +r /certs/*.*
 
-cp -rf /certs /notebooks/
+\cp -rf /certs /notebooks/
 ```

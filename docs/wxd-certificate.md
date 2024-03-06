@@ -1,4 +1,4 @@
-# Watsonx.Data Certificates
+# Watsonx.data Certificates
 
 !!! error "Watsonx.data Certificate Failure"
 

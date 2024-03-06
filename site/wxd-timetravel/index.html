@@ -210,22 +210,37 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../wxd-certificate/" class="md-nav__link">
+        Watsonx.data Certificates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_4">
           Getting Started
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Getting Started
         </label>
@@ -404,18 +419,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_7">
           Core Components
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Core Components" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Core Components
         </label>
@@ -496,18 +511,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_8">
           Presto SQL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Presto SQL" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Presto SQL
         </label>
@@ -610,18 +625,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8">
+        <label class="md-nav__link" for="__nav_9">
           Optional Tools
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Optional Tools" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Optional Tools
         </label>
@@ -761,18 +776,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_14">
+        <label class="md-nav__link" for="__nav_15">
           Dataset Details
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Dataset Details" data-md-level="1">
-        <label class="md-nav__title" for="__nav_14">
+        <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
           Dataset Details
         </label>
@@ -895,18 +910,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_17">
+        <label class="md-nav__link" for="__nav_18">
           Appendix
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Appendix" data-md-level="1">
-        <label class="md-nav__title" for="__nav_17">
+        <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
           Appendix
         </label>
@@ -995,34 +1010,34 @@
 
 <h1 id="time-travel">Time Travel</h1>
 <p>Time travel allows you change the view of the data to a previous time. This is not the same as an <code>AS OF</code> query commonly used in SQL. The data is rolled back to a prior time.</p>
-<p>Let us look at the snapshots available for the customer table in the workshop schema. We currently have just 1 snapshot. First make sure you are in the proper directory.</p>
-<pre><code>cd /root/ibm-lh-dev/bin
-</code></pre>
-<p>Connect to Presto using the workshop schema.</p>
-<pre><code>./presto-cli --catalog iceberg_data --schema workshop
-</code></pre>
-<p>Check current snapshots – STARTING STATE.</p>
-<pre><code>SELECT 
+<p>Let us look at the snapshots available for the customer table in the workshop schema. We currently have just 1 snapshot. First make sure you are in the proper directory.
+<div class="highlight"><pre><span></span><code>cd /root/ibm-lh-dev/bin
+</code></pre></div>
+Connect to Presto using the workshop schema.
+<div class="highlight"><pre><span></span><code>./presto-cli --catalog iceberg_data --schema workshop
+</code></pre></div>
+Check current snapshots – STARTING STATE.
+<div class="highlight"><pre><span></span><code>SELECT 
    * 
 FROM 
    iceberg_data.workshop.&quot;customer$snapshots&quot; 
 ORDER BY 
    committed_at;
-</code></pre>
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
         committed_at         |     snapshot_id     | parent_id | operation |                                               manifest_list                                                |                                                                                                                summary                                                                                                                
 -----------------------------+---------------------+-----------+-----------+------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  2023-06-05 18:30:12.994 UTC | 6243511110201494487 | NULL      | append    | s3a://iceberg-bucket/customer/metadata/snap-6243511110201494487-1-b5ab84dc-671a-426a-a734-940baa49a11f.avro | {changed-partition-count=1, added-data-files=1, total-equality-deletes=0, added-records=1500, total-position-deletes=0, added-files-size=75240, total-delete-files=0, total-files-size=75240, total-records=1500, total-data-files=1} 
 (1 row)
 </pre>
-<p>Capture the first snapshot ID returned by the SQL statement. You will need this value when you run the rollback command.</p>
-<pre><code>SELECT 
+<p>Capture the first snapshot ID returned by the SQL statement. You will need this value when you run the rollback command.
+<div class="highlight"><pre><span></span><code>SELECT 
    snapshot_id 
 FROM 
    iceberg_data.workshop.&quot;customer$snapshots&quot; 
 ORDER BY 
    committed_at;
-</code></pre>
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
      snapshot_id     
 ---------------------
@@ -1030,19 +1045,20 @@ ORDER BY
 (1 row)
 </pre>
 
-<p>Remember that number that was returned with the query above. Insert the following record to change the customer table in the workshop schema. </p>
-<pre><code>insert into customer 
-  values(1501,'Deepak','IBM SVL',16,'123-212-3455',
-         123,'AUTOMOBILE','Testing snapshots');
-</code></pre>
-<p>Let us look at the snapshots available for the customer table in the workshop schema. You should have 2 snapshots. </p>
-<pre><code>SELECT 
+<p>Remember that number that was returned with the query above. Insert the following record to change the customer table in the workshop schema. 
+<div class="highlight"><pre><span></span><code>insert into customer 
+  values(1501,&#39;Deepak&#39;,&#39;IBM SVL&#39;,16,&#39;123-212-3455&#39;,
+         123,&#39;AUTOMOBILE&#39;,&#39;Testing snapshots&#39;);
+</code></pre></div>
+ 
+Let us look at the snapshots available for the customer table in the workshop schema. You should have 2 snapshots. 
+<div class="highlight"><pre><span></span><code>SELECT 
    * 
 FROM 
    iceberg_data.workshop.&quot;customer$snapshots&quot; 
 ORDER BY 
    committed_at;
-</code></pre>
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
         committed_at         |     snapshot_id     |      parent_id      | operation |                                               manifest_list                                                |                                                                                                                summary                                                                                                                
 -----------------------------+---------------------+---------------------+-----------+------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1051,9 +1067,9 @@ ORDER BY
 (2 rows)
 </pre>
 
-<p>Querying the customer table in the workshop schema, we can see the record inserted with name=’Deepak’.</p>
-<pre><code>select * from customer where name='Deepak';
-</code></pre>
+<p>Querying the customer table in the workshop schema, we can see the record inserted with name=’Deepak’.
+<div class="highlight"><pre><span></span><code>select * from customer where name=&#39;Deepak&#39;;
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |  name  | address | nationkey |    phone     | acctbal | mktsegment |      comment      
 ---------+--------+---------+-----------+--------------+---------+------------+-------------------
@@ -1064,10 +1080,10 @@ ORDER BY
 <p>We realize that we don’t want the recent updates or just want to see what the data was at any point in time to respond to regulatory requirements. We will leverage the out-of-box system function <code>rollback_to_snapshot</code> to rollback to an older snapshot. The syntax for this function is:
 <code style="color:blue; font-size: small">CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',x);</code></p>
 <p>The "x" would get replaced with the <code style="color:blue;font-size:medium;">snapshot_id</code> number that was found in the earlier query. It will be different on your system than the examples above.</p>
-<p>Copy the next code segment into Presto.</p>
-<pre><code>CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
-</code></pre>
-<p>You will see output similar to the following:</p>
+<p>Copy the next code segment into Presto.
+<div class="highlight"><pre><span></span><code>CALL iceberg_data.system.rollback_to_snapshot(&#39;workshop&#39;,&#39;customer&#39;,
+</code></pre></div>
+You will see output similar to the following:</p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
               -> 
@@ -1078,9 +1094,9 @@ CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
               -> 7230522396120575591
 7230522396120575591
 </pre>
-<p>Now you will need to terminate the command with a <code>);</code> to see the final result.</p>
-<pre><code>);
-</code></pre>
+<p>Now you will need to terminate the command with a <code>);</code> to see the final result.
+<div class="highlight"><pre><span></span><code>);
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
               -> 7230522396120575591
@@ -1090,17 +1106,17 @@ CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
 CALL
 </pre>
 
-<p>Querying the customer table in the workshop schema, we cannot see the record inserted with name=’Deepak’.</p>
-<pre><code>select * from customer where name='Deepak';
-</code></pre>
+<p>Querying the customer table in the workshop schema, we cannot see the record inserted with name=’Deepak’.
+<div class="highlight"><pre><span></span><code>select * from customer where name=&#39;Deepak&#39;;
+</code></pre></div></p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |  name  | address | nationkey |    phone     | acctbal | mktsegment |      comment      
 ---------+--------+---------+-----------+--------------+---------+------------+-------------------
 (0 rows)
 </pre>
-<p>Quit Presto.</p>
-<pre><code>quit;
-</code></pre>
+<p>Quit Presto.
+<div class="highlight"><pre><span></span><code>quit;
+</code></pre></div></p>
 
               
             </article>

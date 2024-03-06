@@ -210,22 +210,37 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../wxd-certificate/" class="md-nav__link">
+        Watsonx.data Certificates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_4">
           Getting Started
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Getting Started
         </label>
@@ -404,18 +419,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_7">
           Core Components
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Core Components" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
+        <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Core Components
         </label>
@@ -494,18 +509,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_8">
           Presto SQL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Presto SQL" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
+        <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Presto SQL
         </label>
@@ -598,18 +613,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_8">
+        <label class="md-nav__link" for="__nav_9">
           Optional Tools
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Optional Tools" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
+        <label class="md-nav__title" for="__nav_9">
           <span class="md-nav__icon md-icon"></span>
           Optional Tools
         </label>
@@ -749,18 +764,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_14" type="checkbox" id="__nav_14" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_14">
+        <label class="md-nav__link" for="__nav_15">
           Dataset Details
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Dataset Details" data-md-level="1">
-        <label class="md-nav__title" for="__nav_14">
+        <label class="md-nav__title" for="__nav_15">
           <span class="md-nav__icon md-icon"></span>
           Dataset Details
         </label>
@@ -1101,18 +1116,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_18" type="checkbox" id="__nav_18" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_17">
+        <label class="md-nav__link" for="__nav_18">
           Appendix
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Appendix" data-md-level="1">
-        <label class="md-nav__title" for="__nav_17">
+        <label class="md-nav__title" for="__nav_18">
           <span class="md-nav__icon md-icon"></span>
           Appendix
         </label>
@@ -1409,8 +1424,8 @@
 <h2 id="watsonxdata-connection-certificate">Watsonx.data Connection Certificate</h2>
 <p>When connecting to the watsonx.data Presto database, you will need to have the connection certificate available to the client that you are using. Usually this location is your workstation, but it could be another service like CP4D.</p>
 <p>To extract the certificate to your local file system, use the following command in a terminal window. Replace the <code>port</code> and <code>regions.techzone-server.com</code> with the SSH values found in the TechZone reservation.</p>
-<pre><code>scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
-</code></pre>
+<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
+</code></pre></div>
 <p>Change the target directory to a location that you can remember! </p>
 <p>You can also download the certificate by using the Jupyter Notebook link and opening the Credentials notebook. There you will find links to the certificates.</p>
 <p><img alt="Browser" src="../wxd-images/jupyter-credentials.png" /></p>
@@ -1473,8 +1488,8 @@
 </ul>
 <h2 id="postgresql-access">PostgreSQL Access</h2>
 <p>When connecting to the PostgreSQL engine, select the PostgreSQL driver. In order to connect to the PostgreSQL system, you will need to extract the admin password using the following command when connected to the watsonx.data system.</p>
-<pre><code>cat /certs/passwords
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat /certs/passwords
+</code></pre></div>
 <p>You can also retrieve the credentials by opening up the Credentials notebook in the Jupyter notebook service.</p>
 <h3 id="postgresql-internal-access">PostgreSQL Internal Access</h3>
 <p>When accessing the PostgreSQL database in the system, use the following settings.</p>
@@ -1496,11 +1511,11 @@
 </ul>
 <h2 id="mysql-access">MySQL Access</h2>
 <p>When connecting to the MySQL engine, select the MySQL driver. </p>
-<pre><code>export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed 's/.*=//')
+<div class="highlight"><pre><span></span><code>export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed &#39;s/.*=//&#39;)
 echo &quot;Postgres Userid   : admin&quot;
 echo &quot;Postgres Password : &quot; $POSTGRES_PASSWORD
 echo $POSTGRES_PASSWORD &gt; /tmp/postgres.pw
-</code></pre>
+</code></pre></div>
 <h3 id="mysql-internal-access">MySQL Internal Access</h3>
 <p>When accessing the MySQL database in the system, use the following settings.</p>
 <ul>
@@ -1528,29 +1543,29 @@ echo $POSTGRES_PASSWORD &gt; /tmp/postgres.pw
 <p>When attempting to view the contents of a new database, the process may take a few minutes to complete. Refresh the browser window if you haven't seen any changes to the display.</p>
 <h2 id="accessing-watsonxdata-via-python">Accessing watsonx.data via Python</h2>
 <p>In order to access the watsonx.data database (Presto), you will need to install the Presto client using the following command on your local machine.</p>
-<pre><code>pip3 install presto-python-client
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip3 install presto-python-client
+</code></pre></div>
 <p>Once the installation is complete, extract the certificate from the watsonx.data server that we will use in the connection.</p>
-<pre><code>scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
-</code></pre>
+<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
+</code></pre></div>
 <p>Change the target directory to a location that you can remember! </p>
 <p>You can also download the certificate by using the Jupyter Notebook link and opening the Certificate notebook. </p>
 <h2 id="python-and-jupyter-connection-code">Python and Jupyter Connection Code</h2>
 <p>Your Python or Jupyter notebook code will need to import the <code>prestodb</code> library and then connect to watsonx.data using the <code>connect</code> call.</p>
-<pre><code>import prestodb
+<div class="highlight"><pre><span></span><code>import prestodb
 
 conn = prestodb.dbapi.connect(
-       host='watsonxdata',
+       host=&#39;watsonxdata&#39;,
        port=8443,
-       user='ibmlhadmin',
-       catalog='tpch',
-       schema='tiny',
-       http_scheme='https',
+       user=&#39;ibmlhadmin&#39;,
+       catalog=&#39;tpch&#39;,
+       schema=&#39;tiny&#39;,
+       http_scheme=&#39;https&#39;,
        auth=prestodb.auth.BasicAuthentication(&quot;ibmlhadmin&quot;, &quot;password&quot;)
 )
-conn._http_session.verify = '/certs/lh-ssl-ts.crt'
+conn._http_session.verify = &#39;/certs/lh-ssl-ts.crt&#39;
 cur = conn.cursor()
-</code></pre>
+</code></pre></div>
 <p>In the above connection string, you will need to replace the following values:</p>
 <ul>
 <li>host - <code>watsonxdata</code> when connecting to the image externally, and <code>ibm-lh-presto-svc</code> when connecting internally </li>
@@ -1559,9 +1574,9 @@ cur = conn.cursor()
 </ul>
 <p>You also need to update the <code>conn._http_session.verify</code> value with the location where you downloaded the <code>lh-ssl-ts.crt</code> file. For internal connections, this value will be <code>/certs/lh-ssl-ts.crt</code>.</p>
 <p>Once connected, you can run an SQL statement and return the results.</p>
-<pre><code>cur.execute(&quot;SELECT * FROM tpch.tiny.customer&quot;)
+<div class="highlight"><pre><span></span><code>cur.execute(&quot;SELECT * FROM tpch.tiny.customer&quot;)
 rows = cur.fetchall()
-</code></pre>
+</code></pre></div>
 <p>The <code>rows</code> variable contains the answer set from the select statement. You can manipulate the <code>row</code> variable to view the results. </p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 rows[0]
@@ -1593,28 +1608,28 @@ cur.description
 
 <h2 id="accessing-watsonxdata-via-pandas-dataframes">Accessing watsonx.data via Pandas Dataframes</h2>
 <p>The following code is required for accessing watsonx.data in Jupyter notebooks.  Run the following code inside a notebook code cell.</p>
-<pre><code>%pip install ipython-sql==0.4.1
+<div class="highlight"><pre><span></span><code>%pip install ipython-sql==0.4.1
 %pip install sqlalchemy==1.4.46
 %pip install sqlalchemy==1.4.46 &quot;pyhive[presto]&quot;
-</code></pre>
+</code></pre></div>
 <p>The notebook may need a restart of the kernel to pick up the changes to the driver.</p>
 <p>If you are running in a Jupyter Lab environment, you can use the most current versions of the drivers.</p>
-<pre><code>%pip install ipython-sql
+<div class="highlight"><pre><span></span><code>%pip install ipython-sql
 %pip install sqlalchemy
 %pip install sqlalchemy &quot;pyhive[presto]&quot;
-</code></pre>
+</code></pre></div>
 <p>Once the drivers have been loaded, you will need to extract the certificate from the watsonx.data server that we will use in the connection.</p>
-<pre><code>scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
-</code></pre>
+<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
+</code></pre></div>
 <p>Change the target directory to a location that you can remember! </p>
 <p>You can also download the certificate by using the Jupyter Notebook link and opening the Certificate notebook. </p>
 <p>In your Jupyter notebook, you will need to import a number of libraries.</p>
-<pre><code>import pandas as pd
+<div class="highlight"><pre><span></span><code>import pandas as pd
 import sqlalchemy
 from sqlalchemy import create_engine
-</code></pre>
-<p>Create a notebook cell which will contain all the credentials that are required to connect. Change the <code>catalog</code>, <code>schema</code> and <code>certfile</code> to your values.</p>
-<pre><code>userid    = &quot;ibmlhadmin&quot;
+</code></pre></div>
+<p>Create a notebook cell which will contain all the credentials that are required to connect. Change the <code>catalog</code>, <code>schema</code> and <code>certfile</code> to your values.
+<div class="highlight"><pre><span></span><code>userid    = &quot;ibmlhadmin&quot;
 password  = &quot;password&quot;
 hostname  = &quot;watsonxdata&quot;
 port      = &quot;8443&quot;
@@ -1622,10 +1637,10 @@ catalog   = &quot;tpch&quot;
 schema    = &quot;tiny&quot;
 certfile  = &quot;/certs/lh-ssl-ts.crt&quot;
 connect_args={
-        'protocol': 'https', 
-        'requests_kwargs': {'verify': f'{certfile}'}
+        &#39;protocol&#39;: &#39;https&#39;, 
+        &#39;requests_kwargs&#39;: {&#39;verify&#39;: f&#39;{certfile}&#39;}
         }
-</code></pre>
+</code></pre></div></p>
 <p>In the above settings, you will need to replace the following values:</p>
 <ul>
 <li>hostname - <code>region.techzone-server.com</code> when connecting to the image externally, and  <code>ibm-lh-presto-svc</code> when connecting internally </li>
@@ -1633,29 +1648,29 @@ connect_args={
 <li>schema - The schema inside the catalog that will be used</li>
 </ul>
 <p>You also need to update the <code>certfile</code> value with the location where you downloaded the <code>lh-ssl-ts.crt</code> file. For internal connections, this value will be <code>/certs/lh-ssl-ts.crt</code>.   </p>
-<p>To create a connection to the database, use the following syntax.</p>
-<pre><code>engine = create_engine(
+<p>To create a connection to the database, use the following syntax.
+<div class="highlight"><pre><span></span><code>engine = create_engine(
    f&quot;presto://{userid}:{password}@{hostname}:{port}/{catalog}/{schema}&quot;,
    connect_args=connect_args
    )
-</code></pre>
+</code></pre></div></p>
 <p>Now that you have established a connection, you can use the Pandas <code>read_sql_query</code> function to execute a SELECT statement against the database.</p>
-<pre><code>mypresto = pd.read_sql_query('SELECT * from tpch.tiny.customer',engine)
-</code></pre>
+<div class="highlight"><pre><span></span><code>mypresto = pd.read_sql_query(&#39;SELECT * from tpch.tiny.customer&#39;,engine)
+</code></pre></div>
 <p>The variable <code>mypresto</code> contains the dataframe generated from the SELECT statement.</p>
-<pre><code>mypresto
-</code></pre>
+<div class="highlight"><pre><span></span><code>mypresto
+</code></pre></div>
 <p><img alt="Browser" src="../wxd-images/connection-pandas.png" /></p>
 <p>You can use the features of Pandas to generate plots of the data in your notebook. First make sure you have <code>matplotlib</code> installed.</p>
-<pre><code>%pip install matplotlib
-</code></pre>
+<div class="highlight"><pre><span></span><code>%pip install matplotlib
+</code></pre></div>
 <p>The following query will compute the total account balance across all nation key values.</p>
-<pre><code>sumbynation = pd.read_sql_query('SELECT &quot;nationkey&quot;, sum(&quot;acctbal&quot;) from tpch.tiny.customer group by &quot;nationkey&quot; order by 2',engine)
-</code></pre>
+<div class="highlight"><pre><span></span><code>sumbynation = pd.read_sql_query(&#39;SELECT &quot;nationkey&quot;, sum(&quot;acctbal&quot;) from tpch.tiny.customer group by &quot;nationkey&quot; order by 2&#39;,engine)
+</code></pre></div>
 <p>Finally, we plot the results.</p>
-<pre><code>df.plot(kind=&quot;bar&quot;, x=&quot;FirstName&quot;, y=&quot;LastName&quot;)
+<div class="highlight"><pre><span></span><code>df.plot(kind=&quot;bar&quot;, x=&quot;FirstName&quot;, y=&quot;LastName&quot;)
 plt.show()
-</code></pre>
+</code></pre></div>
 <p><img alt="Browser" src="../wxd-images/connection-graph.png" /></p>
 <h2 id="adding-a-service">Adding a Service</h2>
 <p>The watsonx.data developer edition includes two open ports which can be used to externalize a service that you create in the image. For instance, you may choose to create a MongoDB or MSSQL container using Docker and want to access this service from your own dBeaver or Mongo tooling.</p>
@@ -1667,39 +1682,39 @@ plt.show()
 <p>The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following steps are required to use these ports with your service.</p>
 <h3 id="open-the-local-firewall-version-110-only">Open the local Firewall (Version 1.1.0 Only)</h3>
 <p>Ports 10000/1 are not open by default in the 1.1.0 image. For release 1.1.1, you can skip this step.</p>
-<p>You must explicitly open ports 10000/1 with the <code>firewall-cmd</code> command. In a command line shell, as the root user, enter the following commands:</p>
-<pre><code>sudo su -
+<p>You must explicitly open ports 10000/1 with the <code>firewall-cmd</code> command. In a command line shell, as the root user, enter the following commands:
+<div class="highlight"><pre><span></span><code>sudo su -
 firewall-cmd --add-port={10000/tcp,10001/tcp} --zone=public --permanent
 firewall-cmd --reload
-</code></pre>
-<p>You can use the following command to check that the ports are now open.</p>
-<pre><code>firewall-cmd --list-ports
-</code></pre>
+</code></pre></div></p>
+<p>You can use the following command to check that the ports are now open.
+<div class="highlight"><pre><span></span><code>firewall-cmd --list-ports
+</code></pre></div></p>
 <h3 id="create-your-service">Create your Service</h3>
 <p>When creating your service, make sure to map the internal Docker port to either port 10000 or 10001. If you cannot remap the port, see the section on port redirection.</p>
 <p>For instance, the following command will start Microsoft SQLServer in Docker by mapping the host port 10000 to the SQLServer port of 1433 to 10000 (<code>-p 10000:1443</code>).  </p>
-<pre><code>docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot; \
+<div class="highlight"><pre><span></span><code>docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot; \
 -p 10000:1433 --name mssql-server --hostname mssql-server \
 -d mcr.microsoft.com/mssql/server:2019-latest
-</code></pre>
-<p>You can check the port mapping with the following command.</p>
-<pre><code>docker container ls --format &quot;table {{.ID}}\t{{.Names}}\t{{.Ports}}&quot; -a | grep mssql-server
-</code></pre>
+</code></pre></div>
+<p>You can check the port mapping with the following command.
+<div class="highlight"><pre><span></span><code>docker container ls --format &quot;table {{.ID}}\t{{.Names}}\t{{.Ports}}&quot; -a | grep mssql-server
+</code></pre></div></p>
 <p>When creating a connection to this database using an external tool, make sure to use the port number supplied in the reservation details (Open Port 1 is for port 10000 and Open Port 2 is for port 10001).</p>
 <h3 id="port-redirection">Port Redirection</h3>
 <p>If you already have an existing service mapped to a different port, you can use port redirection to use either port 10000 or 10001. For instance, assume that the previous creation of the SQLServer database used port 1433.</p>
-<pre><code>docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot; \
+<div class="highlight"><pre><span></span><code>docker run -e &quot;ACCEPT_EULA=Y&quot; -e &quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot; \
 -p 1433:1433 --name mssql-server --hostname mssql-server \
 -d mcr.microsoft.com/mssql/server:2019-latest
-</code></pre>
+</code></pre></div>
 <p>Once the service is up and running, you can redirect the traffic on port 10000/1 to the port of your docker service.</p>
-<pre><code>firewall-cmd --add-forward-port=port=10000:proto=tcp:toport=1433 --permanent --zone=public
+<div class="highlight"><pre><span></span><code>firewall-cmd --add-forward-port=port=10000:proto=tcp:toport=1433 --permanent --zone=public
 firewall-cmd --reload
-</code></pre>
-<p>If you need to remove the redirection, use the following command.</p>
-<pre><code>firewall-cmd --remove-forward-port=port=10000:proto=tcp:toport=1433:toaddr= --permanent --zone=public
+</code></pre></div>
+<p>If you need to remove the redirection, use the following command.
+<div class="highlight"><pre><span></span><code>firewall-cmd --remove-forward-port=port=10000:proto=tcp:toport=1433:toaddr= --permanent --zone=public
 firewall-cmd --reload
-</code></pre>
+</code></pre></div></p>
 <h3 id="accessing-your-service">Accessing your Service</h3>
 <p>When referring to your service from an external location, always use the port numbers that are provided for Open Port 1 or 2. </p>
 <ul>

@@ -1,5 +1,65 @@
 # Revisions
 
+### February 29, 2024 (1.1.2)
+
+* SSL connection for data sources
+    
+    You can now enable SSL connection for the following data sources by using the Add database user interface to secure and encrypt the database connection :
+
+    * Db2
+    * PostgreSQL
+    * IBM Data Virtualization Manager for z/OS
+
+    For IBM Data Virtualization Manager for z/OS and PostgreSQL, select Validate certificate to validate whether the SSL certificate that is returned by the host is trusted.
+
+    For the IBM Data Virtualization Manager for z/OS data source, you can choose to provide the hostname in the SSL certificate.
+
+* Secure ingestion job history
+
+    Now users can view only their own ingestion job history. Administrators can view the ingestion job history for all users.
+
+* New data types BLOB and CLOB for SAPHANA and Teradata data sources
+    
+    New data types BLOB and CLOB are available for SAPHANA and Teradata data sources. You can use these data types only with SELECT statements in the Query workspace to build and run queries against your data. 
+
+* Use more SQL statements
+    
+    You can now use the following SQL statements in the Query workspace to build and run queries against your data:
+
+    Apache Iceberg data sources:
+
+    * CREATE VIEW
+    * DROP VIEW
+
+    MongoDB data sources:
+
+    * DELETE
+
+* Create a new table during data ingestion
+
+    Previously, you had to have a target table in watsonx.data for ingesting data. Now, you can create a new table directly from the source data file (available in parquet or CSV format) by using data ingestion through the watsonx.data user interface. You can create the table by using the following methods of ingestion:
+
+    * Ingesting data by using Iceberg copy loader
+    * Ingesting data by using Spark
+
+* Perform ALTER TABLE operations on a column
+
+    With an Iceberg data source, you can now perform ALTER TABLE operations on a column for the following data type conversions:
+
+    * int to bigint
+    * float to double
+    *  decimal (num1, dec_digits) to decimal (num2, dec_digits), where num2>num1.
+
+* Better query performance by using sorted files
+    
+    With an Iceberg data source, you can generate sorted files, which reduce the query result latency and improve the performance of Presto.
+
+    Data in the Apache Iceberg table is sorted during the writing process within each file. You can configure the order to sort the data by using the sorted_by table property. When you create the table, specify the array of columns involved in sorting.
+
+* Exposing Hive metastore port details (Developer edition)
+    
+    You can now expose the Hive metastore port details outside the watsonx.data developer edition's host to facilitate connection from external applications (services outside of docker or Podman), such as the integration with Db2, and Spark to watsonx.data.
+
 ### January 25, 2024 (1.1.1)
 
 * Updated Lab Documentation

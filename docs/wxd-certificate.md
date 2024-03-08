@@ -2,9 +2,7 @@
 
 !!! error "Watsonx.data Certificate Failure"
 
-Due to an **unexpected** and **unannounced** change to TechZone URLs, all self-signed certificates in the watsonx.data Developer image are now invalid.
-
-TechZone has changed the URLs for all new images. If you are attempting to connect to the watsonx.data system from outside the virtual machine, you will need to run the following commands to fix the self-signed certificate. 
+Due to a change in TechZone URLs, the self-signed certificates in the watsonx.data Developer image may be invalid. If you are attempting to connect to the watsonx.data system from outside the virtual machine, you will need to run the following commands to fix the self-signed certificate. 
 
 ### Step 1: Connect to the Server
 
@@ -25,8 +23,9 @@ cd /root/ibm-lh-dev/bin
 Once inside the development container, you will need to update the program that generates the certificates. **Note**: The certificate should cover all TechZone locations. If for some reason your TechZone server does not match the pattern `*.services.cloud.techzone.ibm.com`, update it in the command below.
 
 ```bash
-sed -i '/DNS.14.*/a DNS.15 = *.services.cloud.techzone.ibm.com' /scripts/gen_certs.sh
-sed -i '/DNS.15.*/a DNS.16 = watsonxdata' /scripts/gen_certs.sh
+sed -i '/DNS.14.*/a DNS.15 = watsonxdata' /scripts/gen_certs.sh
+sed -i '/DNS.15.*/a DNS.16 = watsonxdata.gym.lan' /scripts/gen_certs.sh
+sed -i '/DNS.16.*/a DNS.17 = *.services.cloud.techzone.ibm.com' /scripts/gen_certs.sh
 ./scripts/gen_certs.sh
 ```
 

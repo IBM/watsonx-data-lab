@@ -1126,8 +1126,7 @@
 <div class="admonition error">
 <p class="admonition-title">Watsonx.data Certificate Failure</p>
 </div>
-<p>Due to an <strong>unexpected</strong> and <strong>unannounced</strong> change to TechZone URLs, all self-signed certificates in the watsonx.data Developer image are now invalid.</p>
-<p>TechZone has changed the URLs for all new images. If you are attempting to connect to the watsonx.data system from outside the virtual machine, you will need to run the following commands to fix the self-signed certificate. </p>
+<p>Due to a change in TechZone URLs, the self-signed certificates in the watsonx.data Developer image may be invalid. If you are attempting to connect to the watsonx.data system from outside the virtual machine, you will need to run the following commands to fix the self-signed certificate. </p>
 <h3 id="step-1-connect-to-the-server">Step 1: Connect to the Server</h3>
 <p>Use the SSH port to connect into the server and make sure that you become the root user.</p>
 <div class="highlight"><pre><span></span><code>sudo su -
@@ -1138,8 +1137,9 @@
 ./dev-sandbox
 </code></pre></div></p>
 <p>Once inside the development container, you will need to update the program that generates the certificates. <strong>Note</strong>: The certificate should cover all TechZone locations. If for some reason your TechZone server does not match the pattern <code>*.services.cloud.techzone.ibm.com</code>, update it in the command below.</p>
-<div class="highlight"><pre><span></span><code>sed -i <span class="s1">&#39;/DNS.14.*/a DNS.15 = *.services.cloud.techzone.ibm.com&#39;</span> /scripts/gen_certs.sh
-sed -i <span class="s1">&#39;/DNS.15.*/a DNS.16 = watsonxdata&#39;</span> /scripts/gen_certs.sh
+<div class="highlight"><pre><span></span><code>sed -i <span class="s1">&#39;/DNS.14.*/a DNS.15 = watsonxdata&#39;</span> /scripts/gen_certs.sh
+sed -i <span class="s1">&#39;/DNS.15.*/a DNS.16 = watsonxdata.gym.lan&#39;</span> /scripts/gen_certs.sh
+sed -i <span class="s1">&#39;/DNS.16.*/a DNS.17 = *.services.cloud.techzone.ibm.com&#39;</span> /scripts/gen_certs.sh
 ./scripts/gen_certs.sh
 </code></pre></div>
 <p>Once the script completes, exit the toolkit.</p>

@@ -113,8 +113,9 @@ SubjectAlternativeName [
   DNSName: ibm-lh-prestissimo-svc
   DNSName: ibm-lh-qhmm
   DNSName: ibm-lh-qhmm-svc
-  DNSName: *.services.cloud.techzone.ibm.com
   DNSName: watsonxdata
+  DNSName: watsonxdata.gym.lan
+  DNSName: *.services.cloud.techzone.ibm.com
 ]
 
 Trust this certificate? [no]:  yes

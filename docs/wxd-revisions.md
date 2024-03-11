@@ -12,7 +12,7 @@
 
     For IBM Data Virtualization Manager for z/OS and PostgreSQL, select Validate certificate to validate whether the SSL certificate that is returned by the host is trusted.
 
-    For the IBM Data Virtualization Manager for z/OS data source, you can choose to provide the hostname in the SSL certificate.[text](../../watsonx-data-poc/docs/wxd-certificate.md)
+    For the IBM Data Virtualization Manager for z/OS data source, you can choose to provide the hostname in the SSL certificate.
 
 * Secure ingestion job history
 

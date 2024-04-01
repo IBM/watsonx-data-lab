@@ -21,7 +21,7 @@ Your TechZone reservation will include the server name and port number to use wh
 
 Open your browser and navigate to:
 
-   * Minio console - http://region.techzone-server.com:port
+   * Minio console - http://region.services.cloud.techzone.ibm.com:port
    * **Note**: Firefox on OSX occasionally freezes when connecting to the MinIO console. The Safari browser is much more reliable.
    
 ![Browser](wxd-images/minio-logon.png)

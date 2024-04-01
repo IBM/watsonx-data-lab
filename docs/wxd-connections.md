@@ -370,8 +370,8 @@ The watsonx.data developer edition includes two open ports which can be used to 
 
 Since port numbers vary between different databases, the watsonx.data system provides two port numbers that can be used by your service.
 
-* Open Port 1 - Server: region.techzone-services.com: Port: 12345
-* Open Port 2 - Server: region.techzone-services.com: Port: 23456
+* Open Port 1 - Server: region.services.cloud.techzone.ibm.com: Port: 12345
+* Open Port 2 - Server: region.services.cloud.techzone.ibm.com: Port: 23456
 
 The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following steps are required to use these ports with your service.
 
@@ -437,7 +437,7 @@ firewall-cmd --reload
 
 When referring to your service from an external location, always use the port numbers that are provided for Open Port 1 or 2. 
 
-* Open Port 1 - Server: region.techzone-services.com: Port: 12345
-* Open Port 2 - Server: region.techzone-services.com: Port: 23456
+* Open Port 1 - Server: region.services.cloud.techzone.ibm.com: Port: 12345
+* Open Port 2 - Server: region.services.cloud.techzone.ibm.com: Port: 23456
 
-Your server will be `region.techzone-services.com` and the port number will be either of the two port numbers provided. Remember that this port number will need to be opened in the server and a Docker mapping to the open port or a firewall port redirection will be required.
+Your server will be `region.services.cloud.techzone.ibm.com` and the port number will be either of the two port numbers provided. Remember that this port number will need to be opened in the server and a Docker mapping to the open port or a firewall port redirection will be required.

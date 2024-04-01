@@ -3,10 +3,10 @@
 All the commands in the lab will require you execute commands in a terminal window. Access to a terminal window can be accomplished in the three ways as described below:
 
 * [Use the SSH Command Locally](#ssh-command)
-* [Use SSH Browser Window](#web-browser-terminal)
+* [Use Jupyter notebook terminal](#jupyter-notebook-terminal)
 * [Terminal window in the VM](#terminal-window-in-the-vm)
 
-If you are unable to use `ssh` because of connection restrictions, the Browser Window SSH option is the easiest one to use.
+If you are unable to use `ssh` because of connection restrictions, the Jupyter notebook option is the easiest one to use.
 
 ## SSH Command
 
@@ -30,46 +30,39 @@ sudo su -
 ```
 Password for both users is <code style="color:blue;font-size:medium;">watsonx.data</code>.
 
-## Web Browser Terminal
+## Jupyter Notebook Terminal
 
-An SSH service in a browser window is provided in this image. As part of the reservation, you will see a URL with the following description:
+The Jupyter Notebook lab environment provided as part of lab also provides a way of issuing terminal commands. To access this environment, you must find the Jupyter notebook URL provided in the lab reservation.
 
- * SSH Browser - http://region.techzone-server.com:port
+![Browser](wxd-images/watsonx-ssh-jupyter-url.png)
 
-When you first click on this link, the browser will display a login prompt.
+When you initially open the link, it will request a password to view the Table of Contents:
 
-![Browser](wxd-images/watsonx-ssh-browser-url.png)
+![Browser](wxd-images/jupyter-password.png)
 
-The userid is `watsonx` and the password is `watsonx.data`. Once you press the `Sign in` button, you will see a blank display.
+The default password for the notebook is `watsonx.data`. Once you enter the password, the Table of Contents will be displayed.
 
-![Browser](wxd-images/watsonx-ssh-browser-blank.png)
+![Browser](wxd-images/watsonx-ssh-jupyter-toc.png)
 
-Press the browser "refresh" button, and you should see the login prompt.
+Select the File menu at the top of the screen and then select New - Terminal.
 
-![Browser](wxd-images/watsonx-ssh-browser-login.png)
+![Browser](wxd-images/watsonx-ssh-jupyter-file.png)
 
-!!! note "Patience!"
+A terminal window will be displayed in the browser.
 
-    Sometimes it takes a few "refresh" commands to get the login prompt to display. It may take 5-6 attempts before it wakes up. Don't give up too soon! It will eventually display the login prompt. 
+![Browser](wxd-images/watsonx-ssh-jupyter-terminal.png)
 
-The userid is `watsonx` and the password is `watsonx.data`. You are now using a terminal session inside the watsonx.data server. 
-
-![Browser](wxd-images/watsonx-ssh-browser-example.png)
-
-Since you have logged in as the `watsonx` user, you must use the `sudo su -` command to become the root user. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.
+You are now using a terminal session inside the watsonx.data server. By default, you are already the `root` user, so there is no need to run a `sudo su -` command. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.
 
 ```bash
 cd /root/ibm-lh-dev/bin
 ```
-!!! info "Cut and Paste"
 
-    The Browser SSH screen supports full cut and paste operations. This makes it easy to copy scripts into this window without having to retype the commands.
-
-All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentally close this window, you can open another one using the SSH browser link in the reservation.
+All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentally close this window, you can open another one using the Jupyter notebook File menu.
 
 ## Terminal Window in the VM
 
-If you use the [Remote VM Console](wxd-reference-vnc.md), you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. 
+If you use the [Remote VM Console](wxd-reference-console.md), you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. 
 
 Select the Terminal application in the virtual machine to issue commands. 
 
@@ -86,9 +79,6 @@ sudo su -
 
 Now as the root user you will be ready to run the commands found in the lab.
 
-!!! warning "Cut and Paste"
-
-    The VM Remote Console does **not** support cut and paste operations from outside the VM environment. Cut and paste is supported inside the virtual machine, but attempting to paste something from you workstation into the VM Console will fail.
 
 ## Copying Files
 
@@ -97,7 +87,7 @@ If you need to move files into or out of the virtual machine, you can use the fo
 To copy a file into the virtual machine use the following syntax:
 
 ```
-scp -P port myfile.txt watsonx@region.services.cloud.techzone.ibm.com:/tmp/myfile.txt
+scp -P port myfile.txt watsonx@region.techzone-server.com:/tmp/myfile.txt
 ```
 
 The filename `myfile.txt` will be copied to the `/tmp` directory. The temporary directory is useful since you can copy the file to multiple places from within the Linux environment.
@@ -105,13 +95,13 @@ The filename `myfile.txt` will be copied to the `/tmp` directory. The temporary 
 Multiple files can be moved by using wildcard characters using the following syntax:
 
 ```
-scp -P port myfile.* watsonx@region.services.cloud.techzone.ibm.com:/tmp
+scp -P port myfile.* watsonx@region.techzone-server.com:/tmp
 ```
 
 To move files from the image back to your local system requires you reverse the file specification.
 
 ```
-scp -P port watsonx@region.services.cloud.techzone.ibm.com:/tmp/myfile.txt /Downloads/myfile.txt
+scp -P port watsonx@region.techzone-server.com:/tmp/myfile.txt /Downloads/myfile.txt
 ```
 
 You can also use wildcards to select more than one file.

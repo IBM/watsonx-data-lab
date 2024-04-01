@@ -18,14 +18,12 @@ A copy icon is usually found on the far right-hand side of the command box. Use 
 * Commands pasted into a terminal window will require that you hit the `Return` or `Enter` key for the command to be executed
 * Commands pasted into a Presto CLI window will execute automatically
 
-## System Check
+## System Status
 
-The watsonx.data server automatically starts all services except for Apache Superset and the VNC service. To check the status of the server, run the following commands.
-
-Make sure that you have an open terminal session and use the following command to connect to the watsonx.data server.
+The watsonx.data server is started as part of the lab. To make sure that the services are running, open a terminal session and use the following command to connect to the watsonx.data server.
 
 ```bash
-ssh -p port watsonx@region.techzone-server.com
+ssh -p port watsonx@region.services.cloud.techzone.ibm.com
 ```
 Password is <code style="color:blue;font-size:medium;">watsonx.data</code>.
 Next switch to the root userid.
@@ -38,12 +36,12 @@ Switch to the development code bin directory.
 cd /root/ibm-lh-dev/bin
 ```
 
-Once you have switched to the development directory, you can start running watsonx.data commands. You can check the status with the following command.
+You can check the watsonx.data system status with the following command.
 ```bash
 ./status.sh --all
 ```
 Output will look similar to:
-<pre style="font-size: small; color: darkgreen; overflow: scroll"">
+<pre style="font-size: small; color: darkgreen; overflow: scroll">
 using /root/ibm-lh-dev/localstorage/volumes as data root directory for user: root/1001 
 infra config location is /root/ibm-lh-dev/localstorage/volumes/infra
 lhconsole-ui				running			0.0.0.0:9443->8443/tcp, :::9443->8443/tcp
@@ -56,7 +54,63 @@ ibm-lh-postgres				running			5432/tcp
 ibm-lh-minio				running			
 </pre>
 
-To confirm that the software is working, run the following commands to validate the installation.
+Continue on to the [Presto Engine Test](#presto-engine-test) section.
+
+## System Restart
+
+If at any time you must restart the system for any reason, follow these commands. First connect to the watsonx.data server.
+
+```bash
+ssh -p port watsonx@region.services.cloud.techzone.ibm.com
+```
+Password is <code style="color:blue;font-size:medium;">watsonx.data</code>.
+Next switch to the root userid.
+```
+sudo su -
+```
+
+Switch to the development code bin directory.
+```
+cd /root/ibm-lh-dev/bin
+```
+
+Once you have switched to the development directory, you can start running watsonx.data commands. You must start the watsonx.data service using either of these commands:
+```
+systemctl start watsonx.service
+```
+or
+```
+export LH_RUN_MODE=diag
+./start
+```
+
+If you want to start the prestissimo engine, you must use the following syntax:
+```
+cd /root/ibm-lh-dev/bin
+export LH_RUN_MODE=diag
+./start prestissimo
+```
+
+**Note:** Using the `systemctl` or `start` command will take a few minutes to complete. There will not be any status messages displayed when using the `systemctl` command, so if you want to watch the startup sequence, use the `start` command instead. You must set `LH_RUN_MODE` to `diag` to open up the ports in the various watsonx.data containers. If you do not set this environment variable, you will not be able to access several services externally.
+
+ You can check the status with the following command.
+```bash
+./status.sh --all
+```
+Output will look similar to:
+<pre style="font-size: small; color: darkgreen; overflow: scroll">
+using /root/ibm-lh-dev/localstorage/volumes as data root directory for user: root/1001 
+infra config location is /root/ibm-lh-dev/localstorage/volumes/infra
+lhconsole-ui				running			0.0.0.0:9443->8443/tcp, :::9443->8443/tcp
+lhconsole-nodeclient-svc		running			3001/tcp
+lhconsole-javaapi-svc			running			8090/tcp
+lhconsole-api				running			3333/tcp, 8081/tcp
+ibm-lh-presto				running			0.0.0.0:8443->8443/tcp, :::8443->8443/tcp
+ibm-lh-hive-metastore			running			
+ibm-lh-postgres				running			5432/tcp
+ibm-lh-minio				running			
+</pre>
+
 
 ## Presto Engine Test
 Check the Presto engine by connecting to a schema. First, we need to make sure that the Presto engine has completed all startup tasks. The following command is not part of watsonx.data, but has been included to simplify checking the status of the Presto service.

@@ -6,7 +6,7 @@ Your TechZone reservation will include the server name and port number to use wh
 
 Open your browser and navigate to:
 
-   * Portainer console - https://region.techzone-server.com:port
+   * Portainer console - https://region.services.cloud.techzone.ibm.com:port
    * Credentials: userid:<code style="color:blue;font-size:medium;">admin</code> password: <code style="color:blue;font-size:medium;">watsonx.data</code>
 
 Once you have logged in, you should select "Get Started".

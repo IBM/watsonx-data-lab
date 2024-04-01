@@ -4,7 +4,6 @@ site_name: watsonx.data Lab
 nav:
   - Introduction: "wxd-intro.md"
   - What's New: "wxd-revisions.md"
-  - Watsonx.data Certificates: "wxd-certificate.md"
   # - Quick Start: "wxd-quick.md"
   - Getting Started:
     - Requesting an IBMid: "wxd-reference-ibmid.md"
@@ -29,7 +28,7 @@ nav:
     - Time Travel: "wxd-timetravel.md"
     - Federation: "wxd-federation.md"
     - System Connector: "wxd-systemconnector.md"
-  - Optional Tools:
+  - Additional Tools:
     - Apache Superset: "wxd-superset.md"
     - dBeaver: "wxd-dbeaver.md"
     - Portainer Console: "wxd-reference-portainer.md"
@@ -45,7 +44,8 @@ nav:
     - Ontime Flight Performance: "wxd-datasets-ontime.md"
     - Taxi Rides: "wxd-datasets-taxi.md"
   - Database Connections: "wxd-connections.md"
-  - VMWare Image: "wxd-vmware.md"
+  # - VMWare Image: "wxd-vmware.md"
+  - Watsonx.data Certificates: "wxd-certificate.md"
   - Appendix: 
     - Disclaimer: "wxd-disclaimer.md"
     - Acknowledgements: "wxd-acknowledgements.md"

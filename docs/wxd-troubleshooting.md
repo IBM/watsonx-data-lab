@@ -3,7 +3,6 @@
 Although we have tried to make the lab as error-free as possible, occasionally things will go wrong. Here is a list of common questions, problems, and potential solutions.
 
    * [What are the passwords for the services](#what-are-the-passwords-for-the-services)
-   * [I Can't Open up a Terminal Window with VNC or Guacamole](#i-cant-open-up-a-terminal-window-with-vnc-or-guacamole)
    * [A SQL Statement failed but there are no error messages](#a-sql-statement-failed-but-there-are-no-error-messages)
    * [Apache Superset isn't Starting](#apache-superset-isnt-starting)
    * [Apache Superset screens differ from the lab](#apache-superset-screens-differ-from-the-lab)
@@ -28,14 +27,6 @@ cat /certs/passwords
 ```
 
 You can also use the Jupyter notebook link to display the userids and passwords for the services.
-
-### I Can't Open up a Terminal Window with VNC or Guacamole
-
-First thing to remember is that you can't use VNC and the TechZone VM Remote Console (Guacamole) interface at the same time. Only one can be active at a time. 
-
-#### If you can't use terminal windows in VNC
-
-If you find that the terminal icons "spins" inside the VNC window, this is caused by attempting to connect to the virtual machine by using the VM Remote Console button in your reservation details screen. To fix this problem, you must log out of the VNC session (top right corner of the Linux desktop - press the power button and choose logout). Once VNC logs back in you will be able use the terminal window.
 
 ### A SQL Statement failed, but there are no error messages
 

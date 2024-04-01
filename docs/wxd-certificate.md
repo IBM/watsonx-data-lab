@@ -1,8 +1,6 @@
 # Watsonx.data Certificates
 
-!!! error "Watsonx.data Certificate Failure"
-
-Due to a change in TechZone URLs, the self-signed certificates in the watsonx.data Developer image may be invalid. If you are attempting to connect to the watsonx.data system from outside the virtual machine, you will need to run the following commands to fix the self-signed certificate. 
+There may be situations where the self-signed certificates in the watsonx.data Developer image may be invalid. If you are attempting to connect to the watsonx.data system from outside the virtual machine, you will need to run the following commands to fix the self-signed certificate. 
 
 ### Step 1: Connect to the Server
 

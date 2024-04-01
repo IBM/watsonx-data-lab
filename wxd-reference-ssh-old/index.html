@@ -13,7 +13,7 @@
     
     
       
-        <title>Using the VM Remote Console - watsonx.data Lab</title>
+        <title>SSH Access - watsonx.data Lab</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-the-vm-remote-console" class="md-skip">
+        <a href="#ssh-access" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using the VM Remote Console
+              SSH Access
             
           </span>
         </div>
@@ -976,43 +976,30 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#enabling-vnc-access" class="md-nav__link">
-    Enabling VNC Access
+  <a href="#ssh-command" class="md-nav__link">
+    SSH Command
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-watsonxdata-on-a-mac-osx-system" class="md-nav__link">
-    Access watsonx.data on a Mac OSX system
+  <a href="#jupyter-notebook-terminal" class="md-nav__link">
+    Jupyter Notebook Terminal
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-watsonxdata-on-a-windows-system" class="md-nav__link">
-    Access watsonx.data on a Windows system
-  </a>
-  
-    <nav class="md-nav" aria-label="Access watsonx.data on a Windows system">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ultravnc" class="md-nav__link">
-    UltraVNC
+  <a href="#terminal-window-in-the-vm" class="md-nav__link">
+    Terminal Window in the VM
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#using-ultravnc" class="md-nav__link">
-    Using UltraVNC
+      
+        <li class="md-nav__item">
+  <a href="#copying-files" class="md-nav__link">
+    Copying Files
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1030,117 +1017,64 @@
                 
 
 
-<h1 id="using-the-vm-remote-console">Using the VM Remote Console</h1>
-<p>The watsonx server that has been provisioned has no physical monitor attached to it (headless is what it is commonly referred to) and so we need to use a different technique to view the desktop of the main user or the system (watsonx).</p>
-<p>The first thing to consider is whether you need to use the VM Remote Console at all. All the services like the watsonx.data UI, MinIO, Presto, Apache Superset and Portainer, are all web-based servers which means you just need to use your own browser to access these programs. </p>
-<p>Connecting into the watsonx virtual machine can be done using the secure shell command (ssh) which provides access to all the low-level commands you might need to use like starting the Apache Superset service. Note that Apache Superset is not up and running by default, so you will need to start it before attempting to connect to it.</p>
-<p>So what's the VM Remote Console required for? One program that has been provided to view the database schemas is dBeaver, a community edition of software that provides a query interface to 100's of data sources, including the watsonx.data environment. You can only use this program using the VM Remote Console. You do have the option of installing this software on your own machine if you wish.</p>
-<p>Find your email message that contains details of your reservation. Details of what the reservations and the page containing details of the reservation can be found in the <a href="../wxd-reference-access/">Accessing the reservation</a> section. </p>
-<p>Once the details appear, scroll down to the bottom of the web page, and you will see the VM Remote Console button.</p>
-<p><img alt="Browser" src="../wxd-images/techzone-vpn.png" /></p>
-<p>You can access the logon screen of the virtual machine by pressing the VM Remote Console button. </p>
-<p><img alt="Browser" src="../wxd-images/techzone-console.png" /></p>
-<p>Clicking on this button will display the logon screen for the server.</p>
-<p><img alt="Browser" src="../wxd-images/techzone-guacamole.png" /></p>
-<p>Select the <code style="color:blue;font-size:medium;">watsonx</code> user and use <code style="color:blue;font-size:medium;">watsonx.data</code> as the password.</p>
-<p><img alt="Browser" src="../wxd-images/desktop-newwindow.png" /></p>
-<p>You can open this window in a separate browser window, or place it into fullscreen mode. Note that you may need to increase the size of your browser window (or change the scaling in the browser) to see all the virtual desktop.</p>
-<p>At this point you have access to the desktop of the watsonx user and can issue commands from within this environment. As mentioned previously, you do not need to use this interface to use the lab.</p>
-<h2 id="enabling-vnc-access">Enabling VNC Access</h2>
-<p>The watsonx.data image has port <code>5901</code> exposed for use with VNC browsers. If you want to use VNC instead of the VM Remote Console access, you must do the following:</p>
+<h1 id="ssh-access">SSH Access</h1>
+<p>All the commands in the lab will require you execute commands in a terminal window. Access to a terminal window can be accomplished in the three ways as described below:</p>
 <ul>
-<li>Make sure you are not currently logged in using the VM Virtual Console</li>
-<li>You have suitable VNC software (Mac OSX includes this). Use RealVNC or UltraVNC on a Windows box. </li>
-<li>You have a Terminal Shell open to issue root commands</li>
+<li><a href="#ssh-command">Use the SSH Command Locally</a></li>
+<li><a href="#jupyter-notebook-terminal">Use Jupyter notebook terminal</a></li>
+<li><a href="#terminal-window-in-the-vm">Terminal window in the VM</a></li>
 </ul>
-<p>In a terminal window, ssh into the watsonx.data virtual machine as the watsonx user. Then you will need to become the root user and issue the following commands:
+<p>If you are unable to use <code>ssh</code> because of connection restrictions, the Jupyter notebook option is the easiest one to use.</p>
+<h2 id="ssh-command">SSH Command</h2>
+<p>Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.</p>
+<p>You have the choice of using the VM Remote console and logging in as the watsonx user to issues commands, or using a local terminal shell (iTerm, Hyper, terminal) to run commands against the watsonx.data server. You can have multiple connections into the machine at any one time. </p>
+<p>It will be easier to cut-and-paste commands into a local terminal shell. The VM Remote Console does not support cut-and-paste operation from outside the virtual console environment.</p>
+<p>Open a terminal window and use the following syntax to connect as the <code style="font-size: medium;color:blue;">watsonx</code> userid.</p>
+<div class="highlight"><pre><span></span><code>ssh -p port watsonx@region.techzone-server.com
+</code></pre></div>
+<p>The port number and server name are provided as part of the TechZone reservation details.</p>
+<p>To become the root user, issue the following command.
 <div class="highlight"><pre><span></span><code>sudo su -
-systemctl enable vncserver@:1
-systemctl start vncserver@:1
-systemctl daemon-reload 
-</code></pre></div></p>
-<p>After these commands complete, you will not be able to use the VM Remote Console to connect to the watsonx userid. Instead, you will need to use your VNC software to connect to the server.</p>
-<p>If at any time you want to turn off VNC support, issue the following commands:
+</code></pre></div>
+Password for both users is <code style="color:blue;font-size:medium;">watsonx.data</code>.</p>
+<h2 id="jupyter-notebook-terminal">Jupyter Notebook Terminal</h2>
+<p>The Jupyter Notebook lab environment provided as part of lab also provides a way of issuing terminal commands. To access this environment, you must find the Jupyter notebook URL provided in the lab reservation.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-url.png" /></p>
+<p>When you initially open the link, it will request a password to view the Table of Contents:</p>
+<p><img alt="Browser" src="../wxd-images/jupyter-password.png" /></p>
+<p>The default password for the notebook is <code>watsonx.data</code>. Once you enter the password, the Table of Contents will be displayed.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-toc.png" /></p>
+<p>Select the File menu at the top of the screen and then select New - Terminal.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-file.png" /></p>
+<p>A terminal window will be displayed in the browser.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-ssh-jupyter-terminal.png" /></p>
+<p>You are now using a terminal session inside the watsonx.data server. By default, you are already the <code>root</code> user, so there is no need to run a <code>sudo su -</code> command. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+</code></pre></div>
+<p>All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentally close this window, you can open another one using the Jupyter notebook File menu.</p>
+<h2 id="terminal-window-in-the-vm">Terminal Window in the VM</h2>
+<p>If you use the <a href="../wxd-reference-console/">Remote VM Console</a>, you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. </p>
+<p>Select the Terminal application in the virtual machine to issue commands. </p>
+<p><img alt="Browser" src="../wxd-images/terminal-vmware-command.png" /></p>
+<p>This will open up the terminal window.</p>
+<p><img alt="Browser" src="../wxd-images/terminal-vmware.png" /></p>
+<p>At this point you are connected as the watsonx user. You can ignore any lab instructions that ask you to <code>ssh</code> into the watsonx server. To become the root user, you must enter the following command in the terminal window.
 <div class="highlight"><pre><span></span><code>sudo su -
-systemctl disable vncserver@:1
-systemctl stop vncserver@:1
-systemctl daemon-reload 
 </code></pre></div></p>
-<h2 id="access-watsonxdata-on-a-mac-osx-system">Access watsonx.data on a Mac OSX system</h2>
-<p>Once the VNC service has been started, you can connect to the machine using the VNC service by using the URL provided in your reservation document (sample URL below):</p>
-<ul>
-<li>VNC Service - vnc://region.techzone-server.com:28314</li>
-</ul>
-<p>Use the Mac screen sharing app to connect to watsonx.data. You can connect using the OSX Safari browser by using the URL provided above. It will automatically start the screen sharing application.</p>
-<p><strong>Note</strong>: The VNC URL format is only valid in Safari and may not work in other browsers.</p>
-<p>When the service connects to the server it will prompt for the password of the <code style="color:blue;font-size:medium;">watsonx</code> user - <code style="color:blue;font-size:medium;">watsonx.data</code>.</p>
-<p><img alt="Browser" src="../wxd-images/vnc-password.png" /></p>
-<p>Once connected you will see the console of the watsonx user.</p>
-<p><img alt="Browser" src="../wxd-images/vnc-console.png" /></p>
-<p>You may also want to consider making the screen size larger. Use the drop-down menu (Applications) at the top of the screen to select Other -&gt; Settings. </p>
-<p><img alt="Browser" src="../wxd-images/vnc-settings.png" /></p>
-<p>In the Devices section of the Setting menu, select Displays and choose a resolution that is suitable for your environment.</p>
-<p><img alt="Browser" src="../wxd-images/wxd-resolution.png" /></p>
-<h2 id="access-watsonxdata-on-a-windows-system">Access watsonx.data on a Windows system</h2>
-<p>Windows does not supply a native VNC browser. You will need to install a program like RealVNC or UltraVNC to access the console. Directions for installing UltraVNC are shown below. </p>
-<p><strong>Note</strong>: This software has not been officially approved for use on Windows, although it has been tested against the watsonx.data server.</p>
-<h3 id="ultravnc">UltraVNC</h3>
-<p>UltraVNC is a VNC browser for the Windows environment. This is an open-source offering that can be found on Github in the <a href="https://github.com/ultravnc/ultravnc">UltraVNC project</a>.</p>
-<p>The developers of this code have additional offerings that they sell for a fee and use advertising on their site to support their work on this and other projects. Because of the way the website has been designed, there are a number of ads and buttons that might distract you from the actual product you want to download.</p>
-<p>The official web page of UltraVNC is <a href="https://uvnc.com/" target="_blank">https://uvnc.com/</a>. Instead of going through all the menus, 
-use the following link to go directly to the download screen:</p>
-<ul>
-<li><a href="https://uvnc.com/component/jdownloads/summary/453-ultravnc-1431-x64-setup.html" target="_blank">UltraVNC Download Link</a></li>
-</ul>
-<p>The website will display an initial download page that will wait for 10 seconds before you can do anything. This gives you time to read the advertising or make a voluntary donation to their coding efforts.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-wait.png" /></p>
-<p>Once the wait time has expired, you will see the following screen:</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-download.png" /></p>
-<p>Make sure to check that you accept the above conditions and press the download button. You should see the download progress in your browser.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-downloadprogress.png" /></p>
-<p>Click "Open File" against the downloaded file. </p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-openfile.png" /></p>
-<p>Once the installer starts it will ask for you to approve changes to the system.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-okinstall.png" /></p>
-<p>Press Yes and then select the language you want.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-language.png" /></p>
-<p>Press OK.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-license.png" /></p>
-<p>Select Accept the license agreement and press Next.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-summary.png" /></p>
-<p>The summary of what it is going to install is shown on this screen. You will then have to provide the installation location or use the default location for the code.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-filelocation.png" /></p>
-<p>The next panel asks which components you want to install. <strong>Only</strong> install the viewer.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-viewer.png" /></p>
-<p>Then it requests the name of the Shortcut folder. Just keep the name it recommends.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-shortcuts.png" /></p>
-<p>Press Next. The next panel comes up that asks if you want a desktop shortcut. Probably a good idea if you are going to use it for a long period of time. Notice how they make this install take longer than expected to get you to donate?</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-shortcut.png" /></p>
-<p>After all of that you will see the final installation screen.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-readytoinstall.png" /></p>
-<p>Click on Install and eventually you will get the completion notice.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-done.png" /></p>
-<p>Pressing Finish will give you one final chance to donate. Make sure to unselect "Show latest releases" or else you will be directed back to their website.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-exit.png" /></p>
-<h3 id="using-ultravnc">Using UltraVNC</h3>
-<p>Start UltraVNC viewer by scrolling through your applications on your desktop. Choose the UltraVNC Viewer (not the listen mode ones <strong>unless</strong> you want to watch someone else using the desktop). </p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-icon.png" /></p>
-<p>When the service starts, it will ask for the server and port (Example below). </p>
-<ul>
-<li>VNC Service - vnc://region.techzone-server.com:28314</li>
-</ul>
-<p>For the server you would enter <code>region.techzone-server.com</code> and the port would be <code>28314</code>. The examples below assume the IP address of <code>192.168.252.2</code> with a port number of <code>5901</code>.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-connect.png" /></p>
-<p>Before hitting enter, you may want to select the options button and change the setting in Miscellaneous to prevent advertising from being displayed while working with this program. </p>
-<p>Press connect when done.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-options.png" /></p>
-<p>The password for the service is <code>watsonx.</code> which is <code>watsonx</code> with a period <code>.</code> at the end.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-password.png" /></p>
-<p>At this point you should see the desktop of the virtual machine.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-desktop.png" /></p>
-<p>You are now connected and can work on the watsonx.data desktop.</p>
-<p>If you find that performance is sluggish, this may be due to network latency. In the settings toolbar of the UltraVNC window, change the color resolution from <code>Full</code> to <code>256</code>. Your screen may look a bit washed out, but this will reduce the amount of data that needs to be sent over the network to render your screen.</p>
-<p><img alt="Browser" src="../wxd-images/ultravnc-performance.png" /></p>
+<p>Now as the root user you will be ready to run the commands found in the lab.</p>
+<h2 id="copying-files">Copying Files</h2>
+<p>If you need to move files into or out of the virtual machine, you can use the following commands.</p>
+<p>To copy a file into the virtual machine use the following syntax:</p>
+<div class="highlight"><pre><span></span><code>scp -P port myfile.txt watsonx@region.techzone-server.com:/tmp/myfile.txt
+</code></pre></div>
+<p>The filename <code>myfile.txt</code> will be copied to the <code>/tmp</code> directory. The temporary directory is useful since you can copy the file to multiple places from within the Linux environment.</p>
+<p>Multiple files can be moved by using wildcard characters using the following syntax:</p>
+<div class="highlight"><pre><span></span><code>scp -P port myfile.* watsonx@region.techzone-server.com:/tmp
+</code></pre></div>
+<p>To move files from the image back to your local system requires you reverse the file specification.</p>
+<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.techzone-server.com:/tmp/myfile.txt /Downloads/myfile.txt
+</code></pre></div>
+<p>You can also use wildcards to select more than one file.</p>
 
               
             </article>

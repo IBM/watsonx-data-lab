@@ -9,7 +9,7 @@ The default password for the notebook is `watsonx.data`. Once you enter the pass
 
 ![Browser](wxd-images/jupyter-toc.png)
 
-There are 11 notebooks provided in the system, and a brief description of the notebooks are found below.
+There are several notebooks provided in the system, and a brief description of the notebooks are found below.
 
 #### Introduction to Jupyter Notebooks
 
@@ -44,30 +44,26 @@ This notebook contains all the SQL that is run in the Presto SQL section of the 
 
 You can choose either method to explore Presto SQL.
 
-#### Presto Federation
+#### Additional Notebooks
 
-Presto provides the ability to federate queries across different servers. This notebook explores the ability to federate a PostgreSQL table with a table found in Presto. This lab requires some knowledge of the watsonx.data UI, so it is recommended you become familiar with the UI before running this lab.
+There are additional notebooks that explore different features of watsonx.data.
 
-#### Python with watsonx.data
+* Presto Federation
+* Python with watsonx.data
+* Pandas Dataframes with watsonx.data
+* Accesing watsonx.data with Spark
+* Converting CSV files to Parquet
+* Connecting to Db2
+* Connecting to PostgreSQL
+* Connecting to MySQL
+* Connecting to Milvus
+* Milvus Example
+* Milvus Attu Console
+* Create a Kafka Service
+* Kafka Console
+* Using RESTful Services in Presto
+* Using RESTful Services in watsonx.data
+* Running Notebooks in an External Service
+* New Notebooks Link
 
-Accessing the Presto database in Python requires the use of the prestodb module which implements features of the DBAPI standard. The notebook demonstrates how to connect to the database and retrieve results.
-
-#### Pandas Dataframes with watsonx.data
-
-Pandas dataframes are commonly used in Jupyter notebooks to analyze data. This code will connect to Presto using a Pandas dataframe and display some data from an existing table that was created in Presto. Note that the certificate required for this notebook is provided in the environment. 
-
-#### Accessing watsonx.data with Spark
-
-This notebook demonstrates how Spark can connect to watsonx.data and manipulate the data. This system has a local, minimally configured Spark engine that will be used to access the Presto database. This engine is sufficient to demonstrate the steps needed to connect to watsonx.data and access the data that resides in the Presto catalogs.
-
-#### Connecting to Db2
-
-This notebook demonstrates connecting to the local Db2 server using Jupyter notebooks. 
-
-#### Connecting to PostgreSQL
-
-This notebook demonstrates connecting to the local PostgreSQL server using Jupyter notebooks. 
-
-#### Connecting to MySQL
-
-This notebook demonstrates connecting to the local MySQL server using Jupyter notebooks. 
+The last notebook (New Notebooks) contains a link to any new notebooks that may have been introduced after this image was released.

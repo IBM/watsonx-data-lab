@@ -16,7 +16,24 @@ nav:
     - Userids and Passwords: "wxd-reference-passwords.md"
     - Documentation: "wxd-reference-documentation.md"
   - Lab Instructions: "wxd-lab-instructions.md"
-  - Jupyter Notebook: "wxd-jupyter.md"
+  - System Status and Utilties: "wxd-status.md"
+  - Watsonx.data Introduction:
+    - Overview: "wxd-intro-overview.md"
+    - watsonx.data UI: 
+      - Watsonx UI Overview: "wxd-intro-watsonui.md"
+      - Infrastructure Manager: "wxd-intro-infrastructure.md"
+      - Data Manager: "wxd-intro-datamanager.md"
+      - Query Workspace: "wxd-intro-queryworkspace.md"
+      - Query History: "wxd-intro-queryhistory.md"
+      - Access Control: "wxd-intro-accesscontrol.md"
+    - Presto SQL:
+      - Using the Query Workspace: "wxd-intro-query.md"
+      - Presto SQL Overview: "wxd-intro-prestocli.md"
+      - Analytic Workloads: "wxd-intro-analytics.md"
+      - Advanced Functions: "wxd-intro-advanced.md"
+      - Time Travel: "wxd-intro-timetravel.md"
+      - Federation: "wxd-intro-federation.md"  
+  - Jupyter Notebooks: "wxd-jupyter.md"
   - Core Components: 
     - Presto CLI: "wxd-prestocli.md"
     - watsonx.data UI: "wxd-watsonui.md"

@@ -34,6 +34,23 @@ Start the Presto CLI.
 ./presto-cli
 ```
 
+
+The output on your screen will look similar to the following:
+
+![Browser](wxd-images/presto-output.png)
+
+The arrows on the far right side indicate that there is more output to view. Press the right and left arrows on your keyboard to scroll the display.
+
+![Browser](wxd-images/presto-scroll.png)
+
+If the result set is small, all of the results will display on the screen and no scrolling will be available unless the results are wider than the screen size. 
+
+When the display shows <code style="color:blue;font-size:medium;">(END)</code> you have reached the bottom of the output. If the display shows a colon (<code style="color:blue;font-size:medium;">:</code>) at the bottom of the screen, you can use the up and down arrow keys to scroll a record at a time, or the Page Up and Page Down keys to scroll a page at a time. To quit viewing the output, press the Q key.
+
+Quit the Presto CLI. The Presto quit command can be used with or without a semicolon.
+```
+quit;
+
 We are going to inspect the available catalogs in the watsonx.data system. A watsonx.data catalog contains schemas and references a data source via a connector. A connector is like a driver for a database. Watsonx.data connectors are an implementation of Presto’s SPI which allows Presto to interact with a resource. There are several built-in connectors for JMX, Hive, TPCH etc., some of which you will use as part of the labs.
 
 Display the catalogs.

@@ -33,6 +33,8 @@ The watsonx.data system is running on a virtual machine with the following resou
 
 This is sufficient for running this exercises found in this lab but should not be used for performance testing or dealing with large data sets.
 
-## Watsonx.data Level 3 Technical Training
+## Watsonx.data Level 3/4 Technical Training
 
-This system is used as a basis for the watsonx.data Level 3 Technical Training. For the detailed lab material, please refer to the following PDF found in Seismic: [https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj](https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj)
+For the Level 3 and 4 technical training courses, you should choose the watsonx.data developer image which specifically mentions the courses. This system is used as a basis for the watsonx.data Level 3/4 Technical Training images, but will container newer code that may change the UI screens and scripts that are used in the training material. 
+
+For the detailed lab material, please refer to the following PDF found in Seismic: [https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj](https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj)

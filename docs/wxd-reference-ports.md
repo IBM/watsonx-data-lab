@@ -7,7 +7,7 @@ The top of your TechZone reservation will contain a list of published services a
 These URLs and Port numbers are needed to access the watsonx.data services. The list will contain the following information: 
 
 * SSH for watsonx userid - ssh -p xxxxx watsonx@region.services.cloud.techzone.ibm.com
-* SSH Browser - https:/region.services.cloud.techzone.ibm.com:46241
+* SSH Browser - Server: http://region.services.cloud.techzone.ibm.com:33333/terminals/1
 * MySQL Port - Server: region.services.cloud.techzone.ibm.com Port: 12345
 * PostgreSQL Port - Server: region.services.cloud.techzone.ibm.com Port: 23456
 * Portainer console - https://region.services.cloud.techzone.ibm.com:34567
@@ -20,6 +20,7 @@ These URLs and Port numbers are needed to access the watsonx.data services. The 
 * Hive Thrift URL - thrift://region.services.cloud.techzone.ibm.com:35421
 * Watsonx UI - https://region.services.cloud.techzone.ibm.com:41311
 * Db2 Port - Server: region.services.cloud.techzone.ibm.com Port: 24312
+* Milvus Port - Server: region.services.cloud.techzone.ibm.com Port: 34312
 
 There are two additional ports which are available for use with any service you install in the system. These ports are:
 

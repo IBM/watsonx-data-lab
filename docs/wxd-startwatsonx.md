@@ -2,7 +2,7 @@
 
 ## URL Conventions
 
-Your TechZone reservation contains a number of URLs for the services provided in the watsonx.data server. The URL will contain the name of the server and the corresponding port number for the service. Throughout the documentation, the server name will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>and port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt>. Where you see these URLS, replace them with the values found in your reservation.
+Your TechZone reservation contains a number of URLs for the services provided in the watsonx.data server. The URL will contain the name of the server and the corresponding port number for the service. Throughout the documentation, the server name will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>and port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt>. Where you see these URLS, replace them with the values found in your reservation.
 
 ## Commands
 
@@ -16,12 +16,12 @@ Note that some commands may span multiple lines, so make sure you copy everythin
 
 ## System Check
 
-Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.
+Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>. Replace these values with those found in your reservation.
 
 Make sure that you have an open terminal session and use the following command to connect to the watsonx.data server.
 
 ```bash
-ssh -p port watsonx@region.techzone-server.com
+ssh -p port watsonx@region.services.cloud.techzone.ibm.com
 ```
 Password is <code style="color:blue;font-size:medium;">watsonx.data</code>.
 Next switch to the root userid.

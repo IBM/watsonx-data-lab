@@ -2,7 +2,7 @@
 
 ## URL Conventions
 
-Your TechZone reservation contains a number of URLs for the services provided in the watsonx.data server. The URL will contain the name of the server and the corresponding port number for the service. Throughout the documentation, the server name will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt> and port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt>. Where you see these URLs, replace them with the values found in your reservation.
+Your TechZone reservation contains a number of URLs for the services provided in the watsonx.data server. The URL will contain the name of the server and the corresponding port number for the service. Throughout the documentation, the server name will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt> and port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt>. Where you see these URLs, replace them with the values found in your reservation.
 
 ## Commands
 

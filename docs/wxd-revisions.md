@@ -1,60 +1,35 @@
-# Revisions
+# Image Revisions
+
+### May 3, 2024 (1.1.4)
+
+* Updated the lab to GA watsonx.data 1.1.4 code
+
+* New Jupyter notebooks to demonstrate:
+
+    - Kafka queue creation and usage (update to 1.1.3 because the process changed)
+    - Kafka console installation and usage
+    - Watsonx.data RESTful API usage
+
+* SSH over Browser support improvements (it works better now!)
+
+* Additional shortcut commands added for managing the system
+
+### April 24, 2024 (1.1.3)
+
+* Updated the lab to GA watsonx.data 1.1.3 code
+
+* Added Milvus support and opened port 19530
+
+* New Jupyter notebooks to demonstrate:
+
+    - Milvus usage for RAG generation
+    - Milvus ATTU Console
+    - Kafka queue creation and usage
+    - Presto RESTful API Usage example
 
 ### February 29, 2024 (1.1.2)
 
-* SSL connection for data sources
-    
-    You can now enable SSL connection for the following data sources by using the Add database user interface to secure and encrypt the database connection :
-
-    * Db2
-    * PostgreSQL
-    * IBM Data Virtualization Manager for z/OS
-
-    For IBM Data Virtualization Manager for z/OS and PostgreSQL, select Validate certificate to validate whether the SSL certificate that is returned by the host is trusted.
-
-    For the IBM Data Virtualization Manager for z/OS data source, you can choose to provide the hostname in the SSL certificate.
-
-* Secure ingestion job history
-
-    Now users can view only their own ingestion job history. Administrators can view the ingestion job history for all users.
-
-* New data types BLOB and CLOB for SAPHANA and Teradata data sources
-    
-    New data types BLOB and CLOB are available for SAPHANA and Teradata data sources. You can use these data types only with SELECT statements in the Query workspace to build and run queries against your data. 
-
-* Use more SQL statements
-    
-    You can now use the following SQL statements in the Query workspace to build and run queries against your data:
-
-    Apache Iceberg data sources:
-
-    * CREATE VIEW
-    * DROP VIEW
-
-    MongoDB data sources:
-
-    * DELETE
-
-* Create a new table during data ingestion
-
-    Previously, you had to have a target table in watsonx.data for ingesting data. Now, you can create a new table directly from the source data file (available in parquet or CSV format) by using data ingestion through the watsonx.data user interface. You can create the table by using the following methods of ingestion:
-
-    * Ingesting data by using Iceberg copy loader
-    * Ingesting data by using Spark
-
-* Perform ALTER TABLE operations on a column
-
-    With an Iceberg data source, you can now perform ALTER TABLE operations on a column for the following data type conversions:
-
-    * int to bigint
-    * float to double
-    *  decimal (num1, dec_digits) to decimal (num2, dec_digits), where num2>num1.
-
-* Better query performance by using sorted files
-    
-    With an Iceberg data source, you can generate sorted files, which reduce the query result latency and improve the performance of Presto.
-
-    Data in the Apache Iceberg table is sorted during the writing process within each file. You can configure the order to sort the data by using the sorted_by table property. When you create the table, specify the array of columns involved in sorting.
+* Updated the lab to GA watsonx.data 1.1.2 code
 
 * Exposing Hive metastore port details (Developer edition)
     
@@ -74,42 +49,7 @@
 
     - [What's new in watsonx.data version 1.1.1 Reference](https://www.ibm.com/docs/en/watsonxdata/1.1.x?topic=watsonxdata-whats-new-in)
 
-    - Audit logging
-    
-        IBM watsonx.data now integrates with the Cloud Pak for Data audit logging service. Auditable events for watsonx.data are forwarded to the security information and event management (SIEM) solution that you integrate with.
-    
-    - Use self-signed certificates and CA certificates to connect to object stores
-    
-        Previously, watsonx.data could connect to HTTPS endpoints that used certificates signed by well-known certificate authorities, such as IBM Cloud® Object Storage and Amazon S3. Now, you can connect to object stores that use self-signed certificates or certificates that are signed by other certificate authorities.
-    
-    - Integration with Db2® and Netezza®
-    
-        You can now register Db2 or Netezza engines with valid console URL. You can use the metastore URL shown in Engine detail page to sync the respective engines with appropriate bucket catalog-based table.
-    
-    - IBM Data Virtualization Manager for z/OS® connector
-    
-        You can use the new IBM Data Virtualization Manager for z/OS® connector to read and write IBM Z® without having to move, replicate, or transform the data. For more information, see Connecting to an IBM Data Virtualization Manager (DVM) data source.
-    
-    - Better memory management
-    
-        Metastore caching and metadata caching (header and footer caching) are now enabled by default to optimize the memory usage. Also, now you can create a local staging directory to optimize the use of resources during data operations. For more information, see Enhancing the query performance through caching and Configuring a local staging directory.
-    
-    - Presto case-sensitive behavior
-    
-        The Presto behavior is changed from case-insensitive to case-sensitive. Now you can provide the object names in original case format as in the database. You can also create Schemas, Tables and Columns in mixed case that is, uppercase and lowercase through Presto if the database supports it.
-    
-    - Teradata connector is enabled for multiple ALTER TABLE statements
-    
-        Teradata connector now supports the ALTER TABLE RENAME TO, ALTER TABLE DROP COLUMN, ALTER TABLE RENAME COLUMN column_name TO new_column_name statements.
-    
-    - Removal of development (*-devel) packages
-    
-        For security reasons, the *-devel packages are removed from watsonx.data. If you are already using the development packages, the programs that use the development packages cannot be compiled . For any queries, contact IBM Support.
-    
-    - SSL is enabled for PostgreSQL
-    
-        Now ingestion can use mounted certificates when connecting to PostgreSQL.
-
+ 
 ### January 3, 2024 (1.1.0)
 
 * Added two open ports to the image

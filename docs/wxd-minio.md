@@ -17,7 +17,7 @@ You can get all passwords for the system when you are logged in as the <code sty
 ```
 cat /certs/passwords
 ```
-Your TechZone reservation will include the server name and port number to use when connecting to the MinIO. The default port number is 9001, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.
+Your TechZone reservation will include the server name and port number to use when connecting to the MinIO. The default port number is 9001, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>. Replace these values with those found in your reservation.
 
 Open your browser and navigate to:
 
@@ -258,7 +258,7 @@ For a local connection, we will use the following values:
 
 If you are using an external client to connect to the MinIO service, you will need the URL and Port number from the TechZone reservation. The access key and secret key will be the same values that are found above.
 
-   * Hostname –<code style="color:blue;font-size:medium;">region.techzone-server.com</code>
+   * Hostname –<code style="color:blue;font-size:medium;">region.services.cloud.techzone.ibm.com</code>
    * Port – <code style="color:blue;font-size:medium;">12345</code>
 
 The alias for local access is found below.

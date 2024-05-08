@@ -145,13 +145,13 @@ Open a separate terminal window and issue the following command (using the SSH p
 #### Mac OSX user
 
 ```bash
-scp -port watsonx@region.techzone-server.com:/tmp/plan.png plan.png && open plan.png
+scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png && open plan.png
 ```
 
 #### Windows user
 
 ```bash
-scp -port watsonx@region.techzone-server.com:/tmp/plan.png plan.png & start "" "plan.png"
+scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png & start "" "plan.png"
 ```
 
 #### Linux user (watsonx.data server)
@@ -296,13 +296,13 @@ Open a separate terminal window and issue the following command (using the SSH p
 #### Mac OSX user
 
 ```bash
-scp -port watsonx@region.techzone-server.com:/tmp/plan.png plan.png && open plan.png
+scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png && open plan.png
 ```
 
 #### Windows user
 
 ```bash
-scp -port watsonx@region.techzone-server.com:/tmp/plan.png plan.png & start "" "plan.png"
+scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png & start "" "plan.png"
 ```
 
 #### Linux user (watsonx.data server)

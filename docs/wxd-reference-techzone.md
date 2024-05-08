@@ -39,7 +39,7 @@ education). Next select preferred Geography for the image.
 
 Choose any of the regions that are closest to your location. 
 
-**Note**: The TechZone scheduler will pick a location in your region that has capacity to deploy your image. Previously you needed to pick a physical location (DAL10, WDC04, TOK02, etc...). The number of locations has expanded to 4 North American, 4 European and 2 AP locations which will hopefully provide more capacity to deploy the lab.
+**Note**: The TechZone scheduler will pick a location in your region that has capacity to deploy your image. Previously you needed to pick a physical location (DAL10, WDC04, TOK02, etc...). The number of locations has expanded to 5 North American, 6 European and 4 AP locations which will hopefully provide more capacity to deploy the lab.
 
 If you find that your reservation is not being provisioned, check the status of the TechZone environment by referring to the TechZone status page at <a href="https://techzone.status.io" target="_blank">https://techzone.status.io</a>.
 

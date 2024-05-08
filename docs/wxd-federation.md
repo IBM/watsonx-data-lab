@@ -68,7 +68,7 @@ echo $POSTGRES_PASSWORD > /tmp/postgres.pw
 Open your browser and navigate to:
 
 
-* Watsonx.data UI - https://region.techzone-server.com:port
+* Watsonx.data UI - https://region.services.cloud.techzone.ibm.com:port
 * Credentials: username: <code style="color:blue;font-size:medium;">ibmlhadmin</code> password: <code style="color:blue;font-size:medium;">password</code>
 
    

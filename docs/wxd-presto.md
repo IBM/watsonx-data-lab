@@ -1,5 +1,5 @@
 # Using the Presto console UI
-Your TechZone reservation will include the server name and port number to use when connecting to the Presto UI. The default port number is 8443 and the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.
+Your TechZone reservation will include the server name and port number to use when connecting to the Presto UI. The default port number is 8443 and the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>. Replace these values with those found in your reservation.
 
    * Presto console - https://region.services.cloud.techzone.ibm.com:port
    * Credentials: username: <code style="color:blue;font-size:medium;">ibmlhadmin</code> password: <code style="color:blue;font-size:medium;">password</code>

@@ -22,7 +22,7 @@ When connecting to the watsonx.data Presto database, you will need to have the c
 To extract the certificate to your local file system, use the following command in a terminal window. Replace the `port` and `regions.techzone-server.com` with the SSH values found in the TechZone reservation.
 
 ```
-scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
+scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
 ```
 
 Change the target directory to a location that you can remember! 
@@ -59,7 +59,7 @@ In the following settings, remember to update the Hostname and Port to the value
 
 The database connection settings are:
 
-   * Hostname: <code style="color:blue;font-size:medium;">region.techzone-server.com</code>
+   * Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.ibm.com</code>
    * Port: <code style="color:blue;font-size:medium;">port</code>
    * Username: <code style="color:blue;font-size:medium;">ibmlhadmin</code>
    * Password: <code style="color:blue;font-size:medium;">password</code>
@@ -90,9 +90,9 @@ The Db2 server can be accessed on port 50000 inside the virtual machine using th
 
 ### Db2 External Access
 
-When accessing the database outside the virtual machine, you must change the host to `region.techzone-server.com` and the port number based on your TechZone reservation. All the other settings remain the same.
+When accessing the database outside the virtual machine, you must change the host to `region.services.cloud.techzone.ibm.com` and the port number based on your TechZone reservation. All the other settings remain the same.
 
-   * Hostname - <code style="color:blue;font-size:medium;">region.techzone-server.com</code>
+   * Hostname - <code style="color:blue;font-size:medium;">region.services.cloud.techzone.ibm.com</code>
    * Port - <code style="color:blue;font-size:medium;">port</code>
    * Username - <code style="color:blue;font-size:medium;">db2inst1</code>
    * Password - <code style="color:blue;font-size:medium;">db2inst1</code>
@@ -185,7 +185,7 @@ pip3 install presto-python-client
 Once the installation is complete, extract the certificate from the watsonx.data server that we will use in the connection.
 
 ```
-scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
+scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
 ```
 
 Change the target directory to a location that you can remember! 
@@ -283,7 +283,7 @@ If you are running in a Jupyter Lab environment, you can use the most current ve
 Once the drivers have been loaded, you will need to extract the certificate from the watsonx.data server that we will use in the connection.
 
 ```
-scp -P port watsonx@region.techzone-server.com:/certs/presto-key.jks /Users/myname/Downloads
+scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
 ```
 
 Change the target directory to a location that you can remember! 
@@ -315,7 +315,7 @@ connect_args={
 
 In the above settings, you will need to replace the following values:
 
-   * hostname - `region.techzone-server.com` when connecting to the image externally, and  `ibm-lh-presto-svc` when connecting internally 
+   * hostname - `region.services.cloud.techzone.ibm.com` when connecting to the image externally, and  `ibm-lh-presto-svc` when connecting internally 
    * catalog - What is the name of the catalog that we are accessing
    * schema - The schema inside the catalog that will be used
 

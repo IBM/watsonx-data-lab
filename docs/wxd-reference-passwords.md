@@ -16,34 +16,41 @@ This table lists the passwords for the services that have "fixed" userids and pa
 |Db2|db2inst1|db2inst1
 |MySQL|root|password
 |Milvus|ibmlhadmin|password
-|SSH Browser|watsonx|watsonx.data
+|SSH Browser|none|watsonx.data
 
 Use the following commands to get the generated userid and password for MinIO.
-```
-export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
-echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
-echo "MinIO Password: " $LH_S3_SECRET_KEY
-```
+
+!!! abstract "Extract MinIO userid and password"
+    ```bash
+    export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
+    export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+    echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
+    echo "MinIO Password: " $LH_S3_SECRET_KEY
+    ```
 
 Use the following command to get the password for Postgres.
-```
-export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed 's/.*=//')
-echo "Postgres Userid   : admin"
-echo "Postgres Password : " $POSTGRES_PASSWORD
-```
+
+!!! abstract "Extract Postgres userid and password"
+    ```bash
+    export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed 's/.*=//')
+    echo "Postgres Userid   : admin"
+    echo "Postgres Password : " $POSTGRES_PASSWORD
+    ```
 
 You can get all passwords for the system when you are logged by issuing the following command:
-```bash
-cat /certs/passwords
-```
+
+!!! abstract "Extract all userids and passwords"
+    ```bash
+    cat /certs/passwords
+    ```
 
 If the passwords do not appear to work, you may need to regenerate them. The following must be run as the `root` user.
 
-```bash
-sudo su -
-passwords
-```
+!!! abstract "Generate userid and password list"
+    ```bash
+    sudo su -
+    passwords
+    ```
 
 The `passwords` command will refresh the passwords and also display them. If this command is not run as root, an error message will be displayed because the password file cannot be updated as the `watsonx` user.
 
@@ -55,9 +62,10 @@ When connecting to the watsonx.data Presto database, you will need to have the c
 
 To extract the certificate to your local file system, use the following command in a terminal window. Replace the `port` and `region.services.cloud.techzone.ibm.com` with the SSH values found in the TechZone reservation.
 
-```
-scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
-```
+!!! abstract "Download watsonx.data certificate"
+    ```bash
+    scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+    ```
 
 Change the target directory to a location that you can remember! 
 
@@ -71,18 +79,19 @@ If you need to generate the certificate, you can use the following commands from
 
 This command will generate a certificate called `presto.crt`. You can print the contents of the file and use that for input into CP4D dialogs that require the certificate text.
 
-```
-rm -f presto.crt
-echo QUIT | openssl s_client -showcerts -connect localhost:8443 | awk '/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}' > presto.crt
-cat presto.crt
-```
+!!! abstract "Generate watsonx.data certificate"
+    ```bash
+    rm -f presto.crt
+    echo QUIT | openssl s_client -showcerts -connect localhost:8443 | awk '/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}' > presto.crt
+    cat presto.crt
+    ```
 
 #### Generate Java Key Store
 
 The following command will require a password for the keystore. The password can be anything you want, but it is set to `watsonx.data` in the Developer Edition. You must also accept the list of DNS names that are displayed in the list. The default is no! The keystore that is created is called `presto-key.jks`. 
 
-```
-rm -f presto-key.jks
-keytool -import -alias presto-cert -file ./presto.cert -keystore ./presto-key.jks
-
-```
+!!! abstract "Generate watsonx.data keystore"
+    ```bash
+    rm -f presto-key.jks
+    keytool -import -alias presto-cert -file ./presto.cert -keystore ./presto-key.jks
+    ```

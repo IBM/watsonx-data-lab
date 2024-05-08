@@ -60,7 +60,7 @@ systemctl daemon-reload
 
 Once the VNC service has been started, you can connect to the machine using the VNC service by using the URL provided in your reservation document (sample URL below):
 
-* VNC Service - vnc://region.techzone-server.com:28314
+* VNC Service - vnc://region.services.cloud.techzone.ibm.com:28314
 
 Use the Mac screen sharing app to connect to watsonx.data. You can connect using the OSX Safari browser by using the URL provided above. It will automatically start the screen sharing application.
 
@@ -167,9 +167,9 @@ Start UltraVNC viewer by scrolling through your applications on your desktop. Ch
 
 When the service starts, it will ask for the server and port (Example below). 
 
-* VNC Service - vnc://region.techzone-server.com:28314
+* VNC Service - vnc://region.services.cloud.techzone.ibm.com:28314
 
-For the server you would enter `region.techzone-server.com` and the port would be `28314`. The examples below assume the IP address of `192.168.252.2` with a port number of `5901`.
+For the server you would enter `region.services.cloud.techzone.ibm.com` and the port would be `28314`. The examples below assume the IP address of `192.168.252.2` with a port number of `5901`.
 
 ![Browser](wxd-images/ultravnc-connect.png)
 

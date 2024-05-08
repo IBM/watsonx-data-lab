@@ -38,12 +38,12 @@ More details: [Accessing a TechZone image](wxd-reference-access.md)
 
 ## SSH Access
 
-Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.
+Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>. Replace these values with those found in your reservation.
 
 Open a terminal window and use the following syntax to connect as the <code style="font-size: medium;color:blue;">watsonx</code> userid.
 
 ```
-ssh -p port watsonx@region.techzone-server.com
+ssh -p port watsonx@region.services.cloud.techzone.ibm.com
 ```
 
 The port number and server name are provided as part of the TechZone reservation details.
@@ -57,8 +57,8 @@ Password for both users is <code style="color:blue;font-size:medium;">watsonx.da
 You can copy files into and out of the server using the following syntax:
 
 ```
-scp -P port myfile.txt watsonx@region.techzone-server.com:/tmp/myfile.txt
-scp -P port watsonx@region.techzone-server.com:/tmp/myfile.txt myfile.txt
+scp -P port myfile.txt watsonx@region.services.cloud.techzone.ibm.com:/tmp/myfile.txt
+scp -P port watsonx@region.services.cloud.techzone.ibm.com:/tmp/myfile.txt myfile.txt
 ```
 
 More details: [SSH Access](wxd-reference-ssh.md)

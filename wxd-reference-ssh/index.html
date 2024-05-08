@@ -1090,11 +1090,11 @@
 </ul>
 <p>If you are unable to use <code>ssh</code> because of connection restrictions, the Browser Window SSH option is the easiest one to use.</p>
 <h2 id="ssh-command">SSH Command</h2>
-<p>Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.techzone-server.com</tt>. Replace these values with those found in your reservation.</p>
+<p>Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>. Replace these values with those found in your reservation.</p>
 <p>You have the choice of using the VM Remote console and logging in as the watsonx user to issues commands, or using a local terminal shell (iTerm, Hyper, terminal) to run commands against the watsonx.data server. You can have multiple connections into the machine at any one time. </p>
 <p>It will be easier to cut-and-paste commands into a local terminal shell. The VM Remote Console does not support cut-and-paste operation from outside the virtual console environment.</p>
 <p>Open a terminal window and use the following syntax to connect as the <code style="font-size: medium;color:blue;">watsonx</code> userid.</p>
-<div class="highlight"><pre><span></span><code>ssh -p port watsonx@region.techzone-server.com
+<div class="highlight"><pre><span></span><code>ssh -p port watsonx@region.services.cloud.techzone.ibm.com
 </code></pre></div>
 <p>The port number and server name are provided as part of the TechZone reservation details.</p>
 <p>To become the root user, issue the following command.
@@ -1104,23 +1104,18 @@ Password for both users is <code style="color:blue;font-size:medium;">watsonx.da
 <h2 id="web-browser-terminal">Web Browser Terminal</h2>
 <p>An SSH service in a browser window is provided in this image. As part of the reservation, you will see a URL with the following description:</p>
 <ul>
-<li>SSH Browser - http://region.techzone-server.com:port</li>
+<li>SSH Browser - http://region.services.cloud.techzone.ibm.com:port/terminals/1</li>
 </ul>
 <p>When you first click on this link, the browser will display a login prompt.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-ssh-browser-url.png" /></p>
-<p>The userid is <code>watsonx</code> and the password is <code>watsonx.data</code>. Once you press the <code>Sign in</code> button, you will see a blank display.</p>
-<p><img alt="Browser" src="../wxd-images/watsonx-ssh-browser-blank.png" /></p>
-<p>Press the browser "refresh" button, and you should see the login prompt.</p>
-<p><img alt="Browser" src="../wxd-images/watsonx-ssh-browser-login.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Patience!</p>
-<p>Sometimes it takes a few "refresh" commands to get the login prompt to display. It may take 5-6 attempts before it wakes up. Don't give up too soon! It will eventually display the login prompt. </p>
-</div>
-<p>The userid is <code>watsonx</code> and the password is <code>watsonx.data</code>. You are now using a terminal session inside the watsonx.data server. </p>
+<p>The password is <code>watsonx.data</code>. Once you press the <code>Log in</code> button, you will be connected to a terminal session inside the watsonx.data server. </p>
 <p><img alt="Browser" src="../wxd-images/watsonx-ssh-browser-example.png" /></p>
-<p>Since you have logged in as the <code>watsonx</code> user, you must use the <code>sudo su -</code> command to become the root user. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.</p>
+<p>The system will log you in as the <code>root</code> user. There is no need to use the <code>sudo su -</code> command to become the root user. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Switch to the command directory</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
 </code></pre></div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Cut and Paste</p>
 <p>The Browser SSH screen supports full cut and paste operations. This makes it easy to copy scripts into this window without having to retype the commands.</p>
@@ -1132,9 +1127,12 @@ Password for both users is <code style="color:blue;font-size:medium;">watsonx.da
 <p><img alt="Browser" src="../wxd-images/terminal-vmware-command.png" /></p>
 <p>This will open up the terminal window.</p>
 <p><img alt="Browser" src="../wxd-images/terminal-vmware.png" /></p>
-<p>At this point you are connected as the watsonx user. You can ignore any lab instructions that ask you to <code>ssh</code> into the watsonx server. To become the root user, you must enter the following command in the terminal window.
+<p>At this point you are connected as the watsonx user. You can ignore any lab instructions that ask you to <code>ssh</code> into the watsonx server. To become the root user, you must enter the following command in the terminal window.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Become the root user</p>
 <div class="highlight"><pre><span></span><code>sudo su -
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <p>Now as the root user you will be ready to run the commands found in the lab.</p>
 <div class="admonition warning">
 <p class="admonition-title">Cut and Paste</p>

@@ -20,7 +20,7 @@ After entering the userid and password, the main watsonx.data UI will be display
 
 ## Watsonx.data UI Navigation
 
-The main screen provides a snapshot of the objects that are currently found in the watsonx.data system. The infrastructure display shows that there is 1 engine, 3 catalogs and 3 buckets associated with the system.
+The main screen provides a snapshot of the objects that are currently found in the watsonx.data system. The infrastructure display shows that there is 1 engine, 3 catalogs, 4 buckets, and no databases associated with the system.
 
 ![Browser](wxd-images/wxd-intro-components.png) 
 

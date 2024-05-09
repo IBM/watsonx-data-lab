@@ -39,11 +39,11 @@ To view what users are currently authorized to use the system, select the Access
 
 !!! abstract "Click on the Access Control icon on the left side of the screen"
 
-![Browser](wxd-images/wxd-intro-accessicon.png)
+![Browser](wxd-images/watsonx-accessicon.png)
 
 A list of objects that make up the watsonx.data infrastructure are displayed.
 
-![Browser](wxd-images/wxd-intro-access-infrastructure.png)
+![Browser](wxd-images/watsonx-access-infrastructure.png)
 
 You can see that the objects are made up of:
 
@@ -60,7 +60,7 @@ Additionally, a policy has to be created to permit the user to access the table 
 
 !!! abstract "Select the presto-01 engine (highlighted in red above) to view the current users that have access to the engine"
 
-![Browser](wxd-images/wxd-intro-access-currentengine.png)
+![Browser](wxd-images/watsonx-access-currentengine.png)
 
 At this point, only the administrative user (ibmlhadmin) can use the Presto engine. 
 
@@ -68,7 +68,10 @@ At this point, only the administrative user (ibmlhadmin) can use the Presto engi
 
 ![Browser](wxd-images/wxd-intro-add-access.png)
 
-!!! error "If you do not see the watsonx userid, or the dropdown is blank, refresh the browser screen"
+!!! error "If you do not see the watsonx userid, or the dropdown is blank, issue the following command in a terminal window. Once the user is added, refresh the browser window and then click on the Add Access button again."
+    ```
+    sudo /root/ibm-lh-dev/bin/user-mgmt add-user watsonx User watsonx.data   
+    ```
 
 The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant User privileges. 
 
@@ -82,11 +85,11 @@ The `watsonx` user needs to be granted access to a catalog. In this case, the `i
 
 !!! abstract "Click on the iceberg_data line to confirm that watsonx has access"
 
-![Browser](wxd-images/wxd-intro-access-currentcatalog.png)
+![Browser](wxd-images/watsonx-access-currentcatalog.png)
 
 You should see that `watsonx` has already been granted access to the catalog. 
 
-![Browser](wxd-images/wxd-intro-access-currentcataloguser.png)
+![Browser](wxd-images/watsonx-access-currentcataloguser.png)
 
 !!! abstract "Close the dialog to return to the Access control screen"
 
@@ -94,7 +97,7 @@ The final step is to grant access to the underlying buckets. Because `watsonx` w
 
 !!! abstract "Click on iceberg-bucket to view the access control"
 
-![Browser](wxd-images/wxd-intro-access-currentbucket.png)
+![Browser](wxd-images/watsonx-access-currentbucket.png)
 
 !!! abstract "Close the dialog to return to the Access control dialog"
 
@@ -104,12 +107,12 @@ After access has been granted to engines, catalogs, and buckets, the final step 
 
 !!! abstract "Click on the Policy tab to display the current policies in place (there should be none)"
 
-![Browser](wxd-images/wxd-intro-access-policies.png)
+![Browser](wxd-images/watsonx-access-policies.png)
 
 The Add Policy button is highlighted on the far right side of the screen. 
 !!! abstract "Press the Add Policy button to display the new Access Control Policy dialog"
 
-![Browser](wxd-images/wxd-intro-access-newpolicy.png)
+![Browser](wxd-images/watsonx-access-newpolicy.png)
 
 !!! abstract "Fill in the following fields with these values"
 
@@ -117,13 +120,13 @@ The Add Policy button is highlighted on the far right side of the screen.
     * Description: blank
     * Policy status: active
 
-![Browser](wxd-images/wxd-intro-access-policy-1.png)
+![Browser](wxd-images/watsonx-access-policy-1.png)
 
 You can always activate a policy after you have created it. 
 
 !!! abstract "Click Next"
 
-![Browser](wxd-images/wxd-intro-access-policy-2.png)
+![Browser](wxd-images/watsonx-access-policy-2.png)
 
 Here we need to select which catalog to use and then the schemas that the user will be able to access.
 
@@ -133,7 +136,7 @@ Here we need to select which catalog to use and then the schemas that the user w
 
 After selecting the schema, a set of tables associated with the schema will be listed.
 
-![Browser](wxd-images/wxd-intro-access-policy-3.png)
+![Browser](wxd-images/watsonx-access-policy-3.png)
 
 You can choose which tables can be searched. If you choose an individual table, you can restrict which columns can be searched. 
 
@@ -145,17 +148,17 @@ You can choose which tables can be searched. If you choose an individual table, 
     * `originairportid`
     * `destairportid`
 
-![Browser](wxd-images/wxd-intro-access-policy-4.png)
+![Browser](wxd-images/watsonx-access-policy-4.png)
 
 !!! abstract "Press the Next button when all columns are selected"
 
-![Browser](wxd-images/wxd-intro-access-policy-5.png)
+![Browser](wxd-images/watsonx-access-policy-5.png)
 
 The Rules dialog allows you to fine-tune what actions can be done by a user against the data. 
 
 !!! abstract "Press the Add Rule button to display the Add Rule dialog"
 
-![Browser](wxd-images/wxd-intro-access-policy-6.png)
+![Browser](wxd-images/watsonx-access-policy-6.png)
 
 Rules can be used to **Allow** actions or to **Deny** actions. 
 
@@ -165,21 +168,21 @@ Rules can be used to **Allow** actions or to **Deny** actions.
 
 !!! abstract "Make sure to select watsonx as the user"
 
-![Browser](wxd-images/wxd-intro-access-policy-7.png)
+![Browser](wxd-images/watsonx-access-policy-7.png)
 
 !!! abstract "Press the Add button"
 
-![Browser](wxd-images/wxd-intro-access-policy-8.png)
+![Browser](wxd-images/watsonx-access-policy-8.png)
 
 You can continue to add additional rules to the list. Since we only want the one rule, select the Review button.
 
 !!! abstract "Press the Review button"
 
-![Browser](wxd-images/wxd-intro-access-policy-9.png)
+![Browser](wxd-images/watsonx-access-policy-9.png)
 
 !!! abstract "Confirm that the data objects and rules look correct then press the Create button"
 
-![Browser](wxd-images/wxd-intro-access-policy-10.png)
+![Browser](wxd-images/watsonx-access-policy-10.png)
 
 The `selectflights` policy is now in place and is actively enforced. 
 
@@ -189,7 +192,7 @@ Before testing the policy enforcement, use the SQL icon on the left side to navi
 
 !!! abstract "Expand the ontime schema to view the tables and the columns that are available in the ontime table"
 
-![Browser](wxd-images/wxd-intro-admin-view.png)
+![Browser](wxd-images/watsonx-admin-view.png)
 
 When you connect as `watsonx`, you will be able to compare what objects can be accessed from that userid.
 
@@ -199,13 +202,13 @@ To test whether the rules are enforced, you will need to log out of the current 
 
 !!! abstract "Click on the user icon to display the logout dialog"
 
-![Browser](wxd-images/wxd-intro-access-policy-11.png)
+![Browser](wxd-images/watsonx-access-policy-11.png)
 
 !!! abstract "Log out to the main watsonx.data UI screen"
 
 You will be prompted to confirm log out.
 
-![Browser](wxd-images/wxd-intro-logout.png)
+![Browser](wxd-images/watsonx-logout.png)
 
 The log in dialog should be displayed.
 
@@ -222,7 +225,7 @@ Your watsonx.data UI should now display `watsonx`. Note how you have less compon
 
 !!! abstract "Navigate to the SQL icon and then select hive_data <span style="color:blue">&rarr;</span> ontime <span style="color:blue">&rarr;</span> ontime" 
 
-![Browser](wxd-images/wxd-intro-policy.png)
+![Browser](wxd-images/watsonx-policy.png)
 
 You should notice that `watsonx` was restricted to seeing only the `ontime` schema in the `hive_data` catalog. In addition, the user was restricted to accessing one of the tables (`ontime`) and 5 columns. Attempting to run a SELECT statement against all the data will result in a policy error.
 
@@ -237,7 +240,7 @@ You should notice that `watsonx` was restricted to seeing only the `ontime` sche
       10;
     ``` 
 
-![Browser](wxd-images/wxd-intro-policy-error.png)
+![Browser](wxd-images/watsonx-policy-error.png)
 
 Correcting the SQL to include only permitted columns results in an answer set.
 
@@ -252,7 +255,7 @@ Correcting the SQL to include only permitted columns results in an answer set.
       10;
     ``` 
 
-![Browser](wxd-images/wxd-intro-policy-okay.png)
+![Browser](wxd-images/watsonx-policy-okay.png)
 
 The policy rules have been enforced for `watsonx`, preventing them from viewing any other schemas or tables in the system. In addition, the SQL that they could execute was restricted to specific columns in the table.
 
@@ -266,11 +269,11 @@ Before moving onto any other sections, make sure to log out as `watsonx` and rec
 
 You will be prompted to confirm log out.
 
-![Browser](wxd-images/wxd-intro-logout.png)
+![Browser](wxd-images/watsonx-logout.png)
 
 The log in dialog should be displayed.
 
-![Browser](wxd-images/wxd-intro-login.png)
+![Browser](wxd-images/watsonx-login.png)
 
 !!! abstract "Enter the credentials for the ibmlhadmin user and press Log in"
 
@@ -296,10 +299,9 @@ The values are:
 * `[User|Admin]` - The type of user. Note that the type of user is case-sensitive!
 * `password` - The password for the user.
 
-
 For the purposes of this lab, we are going to use a Jupyter notebook that was specifically created for managing users.
 
-!!! abstract "Find the URL in your reservation that reads Jupyter Notebook - Server: http://na4.services.cloud.techzone.ibm.com:xxxx/notebooks/Administration.ipynb and click on it"
+!!! abstract "Find the URL in your reservation that reads Jupyter Notebook - Server: http://region.services.cloud.techzone.ibm.com:xxxx/notebooks/Table_of_Contents.ipynb and click on it"
 
 The initial screen will request that you enter a password.
 
@@ -309,7 +311,11 @@ The password is <code style="color:blue;font-size:medium;">watsonx.data</code>.
 
 ![Browser](wxd-images/wxd-intro-jupyter-logon.png) 
 
-Once you have authenticated, the Administration notebook is displayed.
+Once you have authenticated, the Table of Contents is displayed.
+
+![Browser](wxd-images/jupyter-toc.png) 
+
+Click on the Arrow on the User Administration tile. The Administration notebook is displayed.
 
 ![Browser](wxd-images/wxd-intro-jupyter-admin.png) 
 

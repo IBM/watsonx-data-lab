@@ -36,7 +36,7 @@ nav:
   - Jupyter Notebooks: "wxd-jupyter.md"
   - Core Components: 
     - Presto CLI: "wxd-prestocli.md"
-    - watsonx.data UI: "wxd-watsonui.md"
+  #  - watsonx.data UI: "wxd-watsonui.md"
     - Presto UI: "wxd-presto.md"
     - MinIO UI: "wxd-minio.md"
   - Presto SQL:

@@ -1,6 +1,6 @@
 # Watsonx.data Overview
 
-This lab is organized into a number of sections that cover many of the highlights and key features of watsonx.data.
+This portion of the lab is organized into a number of sections that cover many of the highlights and key features of watsonx.data.
 
    * Introduction to watsonx.data
    * Watsonx.data UI Navigation

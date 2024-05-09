@@ -9,6 +9,8 @@ Before describing the contents of the UI, some explanation of the watsonx.data o
 * **Buckets** – Buckets refer to Cloud Object Storage (MinIO, AWS S3, IBM COS, etc...) that contain the files and objects that you will catalog and eventually query with an engine.
 * **Database** – These represent 3rd party databases that are used to query tables that are in a vendor’s proprietary format (Oracle, Db2, Netezza, etc...).
 
+* **Services** - Services refer to additional components in watsonx.data (like Milvus) which provide specific features that are not found in the watsonx.data engine itself.
+
 There are two built-in catalogs provided with watsonx.data:
 
 * **Hive_data** – This catalog contains references to objects that are immutable. These are objects such as CSV (comma-separated values), Text, JSON, and Apache Parquet files which are read-only. 
@@ -34,9 +36,11 @@ These components are:
 
 * Catalogs (purple layer) – Catalogs contain metadata about the objects found in buckets or databases. Each catalog is associated with one or more engines. An engine can’t access data in a bucket or a remote database unless the corresponding catalog is associated with the engine.
 
-* Buckets (green layer) – An object-store that contains data (i.e., MinIO, AWS S3, Cloud-Object Storage). Each bucket is associated with a catalog (with a 1:1 mapping). When a bucket is added to watsonx.data, a catalog is created for it at the same time, based on input from the user. 
+* Buckets (pink layer) – An object-store that contains data (i.e., MinIO, AWS S3, Cloud-Object Storage). Each bucket is associated with a catalog (with a 1:1 mapping). When a bucket is added to watsonx.data, a catalog is created for it at the same time, based on input from the user. 
 
 * Databases (blue layer) – Specialty Database engines. If a database connection is added (for federation purposes), a catalog is created for that database connection as well. 
+
+* Services (green layer) - Specialty Services. In this system, a Milvus Vector database has been provisioned as an extra service.
 
 The diagram can become complex as the number of data sources and engines increases. You can use the magnifier in the bottom right corner to fit the diagram onto the screen or to focus in on a portion of the diagram.
 
@@ -54,7 +58,7 @@ You can also use your mouse to click on part of the screen and “move” it to 
 
 ![Browser](wxd-images/wxd-intro-infra-filter.png) 
 
-!!! abstract "Filter by Catalogs to view the three that exist in the system"
+!!! abstract "Filter by Catalogs to view the three catalogs that exist in the system"
 
 ![Browser](wxd-images/wxd-intro-infra-catalogs.png) 
 
@@ -102,7 +106,7 @@ The Data Objects tab provides detailed information on the contents of the catalo
 
 ![Browser](wxd-images/wxd-intro-access-control.png)
 
-The access control tab provides a list of users and groups that are authorized to access this bucket. The system currently has two registered users in it.
+The access control tab provides a list of users and groups that are authorized to access this bucket. The system currently has two registered users in it (your system may have only one).
 
 !!! abstract "Close the dialog by pressing the [x] in the corner, or using the Escape key"
 

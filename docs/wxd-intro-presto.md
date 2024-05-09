@@ -21,6 +21,10 @@ The Presto console allows you to do the following:
    * Query details (text and plan)
 
 **Note**: The Presto console is very valuable when it comes to diagnosing problems with any queries you run in the watsonx.data environment. If a query fails you can find more details in the Presto console using the instructions below.
+
+When initially connecting to the Presto console, you will be requested to enter a userid and password.
+
+![Browser](wxd-images/watsonx-presto-login.png)
    
 ![Browser](wxd-images/presto-main.png)
  

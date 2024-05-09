@@ -1,39 +1,48 @@
-# Watsonx.data Introduction
- 
- Watsonx.data is based on open source PrestoDB, a distributed query engine that enables querying data stored in open file formats using open table formats for optimization or performance. Some of the characteristics which you will learn and see in action include:
-
-   * Compute processing is performed in memory and in parallel.
-   * Data is pipelined between query stages and over the network reducing latency overhead that one would have if disk I/O were involved.
-
-All the below tasks will be done using the Developer edition of watsonx.data.
-
-## Using watsonx.data
+# Using the watsonx.data Command Line
 Connectivity to watsonx.data can be done using the following methods:
 
    * Command line interface (CLI)
    * JDBC drivers
    * watsonx.data UI 
 
-### Connecting to watsonx.data and executing queries using CLI
+In this lab you will learn how to use the Command line interface (CLI) to interact with the Presto engine.
 
-Open the watsonx.data CLI using the development directory. Make sure you are the root user. 
-```
-whoami
-```
+### Connecting to watsonx.data
 
-If not, switch to the root user.
-```
-sudo su -
-```
+The examples in the section require that you use either a terminal SSH shell, or the SSH browser to issue commands to the Presto database engine.
+
+Open a terminal window and use the following syntax to connect as the <code style="font-size: medium;color:blue;">watsonx</code> userid.
+
+Connect to the watsonx server using this command in a terminal window
+
+!!! abstract ""
+    ```bash
+    ssh -p port watsonx@region.services.cloud.techzone.ibm.com
+    ```
+
+The port number and server name are provided as part of the TechZone reservation details.
+
+To become the root user, issue the following command.
+
+!!! abstract ""
+    ```bash
+    sudo su -
+    ```
+
+Password for both users is <code style="color:blue;font-size:medium;">watsonx.data</code>.
+
 Change to the development directory.
-```
-cd /root/ibm-lh-dev/bin
-```
-Start the Presto CLI.
-```
-./presto-cli
-```
 
+!!! abstract ""
+    ```bash
+    cd /root/ibm-lh-dev/bin
+    ```
+Start the Presto Command Line interface.
+
+!!! abstract ""
+    ```
+    ./presto-cli
+    ```
 
 The output on your screen will look similar to the following:
 
@@ -48,15 +57,28 @@ If the result set is small, all of the results will display on the screen and no
 When the display shows <code style="color:blue;font-size:medium;">(END)</code> you have reached the bottom of the output. If the display shows a colon (<code style="color:blue;font-size:medium;">:</code>) at the bottom of the screen, you can use the up and down arrow keys to scroll a record at a time, or the Page Up and Page Down keys to scroll a page at a time. To quit viewing the output, press the Q key.
 
 Quit the Presto CLI. The Presto quit command can be used with or without a semicolon.
-```
-quit;
+
+!!! abstract ""
+    ```
+    quit;
+    ```
 
 We are going to inspect the available catalogs in the watsonx.data system. A watsonx.data catalog contains schemas and references a data source via a connector. A connector is like a driver for a database. Watsonx.data connectors are an implementation of Presto’s SPI which allows Presto to interact with a resource. There are several built-in connectors for JMX, Hive, TPCH etc., some of which you will use as part of the labs.
 
-Display the catalogs.
-```
-show catalogs;
-```
+Reconnect to Presto.
+
+!!! abstract ""
+    ```
+    ./presto-cli
+    ```
+
+Display the catalogs in the system.
+
+!!! abstract ""
+    ```
+    show catalogs;
+    ```
+
 <pre style="font-size: small; color: darkgreen; overflow: auto">
     Catalog    
 ---------------
@@ -70,9 +92,12 @@ show catalogs;
 </pre>
 
 Let's look up what schemas are available with any given catalog. We will use the TPCH catalog which is an internal PrestoDB auto-generated catalog and look at the available schemas.
-```
-show schemas in tpch;
-```
+
+!!! abstract ""
+    ```
+    show schemas in tpch;
+    ```
+
 <pre style="font-size: small; color: darkgreen; overflow: auto">
        Schema       
 --------------------
@@ -88,24 +113,31 @@ show schemas in tpch;
  tiny               
 (10 rows)
 </pre>
-Quit the presto-cli interface by executing the "quit;" command.
-```
-quit;
-```
+
+Quit the Presto CLI. 
+
+!!! abstract ""
+    ```
+    quit;
+    ```
 
 You can connect to a specific catalog and schema and look at the tables etc.
-```
-./presto-cli --catalog tpch --schema tiny
-```
+
+!!! abstract ""
+    ```
+    ./presto-cli --catalog tpch --schema tiny
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 presto:tiny>
 </pre>
 You will notice that the Presto prompt includes the name of the schema we are currently connected to.
 
 Look at the available tables in the TPCH catalog under the `tiny` schema.
-```
-show tables;
-```
+
+!!! abstract ""
+    ```
+    show tables;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
   Table   
 ----------
@@ -120,10 +152,12 @@ show tables;
 (8 rows)
 </pre>
 
-Inspect schema of the customer table.
-```
-describe customer;
-```
+Describe the customer table. Note that no catalog or schema name is required.
+
+!!! abstract ""
+    ```
+    describe customer;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
    Column   |     Type     | Extra | Comment 
 ------------+--------------+-------+---------
@@ -139,9 +173,11 @@ describe customer;
 </pre>
 
 You could also use the syntax below to achieve the same result.
-```
-show columns from customer;
-```
+
+!!! abstract ""
+    ```
+    show columns from customer;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Column     |     Type     | Extra | Comment
 -----------+--------------+-------+---------
@@ -156,10 +192,12 @@ comment    | varchar(117) |       |
 (8 rows)
 </pre>
  
-Inspect available functions.
-```
-show functions like 'date%';
-```
+List the function that are available in the system.
+
+!!! abstract ""
+    ```
+    show functions like 'date%';
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
   Function   |       Return Type        |                         Argument Types                         | Function Type | Deterministic |                         Description                         | Variable Arity | Built In | Temporary | Language 
 -------------+--------------------------+----------------------------------------------------------------+---------------+---------------+-------------------------------------------------------------+----------------+----------+-----------+----------
@@ -188,13 +226,18 @@ show functions like 'date%';
 
 </pre>
 Switch to a different schema.
-```
-use sf1;
-```
+
+!!! abstract ""
+    ```
+    use sf1;
+    ```
+
 Display the Tables in the schema.
-```
-show tables;
-```
+
+!!! abstract ""
+    ```
+    show tables;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
   Table   
 ----------
@@ -210,9 +253,11 @@ show tables;
 </pre>
  
 Query data from customer table.
-```
-select * from customer limit 5;
-```
+
+!!! abstract ""
+    ```
+    select * from customer limit 5;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |        name        |                 address                  | nationkey |      phone      | acctbal | mktsegment |                                                comment                                                
 ---------+--------------------+------------------------------------------+-----------+-----------------+---------+------------+-------------------------------------------------------------------------------------------------------
@@ -226,9 +271,10 @@ select * from customer limit 5;
 </pre>
 
 Gather statistics on a given table.
-```
-show stats for customer;
-```
+!!! abstract ""
+    ```
+    show stats for customer;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  column_name |  data_size  | distinct_values_count | nulls_fraction | row_count | low_value | high_value 
 -------------+-------------+-----------------------+----------------+-----------+-----------+------------
@@ -246,6 +292,8 @@ show stats for customer;
 </pre>
 
 Quit Presto.
-```
-quit;
-```
+
+!!! abstract ""
+    ```
+    quit;
+    ```

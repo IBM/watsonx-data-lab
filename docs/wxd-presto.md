@@ -4,6 +4,10 @@ Your TechZone reservation will include the server name and port number to use wh
    * Presto console - https://region.services.cloud.techzone.ibm.com:port
    * Credentials: username: <code style="color:blue;font-size:medium;">ibmlhadmin</code> password: <code style="color:blue;font-size:medium;">password</code>
 
+When you connect to the console, the system will request that you enter a userid and password.
+
+![Browser](wxd-images/watsonx-presto-login.png)
+
 The Presto console allows you to do the following:
 
    * Monitor state of the cluster
@@ -12,7 +16,7 @@ The Presto console allows you to do the following:
    * Data throughput 
    * Query details (text and plan)
 
-**Note**: The Presto console is very valuable when it comes to diagnosing problems with any queries you run in the watsonx.data environment. If a query fails you can find more details in the Presto console using the instructions below.
+!!! note "The Presto console is very valuable when it comes to diagnosing problems with any queries you run in the watsonx.data environment. If a query fails you can find more details in the Presto console using the instructions below."
    
 ![Browser](wxd-images/presto-main.png)
  

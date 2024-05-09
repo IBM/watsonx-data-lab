@@ -2,21 +2,25 @@
 MinIO is a high-performance, S3 compatible object store. Rather than connect to an external S3 object store, we are going to use MinIO locally to run with  watsonx.data.
 
 To connect to MinIO, you will need to extract the MinIO credentials by querying the docker container. You must be the `root` user to issue these commands.
-```
-export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
-echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
-echo "MinIO Password: " $LH_S3_SECRET_KEY
-```
+
+!!! abstract ""
+    ```
+    export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
+    export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+    echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
+    echo "MinIO Password: " $LH_S3_SECRET_KEY
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 MinIO Userid  :  c4643026087cc21989eb5c12
 MinIO Password:  93da45c5af87abd86c9dbc83
 </pre>
 
 You can get all passwords for the system when you are logged in as the <code style="color:blue;font-size:medium;">watsonx</code> user by using the following command.
-```
-cat /certs/passwords
-```
+
+!!! abstract ""
+    ```
+    cat /certs/passwords
+    ```
 Your TechZone reservation will include the server name and port number to use when connecting to the MinIO. The default port number is 9001, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>. Replace these values with those found in your reservation.
 
 Open your browser and navigate to:
@@ -38,22 +42,28 @@ Not all catalogs support creation of schemas - as an example, the TPCH catalog i
 
 Make sure you are connected as the root user and are in the proper directory.
 
-```
-cd /root/ibm-lh-dev/bin
-```
-
+!!! abstract ""
+    ```
+    cd /root/ibm-lh-dev/bin
+    ```
 Login to the Presto CLI.
-```
-./presto-cli --catalog iceberg_data
-```
+
+!!! abstract ""
+    ```
+    ./presto-cli --catalog iceberg_data
+    ```
+
 Create schema <code style="color:blue;font-size:medium;">workshop</code> in catalog<code style="color:blue;font-size:medium;">iceberg_data</code>. Note how we are using the <code style="color:blue;font-size:medium;">iceberg-bucket</code> bucket which you should have seen in the MinIO object browser.
-```
-CREATE SCHEMA IF NOT EXISTS workshop with (location='s3a://iceberg-bucket/');
-```
-Show the schemas available.
-```
-show schemas;
-```
+
+!!! abstract ""
+    ```
+    CREATE SCHEMA IF NOT EXISTS workshop with (location='s3a://iceberg-bucket/');
+    ```
+Show the available schemas.
+!!! abstract ""
+    ```
+    show schemas;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
   Schema  
 ----------
@@ -61,21 +71,29 @@ show schemas;
 (1 row)
 </pre>
 
-Use the workshop schema.
-```
-use workshop;
-```
+Switch to the workshop schema.
+
+!!! abstract ""
+    ```
+    use workshop;
+    ```
+
 ### Creating tables
 
 Create a new Apache Iceberg table using existing data in the sample Customer table as part of the TPCH catalog schema called TINY.
-```
-create table customer as select * from tpch.tiny.customer;
-```
 
-Show the tables.
-```
-show tables;
-```
+Create the customer table.
+
+!!! abstract ""
+    ```
+    create table customer as select * from tpch.tiny.customer;
+    ```
+Show the tables in the schema.
+
+!!! abstract ""
+    ```
+    show tables;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
   Table   
 ----------
@@ -84,9 +102,10 @@ show tables;
 </pre>
 
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+    ```
+    quit;
+    ```
  
 Refresh the Minio screen (see button on the far-right side).
 
@@ -106,28 +125,33 @@ How do we know that this data is based on Apache iceberg? If you open the file u
  
 ### Do I really need Apache Iceberg?
 
-YES, YOU DO! However, it is good to understand why? Metadata is also stored in the Parquet file format but only for the single parquet file. If we add more data/partitions, the data is split into multiple Parquet files, and we don’t have a mechanism to get the table to parquet files mapping. Run the following example to understand this better.
+The following example demonstrates why you need something like Apache Iceberg to manage the files. Metadata is stored in the Parquet file format, but only for the single parquet file. If we add more data/partitions, the data is split into multiple Parquet files, and we don’t have a mechanism to get the table to parquet files mapping. Run the following example to understand this better.
 
 You need to get the access keys for MinIO before running the following lab. Make sure you are still connected as `root`.
-```
-export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
-```
+
+!!! abstract ""
+    ```
+    export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
+    export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+    ```
 Open the developer sandbox to connect to MinIO, download the selected parquet file and inspect the parquet file contents.
-```
-./dev-sandbox.sh
-```
+!!! abstract ""
+    ```
+    ./dev-sandbox.sh
+    ```
 
 Update the Python files to be executable (makes our commands more convenient).
-```
-chmod +x /scripts/*.py
-```
+!!! abstract ""
+    ```
+    chmod +x /scripts/*.py
+    ```
 
 List all files in the object store (MinIO).
-```
-/scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket
-```
 
+!!! abstract ""
+    ```
+    /scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 iceberg-bucket b'customer/data/e9536a5e-14a1-4823-98ed-cc22d6fc38db.parquet' 2023-06-06 14:31:47.778000+00:00 6737d7268fcb3eb459b675f27f716f48 75373 None
 iceberg-bucket b'customer/metadata/00000-e26c56e0-c4d7-4625-8b06-422429f6ba8d.metadata.json' 2023-06-06 14:31:48.629000+00:00 2e722c7dd83c1dd260a7e6c9503c0e04 3272 None
@@ -135,21 +159,25 @@ iceberg-bucket b'customer/metadata/7cb074a4-3da7-4184-9db8-567383bb588a-m0.avro'
 iceberg-bucket b'customer/metadata/snap-6143645832277262458-1-7cb074a4-3da7-4184-9db8-567383bb588a.avro' 2023-06-06 14:31:48.445000+00:00 0c3714299d43ae86a46eabdcaac1351e 3753 None
 </pre>
 
-You can extract the string with the following command.
-```
-PARQUET=$(/scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket | grep -o -m 1 ".*'customer.*parquet" | sed -n "s/.*b'//p")
-```
+You can extract the file name with the following command.
+!!! abstract ""
+    ```
+    PARQUET=$(/scripts/s3-inspect.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket | grep -o -m 1 ".*'customer.*parquet" | sed -n "s/.*b'//p")
+    ```
 
 The file name that is retrieved is substituted into the next command.
-Note: The file name found in $PARQUET will be different on your system.
-```
-/scripts/s3-download.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket --srcFile $PARQUET --destFile /tmp/x.parquet
-```
+
+!!! note "The file name found in $PARQUET will be different on your system."
+!!! abstract ""
+    ```
+    /scripts/s3-download.py --host ibm-lh-minio-svc:9000 --accessKey $LH_S3_ACCESS_KEY --secretKey $LH_S3_SECRET_KEY --bucket iceberg-bucket --srcFile $PARQUET --destFile /tmp/x.parquet
+    ```
  
 Describe the File Contents.
-```
-/scripts/describe-parquet.py /tmp/x.parquet
-```
+!!! abstract ""
+    ```
+    /scripts/describe-parquet.py /tmp/x.parquet
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 ----------------------
 metadata: 
@@ -212,12 +240,13 @@ row group 0, column 1:
 ----------------------
 </pre>
 
-**Note**: In this instance we used an `insert into select * from customer` with no partitioning defined there was only 1 parquet file and only 1 row group. This is not the norm, and we deliberately did this to show you the value of using Apache Iceberg file format which can be used by multiple runtimes to access Iceberg data stored in parquet format and managed by hive metastore.
+!!! note "In this instance we used an `insert into select * from customer` with no partitioning defined there was only 1 parquet file and only 1 row group. This is not the norm, and we deliberately did this to show you the value of using Apache Iceberg file format which can be used by multiple runtimes to access Iceberg data stored in parquet format and managed by hive metastore."
 
 Exit from the Sandbox.
-```
-exit
-```
+!!! abstract ""
+    ```
+    exit
+    ```
 
 ## MinIO CLI
 
@@ -231,18 +260,20 @@ You can use the MinIO CLI from a variety of clients. The MinIO ports are open in
 
 Before running commands against the MinIO server, an alias must be created that includes the access and secret key. The values can be extracted from the system by listing the contents of the `/certs/passwords` file or by running the `passwords` command as the root user.
 
-```
-cat /certs/passwords
-```
+!!! abstract ""
+    ```
+    cat /certs/passwords
+    ```
 
 The values for the MinIO access and secret key can also be exported with the following code:
 
-```
-export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
-echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
-echo "MinIO Password: " $LH_S3_SECRET_KEY
-```
+!!! abstract ""
+    ```
+    export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
+    export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+    echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
+    echo "MinIO Password: " $LH_S3_SECRET_KEY
+    ```
 
 The `alias` command has the following syntax:
 
@@ -263,9 +294,10 @@ If you are using an external client to connect to the MinIO service, you will ne
 
 The alias for local access is found below.
 
-```
-mc alias set watsonxdata http://watsonxdata:9000 $LH_S3_ACCESS_KEY $LH_S3_SECRET_KEY
-```
+!!! abstract ""
+    ```
+    mc alias set watsonxdata http://watsonxdata:9000 $LH_S3_ACCESS_KEY $LH_S3_SECRET_KEY
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Added `watsonxdata` successfully.
 </pre>
@@ -274,9 +306,10 @@ Added `watsonxdata` successfully.
 
 The `mc` command provides us with a number of commands that allows us to manage buckets and files within them. The following command checks to see what buckets currently exist in the system. 
 
-```
-mc ls tree watsonxdata
-```
+!!! abstract ""
+    ```
+    mc ls tree watsonxdata
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 [2023-09-29 14:38:19 EDT]     0B hive-bucket/
 [2023-09-29 14:38:19 EDT]     0B iceberg-bucket/
@@ -284,9 +317,10 @@ mc ls tree watsonxdata
 
 You can view the contents of a bucket by traversing down the path.
 
-```
-mc ls tree watsonxdata/hive-bucket
-```
+!!! abstract ""
+    ```
+    mc ls tree watsonxdata/hive-bucket
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 [2023-10-13 10:34:36 EDT]     0B gosalesdw/
 [2023-10-13 10:34:36 EDT]     0B hive_sql/
@@ -304,17 +338,19 @@ mc mb alias-name/new-bucket
 
 The following code will create a new bucket in the system called `sampledata`.
 
-```
-mc mb watsonxdata/sampledata
-```
+!!! abstract ""
+    ```
+    mc mb watsonxdata/sampledata
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Bucket created successfully `watsonxdata/sampledata`.
 </pre>
 
 We can double check that the bucket it there.
-```
-mc ls tree watsonxdata
-```
+!!! abstract ""
+    ```
+    mc ls tree watsonxdata
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 [2023-09-29 14:38:19 EDT]     0B hive-bucket/
 [2023-09-29 14:38:19 EDT]     0B iceberg-bucket/
@@ -327,9 +363,10 @@ One of the most powerful features of the MinIO CLI is its ability to load data d
 
 The next example will load data into the bucket that was just created. The directory that we will be using to load data from is called `/sampledata` and found in the root directory of the watsonx.data server.
 
-```
-ls /sampledata/csv
-```
+!!! abstract ""
+    ```
+    ls /sampledata/csv
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 gosales  ontime  taxi
 </pre>
@@ -337,18 +374,19 @@ gosales  ontime  taxi
 Next we will load the data from each one of these directories into the `sampledata` bucket. The `mc` command allows you to select which files to place into a bucket, or an entire directory with recursion. In this case we are loading all three directories the files into the bucket. Note the use of the
 `/` at the end of the directory name to prevent the directory name `csv` from being used as the high-level directory name in the target bucket.
 
-```
-mc cp --recursive /sampledata/csv/ watsonxdata/sampledata/
-```
+!!! abstract ""
+    ```
+    mc cp --recursive /sampledata/csv/ watsonxdata/sampledata/
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 ...data/csv/taxi/taxi.csv: 306.16 MiB / 306.16 MiB ━━━━━━━━━━━━━━━━━━ 147.91 MiB/s 2s
 </pre>
 
 We can double-check that our files are there with the `--files` option:
-
-```
-mc tree --files watsonxdata/sampledata/
-```
+!!! abstract ""
+    ```
+    mc tree --files watsonxdata/sampledata/
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 watsonxdata/sampledata/
 ├─ gosales
@@ -375,17 +413,19 @@ watsonxdata/sampledata/
 
 Use the `rb` (Remove bucket) command to remove a bucket and its contents. You can remove individual objects by using the `rm` (Remove) command by fully qualifying the object. The next command will remove the `ontime.csv` file from the `ontime` folder.
 
-```
-mc rm watsonxdata/sampledata/ontime/ontime.csv
-```
+!!! abstract ""
+    ```
+    mc rm watsonxdata/sampledata/ontime/ontime.csv
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Removed `watsonxdata/sampledata/ontime/ontime.csv`.
 </pre>
 
 The delete bucket command will fail if you still have data in the bucket.
-```
-mc rb watsonxdata/sampledata
-``` 
+!!! abstract ""
+    ```
+    mc rb watsonxdata/sampledata
+    ``` 
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 mc: <ERROR> `watsonxdata/sampledata` is not empty. 
 Retry this command with ‘--force’ flag if you want to remove 
@@ -393,9 +433,10 @@ Retry this command with ‘--force’ flag if you want to remove
 </pre>
 
 Adding the `--force` option will remove the bucket and all the data in it. Use with caution!
-```
-mc rb --force watsonxdata/sampledata
-``` 
+!!! abstract ""
+    ```
+    mc rb --force watsonxdata/sampledata
+    ``` 
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Removed `watsonxdata/sampledata` successfully.
 </pre>

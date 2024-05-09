@@ -12,7 +12,7 @@ The Infrastructure manager view should be similar to this screen.
 ![Browser](wxd-images/wxd-intro-infrastructure.png) 
 
 !!! abstract "On the top right-hand corner, select Add Component<span style="color:blue">&rarr;</span>Add Database"
-![Browser](wxd-images/wxd-intro-add-component.png)
+![Browser](wxd-images/watsonx-add-component.png)
 
 The Add database dialog is displayed.
 

@@ -46,7 +46,7 @@ ibm-lh-minio				running
 ## Presto Engine Test
 Check the Presto engine by running an SQL statement. 
 
-!!! note "Java Error Messages"
+!!! warning "Java Error Messages"
       If the Presto engine has not yet started (you didn't run the check-presto command), the next command may result in a useless Java error message. You may need to wait for a minute before attempting to run the statement again.
 
 Check the record count of the customer table. 

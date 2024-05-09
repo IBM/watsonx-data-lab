@@ -1,15 +1,12 @@
-# PrestoDB SQL
+# PrestoDB Command Line Usage
  
-Watsonx.data is based on open source PrestoDB, a distributed query engine that enables querying data stored in open file formats using open table formats for optimization or performance. 
-
 Connectivity to watsonx.data can be done using the following methods:
 
    * Command line interface (CLI)
    * JDBC drivers
    * watsonx.data UI 
 
-This lab will be using the watsonx.data UI to issue the SQL commands. Please make sure to review the [Using the Query Workspace](wxd-query.md) lab before running the examples in this lab.
-
+This lab will be using the watsonx.data Presto Command Line interface to issue the SQL commands. 
 The SQL statements that you will be executing will be displayed in this format:
 
 !!! abstract "Sample SQL"

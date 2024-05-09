@@ -26,4 +26,4 @@ You can access the logon screen of the virtual machine by pressing the VM Remote
 
 Select the <code style="color:blue;font-size:medium;">watsonx</code> user and use <code style="color:blue;font-size:medium;">watsonx.data</code> as the password.
 
-Refer to the section on [VM Remote Console](wxd-reference-vnc.md) for more details.
+Refer to the section on [VM Remote Console](wxd-reference-console.md) for more details.

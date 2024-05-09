@@ -59,7 +59,7 @@ All the commands in the lab can now be run from within this browser rather than 
 
 ## Terminal Window in the VM
 
-If you use the [Remote VM Console](wxd-reference-vnc.md), you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. 
+If you use the [Remote VM Console](wxd-reference-console.md), you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. 
 
 Select the Terminal application in the virtual machine to issue commands. 
 

@@ -4,28 +4,31 @@ Watsonx.data can federate data from other data sources, there are a few out of b
 Open the developer sandbox and use existing scripts to create a PostgreSQL database and add some data.
 
 Switch to the bin directory as the root user.
-
-```
-cd /root/ibm-lh-dev/bin
-```
+!!! abstract ""
+    ```
+    cd /root/ibm-lh-dev/bin
+    ```
 
 Connect to the sandbox.
-```
-./dev-sandbox.sh 
-```
+!!! abstract ""
+    ```
+    ./dev-sandbox.sh 
+    ```
 Create the database.
-```
-/scripts/create_db.sh pgdatadb
-```
+!!! abstract ""
+    ```
+    /scripts/create_db.sh pgdatadb
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 exists result: 
 CREATE DATABASE
 </pre>
 
 Connect to the Database.quit;
-```
-/scripts/runsql.sh pgdatadb
-```
+!!! abstract ""
+    ```
+    /scripts/runsql.sh pgdatadb
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 psql (11.19, server 13.4 (Debian 13.4-4.pgdg110+1))
 WARNING: psql major version 11, server major version 13.
@@ -34,37 +37,43 @@ Type "help" for help.
 </pre>
 
 Create a Table.
-```
-create table t1( c1 int, c2 int);
-```
+!!! abstract ""
+    ```
+    create table t1( c1 int, c2 int);
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 CREATE TABLE
 </pre>
 Insert some sample data.
-```
-insert into t1 values(1,2);
-```
+!!! abstract ""
+    ```
+    insert into t1 values(1,2);
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 INSERT 0 1
 </pre>
 
 Quit Postgres.
-```
-quit
-```
+!!! abstract ""
+    ```
+    quit
+    ```
 
 Quit Sandbox.
-```
-exit
-```
+!!! abstract ""
+    ```
+    exit
+    ```
+
 ### PostgreSQL Properties
 To set up federation, we need to get the credentials for the PostgreSQL database. Use the following command to get the database password.
-```
-export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed 's/.*=//')
-echo "Postgres Userid   : admin"
-echo "Postgres Password : " $POSTGRES_PASSWORD
-echo $POSTGRES_PASSWORD > /tmp/postgres.pw
-```
+!!! abstract ""
+    ```
+    export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed 's/.*=//')
+    echo "Postgres Userid   : admin"
+    echo "Postgres Password : " $POSTGRES_PASSWORD
+    echo $POSTGRES_PASSWORD > /tmp/postgres.pw
+    ```
 Open your browser and navigate to:
 
 
@@ -78,7 +87,7 @@ Navigate to the Infrastructure manager by clicking on the icon below the Home sy
   
 You should see a panel like the following.
 
-![Browser](wxd-images/watsonx-infrastructure-1.png)
+![Browser](wxd-images/wxd-intro-infrastructure.png)
  
 On the top right-hand corner, select Add Component->Add database.
 
@@ -105,6 +114,8 @@ Your screen should look like the one below. You can press the "Test" button to c
 
 The infrastructure screen should now show the Postgres database.
 
+!!! warning "Your infrastructure view may look different than what is shown here. As long as you see the PostgreSQL database in the Infrastructure manager, you have properly added the database."
+
 ![Browser](wxd-images/watsonx-2-infrastructure.png)
  
 What we are currently missing the connection between the Presto engine and the Postgres data in pgdatadb. We must connect the pgdatadb database to the Presto engine. Use your mouse to hover over the pgdatadb icon until you see the Associate connection icon:
@@ -124,22 +135,24 @@ Press the Associate button and the screen will update to show the connection.
 ### Presto Federation
 
 First check to make sure that the Presto engine has finished starting. While the watsonx.data UI has restarted the Presto process, it takes a few seconds to become available.
-
-```
-check_presto
-```
+!!! abstract ""
+    ```
+    check-presto
+    ```
 
 When the command comes back as Ready, you can start using the Presto CLI.
 
 Connect to watsonx.data and try Federation.
-```
-./presto-cli --catalog pgdatadb
-```
+!!! abstract ""
+    ```
+    ./presto-cli --catalog pgdatadb
+    ```
 
 Show the current schemas. 
-```
-show schemas;
-```
+!!! abstract ""
+    ```
+    show schemas;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
        Schema       
 --------------------
@@ -148,13 +161,15 @@ pg_catalog
 (2 rows)
 </pre>
 Use the public schema.
-```
-use public;
-```
+!!! abstract ""
+    ``` 
+    use public;
+    ```
 Select the table we created in Postgres.
-```
-select * from public.t1;
-```
+!!! abstract ""
+    ```
+    select * from public.t1;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  c1 | c2 
 ----+----
@@ -163,9 +178,10 @@ select * from public.t1;
 </pre>
  
 Join with data from other schemas (Sample TPCH+PostgreSQL).
-```
-select t1.*,customer.name from tpch.tiny.customer, pgdatadb.public.t1 limit 10;
-```
+!!! abstract ""
+    ```
+    select t1.*,customer.name from tpch.tiny.customer, pgdatadb.public.t1 limit 10;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 c1 | c2 |        name        
 ----+----+--------------------
@@ -181,6 +197,7 @@ c1 | c2 |        name
 </pre>
 
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+    ```
+    quit;
+    ```

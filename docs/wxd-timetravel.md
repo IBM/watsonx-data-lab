@@ -2,22 +2,25 @@
 Time travel allows you change the view of the data to a previous time. This is not the same as an `AS OF` query commonly used in SQL. The data is rolled back to a prior time.
 
 Let us look at the snapshots available for the customer table in the workshop schema. We currently have just 1 snapshot. First make sure you are in the proper directory.
-```
-cd /root/ibm-lh-dev/bin
-```
+!!! abstract ""
+      ```
+      cd /root/ibm-lh-dev/bin
+      ```
 Connect to Presto using the workshop schema.
-```
-./presto-cli --catalog iceberg_data --schema workshop
-```
+!!! abstract ""
+      ```
+      ./presto-cli --catalog iceberg_data --schema workshop
+      ```
 Check current snapshots – STARTING STATE.
-```
-SELECT 
-   * 
-FROM 
-   iceberg_data.workshop."customer$snapshots" 
-ORDER BY 
-   committed_at;
-```
+!!! abstract ""
+      ```
+      SELECT 
+         * 
+      FROM 
+         iceberg_data.workshop."customer$snapshots" 
+      ORDER BY 
+         committed_at;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
         committed_at         |     snapshot_id     | parent_id | operation |                                               manifest_list                                                |                                                                                                                summary                                                                                                                
 -----------------------------+---------------------+-----------+-----------+------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -25,14 +28,15 @@ ORDER BY
 (1 row)
 </pre>
 Capture the first snapshot ID returned by the SQL statement. You will need this value when you run the rollback command.
-```
-SELECT 
-   snapshot_id 
-FROM 
-   iceberg_data.workshop."customer$snapshots" 
-ORDER BY 
-   committed_at;
-```
+!!! abstract ""
+      ```
+      SELECT 
+         snapshot_id 
+      FROM 
+         iceberg_data.workshop."customer$snapshots" 
+      ORDER BY 
+         committed_at;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
      snapshot_id     
 ---------------------
@@ -41,21 +45,23 @@ ORDER BY
 </pre>
 
 Remember that number that was returned with the query above. Insert the following record to change the customer table in the workshop schema. 
-```
-insert into customer 
-  values(1501,'Deepak','IBM SVL',16,'123-212-3455',
-         123,'AUTOMOBILE','Testing snapshots');
-```
+!!! abstract ""
+      ```
+      insert into customer 
+      values(1501,'Deepak','IBM SVL',16,'123-212-3455',
+               123,'AUTOMOBILE','Testing snapshots');
+      ```
  
 Let us look at the snapshots available for the customer table in the workshop schema. You should have 2 snapshots. 
-```
-SELECT 
-   * 
-FROM 
-   iceberg_data.workshop."customer$snapshots" 
-ORDER BY 
-   committed_at;
-```
+!!! abstract ""
+      ```
+      SELECT 
+         * 
+      FROM 
+         iceberg_data.workshop."customer$snapshots" 
+      ORDER BY 
+         committed_at;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
         committed_at         |     snapshot_id     |      parent_id      | operation |                                               manifest_list                                                |                                                                                                                summary                                                                                                                
 -----------------------------+---------------------+---------------------+-----------+------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,9 +71,10 @@ ORDER BY
 </pre>
 
 Querying the customer table in the workshop schema, we can see the record inserted with name=’Deepak’.
-```
-select * from customer where name='Deepak';
-```
+!!! abstract ""
+      ```
+      select * from customer where name='Deepak';
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |  name  | address | nationkey |    phone     | acctbal | mktsegment |      comment      
 ---------+--------+---------+-----------+--------------+---------+------------+-------------------
@@ -81,9 +88,10 @@ We realize that we don’t want the recent updates or just want to see what the 
 The "x" would get replaced with the <code style="color:blue;font-size:medium;">snapshot_id</code> number that was found in the earlier query. It will be different on your system than the examples above.
 
 Copy the next code segment into Presto.
-```
-CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
-```
+!!! abstract ""
+      ```
+      CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
+      ```
 You will see output similar to the following:
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
@@ -96,9 +104,10 @@ CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
 7230522396120575591
 </pre>
 Now you will need to terminate the command with a `);` to see the final result.
-```
-);
-```
+!!! abstract ""
+      ```
+      );
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 CALL iceberg_data.system.rollback_to_snapshot('workshop','customer',
               -> 7230522396120575591
@@ -109,15 +118,17 @@ CALL
 </pre>
 
 Querying the customer table in the workshop schema, we cannot see the record inserted with name=’Deepak’.
-```
-select * from customer where name='Deepak';
-```
+!!! abstract ""
+      ```
+      select * from customer where name='Deepak';
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |  name  | address | nationkey |    phone     | acctbal | mktsegment |      comment      
 ---------+--------+---------+-----------+--------------+---------+------------+-------------------
 (0 rows)
 </pre>
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+      ```
+      quit;
+      ```

@@ -22,18 +22,20 @@ In the GA version, there will be a user experience to facilitate such setup, how
 Open your browser and navigate to the MinIO console.
    
 Check to see if the MinIO credentials exist in your terminal session.
-```
-printf "\nAccess Key: $LH_S3_ACCESS_KEY \nSecret Key: $LH_S3_SECRET_KEY\n"
-```
+!!! abstract ""
+    ```
+    printf "\nAccess Key: $LH_S3_ACCESS_KEY \nSecret Key: $LH_S3_SECRET_KEY\n"
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Userid  : fcf1ec270e05a5031ca27bc9 
 Password: a671febd9e1e3826cf8cdcf5
 </pre>
 If these values are blank, you need to run the following command.
-```
-export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
-```
+!!! abstract ""
+    ```
+    export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
+    export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+    ```
 Click on the Buckets tab to show the current buckets in the MinIO system.
 
 ![Browser](wxd-images/minio-bucket-1.png)
@@ -57,9 +59,10 @@ Navigate to the Infrastructure manager by clicking on the icon below the Home sy
 ![Browser](wxd-images/watsonx-icon-infra.png)
   
 Get the S3 bucket credentials.
-```
-printf "\nAccess Key: $LH_S3_ACCESS_KEY \nSecret Key: $LH_S3_SECRET_KEY\n"
-```
+!!! abstract ""
+    ```
+    printf "\nAccess Key: $LH_S3_ACCESS_KEY \nSecret Key: $LH_S3_SECRET_KEY\n"
+    ```
 
 Click on the Add component menu and select Add bucket.
 
@@ -103,40 +106,47 @@ Select the <code style="color:blue;font-size:medium;">presto-01</code> engine an
 
 First check to make sure that the Presto engine has finished starting. While the watsonx.data UI has restarted the Presto process, it takes a few seconds to become available.
 
-```
-check_presto
-```
+!!! abstract ""
+    ```
+    check-presto
+    ```
 
 Switch to the bin directory as the root user.
 
-```
-sudo su -
-cd /root/ibm-lh-dev/bin
-```
+!!! abstract ""
+    ```
+    sudo su -
+    cd /root/ibm-lh-dev/bin
+    ```
  
 Connect to Presto using the new customer catalog.
-``` 
-./presto-cli --catalog customer
-```
+!!! abstract ""
+    ``` 
+    ./presto-cli --catalog customer
+    ```
 We will create a schema where we store our table data using the new catalog name we created for the customer bucket.
-```
-CREATE SCHEMA IF NOT EXISTS newworkshop with (location='s3a://customer/');
-```
+!!! abstract ""
+    ```
+    CREATE SCHEMA IF NOT EXISTS newworkshop with (location='s3a://customer/');
+    ```
 Switch to the new schema.
-```
-use newworkshop;
-```
+!!! abstract ""
+    ```
+    use newworkshop;
+    ```
 Use the following SQL to create a new table in the customer bucket.
-```
-create table customer as select * from tpch.tiny.customer;
-```
+!!! abstract ""
+    ```
+    create table customer as select * from tpch.tiny.customer;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 CREATE TABLE: 1500 rows
 </pre>
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+    ```
+    quit;
+    ```
 You can use the Developer sandbox (bin/dev-sandbox.sh), as described in [MinIO UI](wxd-minio.md#do-i-really-need-apache-iceberg), to inspect the Customer bucket with the s3-inspect utility.
 
 It's easier to use the MinIO console to view the bucket instead. Open your browser and navigate to the MinIO console.
@@ -145,4 +155,4 @@ From the main screen select Object Browser and view the contents of the customer
 
 ![Browser](wxd-images/watsonx-add-bucket-6.png) 
 
-**Note**: You can continue to add new buckets when working with the watsonx.data UI. However, if you delete the catalog or bucket in the UI, you may find that you may not be able to re-catalog it. If you find that this happens, create another bucket, or rename the original one if that is possible.
+!!! note "You can continue to add new buckets when working with the watsonx.data UI. However, if you delete the catalog or bucket in the UI, you may find that you may not be able to re-catalog it. If you find that this happens, create another bucket, or rename the original one if that is possible."

@@ -20,4 +20,4 @@ At the bottom of the reservation you will find a button that provides access to 
 
 ![Browser](wxd-images/watsonx-workshop-details-2.png)
 
-The large blue button labelled VM Remote Console will provide access to the Linux operating system that the watsonx.data server is running on. See the section on [VM Remote Console](wxd-reference-vnc.md)
+The large blue button labelled VM Remote Console will provide access to the Linux operating system that the watsonx.data server is running on. See the section on [VM Remote Console](wxd-reference-console.md)

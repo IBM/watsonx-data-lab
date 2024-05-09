@@ -3,18 +3,21 @@
 The Presto System connector provides information and metrics about the currently running Presto cluster. You can use this function to monitor the workloads on the Presto cluster using normal SQL queries.
 
 Make sure you are the `root` user and in the proper development directory.
-```
-cd /root/ibm-lh-dev/bin
-```
+!!! abstract ""
+    ```
+    cd /root/ibm-lh-dev/bin
+    ```
 
 Start the Presto CLI.
-```
-./presto-cli
-```
+!!! abstract ""
+    ```
+    ./presto-cli
+    ```
 What queries are currently running?
-```
-select * from "system".runtime.queries limit 5;
-```
+!!! abstract ""
+    ```
+    select * from "system".runtime.queries limit 5;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
           query_id           |  state   |    user    |      source      |                            query                            | resource_group_id | queued_time_ms | analysis_time_ms |         created         |         started         |     last_heartbeat      |           end           
 -----------------------------+----------+------------+------------------+-------------------------------------------------------------+-------------------+----------------+------------------+-------------------------+-------------------------+-------------------------+-------------------------
@@ -26,9 +29,10 @@ select * from "system".runtime.queries limit 5;
 (5 rows)
 </pre>
 What tasks make up a query and where is the task running?
-```
-select * from "system".runtime.tasks limit 5;
-```
+!!! abstract ""
+    ```
+    select * from "system".runtime.tasks limit 5;
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
                node_id                |              task_id              |       stage_execution_id        |           stage_id            |          query_id           |  state   | splits | queued_splits | running_splits | completed_splits | split_scheduled_time_ms | split_cpu_time_ms | split_blocked_time_ms | raw_input_bytes | raw_input_rows | processed_input_bytes | processed_input_rows | output_bytes | output_rows | physical_written_bytes |         created         |          start          |     last_heartbeat      |           end           
 --------------------------------------+-----------------------------------+---------------------------------+-------------------------------+-----------------------------+----------+--------+---------------+----------------+------------------+-------------------------+-------------------+-----------------------+-----------------+----------------+-----------------------+----------------------+--------------+-------------+------------------------+-------------------------+-------------------------+-------------------------+-------------------------
@@ -41,6 +45,7 @@ select * from "system".runtime.tasks limit 5;
 </pre>
 
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+    ```
+    quit;
+    ```

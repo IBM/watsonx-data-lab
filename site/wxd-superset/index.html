@@ -1340,9 +1340,12 @@
 <p>Apache Superset is not a part of watsonx.data and is only used to demonstrate the capability to connect to watsonx.data from other BI/Reporting tools. You will need to install Apache Superset as part of this lab. The Superset repository needs to be in sync with the image being downloaded, so these libraries cannot be preloaded into this development image.</p>
 <p>Open a terminal window and connect via SSH as the <code>watsonx</code> user. Do not connect as the root user.</p>
 <p>Clone the Apache Superset repository with the git command. This command typically takes less than 1 minute to download the code.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>git clone https://github.com/apache/superset.git
 </code></pre></div>
+</div>
 <p>The <code>docker-compose-non-dev.yml</code> file needs to be updated so that Apache Superset can access the same network that watsonx.data is using. </p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cd ./superset
 cp docker-compose-non-dev.yml docker-compose-non-dev-backup.yml
 
@@ -1355,12 +1358,17 @@ networks:
 EOF
 sed -e &#39;1,/version: &quot;3.7&quot;/ d&#39; docker-compose-non-dev.yml  &gt;&gt; yamlfix.txt
 </code></pre></div>
-<p>We update the Apache Superset code to version <code>2.1.0</code>.
+</div>
+<p>We update the Apache Superset code to version <code>2.1.0</code>.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>sed &#39;s/\${TAG:-latest-dev}/2.1.0/&#39; yamlfix.txt &gt; docker-compose-non-dev.yml
-</code></pre></div></p>
-<p>Use docker-compose to start Apache Superset.
+</code></pre></div>
+</div>
+<p>Use docker-compose to start Apache Superset.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>docker compose -f docker-compose-non-dev.yml up
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <p>The <code>docker compose</code> command will download the necessary code for Apache Superset and start the service. The terminal session will contain the logging information for the service. The process is running in the foreground so you will see all the messages being produced by the program. If you want to stop the service at any time you will need to press CTRL-C. If you close this terminal window at any time, the process will stop.</p>
 <p>When you see "Init Step 4/4", the service is ready for connections.</p>
 <p><img alt="Browser" src="../wxd-images/superset-1.png" /></p>
@@ -1370,10 +1378,12 @@ sed -e &#39;1,/version: &quot;3.7&quot;/ d&#39; docker-compose-non-dev.yml  &gt;
 <p><img alt="Browser" src="../wxd-images/superset-2.png" />
   </p>
 <h3 id="setup-a-database-connection-to-watsonxdata">Setup a Database Connection to watsonx.data</h3>
-<p>Open another terminal window for this next step. Once Apache Superset has started loading examples, you can issue the following command as <code>watsonx</code> or <code>root</code>.
+<p>Open another terminal window for this next step. Once Apache Superset has started loading examples, you can issue the following command as <code>watsonx</code> or <code>root</code>.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>docker cp /certs/lh-ssl-ts.crt superset_app:/tmp/lh-ssl-ts.crt
 </code></pre></div>
-In the Apache Superset console,  press the Settings button on the far right and select Database connections.</p>
+</div>
+<p>In the Apache Superset console,  press the Settings button on the far right and select Database connections.</p>
 <p><img alt="Browser" src="../wxd-images/superset-3.png" /> </p>
 <p>Then select the [+ DATABASE] option on the far-right side of the panel.</p>
 <p><img alt="Browser" src="../wxd-images/superset-4.png" /> </p>
@@ -1381,17 +1391,23 @@ In the Apache Superset console,  press the Settings button on the far right and 
 <p><img alt="Browser" src="../wxd-images/superset-5.png" /></p>
 <p>Select Presto as the database connection type.</p>
 <p><img alt="Browser" src="../wxd-images/superset-6.png" /></p>
-<p>In the SQLALCHEMY URI field, enter the following information to connect to the hive_data catalog which contains the GOSALES, ONTIME, and TAXI data.
+<p>In the SQLALCHEMY URI field, enter the following information to connect to the hive_data catalog which contains the GOSALES, ONTIME, and TAXI data.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>presto://ibmlhadmin:password@ibm-lh-presto-svc:8443/hive_data
-</code></pre></div></p>
-<p>Enter the following information to connect to the iceberg_data catalog which will contain any tables you created when running the examples in the lab.
+</code></pre></div>
+</div>
+<p>Enter the following information to connect to the iceberg_data catalog which will contain any tables you created when running the examples in the lab.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>presto://ibmlhadmin:password@ibm-lh-presto-svc:8443/iceberg_data
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <p>Select the Advanced tab.</p>
 <p><img alt="Browser" src="../wxd-images/superset-7.png" /></p>
-<p>Copy the following information into the security box.
+<p>Copy the following information into the security box.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>{&quot;connect_args&quot;:{&quot;protocol&quot;:&quot;https&quot;,&quot;requests_kwargs&quot;:{&quot;verify&quot;:&quot;/tmp/lh-ssl-ts.crt&quot;}}}
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <p><img alt="Browser" src="../wxd-images/superset-8.png" /></p>
 <p>Press the Connect button to create the connection.</p>
 <h3 id="create-reportschartsdashboards">Create reports/charts/dashboards</h3>
@@ -1416,7 +1432,9 @@ In the Apache Superset console,  press the Settings button on the far right and 
 <p>Now press the CREATE CHART button found at the bottom of the screen.</p>
 <p><img alt="Browser" src="../wxd-images/superset-17.png" /></p>
 <p>Try to create different charts/dashboards if you have time.</p>
-<p><strong>Note</strong>: When you are finished using Apache Superset, press CTRL-C (Control-C) in the terminal window that you used to start it. This will stop the program and release the resources it is using. If you press CTRL-C twice, it immediately kills the program, but it may lose some of the work that you may have done.</p>
+<div class="admonition warning">
+<p class="admonition-title">When you are finished using Apache Superset, press CTRL-C (Control-C) in the terminal window that you used to start it. This will stop the program and release the resources it is using. If you press CTRL-C twice, it immediately kills the program, but it may lose some of the work that you may have done.</p>
+</div>
 <p><img alt="Browser" src="../wxd-images/superset-18.png" /></p>
 
               

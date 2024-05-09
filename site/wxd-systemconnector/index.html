@@ -1278,15 +1278,21 @@
 
 <h1 id="using-presto-system-connector">Using Presto System Connector</h1>
 <p>The Presto System connector provides information and metrics about the currently running Presto cluster. You can use this function to monitor the workloads on the Presto cluster using normal SQL queries.</p>
-<p>Make sure you are the <code>root</code> user and in the proper development directory.
+<p>Make sure you are the <code>root</code> user and in the proper development directory.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cd /root/ibm-lh-dev/bin
-</code></pre></div></p>
-<p>Start the Presto CLI.
+</code></pre></div>
+</div>
+<p>Start the Presto CLI.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>./presto-cli
 </code></pre></div>
-What queries are currently running?
+</div>
+<p>What queries are currently running?</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select * from &quot;system&quot;.runtime.queries limit 5;
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
           query_id           |  state   |    user    |      source      |                            query                            | resource_group_id | queued_time_ms | analysis_time_ms |         created         |         started         |     last_heartbeat      |           end           
 -----------------------------+----------+------------+------------------+-------------------------------------------------------------+-------------------+----------------+------------------+-------------------------+-------------------------+-------------------------+-------------------------
@@ -1297,9 +1303,11 @@ What queries are currently running?
  20230626_185405_00021_4suid | FINISHED | ibmlhadmin | presto-go-client | SHOW TABLES                                                 | [global]          |              0 |               56 | 2023-06-26 18:54:03.542 | 2023-06-26 18:54:03.729 | 2023-06-26 18:54:04.042 | 2023-06-26 18:54:04.041 
 (5 rows)
 </pre>
-<p>What tasks make up a query and where is the task running?
+<p>What tasks make up a query and where is the task running?</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select * from &quot;system&quot;.runtime.tasks limit 5;
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
                node_id                |              task_id              |       stage_execution_id        |           stage_id            |          query_id           |  state   | splits | queued_splits | running_splits | completed_splits | split_scheduled_time_ms | split_cpu_time_ms | split_blocked_time_ms | raw_input_bytes | raw_input_rows | processed_input_bytes | processed_input_rows | output_bytes | output_rows | physical_written_bytes |         created         |          start          |     last_heartbeat      |           end           
 --------------------------------------+-----------------------------------+---------------------------------+-------------------------------+-----------------------------+----------+--------+---------------+----------------+------------------+-------------------------+-------------------+-----------------------+-----------------+----------------+-----------------------+----------------------+--------------+-------------+------------------------+-------------------------+-------------------------+-------------------------+-------------------------
@@ -1311,9 +1319,11 @@ What queries are currently running?
 (5 rows)
 </pre>
 
-<p>Quit Presto.
+<p>Quit Presto.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>quit;
-</code></pre></div></p>
+</code></pre></div>
+</div>
 
               
             </article>

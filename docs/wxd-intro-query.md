@@ -1,6 +1,6 @@
 # Query Workspace
 
-An earlier lab introduced the [Query Workspace](wxd-queryworkspace.md). In this section we will provide some best practices on how to use this workspace to run the SQL examples.
+An earlier lab introduced the [Query Workspace](wxd-intro-queryworkspace.md). In this section we will provide some best practices on how to use this workspace to run the SQL examples.
 
 !!! abstract "Click on the Query Workspace icon on the left side of the screen<br>![icon](wxd-images/wxd-intro-workspace-icon.png)"
 

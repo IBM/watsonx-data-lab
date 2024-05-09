@@ -11,25 +11,28 @@ Let us start with some simple examples of running queries and analyze the execut
 ### Connect to watsonx.data
 
 Make sure you are the root user and change to the development directory.
-```
-cd /root/ibm-lh-dev/bin
-```
+!!! abstract ""
+      ```
+      cd /root/ibm-lh-dev/bin
+      ```
 
 Open the Presto CLI.
 
 **Note**: The `workshop` schema was created as part of the introduction to Minio. If you have not run that lab, the schema will not be available. Please see the [Introduction to Minio](wxd-minio.md#creating-schemas-and-tables) section.
-```
-./presto-cli --catalog iceberg_data --schema workshop
-```
+!!! abstract ""
+      ```
+      ./presto-cli --catalog iceberg_data --schema workshop
+      ```
 
 Run a simple scan query which selects customer names and market segment.
-```
-select 
-   name, mktsegment 
-from 
-   customer 
-limit 3;
-```
+!!! abstract ""
+      ```
+      select 
+         name, mktsegment 
+      from 
+         customer 
+      limit 3;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
         name        | mktsegment 
 --------------------+------------
@@ -39,9 +42,10 @@ limit 3;
 (3 rows)
 </pre>
 To understand the query execution plan we use the explain statement.
-```
-explain select name, mktsegment from customer;
-```
+!!! abstract ""
+      ```
+      explain select name, mktsegment from customer;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 - Output[name, mktsegment] => [name:varchar, mktsegment:varchar]
         Estimates: {rows: 1500 (15.85kB), cpu: 16230.00, memory: 0.00, network: 16230.00}
@@ -55,9 +59,10 @@ explain select name, mktsegment from customer;
 What you see above is the hierarchy of logical operations to execute the query.
 
 Explain the query and focus on IO operations.
-```
-explain (type io) select name, mktsegment from customer;
-```
+!!! abstract ""
+      ```
+      explain (type io) select name, mktsegment from customer;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 {
   "inputTableColumnInfos" : [ {
@@ -74,9 +79,10 @@ explain (type io) select name, mktsegment from customer;
 </pre>
 
 Explain physical execution plan for the query.
-```
-explain (type distributed) select name, mktsegment from customer;
-```
+!!! abstract ""
+      ```
+      explain (type distributed) select name, mktsegment from customer;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Fragment 0 [SINGLE]
     Output layout: [name, mktsegment]
@@ -98,9 +104,10 @@ Fragment 1 [SOURCE]
 A fragment represents a stage of the distributed plan. The Presto scheduler schedules the execution by each stage, and stages can be run on separate instances.
 
 Create explain statement in a visual format.
-```
-explain (format graphviz) select name, mktsegment from customer;
-```
+!!! abstract ""
+      ```
+      explain (format graphviz) select name, mktsegment from customer;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 digraph logical_plan {
 subgraph cluster_0 {
@@ -118,76 +125,88 @@ plannode_2 -> plannode_3;
 </pre>
 We are going to format the output from the explain statement and display it as a graphic. 
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+      ```
+      quit;
+      ```
 Place the explain SQL into a file that will be run as a script by Presto.
-```
-cat <<EOF >/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
-explain (format graphviz) select name, mktsegment from customer;
-EOF
-```
+!!! abstract ""
+      ```
+      cat <<EOF >/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
+      explain (format graphviz) select name, mktsegment from customer;
+      EOF
+      ```
 Run Presto by pointing to the file with the SQL in it.
-```
-./presto-cli --catalog iceberg_data --schema workshop --file /mnt/infra/explain.sql > /tmp/plan.dot
-```
+!!! abstract ""
+      ```
+      ./presto-cli --catalog iceberg_data --schema workshop --file /mnt/infra/explain.sql > /tmp/plan.dot
+      ```
 We need to get rid of headers and stuff that Presto generated when creating the output (there is no way to turn that off).
-```
-cat /tmp/plan.dot | sed 's/""/"/g' | sed -z 's/"//' | sed '$s/"//' > /tmp/fixedplan.dot 
-```
+!!! abstract ""
+      ```
+      cat /tmp/plan.dot | sed 's/""/"/g' | sed -z 's/"//' | sed '$s/"//' > /tmp/fixedplan.dot 
+      ```
 Generate the PNG file from the explain statement.
-```
-dot -Tpng /tmp/fixedplan.dot > /tmp/plan.png
-```
+!!! abstract ""
+      ```
+      dot -Tpng /tmp/fixedplan.dot > /tmp/plan.png
+      ```
 
 Open a separate terminal window and issue the following command (using the SSH port number and server name supplied in your reservation).
 
 #### Mac OSX user
 
-```bash
-scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png && open plan.png
-```
+!!! abstract ""
+      ```bash
+      scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png && open plan.png
+      ```
 
 #### Windows user
 
-```bash
-scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png & start "" "plan.png"
-```
+!!! abstract ""
+      ```bash
+      scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png & start "" "plan.png"
+      ```
 
 #### Linux user (watsonx.data server)
 
-```bash
-eog /tmp/plan.png
-```
+!!! abstract ""
+      ```bash
+      eog /tmp/plan.png
+      ```
 
 ![Browser](wxd-images/presto-explain-1.png)
 
 ### Creating a Table with User-defined Partitions
 Connect to Presto with the Workshop Schema.
-```
-./presto-cli --catalog iceberg_data --schema workshop
-```
+!!! abstract ""
+      ```
+      ./presto-cli --catalog iceberg_data --schema workshop
+      ```
 Create a partitioned table, based on column mktsegment and copy data from TPCH.TINY.CUSTOMER table.
-```
-create table iceberg_data.workshop.part_customer 
-  with (partitioning = array['mktsegment']) 
-  as select * from tpch.tiny.customer;
-```
+!!! abstract ""
+      ```
+      create table iceberg_data.workshop.part_customer 
+         with (partitioning = array['mktsegment']) 
+      as select * from tpch.tiny.customer;
+      ```
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+      ```
+      quit;
+      ```
 
 ### Inspect object store directory/object/file structure
 Open your browser and connect to the MinIO console.
 
 If you forget the userid and password, use the following command to extract them or use the <code style="color:blue;font-size:medium;">passwords</code> command.
-```
-export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
-export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
-echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
-echo "MinIO Password: " $LH_S3_SECRET_KEY
-```
+!!! abstract ""
+      ```
+      export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed 's/.*=//')
+      export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed 's/.*=//')
+      echo "MinIO Userid  : " $LH_S3_ACCESS_KEY
+      echo "MinIO Password: " $LH_S3_SECRET_KEY
+      ```
 Click on the Object browser tab to show the current buckets in the MinIO system.
 
 ![Browser](wxd-images/minio-adv-objects.png)
@@ -208,18 +227,20 @@ Examining the part_customer, you will notice is the data is split into multiple 
 
 ### Predicate query to utilize partitions
 Connect to Presto with the Workshop Schema.
-```
-./presto-cli --catalog iceberg_data --schema workshop
-```
+!!! abstract ""
+      ```
+      ./presto-cli --catalog iceberg_data --schema workshop
+      ```
 Now that have created a partitioned table, we will execute a SQL statement that will make use of this fact.
-```
-select
-   * 
-from 
-   iceberg_data."workshop".part_customer 
-where 
-   mktsegment='MACHINERY';
-```
+!!! abstract ""
+      ```
+      select
+         * 
+      from 
+         iceberg_data."workshop".part_customer 
+      where 
+         mktsegment='MACHINERY';
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |        name        |                 address                  | nationkey |      phone      | acctbal | mktsegment |                                                       comment                                                        
 ---------+--------------------+------------------------------------------+-----------+-----------------+---------+------------+----------------------------------------------------------------------------------------------------------------------
@@ -243,11 +264,12 @@ where
 Due to the partitioning of this table by `mktsegment`, it will completely skip scanning a large percentage of the objects in the object store.
 
 We run an explain against this query using the following command.
-```
-explain (format graphviz) 
-   select * from iceberg_data."workshop".customer
-      where mktsegment='MACHINERY';
-```
+!!! abstract ""
+      ```
+      explain (format graphviz) 
+         select * from iceberg_data."workshop".customer
+            where mktsegment='MACHINERY';
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Query Plan                                                                                                                                                    
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -269,47 +291,55 @@ Query Plan
  }     
 </pre>
 To visualize this, we are going to run this command and place the results into a temporary file. Exit Presto.
-```
-quit;
-```
+!!! abstract ""
+      ```
+      quit;
+      ```
 Place the explain SQL into the following file.
-```
-cat <<EOF >/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
-explain (format graphviz) select * from iceberg_data."workshop".customer where mktsegment='MACHINERY';
-EOF
-```
+!!! abstract ""
+      ```
+      cat <<EOF >/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
+      explain (format graphviz) select * from iceberg_data."workshop".customer where mktsegment='MACHINERY';
+      EOF
+      ```
 Run the Presto command to generate the explain output.
-```
-./presto-cli --catalog iceberg_data --schema workshop --file /mnt/infra/explain.sql > /tmp/plan.dot
-```
+!!! abstract ""
+      ```
+      ./presto-cli --catalog iceberg_data --schema workshop --file /mnt/infra/explain.sql > /tmp/plan.dot
+      ```
 Remove Headers.
-```
-cat /tmp/plan.dot | sed 's/""/"/g' | sed -z 's/"//' | sed '$s/"//' > /tmp/fixedplan.dot
-```
+!!! abstract ""
+      ```
+      cat /tmp/plan.dot | sed 's/""/"/g' | sed -z 's/"//' | sed '$s/"//' > /tmp/fixedplan.dot
+      ```
 Generate the PNG file from the explain statement.
-```
-dot -Tpng /tmp/fixedplan.dot > /tmp/plan.png
-```
+!!! abstract ""
+      ```
+      dot -Tpng /tmp/fixedplan.dot > /tmp/plan.png
+      ```
 
 Open a separate terminal window and issue the following command (using the SSH port number and server name supplied in your reservation).
 
 #### Mac OSX user
 
-```bash
-scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png && open plan.png
-```
+!!! abstract ""
+      ```bash
+      scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png && open plan.png
+      ```
 
 #### Windows user
 
-```bash
-scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png & start "" "plan.png"
-```
+!!! abstract ""
+      ```bash
+      scp -port watsonx@region.services.cloud.techzone.ibm.com:/tmp/plan.png plan.png & start "" "plan.png"
+      ```
 
 #### Linux user (watsonx.data server)
 
-```bash
-eog /tmp/plan.png
-```
+!!! abstract ""
+      ```bash
+      eog /tmp/plan.png
+      ```
 
 ![Browser](wxd-images/presto-explain-2.png)
  
@@ -318,29 +348,32 @@ eog /tmp/plan.png
 This section will create an orders table to test joins and aggregations.
 
 Start Presto CLI with Workshop Schema.
-```
-./presto-cli --catalog iceberg_data --schema workshop
-```
+!!! abstract ""
+      ```
+      ./presto-cli --catalog iceberg_data --schema workshop
+      ```
 
 Create the Orders Table.
-```
-create table iceberg_data.workshop.orders as 
-  select * from tpch.tiny.orders;
-```
+!!! abstract ""
+      ```
+      create table iceberg_data.workshop.orders as 
+         select * from tpch.tiny.orders;
+      ```
 <pre style="font-size: small; color: darkgreen; overflow: scroll">
 CREATE TABLE: 15000 rows
 </pre>
 
 Use a Windowing function.
-```
-SELECT 
-   orderkey, clerk, totalprice, 
-   rank() OVER (PARTITION BY clerk ORDER BY totalprice DESC) AS rnk 
-FROM 
-   orders 
-ORDER BY 
-   clerk, rnk;
-```
+!!! abstract ""
+      ```
+      SELECT 
+         orderkey, clerk, totalprice, 
+         rank() OVER (PARTITION BY clerk ORDER BY totalprice DESC) AS rnk 
+      FROM 
+         orders 
+      ORDER BY 
+         clerk, rnk;
+      ```
 
 Try to write a window function to show the custkey, orderdate, totalprice and priororder. The output should look like this.
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -366,18 +399,21 @@ custkey | orderdate  | totalprice | priororder
 ## Prepared statements
 
 Save a query as a prepared statement.
-```
-prepare 
-   customer_by_segment
-from 
-   select * from customer where mktsegment=?;
-```
+!!! abstract ""
+      ```
+      prepare 
+         customer_by_segment
+      from 
+         select * from customer where mktsegment=?;
+      ```
 Execute prepared statement using parameters.
-```
-execute customer_by_segment using 'FURNITURE';
-```
+!!! abstract ""
+      ```
+      execute customer_by_segment using 'FURNITURE';
+      ```
 **Note**: This is only valid for the active session.
 Quit Presto.
-```
-quit;
-```
+!!! abstract ""
+      ```
+      quit;
+      ```

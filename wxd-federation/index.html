@@ -1340,22 +1340,30 @@
 <p>Watsonx.data can federate data from other data sources, there are a few out of box connectors and one could create additional connectors using the SDK if need be (This does involve some programming and testing effort) and not a trivial exercise. We will use the existing PostgreSQL instance, add some data, and test the federation capabilities. </p>
 <p>Open the developer sandbox and use existing scripts to create a PostgreSQL database and add some data.</p>
 <p>Switch to the bin directory as the root user.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cd /root/ibm-lh-dev/bin
 </code></pre></div>
-<p>Connect to the sandbox.
+</div>
+<p>Connect to the sandbox.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>./dev-sandbox.sh 
 </code></pre></div>
-Create the database.
+</div>
+<p>Create the database.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>/scripts/create_db.sh pgdatadb
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 exists result: 
 CREATE DATABASE
 </pre>
 
-<p>Connect to the Database.quit;
+<p>Connect to the Database.quit;</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>/scripts/runsql.sh pgdatadb
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 psql (11.19, server 13.4 (Debian 13.4-4.pgdg110+1))
 WARNING: psql major version 11, server major version 13.
@@ -1363,33 +1371,43 @@ WARNING: psql major version 11, server major version 13.
 Type "help" for help.
 </pre>
 
-<p>Create a Table.
+<p>Create a Table.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>create table t1( c1 int, c2 int);
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 CREATE TABLE
 </pre>
-<p>Insert some sample data.
+<p>Insert some sample data.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>insert into t1 values(1,2);
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 INSERT 0 1
 </pre>
 
-<p>Quit Postgres.
+<p>Quit Postgres.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>quit
-</code></pre></div></p>
-<p>Quit Sandbox.
+</code></pre></div>
+</div>
+<p>Quit Sandbox.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>exit
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <h3 id="postgresql-properties">PostgreSQL Properties</h3>
-<p>To set up federation, we need to get the credentials for the PostgreSQL database. Use the following command to get the database password.
+<p>To set up federation, we need to get the credentials for the PostgreSQL database. Use the following command to get the database password.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed &#39;s/.*=//&#39;)
 echo &quot;Postgres Userid   : admin&quot;
 echo &quot;Postgres Password : &quot; $POSTGRES_PASSWORD
 echo $POSTGRES_PASSWORD &gt; /tmp/postgres.pw
 </code></pre></div>
-Open your browser and navigate to:</p>
+</div>
+<p>Open your browser and navigate to:</p>
 <ul>
 <li>Watsonx.data UI - https://region.services.cloud.techzone.ibm.com:port</li>
 <li>Credentials: username: <code style="color:blue;font-size:medium;">ibmlhadmin</code> password: <code style="color:blue;font-size:medium;">password</code></li>
@@ -1397,7 +1415,7 @@ Open your browser and navigate to:</p>
 <p>Navigate to the Infrastructure manager by clicking on the icon below the Home symbol.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-icon-infra.png" /></p>
 <p>You should see a panel like the following.</p>
-<p><img alt="Browser" src="../wxd-images/watsonx-infrastructure-1.png" /></p>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-infrastructure.png" /></p>
 <p>On the top right-hand corner, select Add Component-&gt;Add database.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-add-component.png" /></p>
 <p>The Add database dialog is displayed.</p>
@@ -1416,6 +1434,9 @@ Open your browser and navigate to:</p>
 <p>Your screen should look like the one below. You can press the "Test" button to check to see if the connection settings are correct. Once you are satisfied with the settings, press "Add". </p>
 <p><img alt="Browser" src="../wxd-images/watsonx-add-pgdatadb.png" /></p>
 <p>The infrastructure screen should now show the Postgres database.</p>
+<div class="admonition warning">
+<p class="admonition-title">Your infrastructure view may look different than what is shown here. As long as you see the PostgreSQL database in the Infrastructure manager, you have properly added the database.</p>
+</div>
 <p><img alt="Browser" src="../wxd-images/watsonx-2-infrastructure.png" /></p>
 <p>What we are currently missing the connection between the Presto engine and the Postgres data in pgdatadb. We must connect the pgdatadb database to the Presto engine. Use your mouse to hover over the pgdatadb icon until you see the Associate connection icon:</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-pgdatadb-associate-icon.png" /></p>
@@ -1426,15 +1447,21 @@ Open your browser and navigate to:</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-3-infrastructure.png" /></p>
 <h3 id="presto-federation">Presto Federation</h3>
 <p>First check to make sure that the Presto engine has finished starting. While the watsonx.data UI has restarted the Presto process, it takes a few seconds to become available.</p>
-<div class="highlight"><pre><span></span><code>check_presto
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>check-presto
 </code></pre></div>
+</div>
 <p>When the command comes back as Ready, you can start using the Presto CLI.</p>
-<p>Connect to watsonx.data and try Federation.
+<p>Connect to watsonx.data and try Federation.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>./presto-cli --catalog pgdatadb
-</code></pre></div></p>
-<p>Show the current schemas. 
+</code></pre></div>
+</div>
+<p>Show the current schemas. </p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>show schemas;
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
        Schema       
 --------------------
@@ -1442,21 +1469,27 @@ pg_catalog
  public             
 (2 rows)
 </pre>
-<p>Use the public schema.
+<p>Use the public schema.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>use public;
 </code></pre></div>
-Select the table we created in Postgres.
+</div>
+<p>Select the table we created in Postgres.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select * from public.t1;
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  c1 | c2 
 ----+----
   1 |  2 
 (1 row)
 </pre>
-<p>Join with data from other schemas (Sample TPCH+PostgreSQL).
+<p>Join with data from other schemas (Sample TPCH+PostgreSQL).</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select t1.*,customer.name from tpch.tiny.customer, pgdatadb.public.t1 limit 10;
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 c1 | c2 |        name        
 ----+----+--------------------
@@ -1471,9 +1504,11 @@ c1 | c2 |        name
 (10 rows)
 </pre>
 
-<p>Quit Presto.
+<p>Quit Presto.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>quit;
-</code></pre></div></p>
+</code></pre></div>
+</div>
 
               
             </article>

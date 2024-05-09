@@ -1036,26 +1036,6 @@
     Start the IBM tools Container
   </a>
   
-    <nav class="md-nav" aria-label="Start the IBM tools Container">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#watsonxdata-version-103" class="md-nav__link">
-    Watsonx.data Version 1.0.3
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#watsonxdata-version-110" class="md-nav__link">
-    Watsonx.data Version 1.1.0
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1359,26 +1339,6 @@
     Start the IBM tools Container
   </a>
   
-    <nav class="md-nav" aria-label="Start the IBM tools Container">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#watsonxdata-version-103" class="md-nav__link">
-    Watsonx.data Version 1.0.3
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#watsonxdata-version-110" class="md-nav__link">
-    Watsonx.data Version 1.1.0
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1405,16 +1365,21 @@
 <h1 id="ingesting-data">Ingesting Data</h1>
 <p>In this lab we will use the ingest tool (lh-tool) alongside the IBM watsonx.data developer edition that is running in this lab. The Ingest tool is a separate install and currently needs to be downloaded after IBM watsonx.data is started. The lab image contains a copy of this code, so you will not need to download it.</p>
 <p>In addition, there is a staging file (yellowtaxi-parquet) found in the sample data directory that will be used for loading data into the system.</p>
-<p>As the <code>root</code> user, switch to the client bin directory.
+<p>As the <code>root</code> user, switch to the client bin directory.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cd /root/ibm-lh-client/bin
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <h3 id="ingest-data-into-the-ibm-watsonxdata">Ingest data into the IBM watsonx.data</h3>
-<p>Before running the utility, we need to retrieve several credentials for MinIO and the keystore password. 
+<p>Before running the utility, we need to retrieve several credentials for MinIO and the keystore password. </p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>export LH_S3_ACCESS_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_ACCESS_KEY | sed &#39;s/.*=//&#39;)
 export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET_KEY | sed &#39;s/.*=//&#39;)
 export LH_KEYSTORE_PASSWORD=$(docker exec ibm-lh-presto printenv | grep LH_KEYSTORE_PASSWORD | sed &#39;s/.*=//&#39;)
 </code></pre></div>
-We need to generate three export lines and create a directory that will be used later in another script. The <code>staging</code> directory is used to move files between this system and the docker container that the <code>ibm-lh</code> tool is running in.
+</div>
+<p>We need to generate three export lines and create a directory that will be used later in another script. The <code>staging</code> directory is used to move files between this system and the docker container that the <code>ibm-lh</code> tool is running in.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>export staging=/root/ibm-lh-client/localstorage/volumes/infra/staging
 
 mkdir -p ${staging}
@@ -1425,11 +1390,14 @@ export secret_key=$LH_S3_SECRET_KEY
 export keystore_password=$LH_KEYSTORE_PASSWORD
 EOF
 chmod +x ${staging}/keys.sh
-</code></pre></div></p>
-<p>A copy of the MinIO SSL certificate needs to be copied from the docker container. In addition, the file that we want loaded into watsonx.data will be moved into the staging file directory. 
+</code></pre></div>
+</div>
+<p>A copy of the MinIO SSL certificate needs to be copied from the docker container. In addition, the file that we want loaded into watsonx.data will be moved into the staging file directory. </p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>docker cp ibm-lh-presto:/mnt/infra/tls/lh-ssl-ts.jks ${staging}/lh-ssl-ts.jks
 \cp -f /sampledata/yellow_tripdata_2022-01.parquet ${staging}/.
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <h3 id="create-a-hive-schema-for-staging-the-ingest-file">Create a hive schema for staging the ingest file</h3>
 <p>Before ingesting the file, we need to create a new schema that we will use for the table being loaded. Your TechZone reservation will include the server name and port number to connect to the watsonx.data UI. </p>
 <p>In the watsonx.data UI select the Data Explorer.</p>
@@ -1447,9 +1415,11 @@ chmod +x ${staging}/keys.sh
 <p>You should see the new <code>ingest</code> schema in the navigator screen. </p>
 <p><img alt="Browser" src="../wxd-images/watsonx-new-ingest.png" /></p>
 <h3 id="start-the-ibm-tools-container">Start the IBM tools Container</h3>
-<p>To access the tools container, we issue the <code>ibm-lh</code> command with the <code>data-load</code> option.
+<p>To access the tools container, we issue the <code>ibm-lh</code> command with the <code>data-load</code> option.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>./ibm-lh data-copy
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 ///////////////////////////////////////
 ///////////////////////////////////////
@@ -1461,46 +1431,18 @@ chmod +x ${staging}/keys.sh
 ///////////////////////////////////////
 ///////////////////////////////////////
 </pre>
-<p>Once inside the utility, you can use the following command to get more details on the <code>data-copy</code> option.
+<p>Once inside the utility, you can use the following command to get more details on the <code>data-copy</code> option.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>ibm-lh data-copy --help
-</code></pre></div></p>
-<p>Exit from the tools container by using the <code>exit</code> command.
-<div class="highlight"><pre><span></span><code>exit
-</code></pre></div></p>
-<p>The following script is used to ingest the taxi data (yellow_tripdata_2022_01) into watsonx.data. Choose the script which corresponds to the release of watsonx.data that you are currently running. </p>
-<h4 id="watsonxdata-version-103">Watsonx.data Version 1.0.3</h4>
-<div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF &gt; ${staging}/ingest-local.sh
-#!/bin/bash
-dir=/mnt/infra/staging
-cd \${dir}
-source ./keys.sh
-table_name=&quot;iceberg_data.ingest.yellow_tripdata_2022_01_localfile&quot;
-file=&quot;yellow_tripdata_2022-01.parquet&quot;
-
-ibm-lh data-copy \\
-   --source-data-files \${dir}/\${file} \\
-   --target-tables \${table_name} \\
-   --ingestion-engine-endpoint &quot;hostname=ibm-lh-presto-svc,port=8443&quot; \\
-   --staging-location s3://iceberg-bucket/ingest/ \
-   --staging-hive-catalog hive_data \
-   --staging-hive-schema staging \
-   --staging-s3-creds \\
-&quot;AWS_SECRET_ACCESS_KEY=\${secret_key}\\
-,AWS_ACCESS_KEY_ID=\${access_key}\\
-,AWS_REGION=us-east-1\\
-,BUCKET_NAME=iceberg-bucket\\
-,ENDPOINT_URL=http://ibm-lh-minio:9000&quot; \\
-    --create-if-not-exist \\
-    --trust-store-path \${dir}/lh-ssl-ts.jks \\
-    --trust-store-password \${keystore_password} \\
-    --dbuser ibmlhadmin \\
-    --dbpassword password
-EOF
-sed -i &#39;/^$/d&#39; ${staging}/ingest-local.sh
-chmod +x ${staging}/ingest-local.sh
 </code></pre></div>
-<h4 id="watsonxdata-version-110">Watsonx.data Version 1.1.0</h4>
-<p>In version 1.1.0, the <code>--staging-s3-creds</code> are replaced with an environment variable called <code>STAGING_S3_CREDS</code>.</p>
+</div>
+<p>Exit from the tools container by using the <code>exit</code> command.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>exit
+</code></pre></div>
+</div>
+<p>The following script is used to ingest the taxi data (yellow_tripdata_2022_01) into watsonx.data. </p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF &gt; ${staging}/ingest-local.sh
 #!/bin/bash
 dir=/mnt/infra/staging
@@ -1513,7 +1455,6 @@ export STAGING_S3_CREDS=&quot;AWS_SECRET_ACCESS_KEY=\${secret_key}\\
 ,AWS_REGION=us-east-1\\
 ,BUCKET_NAME=iceberg-bucket\\
 ,ENDPOINT_URL=http://ibm-lh-minio:9000&quot;
-
 ibm-lh data-copy \\
    --source-data-files \${dir}/\${file} \\
    --target-tables \${table_name} \\
@@ -1530,13 +1471,18 @@ EOF
 sed -i &#39;/^$/d&#39; ${staging}/ingest-local.sh
 chmod +x ${staging}/ingest-local.sh
 </code></pre></div>
+</div>
 <h3 id="start-the-ingest-process">Start the Ingest Process</h3>
-<p>Start the <code>ibm-lh</code> container again:
+<p>Start the <code>ibm-lh</code> container again:</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>./ibm-lh data-copy
-</code></pre></div></p>
-<p>Now run the ingest job inside the tool container.
+</code></pre></div>
+</div>
+<p>Now run the ingest job inside the tool container.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>/mnt/infra/staging/ingest-local.sh
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Start data migration
 Ingesting SECTION: cmdline
@@ -1553,10 +1499,12 @@ Current State: 100% FINISHED
 Done ingesting into table: ingest.yellow_tripdata_2022_01_localfile
 Complete migration
 </pre>
-<p>After ingesting the data, exit the docker container.
+<p>After ingesting the data, exit the docker container.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>exit
 </code></pre></div>
-Refresh the IBM watsonx.data UI to view the iceberg_data catalog in the Data Explorer.</p>
+</div>
+<p>Refresh the IBM watsonx.data UI to view the iceberg_data catalog in the Data Explorer.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-de-iceberg-1.png" /></p>
 <p>Click on the yellow_tripdata table to see the schema definition.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-de-iceberg-2.png" /></p>
@@ -1570,7 +1518,7 @@ Refresh the IBM watsonx.data UI to view the iceberg_data catalog in the Data Exp
 <p><img alt="Browser" src="../wxd-images/watsonx-de-iceberg-5.png" /></p>
 <p>Now execute the query to see what the results are.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-de-iceberg-6.png" /></p>
-<p>That completes the labs! Congratulations you are done! </p>
+<p>That completes the labs! Congratulations you are done!</p>
 
               
             </article>

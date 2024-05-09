@@ -831,20 +831,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../wxd-watsonui/" class="md-nav__link">
-        watsonx.data UI
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../wxd-presto/" class="md-nav__link">
         Presto UI
       </a>
@@ -1461,9 +1447,9 @@ User account management and access management varies between the different deplo
 <div class="admonition abstract">
 <p class="admonition-title">Click on the Access Control icon on the left side of the screen</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-accessicon.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-accessicon.png" /></p>
 <p>A list of objects that make up the watsonx.data infrastructure are displayed.</p>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-infrastructure.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-infrastructure.png" /></p>
 <p>You can see that the objects are made up of:</p>
 <ul>
 <li>Engines</li>
@@ -1477,14 +1463,16 @@ from object storage).</p>
 <div class="admonition abstract">
 <p class="admonition-title">Select the presto-01 engine (highlighted in red above) to view the current users that have access to the engine</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-currentengine.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentengine.png" /></p>
 <p>At this point, only the administrative user (ibmlhadmin) can use the Presto engine. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Click on the Add Access button to add a new authorized user to the list</p>
 </div>
 <p><img alt="Browser" src="../wxd-images/wxd-intro-add-access.png" /></p>
 <div class="admonition error">
-<p class="admonition-title">If you do not see the watsonx userid, or the dropdown is blank, refresh the browser screen</p>
+<p class="admonition-title">If you do not see the watsonx userid, or the dropdown is blank, issue the following command in a terminal window. Once the user is added, refresh the browser window and then click on the Add Access button again.</p>
+<div class="highlight"><pre><span></span><code>sudo /root/ibm-lh-dev/bin/user-mgmt add-user watsonx User watsonx.data   
+</code></pre></div>
 </div>
 <p>The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant User privileges. </p>
 <div class="admonition abstract">
@@ -1498,9 +1486,9 @@ from object storage).</p>
 <div class="admonition abstract">
 <p class="admonition-title">Click on the iceberg_data line to confirm that watsonx has access</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-currentcatalog.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentcatalog.png" /></p>
 <p>You should see that <code>watsonx</code> has already been granted access to the catalog. </p>
-<p><img alt="Browser" src="../wxd-images/wxd-intro-access-currentcataloguser.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentcataloguser.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Close the dialog to return to the Access control screen</p>
 </div>
@@ -1508,7 +1496,7 @@ from object storage).</p>
 <div class="admonition abstract">
 <p class="admonition-title">Click on iceberg-bucket to view the access control</p>
 </div>
-<p><img alt="Browser" src="../wxd-images/wxd-intro-access-currentbucket.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentbucket.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Close the dialog to return to the Access control dialog</p>
 </div>
@@ -1517,12 +1505,12 @@ from object storage).</p>
 <div class="admonition abstract">
 <p class="admonition-title">Click on the Policy tab to display the current policies in place (there should be none)</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policies.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policies.png" /></p>
 <p>The Add Policy button is highlighted on the far right side of the screen. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Press the Add Policy button to display the new Access Control Policy dialog</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-newpolicy.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-newpolicy.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Fill in the following fields with these values</p>
 <ul>
@@ -1531,12 +1519,12 @@ from object storage).</p>
 <li>Policy status: active</li>
 </ul>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policy-1.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-1.png" /></p>
 <p>You can always activate a policy after you have created it. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Click Next</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policy-2.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-2.png" /></p>
 <p>Here we need to select which catalog to use and then the schemas that the user will be able to access.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Select hive_data catalog, and then the ontime schema</p>
@@ -1545,7 +1533,7 @@ from object storage).</p>
 <p class="admonition-title">If you do not see any values being populated on the screen, refresh the browser</p>
 </div>
 <p>After selecting the schema, a set of tables associated with the schema will be listed.</p>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policy-3.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-3.png" /></p>
 <p>You can choose which tables can be searched. If you choose an individual table, you can restrict which columns can be searched. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Select the ontime table and then select the following columns (you will need to scroll down the page)</p>
@@ -1557,16 +1545,16 @@ from object storage).</p>
 <li><code>destairportid</code></li>
 </ul>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policy-4.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-4.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Press the Next button when all columns are selected</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policy-5.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-5.png" /></p>
 <p>The Rules dialog allows you to fine-tune what actions can be done by a user against the data. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Press the Add Rule button to display the Add Rule dialog</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policy-6.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-6.png" /></p>
 <p>Rules can be used to <strong>Allow</strong> actions or to <strong>Deny</strong> actions. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Allow watsonx to SELECT data from the data, but with no other options</p>
@@ -1575,20 +1563,20 @@ from object storage).</p>
 <div class="admonition abstract">
 <p class="admonition-title">Make sure to select watsonx as the user</p>
 </div>
-<p><img alt="Browser" src="../wxd-images/wxd-intro-access-policy-7.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-7.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Press the Add button</p>
 </div>
-<p><img alt="Browser" src="../wxd-images/wxd-intro-access-policy-8.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-8.png" /></p>
 <p>You can continue to add additional rules to the list. Since we only want the one rule, select the Review button.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Press the Review button</p>
 </div>
-<p><img alt="Browser" src="../wxd-images/wxd-intro-access-policy-9.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-9.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Confirm that the data objects and rules look correct then press the Create button</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-access-policy-10.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-10.png" /></p>
 <p>The <code>selectflights</code> policy is now in place and is actively enforced. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Press the Query Workspace Icon</p>
@@ -1597,19 +1585,19 @@ from object storage).</p>
 <div class="admonition abstract">
 <p class="admonition-title">Expand the ontime schema to view the tables and the columns that are available in the ontime table</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-admin-view.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-admin-view.png" /></p>
 <p>When you connect as <code>watsonx</code>, you will be able to compare what objects can be accessed from that userid.</p>
 <h3 id="testing-policy-enforcement">Testing Policy Enforcement</h3>
 <p>To test whether the rules are enforced, you will need to log out of the current watsonx.data UI session. At the top of the Query workspace screen, you will see the user icon on the top right. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Click on the user icon to display the logout dialog</p>
 </div>
-<p><img alt="Browser" src="../wxd-images/wxd-intro-access-policy-11.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-11.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Log out to the main watsonx.data UI screen</p>
 </div>
 <p>You will be prompted to confirm log out.</p>
-<p><img alt="Browser" src="wxd-images/wxd-intro-logout.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-logout.png" /></p>
 <p>The log in dialog should be displayed.</p>
 <p><img alt="Browser" src="../wxd-images/wxd-intro-login.png" /></p>
 <div class="admonition abstract">
@@ -1624,7 +1612,7 @@ from object storage).</p>
 <div class="admonition abstract">
 <p class="admonition-title">Navigate to the SQL icon and then select hive_data <span style="color:blue">&rarr;</span> ontime <span style="color:blue">&rarr;</span> ontime</p>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-policy.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy.png" /></p>
 <p>You should notice that <code>watsonx</code> was restricted to seeing only the <code>ontime</code> schema in the <code>hive_data</code> catalog. In addition, the user was restricted to accessing one of the tables (<code>ontime</code>) and 5 columns. Attempting to run a SELECT statement against all the data will result in a policy error.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Enter this text into the SQL window and Run the code</p>
@@ -1636,7 +1624,7 @@ LIMIT
   10;
 </code></pre></div>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-policy-error.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy-error.png" /></p>
 <p>Correcting the SQL to include only permitted columns results in an answer set.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Enter this text into the SQL window and Run the code</p>
@@ -1648,7 +1636,7 @@ LIMIT
   10;
 </code></pre></div>
 </div>
-<p><img alt="Browser" src="wxd-images/wxd-intro-policy-okay.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy-okay.png" /></p>
 <p>The policy rules have been enforced for <code>watsonx</code>, preventing them from viewing any other schemas or tables in the system. In addition, the SQL that they could execute was restricted to specific columns in the table.</p>
 <p>Before moving onto any other sections, make sure to log out as <code>watsonx</code> and reconnect as the <code>ibmlhadmin</code> user.</p>
 <div class="admonition abstract">
@@ -1659,9 +1647,9 @@ LIMIT
 <p class="admonition-title">Log out to the main watsonx.data UI screen</p>
 </div>
 <p>You will be prompted to confirm log out.</p>
-<p><img alt="Browser" src="wxd-images/wxd-intro-logout.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-logout.png" /></p>
 <p>The log in dialog should be displayed.</p>
-<p><img alt="Browser" src="../wxd-images/wxd-intro-login.png" /></p>
+<p><img alt="Browser" src="../wxd-images/watsonx-login.png" /></p>
 <div class="admonition abstract">
 <p class="admonition-title">Enter the credentials for the ibmlhadmin user and press Log in</p>
 <ul>
@@ -1686,7 +1674,7 @@ LIMIT
 </ul>
 <p>For the purposes of this lab, we are going to use a Jupyter notebook that was specifically created for managing users.</p>
 <div class="admonition abstract">
-<p class="admonition-title">Find the URL in your reservation that reads Jupyter Notebook - Server: http://na4.services.cloud.techzone.ibm.com:xxxx/notebooks/Administration.ipynb and click on it</p>
+<p class="admonition-title">Find the URL in your reservation that reads Jupyter Notebook - Server: http://region.services.cloud.techzone.ibm.com:xxxx/notebooks/Table_of_Contents.ipynb and click on it</p>
 </div>
 <p>The initial screen will request that you enter a password.</p>
 <p>The password is <code style="color:blue;font-size:medium;">watsonx.data</code>.</p>
@@ -1694,7 +1682,9 @@ LIMIT
 <p class="admonition-title">Enter watsonx.data as the password</p>
 </div>
 <p><img alt="Browser" src="../wxd-images/wxd-intro-jupyter-logon.png" /> </p>
-<p>Once you have authenticated, the Administration notebook is displayed.</p>
+<p>Once you have authenticated, the Table of Contents is displayed.</p>
+<p><img alt="Browser" src="../wxd-images/jupyter-toc.png" /> </p>
+<p>Click on the Arrow on the User Administration tile. The Administration notebook is displayed.</p>
 <p><img alt="Browser" src="../wxd-images/wxd-intro-jupyter-admin.png" /> </p>
 <p>A Jupyter notebook contains multiple "cells" which can contain a couple of different objects:</p>
 <ul>

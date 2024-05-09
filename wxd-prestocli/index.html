@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#watsonxdata-introduction" class="md-skip">
+        <a href="#using-the-watsonxdata-command-line" class="md-skip">
           Skip to content
         </a>
       
@@ -760,22 +760,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-watsonxdata" class="md-nav__link">
-    Using watsonx.data
+  <a href="#connecting-to-watsonxdata" class="md-nav__link">
+    Connecting to watsonx.data
   </a>
-  
-    <nav class="md-nav" aria-label="Using watsonx.data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#connecting-to-watsonxdata-and-executing-queries-using-cli" class="md-nav__link">
-    Connecting to watsonx.data and executing queries using CLI
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -783,20 +770,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../wxd-watsonui/" class="md-nav__link">
-        watsonx.data UI
-      </a>
     </li>
   
 
@@ -1329,22 +1302,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#using-watsonxdata" class="md-nav__link">
-    Using watsonx.data
+  <a href="#connecting-to-watsonxdata" class="md-nav__link">
+    Connecting to watsonx.data
   </a>
-  
-    <nav class="md-nav" aria-label="Using watsonx.data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#connecting-to-watsonxdata-and-executing-queries-using-cli" class="md-nav__link">
-    Connecting to watsonx.data and executing queries using CLI
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1362,48 +1322,62 @@
                 
 
 
-<h1 id="watsonxdata-introduction">Watsonx.data Introduction</h1>
-<p>Watsonx.data is based on open source PrestoDB, a distributed query engine that enables querying data stored in open file formats using open table formats for optimization or performance. Some of the characteristics which you will learn and see in action include:</p>
-<ul>
-<li>Compute processing is performed in memory and in parallel.</li>
-<li>Data is pipelined between query stages and over the network reducing latency overhead that one would have if disk I/O were involved.</li>
-</ul>
-<p>All the below tasks will be done using the Developer edition of watsonx.data.</p>
-<h2 id="using-watsonxdata">Using watsonx.data</h2>
+<h1 id="using-the-watsonxdata-command-line">Using the watsonx.data Command Line</h1>
 <p>Connectivity to watsonx.data can be done using the following methods:</p>
 <ul>
 <li>Command line interface (CLI)</li>
 <li>JDBC drivers</li>
 <li>watsonx.data UI </li>
 </ul>
-<h3 id="connecting-to-watsonxdata-and-executing-queries-using-cli">Connecting to watsonx.data and executing queries using CLI</h3>
-<p>Open the watsonx.data CLI using the development directory. Make sure you are the root user. 
-<div class="highlight"><pre><span></span><code>whoami
-</code></pre></div></p>
-<p>If not, switch to the root user.
+<p>In this lab you will learn how to use the Command line interface (CLI) to interact with the Presto engine.</p>
+<h3 id="connecting-to-watsonxdata">Connecting to watsonx.data</h3>
+<p>The examples in the section require that you use either a terminal SSH shell, or the SSH browser to issue commands to the Presto database engine.</p>
+<p>Open a terminal window and use the following syntax to connect as the <code style="font-size: medium;color:blue;">watsonx</code> userid.</p>
+<p>Connect to the watsonx server using this command in a terminal window</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>ssh -p port watsonx@region.services.cloud.techzone.ibm.com
+</code></pre></div>
+</div>
+<p>The port number and server name are provided as part of the TechZone reservation details.</p>
+<p>To become the root user, issue the following command.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>sudo su -
 </code></pre></div>
-Change to the development directory.
-<div class="highlight"><pre><span></span><code>cd /root/ibm-lh-dev/bin
+</div>
+<p>Password for both users is <code style="color:blue;font-size:medium;">watsonx.data</code>.</p>
+<p>Change to the development directory.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
 </code></pre></div>
-Start the Presto CLI.
+</div>
+<p>Start the Presto Command Line interface.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>./presto-cli
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <p>The output on your screen will look similar to the following:</p>
 <p><img alt="Browser" src="../wxd-images/presto-output.png" /></p>
 <p>The arrows on the far right side indicate that there is more output to view. Press the right and left arrows on your keyboard to scroll the display.</p>
 <p><img alt="Browser" src="../wxd-images/presto-scroll.png" /></p>
 <p>If the result set is small, all of the results will display on the screen and no scrolling will be available unless the results are wider than the screen size. </p>
 <p>When the display shows <code style="color:blue;font-size:medium;">(END)</code> you have reached the bottom of the output. If the display shows a colon (<code style="color:blue;font-size:medium;">:</code>) at the bottom of the screen, you can use the up and down arrow keys to scroll a record at a time, or the Page Up and Page Down keys to scroll a page at a time. To quit viewing the output, press the Q key.</p>
-<p>Quit the Presto CLI. The Presto quit command can be used with or without a semicolon.
+<p>Quit the Presto CLI. The Presto quit command can be used with or without a semicolon.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>quit;
-
-We are going to inspect the available catalogs in the watsonx.data system. A watsonx.data catalog contains schemas and references a data source via a connector. A connector is like a driver for a database. Watsonx.data connectors are an implementation of Presto’s SPI which allows Presto to interact with a resource. There are several built-in connectors for JMX, Hive, TPCH etc., some of which you will use as part of the labs.
-
-Display the catalogs.
 </code></pre></div>
-show catalogs;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<p>We are going to inspect the available catalogs in the watsonx.data system. A watsonx.data catalog contains schemas and references a data source via a connector. A connector is like a driver for a database. Watsonx.data connectors are an implementation of Presto’s SPI which allows Presto to interact with a resource. There are several built-in connectors for JMX, Hive, TPCH etc., some of which you will use as part of the labs.</p>
+<p>Reconnect to Presto.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./presto-cli
+</code></pre></div>
+</div>
+<p>Display the catalogs in the system.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>show catalogs;
+</code></pre></div>
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
     Catalog    
 ---------------
  hive_data     
@@ -1413,12 +1387,14 @@ show catalogs;
  tpcds         
  tpch          
 (6 rows)
-&lt;/pre&gt;
+</pre>
 
-Let&#39;s look up what schemas are available with any given catalog. We will use the TPCH catalog which is an internal PrestoDB auto-generated catalog and look at the available schemas.
+<p>Let's look up what schemas are available with any given catalog. We will use the TPCH catalog which is an internal PrestoDB auto-generated catalog and look at the available schemas.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>show schemas in tpch;
 </code></pre></div>
-show schemas in tpch;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
        Schema       
 --------------------
  information_schema 
@@ -1432,22 +1408,28 @@ show schemas in tpch;
  sf30000            
  tiny               
 (10 rows)
-&lt;/pre&gt;
-Quit the presto-cli interface by executing the &quot;quit;&quot; command.
-</code></pre></div>
-quit;
-<div class="highlight"><pre><span></span><code>You can connect to a specific catalog and schema and look at the tables etc.
-</code></pre></div>
-./presto-cli --catalog tpch --schema tiny
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
-presto:tiny&gt;
-&lt;/pre&gt;
-You will notice that the Presto prompt includes the name of the schema we are currently connected to.
+</pre>
 
-Look at the available tables in the TPCH catalog under the `tiny` schema.
+<p>Quit the Presto CLI. </p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>quit;
 </code></pre></div>
-show tables;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<p>You can connect to a specific catalog and schema and look at the tables etc.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./presto-cli --catalog tpch --schema tiny
+</code></pre></div>
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
+presto:tiny>
+</pre>
+<p>You will notice that the Presto prompt includes the name of the schema we are currently connected to.</p>
+<p>Look at the available tables in the TPCH catalog under the <code>tiny</code> schema.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>show tables;
+</code></pre></div>
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
   Table   
 ----------
  customer 
@@ -1459,12 +1441,14 @@ show tables;
  region   
  supplier 
 (8 rows)
-&lt;/pre&gt;
+</pre>
 
-Inspect schema of the customer table.
+<p>Describe the customer table. Note that no catalog or schema name is required.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>describe customer;
 </code></pre></div>
-describe customer;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
    Column   |     Type     | Extra | Comment 
 ------------+--------------+-------+---------
  custkey    | bigint       |       |         
@@ -1476,12 +1460,14 @@ describe customer;
  mktsegment | varchar(10)  |       |         
  comment    | varchar(117) |       |         
 (8 rows)
-&lt;/pre&gt;
+</pre>
 
-You could also use the syntax below to achieve the same result.
+<p>You could also use the syntax below to achieve the same result.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>show columns from customer;
 </code></pre></div>
-show columns from customer;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
 Column     |     Type     | Extra | Comment
 -----------+--------------+-------+---------
 custkey    | bigint       |       |
@@ -1493,12 +1479,13 @@ acctbal    | double       |       |
 mktsegment | varchar(10)  |       |
 comment    | varchar(117) |       |
 (8 rows)
-&lt;/pre&gt;
- 
-Inspect available functions.
+</pre>
+<p>List the function that are available in the system.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>show functions like &#39;date%&#39;;
 </code></pre></div>
-show functions like 'date%';
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
   Function   |       Return Type        |                         Argument Types                         | Function Type | Deterministic |                         Description                         | Variable Arity | Built In | Temporary | Language 
 -------------+--------------------------+----------------------------------------------------------------+---------------+---------------+-------------------------------------------------------------+----------------+----------+-----------+----------
  date        | date                     | timestamp                                                      | scalar        | true          |                                                             | false          | true     | false     |          
@@ -1524,14 +1511,18 @@ show functions like 'date%';
  date_trunc  | timestamp with time zone | varchar(x), timestamp with time zone                           | scalar        | true          | truncate to the specified precision                         | false          | true     | false     |          
 (21 rows)
 
-&lt;/pre&gt;
-Switch to a different schema.
+</pre>
+<p>Switch to a different schema.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>use sf1;
 </code></pre></div>
-use sf1;
-<div class="highlight"><pre><span></span><code>Display the Tables in the schema.
+</div>
+<p>Display the Tables in the schema.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>show tables;
 </code></pre></div>
-show tables;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
   Table   
 ----------
  customer 
@@ -1543,12 +1534,13 @@ show tables;
  region   
  supplier 
 (8 rows)
-&lt;/pre&gt;
- 
-Query data from customer table.
+</pre>
+<p>Query data from customer table.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>select * from customer limit 5;
 </code></pre></div>
-select * from customer limit 5;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |        name        |                 address                  | nationkey |      phone      | acctbal | mktsegment |                                                comment                                                
 ---------+--------------------+------------------------------------------+-----------+-----------------+---------+------------+-------------------------------------------------------------------------------------------------------
    37501 | Customer#000037501 | Ftb6T5ImHuJ                              |         2 | 12-397-688-6719 | -324.85 | HOUSEHOLD  | pending ideas use carefully. express, ironic platelets use among the furiously regular instructions.  
@@ -1558,12 +1550,14 @@ select * from customer limit 5;
    37505 | Customer#000037505 | Ad,XVdA6XAa0h aukZHUo5Mxh,ZRwVR3k7b7     |         3 | 13-521-760-7263 | 3243.15 | FURNITURE  | ites according to the quickly bold instru                                                             
 (5 rows)
 
-&lt;/pre&gt;
+</pre>
 
-Gather statistics on a given table.
+<p>Gather statistics on a given table.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>show stats for customer;
 </code></pre></div>
-show stats for customer;
-<div class="highlight"><pre><span></span><code>&lt;pre style=&quot;font-size: small; color: darkgreen; overflow: auto&quot;&gt;
+</div>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
  column_name |  data_size  | distinct_values_count | nulls_fraction | row_count | low_value | high_value 
 -------------+-------------+-----------------------+----------------+-----------+-----------+------------
  custkey     | NULL        |              150039.0 |            0.0 | NULL      | 1         | 150000     
@@ -1577,12 +1571,13 @@ show stats for customer;
  NULL        | NULL        | NULL                  | NULL           |  150000.0 | NULL      | NULL       
 (9 rows)
 
-&lt;/pre&gt;
+</pre>
 
-Quit Presto.
+<p>Quit Presto.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>quit;
 </code></pre></div>
-quit;
-```</p>
+</div>
 
               
             </article>
@@ -1614,13 +1609,13 @@ quit;
       
       
         
-        <a href="../wxd-watsonui/" class="md-footer__link md-footer__link--next" aria-label="Next: watsonx.data UI" rel="next">
+        <a href="../wxd-presto/" class="md-footer__link md-footer__link--next" aria-label="Next: Presto UI" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              watsonx.data UI
+              Presto UI
             </div>
           </div>
           <div class="md-footer__button md-icon">

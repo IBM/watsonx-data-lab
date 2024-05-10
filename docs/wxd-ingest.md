@@ -196,5 +196,3 @@ This will generate a SQL statement in the window to the right of the table name.
 Now execute the query to see what the results are.
 
 ![Browser](wxd-images/watsonx-de-iceberg-6.png)
- 
-That completes the labs! Congratulations you are done!

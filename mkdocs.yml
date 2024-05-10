@@ -17,41 +17,43 @@ nav:
     - Documentation: "wxd-reference-documentation.md"
   - Lab Instructions: "wxd-lab-instructions.md"
   - System Status and Utilties: "wxd-status.md"
-  - Watsonx.data Introduction:
+  - Jupyter Notebooks: "wxd-jupyter.md"  
+  - Watsonx.data Overview:
     - Overview: "wxd-intro-overview.md"
-    - watsonx.data UI: 
+    - Watsonx.data UI: 
       - Watsonx UI Overview: "wxd-intro-watsonui.md"
       - Infrastructure Manager: "wxd-intro-infrastructure.md"
       - Data Manager: "wxd-intro-datamanager.md"
       - Query Workspace: "wxd-intro-queryworkspace.md"
       - Query History: "wxd-intro-queryhistory.md"
       - Access Control: "wxd-intro-accesscontrol.md"
-    - Presto SQL:
+    - Presto SQL with Query Workspace:
       - Using the Query Workspace: "wxd-intro-query.md"
       - Presto SQL Overview: "wxd-intro-prestocli.md"
       - Analytic Workloads: "wxd-intro-analytics.md"
       - Advanced Functions: "wxd-intro-advanced.md"
       - Time Travel: "wxd-intro-timetravel.md"
-      - Federation: "wxd-intro-federation.md"  
-  - Jupyter Notebooks: "wxd-jupyter.md"
-  - Core Components: 
-    - Presto CLI: "wxd-prestocli.md"
-  #  - watsonx.data UI: "wxd-watsonui.md"
+      - Federation: "wxd-intro-federation.md" 
+    - Presto SQL using CLI:
+      - Presto CLI: "wxd-prestocli.md"
+      - Analytic Workloads: "wxd-analytics.md"
+      - Advanced Functions: "wxd-advanced.md"
+      - Time Travel: "wxd-timetravel.md"
+      - Federation: "wxd-federation.md"
+      - System Connector: "wxd-systemconnector.md"   
     - Presto UI: "wxd-presto.md"
     - MinIO UI: "wxd-minio.md"
-  - Presto SQL:
-    - Analytic Workloads: "wxd-analytics.md"
-    - Advanced Functions: "wxd-advanced.md"
-    - Time Travel: "wxd-timetravel.md"
-    - Federation: "wxd-federation.md"
-    - System Connector: "wxd-systemconnector.md"
-  - Additional Tools:
+    - Working with Object Store Buckets: "wxd-objectstore.md"   
+    - User Administration and Roles: "wxd-useradmin.md"
+    - Ingesting Data: "wxd-ingest.md"           
+  - Additional Features: 
+    - Apache Kafka: "wxd-kafka.md"
+    - Apache Kafka Console: "wxd-kafka-ui.md"
+    - Milvus: "wxd-milvus.md"
+    - Milvus Console: "wxd-milvus-ui.md"    
     - Apache Superset: "wxd-superset.md"
     - dBeaver: "wxd-dbeaver.md"
-    - Portainer Console: "wxd-reference-portainer.md"
-  - Working with Object Store Buckets: "wxd-objectstore.md"
-  - User Administration and Roles: "wxd-useradmin.md"
-  - Ingesting Data: "wxd-ingest.md"
+    - Portainer Console: "wxd-reference-portainer.md"    
   - Documentation: "wxd-reference-documentation.md"
   - Troubleshooting: "wxd-troubleshooting.md"
   - Dataset Details: 

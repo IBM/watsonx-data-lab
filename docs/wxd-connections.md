@@ -21,9 +21,10 @@ When connecting to the watsonx.data Presto database, you will need to have the c
 
 To extract the certificate to your local file system, use the following command in a terminal window. Replace the `port` and `regions.techzone-server.com` with the SSH values found in the TechZone reservation.
 
-```
-scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
-```
+!!! abstract ""
+      ```bash
+      scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+      ```
 
 Change the target directory to a location that you can remember! 
 
@@ -103,9 +104,10 @@ When accessing the database outside the virtual machine, you must change the hos
 
 When connecting to the PostgreSQL engine, select the PostgreSQL driver. In order to connect to the PostgreSQL system, you will need to extract the admin password using the following command when connected to the watsonx.data system.
 
-```
-cat /certs/passwords
-```
+!!! abstract ""
+      ```bash
+      cat /certs/passwords
+      ```
 
 You can also retrieve the credentials by opening up the Credentials notebook in the Jupyter notebook service.
 
@@ -132,13 +134,13 @@ The following credentials are used for remote access.
 ## MySQL Access
 
 When connecting to the MySQL engine, select the MySQL driver. 
-
-```
-export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed 's/.*=//')
-echo "Postgres Userid   : admin"
-echo "Postgres Password : " $POSTGRES_PASSWORD
-echo $POSTGRES_PASSWORD > /tmp/postgres.pw
-```
+!!! abstract ""
+      ```bash
+      export POSTGRES_PASSWORD=$(docker exec ibm-lh-postgres printenv | grep POSTGRES_PASSWORD | sed 's/.*=//')
+      echo "Postgres Userid   : admin"
+      echo "Postgres Password : " $POSTGRES_PASSWORD
+      echo $POSTGRES_PASSWORD > /tmp/postgres.pw
+      ```
 
 ### MySQL Internal Access
 
@@ -177,16 +179,17 @@ When attempting to view the contents of a new database, the process may take a f
 ## Accessing watsonx.data via Python
 
 In order to access the watsonx.data database (Presto), you will need to install the Presto client using the following command on your local machine.
-
-```
-pip3 install presto-python-client
-```
+!!! abstract ""
+      ```bash
+      pip3 install presto-python-client
+      ```
 
 Once the installation is complete, extract the certificate from the watsonx.data server that we will use in the connection.
 
-```
-scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
-```
+!!! abstract ""
+      ```
+      scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+      ```
 
 Change the target directory to a location that you can remember! 
 
@@ -195,22 +198,22 @@ You can also download the certificate by using the Jupyter Notebook link and ope
 ## Python and Jupyter Connection Code
 
 Your Python or Jupyter notebook code will need to import the `prestodb` library and then connect to watsonx.data using the `connect` call.
+!!! abstract ""
+      ```python
+      import prestodb
 
-```
-import prestodb
-
-conn = prestodb.dbapi.connect(
-       host='watsonxdata',
-       port=8443,
-       user='ibmlhadmin',
-       catalog='tpch',
-       schema='tiny',
-       http_scheme='https',
-       auth=prestodb.auth.BasicAuthentication("ibmlhadmin", "password")
-)
-conn._http_session.verify = '/certs/lh-ssl-ts.crt'
-cur = conn.cursor()
-```
+      conn = prestodb.dbapi.connect(
+            host='watsonxdata',
+            port=8443,
+            user='ibmlhadmin',
+            catalog='tpch',
+            schema='tiny',
+            http_scheme='https',
+            auth=prestodb.auth.BasicAuthentication("ibmlhadmin", "password")
+      )
+      conn._http_session.verify = '/certs/lh-ssl-ts.crt'
+      cur = conn.cursor()
+      ```
 
 In the above connection string, you will need to replace the following values:
 
@@ -222,11 +225,11 @@ In the above connection string, you will need to replace the following values:
 You also need to update the `conn._http_session.verify` value with the location where you downloaded the `lh-ssl-ts.crt` file. For internal connections, this value will be `/certs/lh-ssl-ts.crt`.
 
 Once connected, you can run an SQL statement and return the results.
-
-```
-cur.execute("SELECT * FROM tpch.tiny.customer")
-rows = cur.fetchall()
-```
+!!! abstract ""
+      ```python
+      cur.execute("SELECT * FROM tpch.tiny.customer")
+      rows = cur.fetchall()
+      ```
 
 The `rows` variable contains the answer set from the select statement. You can manipulate the `row` variable to view the results. 
 
@@ -263,55 +266,56 @@ cur.description
 ## Accessing watsonx.data via Pandas Dataframes
 
 The following code is required for accessing watsonx.data in Jupyter notebooks.  Run the following code inside a notebook code cell.
-
-```
-%pip install ipython-sql==0.4.1
-%pip install sqlalchemy==1.4.46
-%pip install sqlalchemy==1.4.46 "pyhive[presto]"
-```
+!!! abstract ""
+      ```bash
+      %pip install ipython-sql==0.4.1
+      %pip install sqlalchemy==1.4.46
+      %pip install sqlalchemy==1.4.46 "pyhive[presto]"
+      ```
 
 The notebook may need a restart of the kernel to pick up the changes to the driver.
 
 If you are running in a Jupyter Lab environment, you can use the most current versions of the drivers.
-
-```
-%pip install ipython-sql
-%pip install sqlalchemy
-%pip install sqlalchemy "pyhive[presto]"
-```
+!!! abstract ""
+      ```bash
+      %pip install ipython-sql
+      %pip install sqlalchemy
+      %pip install sqlalchemy "pyhive[presto]"
+      ```
 
 Once the drivers have been loaded, you will need to extract the certificate from the watsonx.data server that we will use in the connection.
-
-```
-scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
-```
+!!! abstract ""
+      ```bash
+      scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+      ```
 
 Change the target directory to a location that you can remember! 
 
 You can also download the certificate by using the Jupyter Notebook link and opening the Certificate notebook. 
 
 In your Jupyter notebook, you will need to import a number of libraries.
-
-```
-import pandas as pd
-import sqlalchemy
-from sqlalchemy import create_engine
-```
+!!! abstract ""
+      ```python
+      import pandas as pd
+      import sqlalchemy
+      from sqlalchemy import create_engine
+      ```
 
 Create a notebook cell which will contain all the credentials that are required to connect. Change the `catalog`, `schema` and `certfile` to your values.
-```
-userid    = "ibmlhadmin"
-password  = "password"
-hostname  = "watsonxdata"
-port      = "8443"
-catalog   = "tpch"
-schema    = "tiny"
-certfile  = "/certs/lh-ssl-ts.crt"
-connect_args={
-        'protocol': 'https', 
-        'requests_kwargs': {'verify': f'{certfile}'}
-        }
-```
+!!! abstract ""
+      ```python
+      userid    = "ibmlhadmin"
+      password  = "password"
+      hostname  = "watsonxdata"
+      port      = "8443"
+      catalog   = "tpch"
+      schema    = "tiny"
+      certfile  = "/certs/lh-ssl-ts.crt"
+      connect_args={
+            'protocol': 'https', 
+            'requests_kwargs': {'verify': f'{certfile}'}
+            }
+      ```
 
 In the above settings, you will need to replace the following values:
 
@@ -322,45 +326,49 @@ In the above settings, you will need to replace the following values:
 You also need to update the `certfile` value with the location where you downloaded the `lh-ssl-ts.crt` file. For internal connections, this value will be `/certs/lh-ssl-ts.crt`.   
 
 To create a connection to the database, use the following syntax.
-```
-engine = create_engine(
-   f"presto://{userid}:{password}@{hostname}:{port}/{catalog}/{schema}",
-   connect_args=connect_args
-   )
-```
+!!! abstract ""
+      ```python
+      engine = create_engine(
+         f"presto://{userid}:{password}@{hostname}:{port}/{catalog}/{schema}",
+         connect_args=connect_args
+         )
+      ```
 
 Now that you have established a connection, you can use the Pandas `read_sql_query` function to execute a SELECT statement against the database.
-
-```
-mypresto = pd.read_sql_query('SELECT * from tpch.tiny.customer',engine)
-```
+!!! abstract ""
+      ```python
+      mypresto = pd.read_sql_query('SELECT * from tpch.tiny.customer',engine)
+      ```
 
 The variable `mypresto` contains the dataframe generated from the SELECT statement.
 
-```
-mypresto
-```
+!!! abstract ""
+      ```python
+      mypresto
+      ```
 
 ![Browser](wxd-images/connection-pandas.png)
 
 You can use the features of Pandas to generate plots of the data in your notebook. First make sure you have `matplotlib` installed.
 
-```
-%pip install matplotlib
-```
+!!! abstract ""
+      ```bash
+      %pip install matplotlib
+      ```
 
 The following query will compute the total account balance across all nation key values.
-
-```
-sumbynation = pd.read_sql_query('SELECT "nationkey", sum("acctbal") from tpch.tiny.customer group by "nationkey" order by 2',engine)
-```
+!!! abstract ""
+      ```python
+      sumbynation = pd.read_sql_query('SELECT "nationkey", sum("acctbal") from tpch.tiny.customer group by "nationkey" order by 2',engine)
+      ```
 
 Finally, we plot the results.
 
-```
-df.plot(kind="bar", x="FirstName", y="LastName")
-plt.show()
-```
+!!! abstract ""
+      ```python
+      df.plot(kind="bar", x="FirstName", y="LastName")
+      plt.show()
+      ```
 
 ![Browser](wxd-images/connection-graph.png)
 
@@ -380,16 +388,18 @@ The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following s
 Ports 10000/1 are not open by default in the 1.1.0 image. For release 1.1.1, you can skip this step.
 
 You must explicitly open ports 10000/1 with the `firewall-cmd` command. In a command line shell, as the root user, enter the following commands:
-```
-sudo su -
-firewall-cmd --add-port={10000/tcp,10001/tcp} --zone=public --permanent
-firewall-cmd --reload
-```
+!!! abstract ""
+      ```bash
+      sudo su -
+      firewall-cmd --add-port={10000/tcp,10001/tcp} --zone=public --permanent
+      firewall-cmd --reload
+      ```
 
 You can use the following command to check that the ports are now open.
-```
-firewall-cmd --list-ports
-```
+!!! abstract ""
+      ```bash
+      firewall-cmd --list-ports
+      ```
 
 ### Create your Service
 
@@ -397,16 +407,18 @@ When creating your service, make sure to map the internal Docker port to either 
 
 For instance, the following command will start Microsoft SQLServer in Docker by mapping the host port 10000 to the SQLServer port of 1433 to 10000 (`-p 10000:1443`).  
 
-```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Passw0rd12345678!" \
--p 10000:1433 --name mssql-server --hostname mssql-server \
--d mcr.microsoft.com/mssql/server:2019-latest
-```
+!!! abstract ""
+      ```bash
+      docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Passw0rd12345678!" \
+      -p 10000:1433 --name mssql-server --hostname mssql-server \
+      -d mcr.microsoft.com/mssql/server:2019-latest
+      ```
 
 You can check the port mapping with the following command.
-```
-docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a | grep mssql-server
-```
+!!! abstract ""
+      ```bash
+      docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a | grep mssql-server
+      ```
 
 When creating a connection to this database using an external tool, make sure to use the port number supplied in the reservation details (Open Port 1 is for port 10000 and Open Port 2 is for port 10001).
 
@@ -414,24 +426,27 @@ When creating a connection to this database using an external tool, make sure to
 
 If you already have an existing service mapped to a different port, you can use port redirection to use either port 10000 or 10001. For instance, assume that the previous creation of the SQLServer database used port 1433.
 
-```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Passw0rd12345678!" \
--p 1433:1433 --name mssql-server --hostname mssql-server \
--d mcr.microsoft.com/mssql/server:2019-latest
-```
+!!! abstract ""
+      ```bash
+      docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Passw0rd12345678!" \
+      -p 1433:1433 --name mssql-server --hostname mssql-server \
+      -d mcr.microsoft.com/mssql/server:2019-latest
+      ```
 
 Once the service is up and running, you can redirect the traffic on port 10000/1 to the port of your docker service.
 
-``````
-firewall-cmd --add-forward-port=port=10000:proto=tcp:toport=1433 --permanent --zone=public
-firewall-cmd --reload
-``````
+!!! abstract ""
+      ```bash
+      firewall-cmd --add-forward-port=port=10000:proto=tcp:toport=1433 --permanent --zone=public
+      firewall-cmd --reload
+      ```
 
 If you need to remove the redirection, use the following command.
-``````
-firewall-cmd --remove-forward-port=port=10000:proto=tcp:toport=1433:toaddr= --permanent --zone=public
-firewall-cmd --reload
-``````
+!!! abstract ""
+      ```bash
+      firewall-cmd --remove-forward-port=port=10000:proto=tcp:toport=1433:toaddr= --permanent --zone=public
+      firewall-cmd --reload
+      ```
 
 ### Accessing your Service
 

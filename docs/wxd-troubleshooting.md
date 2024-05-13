@@ -22,9 +22,11 @@ Although we have tried to make the lab as error-free as possible, occasionally t
 See the section on [Passwords](wxd-reference-passwords#passwords).
 
 You can get all passwords for the system when you are logged in as the <code style="color:blue;font-size:medium;">watsonx</code> user by using the following command.
-```
-cat /certs/passwords
-```
+
+!!! abstract ""
+    ```bash
+    cat /certs/passwords
+    ```
 
 You can also use the Jupyter notebook link to display the userids and passwords for the services.
 
@@ -38,48 +40,56 @@ If Superset doesn't start for some reason, you will need to reset it completely 
 
 Make sure you have stopped the terminal session that is running Apache Superset. Next remove the Apache Superset directory.
 
-```
-sudo rm -rf /home/watsonx/superset
-```
+!!! abstract ""
+    ```bash
+    sudo rm -rf /home/watsonx/superset
+    ```
 
 We remove the docker images associated with Apache Superset. If no containers or volumes exist you will get an error message.
 
-```
-docker ps -a -q --filter "name=superset" | xargs docker container rm --force
-docker volume list -q  --filter "name=superset" | xargs docker volume rm --force
-```
+!!! abstract ""
+    ```bash
+    docker ps -a -q --filter "name=superset" | xargs docker container rm --force
+    docker volume list -q  --filter "name=superset" | xargs docker volume rm --force
+    ```
 
 Download the superset code again.
 
-```
-git clone https://github.com/apache/superset.git
-```
+!!! abstract ""
+    ```bash
+    git clone https://github.com/apache/superset.git
+    ```
 
 The `docker-compose-non-dev.yml` file needs to be updated so that Apache Superset can access the same network that watsonx.data is using. 
 
-```
-cd ./superset
-cp docker-compose-non-dev.yml docker-compose-non-dev-backup.yml
+!!! abstract ""
+    ```bash
+    cd ./superset
+    cp docker-compose-non-dev.yml docker-compose-non-dev-backup.yml
 
-sed '/version: "3.7"/q' docker-compose-non-dev.yml > yamlfix.txt
-cat <<EOF >> yamlfix.txt
-networks:
-  default:
-    external: True
-    name: ibm-lh-network
-EOF
-sed -e '1,/version: "3.7"/ d' docker-compose-non-dev.yml  >> yamlfix.txt
-```
+    sed '/version: "3.7"/q' docker-compose-non-dev.yml > yamlfix.txt
+    cat <<EOF >> yamlfix.txt
+    networks:
+      default:
+        external: True
+        name: ibm-lh-network
+    EOF
+    sed -e '1,/version: "3.7"/ d' docker-compose-non-dev.yml  >> yamlfix.txt
+    ```
 
 We update the Apache Superset code to version `2.1.0`.
-```
-sed 's/\${TAG:-latest-dev}/2.1.0/' yamlfix.txt > docker-compose-non-dev.yml
-```
+
+!!! abstract ""
+    ```bash
+    sed 's/\${TAG:-latest-dev}/2.1.0/' yamlfix.txt > docker-compose-non-dev.yml
+    ```
 
 Use docker-compose to start Apache Superset.
-```
-nohup docker compose -f docker-compose-non-dev.yml up &
-```
+
+!!! abstract ""
+    ```bash
+    nohup docker compose -f docker-compose-non-dev.yml up &
+    ```
 
 The `nohup` command will issue a message indicating that output will be directed to the `nohup.out` file. It takes some time for the service to start, so be patient! You can view any output from the Apache Superset system by viewing the `nohup.out` file in the directory where you installed superset.
 
@@ -91,28 +101,32 @@ The Apache Superset project makes frequent changes to the types of charts that a
 
 If you find that the watsonx.data UI is generating error messages that suggest that queries are not running, or that the Presto service is dead, you can force a soft restart of Presto with the following command:
 
-```
-docker restart ibm-lh-presto
-```
+!!! abstract ""
+    ```
+    docker restart ibm-lh-presto
+    ```
 
 This will restart the Presto server. If you find that does not fix your problem, you will need to do a hard reset using the following commands:
 
-```
-sudo su -
-cd /root/ibm-lh-dev/bin
-./stop_service ibm-lh-presto
-./start_service ibm-lh-presto
-check_presto
-```
+!!! abstract ""
+    ```
+    sudo su -
+    cd /root/ibm-lh-dev/bin
+    ./stop_service ibm-lh-presto
+    export LH_RUN_MODE=diag
+    ./start_service ibm-lh-presto
+    check-presto
+    ```
 The command will wait until the service is running before exiting.
 
 ### Displaying Db2 Schema is failing
 
 Occasionally when attempting to expand the Db2 catalog (schema), the watsonx.data UI will not display any data or issue an error message. You can try refreshing the browser (not the refresh icon inside the UI) and try again. If you find that this is failing again, open the Query workspace and run the following SQL (replace db2_gosales with the name you cataloged the database with).
 
-```
-select count(*) from db2_gosales.gosalesdw.go_org_dim 
-```
+!!! abstract ""
+    ```sql
+    select count(*) from db2_gosales.gosalesdw.go_org_dim 
+    ```
 
 The result should be `123` and hopefully the tables that are part of the schema will display for you. 
 
@@ -126,44 +140,57 @@ A 500 code may indicate the watsonx.data UI has a problem connecting with the Pr
 
 As the root user, restart the docker container that is running the watsonx.data UI.
 
-```
-docker restart lhconsole-nodeclient-svc
-```
+!!! abstract ""
+    ```bash
+    docker restart lhconsole-nodeclient-svc
+    ```
 
 ### Queries fail become of insufficient memory
 
 If you are running a complex query, you may get an error message similar to "Query exceeded per-node user memory limit" or a something similar. Watsonx.data (Presto) attempts to limit the amount of resources being using in a query and will stop a query if it exceeds a certain threshold. 
 
-You can change the behavior of the system by making the following changes. **Note**: During this step you will disconnect anyone running a query on the server.
+You can change the behavior of the system by making the following changes. 
 
-What you need to do is make a change to the configuration settings of the Presto engine. AS the root user, enter the docker container for the presto engine:
-```
-docker exec -it ibm-lh-presto /bin/bash
-```
+!!! error "During this step you will disconnect anyone running a query on the server."
+
+What you need to do is make a change to the configuration settings of the Presto engine. As the root user, enter the docker container for the presto engine:
+
+!!! abstract ""
+    ```bash
+    docker exec -it ibm-lh-presto /bin/bash
+    ```
 
 Next, copy the original config file to a safe place in case we make an error:
-```
-cp /opt/presto/etc/config.properties /opt/presto/etc/config.properties.backup
-```
+
+!!! abstract ""
+    ```bash
+    cp /opt/presto/etc/config.properties /opt/presto/etc/config.properties.backup
+    ```
 
 Then update the properties file.
-```
-cat >> /opt/presto/etc/config.properties << EOL
-experimental.spiller-spill-path=/tmp
-experimental.spiller-max-used-space-threshold=0.7
-experimental.max-spill-per-node=10GB
-experimental.query-max-spill-per-node=10GB
-experimental.spill-enabled=true
-query.max-memory=10GB
-query.max-memory-per-node=10GB
-query.max-total-memory-per-node=10GB
-query.max-total-memory=10GB
-EOL
-```
+
+!!! abstract ""
+    ```bash
+    cat >> /opt/presto/etc/config.properties << EOL
+    experimental.spiller-spill-path=/tmp
+    experimental.spiller-max-used-space-threshold=0.7
+    experimental.max-spill-per-node=10GB
+    experimental.query-max-spill-per-node=10GB
+    experimental.spill-enabled=true
+    query.max-memory=10GB
+    query.max-memory-per-node=10GB
+    query.max-total-memory-per-node=10GB
+    query.max-total-memory=10GB
+    EOL
+    ```
+
 Doublecheck that it worked.
-```
-cat /opt/presto/etc/config.properties | grep experimental
-```
+
+!!! abstract ""
+    ```bash
+    cat /opt/presto/etc/config.properties | grep experimental
+    ```
+
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 experimental.max-spill-per-node=10GB
 experimental.query-max-spill-per-node=10GB
@@ -173,26 +200,20 @@ experimental.spiller-spill-path=/tmp
 </pre>
 
 If it is all good then exit the container.
-```
-exit
-```
+
+!!! abstract ""
+    ```bash
+    exit
+    ```
+
 And now we restart the container. Make sure that you don't impact other users!
-```
-docker restart ibm-lh-presto
-```
+!!! abstract ""
+    ```bash
+    docker restart ibm-lh-presto
+    ```
 Now try running your query again. 
 
-**Note**: Once you make this change, only restart presto using the above command, otherwise you will lose the changes.
-
-### Too many incorrect logins using VNC and now I'm blocked from connecting
-
-If you lock yourself out of VNC because of too many incorrect logins, you can reset the service with the following commands.
-
-Connect as the root user then run the following command and you should be able to log in again.
-```
-systemctl restart vncserver@:1
-exit
-```
+!!! note "Once you make this change, only restart presto using the above command, otherwise you will lose the changes."
 
 ### SSH, VNC and watsonx.data UI are not working
 
@@ -236,36 +257,42 @@ Wait for a few minutes for all the services to start, and then you will be able 
 If you can log into the watsonx userid using the VM Remove console, you can reset the watsonx.data server with the following steps.
 
 SSH into the server as the root user. Then switch to the development code bin directory.
-```
-cd /root/ibm-lh-dev/bin
-```
+
+!!! abstract ""
+    ```bash
+    cd /root/ibm-lh-dev/bin
+    ```
 
 Check the status of the system with the following command.
-```bash
-./status.sh --all
-```
+!!! abstract ""
+    ```bash
+    ./status.sh --all
+    ```
+
 Output will look similar to:
 <pre style="font-size: small; color: darkgreen; overflow: scroll"">
 using /root/ibm-lh-dev/localstorage/volumes as data root directory for user: root/1001 
 infra config location is /root/ibm-lh-dev/localstorage/volumes/infra
-lhconsole-ui				running			0.0.0.0:9443->8443/tcp, :::9443->8443/tcp
-lhconsole-nodeclient-svc		running			3001/tcp
-lhconsole-javaapi-svc			running			8090/tcp
-lhconsole-api				running			3333/tcp, 8081/tcp
-ibm-lh-presto				running			0.0.0.0:8443->8443/tcp, :::8443->8443/tcp
-ibm-lh-hive-metastore			running			
-ibm-lh-postgres				running			5432/tcp
-ibm-lh-minio				running			
+lhconsole-ui              running   0.0.0.0:9443->8443/tcp, :::9443->8443/tcp
+lhconsole-nodeclient-svc  running   3001/tcp
+lhconsole-javaapi-svc     running   8090/tcp
+lhconsole-api             running   3333/tcp, 8081/tcp
+ibm-lh-presto             running   0.0.0.0:8443->8443/tcp, :::8443->8443/tcp
+ibm-lh-hive-metastore     running		
+ibm-lh-postgres           running   5432/tcp
+ibm-lh-minio              running			
 </pre>
 
 If the any of the services are not running, you will need to restart the system with the following set of commands.
-
-```
-cd /root/ibm-lh-dev/bin
-./stop.sh
-export LH_RUN_MODE=diag
-./start.sh 
-```
+!!! abstract ""
+    ```bash
+    cd /root/ibm-lh-dev/bin
+    ./stop-milvus
+    ./stop
+    export LH_RUN_MODE=diag
+    ./start
+    ./start-milvus 
+    ```
 
 Wait for all services to start and then check to see if you can connect to the watsonx.data UI. 
 
@@ -275,13 +302,15 @@ If you are using a TechZone image that has been suspended, or restarted, you may
 
 To manually stop and start the system, you will need to connect with root user privileges and run the following commands:
 
-```
-sudo su -
-cd /root/ibm-lh-dev/bin
-./stop.sh
-export LH_RUN_MODE=diag
-./start.sh 
-```
+!!! abstract ""
+    ```bash
+    cd /root/ibm-lh-dev/bin
+    ./stop-milvus
+    ./stop
+    export LH_RUN_MODE=diag
+    ./start
+    ./start-milvus 
+    ```
 
 This set of commands will stop all the services in watsonx.data and restart them in diagnostic mode. This will now open the `http` ports for use.
 

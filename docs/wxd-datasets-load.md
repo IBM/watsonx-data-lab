@@ -17,9 +17,11 @@ You can use a browser or link to an external file repository (i.e., Box) and dow
 **Note**: You cannot import customer data nor any data that has restrictions associated with its use. Any use of private data is in violation of the terms and conditions of using this image.
 
 The first step is to connect to MinIO. Extract the MinIO credentials by using the `passwords` command:
-```
-passwords
-```
+
+!!! abstract ""
+    ```bash
+    passwords
+    ```
 
 ![Browser](wxd-images/wxd-showpasswords.png)
 
@@ -90,11 +92,12 @@ You will need to change the following values:
 
 For the fuel economy example, using `mpg` as the schema, the SQL would be:
 
-```
-DROP SCHEMA hive_data.mpg;
-CREATE SCHEMA hive_data.mpg 
-  WITH ( location = 's3a://hive-bucket/fuel_economy' );
-```
+!!! abstract ""
+    ```
+    DROP SCHEMA hive_data.mpg;
+    CREATE SCHEMA hive_data.mpg 
+      WITH ( location = 's3a://hive-bucket/fuel_economy' );
+    ```
 
 Run this SQL against the Presto engine:
 
@@ -121,53 +124,56 @@ If your data set does not include a header row (a row that defines the column na
 
 If the data set does contain a header record, you can use the following Python code to generate a `CREATE TABLE` statement. You will need to make sure that `pandas` is available.
 
-```
-python3 -m pip install pandas --user
-```
+!!! abstract ""
+    ```
+    python3 -m pip install pandas --user
+    ```
 
 Next run the `python3` command in the shell to run an interactive Python session.
 
-```
-python3
-```
+!!! abstract ""
+    ```
+    python3
+    ```
 
 Place the following code into your Python window.
 
-```
-def showcsv(catalog, schema, tablename, bucket, directory, csv_in):
-    import pandas as pd
-    df = pd.read_csv(csv_in,na_values="-")
-    df = df.fillna(0)
-    column_headers = list(df.columns.values)
-    print("")
-    print(f"DROP TABLE IF EXISTS {catalog}.{schema}.{tablename};")
-    print(f"CREATE TABLE {catalog}.{schema}.{tablename}")
-    print("  (")
-    comma = ""
-    end = ""
-    for header in column_headers:   
-        print(f"{comma}",end=end)
-        comma = ","
-        end   = "\n"
-        print(f'  "{header}" varchar',end="")
-    print(f"  )") 
-    print(f"WITH (")
-    print(f"     format = 'CSV',")
-    print(f"     csv_separator = ',',")
-    print(f"     external_location = 's3a://{bucket}/{directory}'")
-    print(f"     );")
-    print("")
+!!! abstract ""
+    ```python
+    def showcsv(catalog, schema, tablename, bucket, directory, csv_in):
+        import pandas as pd
+        df = pd.read_csv(csv_in,na_values="-")
+        df = df.fillna(0)
+        column_headers = list(df.columns.values)
+        print("")
+        print(f"DROP TABLE IF EXISTS {catalog}.{schema}.{tablename};")
+        print(f"CREATE TABLE {catalog}.{schema}.{tablename}")
+        print("  (")
+        comma = ""
+        end = ""
+        for header in column_headers:   
+            print(f"{comma}",end=end)
+            comma = ","
+            end   = "\n"
+            print(f'  "{header}" varchar',end="")
+        print(f"  )") 
+        print(f"WITH (")
+        print(f"     format = 'CSV',")
+        print(f"     csv_separator = ',',")
+        print(f"     external_location = 's3a://{bucket}/{directory}'")
+        print(f"     );")
+        print("")
 
-def makesql():
-    catalog = input("Catalog   : ")
-    schema  = input("Schema    : ")
-    table   = input("Table     : ")
-    bucket  = input("Bucket    : ")
-    dir     = input("Directory : ")
-    csv     = input("CSV File  : ")
-    showcsv(catalog,schema,table,bucket,dir,csv)
+    def makesql():
+        catalog = input("Catalog   : ")
+        schema  = input("Schema    : ")
+        table   = input("Table     : ")
+        bucket  = input("Bucket    : ")
+        dir     = input("Directory : ")
+        csv     = input("CSV File  : ")
+        showcsv(catalog,schema,table,bucket,dir,csv)
 
-```
+    ```
 
 Gather the following information on your dataset:
 
@@ -180,9 +186,10 @@ Gather the following information on your dataset:
 
 Once you have gathered that, run the following command in your Python window and answer the prompts.
 
-```
-makesql()
-```
+!!! abstract ""
+    ```python
+    makesql()
+    ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 >>> makesql()
 Catalog   : hive_data
@@ -226,8 +233,9 @@ Cut and paste the output from the command into the watsonx.data Data Explorer wi
 
 Now you can query the table with the following SQL. Note that the header record still exists in the answer set since we did not remove it from the CSV file.
 
-```
-SELECT * FROM hive_data.mpg.fueleconomy LIMIT 10
-```
+!!! abstract ""
+    ```sql
+    SELECT * FROM hive_data.mpg.fueleconomy LIMIT 10
+    ```
 
 ![Browser](wxd-images/watsonx-results.png)

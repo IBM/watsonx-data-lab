@@ -1412,45 +1412,65 @@
 <p>There may be situations where the self-signed certificates in the watsonx.data Developer image may be invalid. If you are attempting to connect to the watsonx.data system from outside the virtual machine, you will need to run the following commands to fix the self-signed certificate. </p>
 <h3 id="step-1-connect-to-the-server">Step 1: Connect to the Server</h3>
 <p>Use the SSH port to connect into the server and make sure that you become the root user.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>sudo su -
 </code></pre></div>
+</div>
 <h3 id="step-2-update-the-certificate">Step 2: Update the Certificate</h3>
-<p>We need to update the certificate by using a utility in the developer toolbox.  Start the toolbox code by switching to the bin directory and issuing the following command.
+<p>We need to update the certificate by using a utility in the developer toolbox.  Start the toolbox code by switching to the bin directory and issuing the following command.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
 ./dev-sandbox
-</code></pre></div></p>
+</code></pre></div>
+</div>
 <p>Once inside the development container, you will need to update the program that generates the certificates. <strong>Note</strong>: The certificate should cover all TechZone locations. If for some reason your TechZone server does not match the pattern <code>*.services.cloud.techzone.ibm.com</code>, update it in the command below.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>sed -i <span class="s1">&#39;/DNS.14.*/a DNS.15 = watsonxdata&#39;</span> /scripts/gen_certs.sh
 sed -i <span class="s1">&#39;/DNS.15.*/a DNS.16 = watsonxdata.gym.lan&#39;</span> /scripts/gen_certs.sh
 sed -i <span class="s1">&#39;/DNS.16.*/a DNS.17 = *.services.cloud.techzone.ibm.com&#39;</span> /scripts/gen_certs.sh
 ./scripts/gen_certs.sh
 </code></pre></div>
+</div>
 <p>Once the script completes, exit the toolkit.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code><span class="nb">exit</span>
 </code></pre></div>
+</div>
 <h3 id="step-3-stop-and-restart-the-system">Step 3: Stop and Restart the System</h3>
 <p>The certificates need to be replaced in all the running containers. You must stop and restart them. You must include the diagnostic flag or else the system will not work properly. The startup will take some time to complete. The Postgres pod will display some warning messages which can be safely ignored.</p>
-<div class="highlight"><pre><span></span><code>./stop.sh
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>/root/ibm-lh-dev/bin/stop-milvus
+/root/ibm-lh-dev/bin/stop
 <span class="nb">export</span> <span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
-./start.sh 
+/root/ibm-lh-dev/bin/start
+/root/ibm-lh-dev/bin/start-milvus 
 </code></pre></div>
+</div>
 <h3 id="step-4-generate-custom-certificate">Step 4: Generate Custom Certificate</h3>
 <p>The first step is to copy the new certificates to the central <code>/certs</code> directory use by this image.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>docker cp ibm-lh-presto:/mnt/infra/tls/lh-ssl-ts.jks /certs/lh-ssl-ts.jks
 docker cp ibm-lh-presto:/mnt/infra/tls/cert.crt /certs/lh-ssl-ts.crt
 </code></pre></div>
+</div>
 <p>Next we need to generate the certificate file that is used by a number of the examples in the lab instructions.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>rm -f presto.crt
 <span class="nb">echo</span> QUIT <span class="p">|</span> openssl s_client -showcerts -connect <span class="m">127</span>.0.0.1:8443 <span class="p">|</span> awk <span class="s1">&#39;/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}&#39;</span> &gt; presto.crt
 </code></pre></div>
+</div>
 <p>You can print the certificate if you need it for connections from CP4D.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cat presto.crt
 </code></pre></div>
+</div>
 <h3 id="step-5-generate-java-keystore-file">Step 5: Generate Java Keystore File</h3>
 <p>The next step will create the Java Keystore file. When prompted, use a password of <code>watsonx.data</code> and say <code>yes</code> to accepting the certificate. Make sure that you see your host in the list. For instance, <code>useast.services.cloud.techzone.ibm.com</code> should be displayed when you see the results.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>rm -f presto-key.jks
 keytool -import -alias presto-crt -file ./presto.crt -keystore ./presto-key.jks
 </code></pre></div>
+</div>
 <p>The following is an example of the output from the <code>keytool</code> command.</p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Owner: CN=Dummy-Self-signed-Cert, EMAILADDRESS=dummy@example.dum, OU=For-CPD, O=Data and AI, L=Home-Town, ST=XX, C=YY
@@ -1498,6 +1518,7 @@ Certificate was added to keystore
 
 <h3 id="step-6-create-certificate-and-keystore-copies">Step 6: Create Certificate and Keystore Copies</h3>
 <p>The final step is to copy the certs and keystore values in a central location so they can be used in various scripts and notebooks.</p>
+<div class="admonition abstract">
 <div class="highlight"><pre><span></span><code><span class="se">\c</span>p -f presto-key.jks /certs
 <span class="se">\c</span>p -f presto.crt /certs
 
@@ -1505,6 +1526,7 @@ chmod +r /certs/*.*
 
 <span class="se">\c</span>p -rf /certs /notebooks/
 </code></pre></div>
+</div>
 
               
             </article>

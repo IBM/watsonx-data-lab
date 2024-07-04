@@ -19,7 +19,7 @@ In order to access these images outside the Virtual machine image, you need the 
 
 When connecting to the watsonx.data Presto database, you will need to have the connection certificate available to the client that you are using. Usually this location is your workstation, but it could be another service like CP4D.
 
-To extract the certificate to your local file system, use the following command in a terminal window. Replace the `port` and `regions.techzone-server.com` with the SSH values found in the TechZone reservation.
+To extract the certificate to your local file system, use the following command in a terminal window. Replace the `port` and `region.services.cloud.techzone.com` with the SSH values found in the TechZone reservation.
 
 !!! abstract ""
       ```bash
@@ -119,17 +119,17 @@ When accessing the PostgreSQL database in the system, use the following settings
    * Port – <code style="color:blue;font-size:medium;">5432</code>
    * Username – <code style="color:blue;font-size:medium;">admin</code>
    * Password – The value that was extracted in the earlier step
-   * Database – <code style="color:blue;font-size:medium;">gosales</code>   
+   * Database – <code style="color:blue;font-size:medium;">gosalesdw</code>   
 
 ### PostgreSQL External Access
 
 The following credentials are used for remote access.
 
-   * Hostname: <code style="color:blue;font-size:medium;">regions.techzone-server.com</code>
+   * Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.com</code>
    * Port: <code style="color:blue;font-size:medium;">port</code>
    * Username: <code style="color:blue;font-size:medium;">admin</code>
    * Password: The value that was extracted in the earlier step
-   * Database name: <code style="color:blue;font-size:medium;">gosales</code>
+   * Database name: <code style="color:blue;font-size:medium;">gosalesdw</code>
 
 ## MySQL Access
 
@@ -160,7 +160,7 @@ You must set the `allowPublicKeyRetrieval` to `True` for the connection to work 
 
 The following credentials are used for remote access.
 
-   * Hostname: <code style="color:blue;font-size:medium;">regions.techzone-server.com</code>
+   * Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.com</code>
    * Port: <code style="color:blue;font-size:medium;">port</code>
    * Username: <code style="color:blue;font-size:medium;">root</code>
    * Password - <code style="color:blue;font-size:medium;">password</code>

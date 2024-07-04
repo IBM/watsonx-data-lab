@@ -1,5 +1,11 @@
 # Image Revisions
 
+### June 30, 2024 (2.0.0)
+
+* Updated the lab to GA watsonx.data 2.0.0 code
+
+* See updates for 2.0.0 at [IBM watsonx.data 2.0.x Documentation](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.0.x?topic=watsonxdata-whats-new-in)
+
 ### May 3, 2024 (1.1.4)
 
 * Updated the lab to GA watsonx.data 1.1.4 code

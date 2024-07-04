@@ -1709,7 +1709,7 @@
 </ul>
 <h2 id="watsonxdata-connection-certificate">Watsonx.data Connection Certificate</h2>
 <p>When connecting to the watsonx.data Presto database, you will need to have the connection certificate available to the client that you are using. Usually this location is your workstation, but it could be another service like CP4D.</p>
-<p>To extract the certificate to your local file system, use the following command in a terminal window. Replace the <code>port</code> and <code>regions.techzone-server.com</code> with the SSH values found in the TechZone reservation.</p>
+<p>To extract the certificate to your local file system, use the following command in a terminal window. Replace the <code>port</code> and <code>region.services.cloud.techzone.com</code> with the SSH values found in the TechZone reservation.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
 </code></pre></div>
@@ -1788,16 +1788,16 @@
 <li>Port – <code style="color:blue;font-size:medium;">5432</code></li>
 <li>Username – <code style="color:blue;font-size:medium;">admin</code></li>
 <li>Password – The value that was extracted in the earlier step</li>
-<li>Database – <code style="color:blue;font-size:medium;">gosales</code>   </li>
+<li>Database – <code style="color:blue;font-size:medium;">gosalesdw</code>   </li>
 </ul>
 <h3 id="postgresql-external-access">PostgreSQL External Access</h3>
 <p>The following credentials are used for remote access.</p>
 <ul>
-<li>Hostname: <code style="color:blue;font-size:medium;">regions.techzone-server.com</code></li>
+<li>Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.com</code></li>
 <li>Port: <code style="color:blue;font-size:medium;">port</code></li>
 <li>Username: <code style="color:blue;font-size:medium;">admin</code></li>
 <li>Password: The value that was extracted in the earlier step</li>
-<li>Database name: <code style="color:blue;font-size:medium;">gosales</code></li>
+<li>Database name: <code style="color:blue;font-size:medium;">gosalesdw</code></li>
 </ul>
 <h2 id="mysql-access">MySQL Access</h2>
 <p>When connecting to the MySQL engine, select the MySQL driver. </p>
@@ -1822,7 +1822,7 @@
 <h3 id="mysql-external-access">MySQL External Access</h3>
 <p>The following credentials are used for remote access.</p>
 <ul>
-<li>Hostname: <code style="color:blue;font-size:medium;">regions.techzone-server.com</code></li>
+<li>Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.com</code></li>
 <li>Port: <code style="color:blue;font-size:medium;">port</code></li>
 <li>Username: <code style="color:blue;font-size:medium;">root</code></li>
 <li>Password - <code style="color:blue;font-size:medium;">password</code></li>

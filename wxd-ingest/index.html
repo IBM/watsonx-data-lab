@@ -1490,6 +1490,7 @@ export STAGING_S3_CREDS=&quot;AWS_SECRET_ACCESS_KEY=\${secret_key}\\
 ,AWS_REGION=us-east-1\\
 ,BUCKET_NAME=iceberg-bucket\\
 ,ENDPOINT_URL=http://ibm-lh-minio:9000&quot;
+export ENABLED_INGEST_MODE=PRESTO
 ibm-lh data-copy \\
    --source-data-files \${dir}/\${file} \\
    --target-tables \${table_name} \\

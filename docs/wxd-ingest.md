@@ -117,6 +117,7 @@ The following script is used to ingest the taxi data (yellow_tripdata_2022_01) i
     ,AWS_REGION=us-east-1\\
     ,BUCKET_NAME=iceberg-bucket\\
     ,ENDPOINT_URL=http://ibm-lh-minio:9000"
+    export ENABLED_INGEST_MODE=PRESTO
     ibm-lh data-copy \\
        --source-data-files \${dir}/\${file} \\
        --target-tables \${table_name} \\

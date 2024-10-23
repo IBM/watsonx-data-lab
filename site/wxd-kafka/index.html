@@ -1515,15 +1515,15 @@ kafka:
 <li><a href="https://prestodb.io/docs/current/connector/kafka-tutorial.html">Presto Kafka Example</a></li>
 </ul>
 <p>The basic structure of the JSON file is:
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;tableName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;schemaName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;topicName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tableName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schemaName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;topicName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></p>
 <p>At a minimum you must provide the table name, the schema name and the topic name. The key field refers to the key within the Kafka message which can be used to identify the row in the output. The message field contains a descriptor of each field found in the Kafka message. The Presto documentation describes the data types and formats that are allowed in configuration file.</p>
 <p>This notebook will create a topic called <span style="color:blue;background-color: transparent;">orders</span> which will be viewed as a table called <span style="color:blue;background-color: transparent;">orders</span>. While a schema called <span style="color:blue;background-color: transparent;">purchase</span> has been specified, it is not used when the topic is registered in watsonx.data. Watsonx.data using the schema name of <span style="color:blue;background-color: transparent;">default</span> when registering a topic. The preferred name of the file should be <span style="color:blue;background-color:transparent;">&lt;schema&gt;&lt;table&gt;.json</span> but it is not a requirement. </p>

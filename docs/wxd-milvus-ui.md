@@ -25,13 +25,13 @@ Fill in the values in the next cell and execute it.
       ```
 
 ### Start the Attu Service
-The next command will remove any existing Attu console and restart it with the settings you have provided above.
+The next command will remove any existing Attu console and restart it with the settings you have provided above. Make sure to use the Attu version which is compatible with the version of Milvus that is running. In this case we need to use v.2.4.0.
 
 !!! abstract "Start"
       ```
       sudo docker stop attu
       sudo docker rm attu
-      sudo docker run --name attu -d -p $ATTU_INTERNAL_PORT:3000 -v /certs:/app/certs -e HOST_URL=$ATTU_URL -e MILVUS_URL=$MILVUS_URL -e ROOT_CERT_PATH=/app/certs/presto.crt zilliz/attu:latest
+      sudo docker run --name attu -d -p $ATTU_INTERNAL_PORT:3000 -v /certs:/app/certs -e HOST_URL=$ATTU_URL -e MILVUS_URL=$MILVUS_URL -e ROOT_CERT_PATH=/app/certs/presto.crt zilliz/attu:v2.4.0
       ```
 
 Check that the service is running.

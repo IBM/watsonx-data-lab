@@ -1546,7 +1546,7 @@
 <p>See the section on <a href="wxd-reference-passwords#passwords">Passwords</a>.</p>
 <p>You can get all passwords for the system when you are logged in as the <code style="color:blue;font-size:medium;">watsonx</code> user by using the following command.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>cat /certs/passwords
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/certs/passwords
 </code></pre></div>
 </div>
 <p>You can also use the Jupyter notebook link to display the userids and passwords for the services.</p>
@@ -1556,43 +1556,43 @@
 <p>If Superset doesn't start for some reason, you will need to reset it completely to try it again. First make sure you are connected as the <code>watsonx</code> user <strong>not</strong> <code>root</code>.</p>
 <p>Make sure you have stopped the terminal session that is running Apache Superset. Next remove the Apache Superset directory.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>sudo rm -rf /home/watsonx/superset
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/home/watsonx/superset
 </code></pre></div>
 </div>
 <p>We remove the docker images associated with Apache Superset. If no containers or volumes exist you will get an error message.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>docker ps -a -q --filter <span class="s2">&quot;name=superset&quot;</span> <span class="p">|</span> xargs docker container rm --force
-docker volume list -q  --filter <span class="s2">&quot;name=superset&quot;</span> <span class="p">|</span> xargs docker volume rm --force
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w"> </span>-q<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;name=superset&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>rm<span class="w"> </span>--force
+docker<span class="w"> </span>volume<span class="w"> </span>list<span class="w"> </span>-q<span class="w">  </span>--filter<span class="w"> </span><span class="s2">&quot;name=superset&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span>--force
 </code></pre></div>
 </div>
 <p>Download the superset code again.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>git clone https://github.com/apache/superset.git
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/apache/superset.git
 </code></pre></div>
 </div>
 <p>The <code>docker-compose-non-dev.yml</code> file needs to be updated so that Apache Superset can access the same network that watsonx.data is using. </p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ./superset
-cp docker-compose-non-dev.yml docker-compose-non-dev-backup.yml
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>./superset
+cp<span class="w"> </span>docker-compose-non-dev.yml<span class="w"> </span>docker-compose-non-dev-backup.yml
 
-sed <span class="s1">&#39;/version: &quot;3.7&quot;/q&#39;</span> docker-compose-non-dev.yml &gt; yamlfix.txt
-cat <span class="s">&lt;&lt;EOF &gt;&gt; yamlfix.txt</span>
+sed<span class="w"> </span><span class="s1">&#39;/version: &quot;3.7&quot;/q&#39;</span><span class="w"> </span>docker-compose-non-dev.yml<span class="w"> </span>&gt;<span class="w"> </span>yamlfix.txt
+cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt;&gt; yamlfix.txt</span>
 <span class="s">networks:</span>
 <span class="s">  default:</span>
 <span class="s">    external: True</span>
 <span class="s">    name: ibm-lh-network</span>
 <span class="s">EOF</span>
-sed -e <span class="s1">&#39;1,/version: &quot;3.7&quot;/ d&#39;</span> docker-compose-non-dev.yml  &gt;&gt; yamlfix.txt
+sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;1,/version: &quot;3.7&quot;/ d&#39;</span><span class="w"> </span>docker-compose-non-dev.yml<span class="w">  </span>&gt;&gt;<span class="w"> </span>yamlfix.txt
 </code></pre></div>
 </div>
 <p>We update the Apache Superset code to version <code>2.1.0</code>.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>sed <span class="s1">&#39;s/\${TAG:-latest-dev}/2.1.0/&#39;</span> yamlfix.txt &gt; docker-compose-non-dev.yml
+<div class="highlight"><pre><span></span><code>sed<span class="w"> </span><span class="s1">&#39;s/\${TAG:-latest-dev}/2.1.0/&#39;</span><span class="w"> </span>yamlfix.txt<span class="w"> </span>&gt;<span class="w"> </span>docker-compose-non-dev.yml
 </code></pre></div>
 </div>
 <p>Use docker-compose to start Apache Superset.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>nohup docker compose -f docker-compose-non-dev.yml up <span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-non-dev.yml<span class="w"> </span>up<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 </div>
 <p>The <code>nohup</code> command will issue a message indicating that output will be directed to the <code>nohup.out</code> file. It takes some time for the service to start, so be patient! You can view any output from the Apache Superset system by viewing the <code>nohup.out</code> file in the directory where you installed superset.</p>
@@ -1628,7 +1628,7 @@ check-presto
 <p>A 500 code may indicate the watsonx.data UI has a problem connecting with the Presto engine. First log out of the console and trying logging back on. If that fails to solve the problem, you will need to reboot the console. Open up a terminal window into the server:</p>
 <p>As the root user, restart the docker container that is running the watsonx.data UI.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>docker restart lhconsole-nodeclient-svc
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>restart<span class="w"> </span>lhconsole-nodeclient-svc
 </code></pre></div>
 </div>
 <h3 id="queries-fail-become-of-insufficient-memory">Queries fail become of insufficient memory</h3>
@@ -1639,17 +1639,17 @@ check-presto
 </div>
 <p>What you need to do is make a change to the configuration settings of the Presto engine. As the root user, enter the docker container for the presto engine:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>docker <span class="nb">exec</span> -it ibm-lh-presto /bin/bash
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>ibm-lh-presto<span class="w"> </span>/bin/bash
 </code></pre></div>
 </div>
 <p>Next, copy the original config file to a safe place in case we make an error:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>cp /opt/presto/etc/config.properties /opt/presto/etc/config.properties.backup
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>/opt/presto/etc/config.properties<span class="w"> </span>/opt/presto/etc/config.properties.backup
 </code></pre></div>
 </div>
 <p>Then update the properties file.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>cat &gt;&gt; /opt/presto/etc/config.properties <span class="s">&lt;&lt; EOL</span>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>&gt;&gt;<span class="w"> </span>/opt/presto/etc/config.properties<span class="w"> </span><span class="s">&lt;&lt; EOL</span>
 <span class="s">experimental.spiller-spill-path=/tmp</span>
 <span class="s">experimental.spiller-max-used-space-threshold=0.7</span>
 <span class="s">experimental.max-spill-per-node=10GB</span>
@@ -1664,7 +1664,7 @@ check-presto
 </div>
 <p>Doublecheck that it worked.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>cat /opt/presto/etc/config.properties <span class="p">|</span> grep experimental
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/opt/presto/etc/config.properties<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>experimental
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1682,7 +1682,7 @@ experimental.spiller-spill-path=/tmp
 </div>
 <p>And now we restart the container. Make sure that you don't impact other users!</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>docker restart ibm-lh-presto
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>restart<span class="w"> </span>ibm-lh-presto
 </code></pre></div>
 </div>
 <p>Now try running your query again. </p>
@@ -1714,12 +1714,12 @@ experimental.spiller-spill-path=/tmp
 <p>If you can log into the watsonx userid using the VM Remove console, you can reset the watsonx.data server with the following steps.</p>
 <p>SSH into the server as the root user. Then switch to the development code bin directory.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
 </code></pre></div>
 </div>
 <p>Check the status of the system with the following command.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./status.sh --all
+<div class="highlight"><pre><span></span><code>./status.sh<span class="w"> </span>--all
 </code></pre></div>
 </div>
 <p>Output will look similar to:</p>
@@ -1738,12 +1738,12 @@ ibm-lh-minio              running
 
 <p>If the any of the services are not running, you will need to restart the system with the following set of commands.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
 ./stop-milvus
 ./stop
-<span class="nb">export</span> <span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
+<span class="nb">export</span><span class="w"> </span><span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
 ./start
-./start-milvus 
+./start-milvus<span class="w"> </span>
 </code></pre></div>
 </div>
 <p>Wait for all services to start and then check to see if you can connect to the watsonx.data UI. </p>
@@ -1751,12 +1751,12 @@ ibm-lh-minio              running
 <p>If you are using a TechZone image that has been suspended, or restarted, you may come across a situation where you are unable to connect to any service that uses the <code>http</code> protocol. The <code>watsonx.service</code> needs to have a diagnostic flag set that opens up these ports, and sometimes this diagnostic setting is not being updated. </p>
 <p>To manually stop and start the system, you will need to connect with root user privileges and run the following commands:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
 ./stop-milvus
 ./stop
-<span class="nb">export</span> <span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
+<span class="nb">export</span><span class="w"> </span><span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
 ./start
-./start-milvus 
+./start-milvus<span class="w"> </span>
 </code></pre></div>
 </div>
 <p>This set of commands will stop all the services in watsonx.data and restart them in diagnostic mode. This will now open the <code>http</code> ports for use.</p>

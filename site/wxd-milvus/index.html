@@ -1497,8 +1497,8 @@
 <p>You need to generate the certificate that will be used by the connection.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Generate the Connection Certificate</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span> QUIT <span class="p">|</span> openssl s_client -showcerts -connect watsonxdata:8443 <span class="p">|</span> <span class="se">\</span>
-      awk <span class="s1">&#39;/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}&#39;</span> &gt; /tmp/presto.crt 
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>QUIT<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-showcerts<span class="w"> </span>-connect<span class="w"> </span>watsonxdata:8443<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>awk<span class="w"> </span><span class="s1">&#39;/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/presto.crt<span class="w"> </span>
 </code></pre></div>
 </div>
 <h3 id="local-connection-parameters">Local Connection Parameters</h3>

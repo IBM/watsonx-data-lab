@@ -1476,30 +1476,30 @@
 <p>Use the following commands to get the generated userid and password for MinIO.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Extract MinIO userid and password</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">LH_S3_ACCESS_KEY</span><span class="o">=</span><span class="k">$(</span>docker <span class="nb">exec</span> ibm-lh-presto printenv <span class="p">|</span> grep LH_S3_ACCESS_KEY <span class="p">|</span> sed <span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
-<span class="nb">export</span> <span class="nv">LH_S3_SECRET_KEY</span><span class="o">=</span><span class="k">$(</span>docker <span class="nb">exec</span> ibm-lh-presto printenv <span class="p">|</span> grep LH_S3_SECRET_KEY <span class="p">|</span> sed <span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
-<span class="nb">echo</span> <span class="s2">&quot;MinIO Userid  : &quot;</span> <span class="nv">$LH_S3_ACCESS_KEY</span>
-<span class="nb">echo</span> <span class="s2">&quot;MinIO Password: &quot;</span> <span class="nv">$LH_S3_SECRET_KEY</span>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LH_S3_ACCESS_KEY</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ibm-lh-presto<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LH_S3_ACCESS_KEY<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LH_S3_SECRET_KEY</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ibm-lh-presto<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LH_S3_SECRET_KEY<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;MinIO Userid  : &quot;</span><span class="w"> </span><span class="nv">$LH_S3_ACCESS_KEY</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;MinIO Password: &quot;</span><span class="w"> </span><span class="nv">$LH_S3_SECRET_KEY</span>
 </code></pre></div>
 </div>
 <p>Use the following command to get the password for Postgres.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Extract Postgres userid and password</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span><span class="k">$(</span>docker <span class="nb">exec</span> ibm-lh-postgres printenv <span class="p">|</span> grep POSTGRES_PASSWORD <span class="p">|</span> sed <span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
-<span class="nb">echo</span> <span class="s2">&quot;Postgres Userid   : admin&quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot;Postgres Password : &quot;</span> <span class="nv">$POSTGRES_PASSWORD</span>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ibm-lh-postgres<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>POSTGRES_PASSWORD<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Postgres Userid   : admin&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Postgres Password : &quot;</span><span class="w"> </span><span class="nv">$POSTGRES_PASSWORD</span>
 </code></pre></div>
 </div>
 <p>You can get all passwords for the system when you are logged by issuing the following command:</p>
 <div class="admonition abstract">
 <p class="admonition-title">Extract all userids and passwords</p>
-<div class="highlight"><pre><span></span><code>cat /certs/passwords
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/certs/passwords
 </code></pre></div>
 </div>
 <p>If the passwords do not appear to work, you may need to regenerate them. The following must be run as the <code>root</code> user.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Generate userid and password list</p>
-<div class="highlight"><pre><span></span><code>sudo su -
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
 passwords
 </code></pre></div>
 </div>
@@ -1510,7 +1510,7 @@ passwords
 <p>To extract the certificate to your local file system, use the following command in a terminal window. Replace the <code>port</code> and <code>region.services.cloud.techzone.ibm.com</code> with the SSH values found in the TechZone reservation.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Download watsonx.data certificate</p>
-<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-P<span class="w"> </span>port<span class="w"> </span>watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks<span class="w"> </span>/Users/myname/Downloads
 </code></pre></div>
 </div>
 <p>Change the target directory to a location that you can remember! </p>
@@ -1521,17 +1521,17 @@ passwords
 <p>This command will generate a certificate called <code>presto.crt</code>. You can print the contents of the file and use that for input into CP4D dialogs that require the certificate text.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Generate watsonx.data certificate</p>
-<div class="highlight"><pre><span></span><code>rm -f presto.crt
-<span class="nb">echo</span> QUIT <span class="p">|</span> openssl s_client -showcerts -connect localhost:8443 <span class="p">|</span> awk <span class="s1">&#39;/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}&#39;</span> &gt; presto.crt
-cat presto.crt
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-f<span class="w"> </span>presto.crt
+<span class="nb">echo</span><span class="w"> </span>QUIT<span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>s_client<span class="w"> </span>-showcerts<span class="w"> </span>-connect<span class="w"> </span>localhost:8443<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/-----BEGIN CERTIFICATE-----/ {p=1}; p; /-----END CERTIFICATE-----/ {p=0}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>presto.crt
+cat<span class="w"> </span>presto.crt
 </code></pre></div>
 </div>
 <h4 id="generate-java-key-store">Generate Java Key Store</h4>
 <p>The following command will require a password for the keystore. The password can be anything you want, but it is set to <code>watsonx.data</code> in the Developer Edition. You must also accept the list of DNS names that are displayed in the list. The default is no! The keystore that is created is called <code>presto-key.jks</code>. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Generate watsonx.data keystore</p>
-<div class="highlight"><pre><span></span><code>rm -f presto-key.jks
-keytool -import -alias presto-cert -file ./presto.cert -keystore ./presto-key.jks
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-f<span class="w"> </span>presto-key.jks
+keytool<span class="w"> </span>-import<span class="w"> </span>-alias<span class="w"> </span>presto-cert<span class="w"> </span>-file<span class="w"> </span>./presto.cert<span class="w"> </span>-keystore<span class="w"> </span>./presto-key.jks
 </code></pre></div>
 </div>
 

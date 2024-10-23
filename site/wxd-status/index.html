@@ -1454,25 +1454,25 @@
 <p>The watsonx.data server is started as part of the lab. To make sure that the services are running, open a terminal session and use the following command to connect to the watsonx.data server.</p>
 <div class="admonition abstract">
 <p class="admonition-title">SSH into the watsonx.data server</p>
-<div class="highlight"><pre><span></span><code>ssh -p port watsonx@region.services.cloud.techzone.ibm.com
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-p<span class="w"> </span>port<span class="w"> </span>watsonx@region.services.cloud.techzone.ibm.com
 </code></pre></div>
 </div>
 <p>Password is <code style="color:blue;font-size:medium;">watsonx.data</code>.
 Next switch to the root userid and change to the watsonx.data bin directory.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Switch to the root user</p>
-<div class="highlight"><pre><span></span><code>sudo su -
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
 </code></pre></div>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Change to the bin directory</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
 </code></pre></div>
 </div>
 <p>You can check the watsonx.data system status with the following command.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Watsonx.data status</p>
-<div class="highlight"><pre><span></span><code>./status.sh --all
+<div class="highlight"><pre><span></span><code>./status.sh<span class="w"> </span>--all
 </code></pre></div>
 </div>
 <p>Output will look similar to:</p>
@@ -1498,7 +1498,7 @@ ibm-lh-minio                running
 <p>Check the record count of the customer table. </p>
 <div class="admonition abstract">
 <p class="admonition-title">Get record count from customer table</p>
-<div class="highlight"><pre><span></span><code>./presto-run  --catalog<span class="o">=</span>tpch <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;select * from tiny.customer limit 10;&quot;</span>
+<div class="highlight"><pre><span></span><code>./presto-run<span class="w">  </span>--catalog<span class="o">=</span>tpch<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;select * from tiny.customer limit 10;&quot;</span>
 </code></pre></div>
 </div>
 <p>The result set should include 10 rows (the results will be random).</p>
@@ -1531,20 +1531,20 @@ presto>
 <p>All commands require that you connect to the server as the root user. Use the following commands to connect to the watsonx.data system.</p>
 <div class="admonition abstract">
 <p class="admonition-title">SSH into the watsonx.data server</p>
-<div class="highlight"><pre><span></span><code>ssh -p port watsonx@region.services.cloud.techzone.ibm.com
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-p<span class="w"> </span>port<span class="w"> </span>watsonx@region.services.cloud.techzone.ibm.com
 </code></pre></div>
 </div>
 <p>Password is <code style="color:blue;font-size:medium;">watsonx.data</code>.
 Next switch to the root userid.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Switch to the root user</p>
-<div class="highlight"><pre><span></span><code>sudo su -
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
 </code></pre></div>
 </div>
 <p>As the root user, switch to the bin directory.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Switch to the bin directory</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
 </code></pre></div>
 </div>
 <h3 id="watsonxdata-shutdown">Watsonx.data Shutdown</h3>
@@ -1558,13 +1558,13 @@ Next switch to the root userid.</p>
 <p>You can manually stop the service using either of these commands:</p>
 <div class="admonition abstract">
 <p class="admonition-title">Stop watsonx.data service</p>
-<div class="highlight"><pre><span></span><code>systemctl stop watsonx.service
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>stop<span class="w"> </span>watsonx.service
 </code></pre></div>
 </div>
 <p>Alternatively, you can use the following commands. You must be in the <code>/root/ibm-lh-dev/bin</code> directory to issue these commands.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Stop watsonx.data using direct commands</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
 ./stop-milvus
 ./stop
 </code></pre></div>
@@ -1581,15 +1581,15 @@ Next switch to the root userid.</p>
 <p>You can manually start the service using either of these commands:</p>
 <div class="admonition abstract">
 <p class="admonition-title">Start watsonx.data service</p>
-<div class="highlight"><pre><span></span><code>systemctl start watsonx.service
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>start<span class="w"> </span>watsonx.service
 </code></pre></div>
 </div>
 <p>Alternatively, you can use the following commands. You must be in the <code>/root/ibm-lh-dev/bin</code> directory to issue these commands.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Start watsonx.data using direct commands</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
-<span class="nb">export</span> <span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
-./start 
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
+<span class="nb">export</span><span class="w"> </span><span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
+./start<span class="w"> </span>
 ./start-milvus
 </code></pre></div>
 </div>
@@ -1601,7 +1601,7 @@ Next switch to the root userid.</p>
 <p>You can check the status with the following command.</p>
 <div class="admonition abstract">
 <p class="admonition-title">System Status</p>
-<div class="highlight"><pre><span></span><code>./status.sh --all
+<div class="highlight"><pre><span></span><code>./status.sh<span class="w"> </span>--all
 </code></pre></div>
 </div>
 <p>Output will look similar to:</p>
@@ -1628,8 +1628,8 @@ ibm-lh-minio                running
 <p>Alternatively, you can use the watsonx.data commands.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Stop Presto using watsonx.data commmands</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
-./stop_service ibm-lh-presto
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
+./stop_service<span class="w"> </span>ibm-lh-presto
 </code></pre></div>
 </div>
 <p>To start Presto, use the following commands.</p>
@@ -1641,9 +1641,9 @@ ibm-lh-minio                running
 <p>Alternatively, you can use the watsonx.data commands.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Start Presto using watsonx.data commmands</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
-<span class="nb">export</span> <span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
-./start_service ibm-lh-presto
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
+<span class="nb">export</span><span class="w"> </span><span class="nv">LH_RUN_MODE</span><span class="o">=</span>diag
+./start_service<span class="w"> </span>ibm-lh-presto
 </code></pre></div>
 </div>
 <p>To check on the current status of the Presto engine, use the <code>check-presto</code> command.</p>

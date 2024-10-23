@@ -1726,7 +1726,7 @@
 <p>When connecting to the watsonx.data Presto database, you will need to have the connection certificate available to the client that you are using. Usually this location is your workstation, but it could be another service like CP4D.</p>
 <p>To extract the certificate to your local file system, use the following command in a terminal window. Replace the <code>port</code> and <code>region.services.cloud.techzone.com</code> with the SSH values found in the TechZone reservation.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-P<span class="w"> </span>port<span class="w"> </span>watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks<span class="w"> </span>/Users/myname/Downloads
 </code></pre></div>
 </div>
 <p>Change the target directory to a location that you can remember! </p>
@@ -1792,7 +1792,7 @@
 <h2 id="postgresql-access">PostgreSQL Access</h2>
 <p>When connecting to the PostgreSQL engine, select the PostgreSQL driver. In order to connect to the PostgreSQL system, you will need to extract the admin password using the following command when connected to the watsonx.data system.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>cat /certs/passwords
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/certs/passwords
 </code></pre></div>
 </div>
 <p>You can also retrieve the credentials by opening up the Credentials notebook in the Jupyter notebook service.</p>
@@ -1817,10 +1817,10 @@
 <h2 id="mysql-access">MySQL Access</h2>
 <p>When connecting to the MySQL engine, select the MySQL driver. </p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span><span class="k">$(</span>docker <span class="nb">exec</span> ibm-lh-postgres printenv <span class="p">|</span> grep POSTGRES_PASSWORD <span class="p">|</span> sed <span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
-<span class="nb">echo</span> <span class="s2">&quot;Postgres Userid   : admin&quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot;Postgres Password : &quot;</span> <span class="nv">$POSTGRES_PASSWORD</span>
-<span class="nb">echo</span> <span class="nv">$POSTGRES_PASSWORD</span> &gt; /tmp/postgres.pw
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ibm-lh-postgres<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>POSTGRES_PASSWORD<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Postgres Userid   : admin&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Postgres Password : &quot;</span><span class="w"> </span><span class="nv">$POSTGRES_PASSWORD</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$POSTGRES_PASSWORD</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/postgres.pw
 </code></pre></div>
 </div>
 <h3 id="mysql-internal-access">MySQL Internal Access</h3>
@@ -1851,7 +1851,7 @@
 <h2 id="accessing-watsonxdata-via-python">Accessing watsonx.data via Python</h2>
 <p>In order to access the watsonx.data database (Presto), you will need to install the Presto client using the following command on your local machine.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>pip3 install presto-python-client
+<div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>presto-python-client
 </code></pre></div>
 </div>
 <p>Once the installation is complete, extract the certificate from the watsonx.data server that we will use in the connection.</p>
@@ -1924,22 +1924,22 @@ cur.description
 <h2 id="accessing-watsonxdata-via-pandas-dataframes">Accessing watsonx.data via Pandas Dataframes</h2>
 <p>The following code is required for accessing watsonx.data in Jupyter notebooks.  Run the following code inside a notebook code cell.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>%pip install ipython-sql<span class="o">==</span><span class="m">0</span>.4.1
-%pip install <span class="nv">sqlalchemy</span><span class="o">==</span><span class="m">1</span>.4.46
-%pip install <span class="nv">sqlalchemy</span><span class="o">==</span><span class="m">1</span>.4.46 <span class="s2">&quot;pyhive[presto]&quot;</span>
+<div class="highlight"><pre><span></span><code>%pip<span class="w"> </span>install<span class="w"> </span>ipython-sql<span class="o">==</span><span class="m">0</span>.4.1
+%pip<span class="w"> </span>install<span class="w"> </span><span class="nv">sqlalchemy</span><span class="o">==</span><span class="m">1</span>.4.46
+%pip<span class="w"> </span>install<span class="w"> </span><span class="nv">sqlalchemy</span><span class="o">==</span><span class="m">1</span>.4.46<span class="w"> </span><span class="s2">&quot;pyhive[presto]&quot;</span>
 </code></pre></div>
 </div>
 <p>The notebook may need a restart of the kernel to pick up the changes to the driver.</p>
 <p>If you are running in a Jupyter Lab environment, you can use the most current versions of the drivers.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>%pip install ipython-sql
-%pip install sqlalchemy
-%pip install sqlalchemy <span class="s2">&quot;pyhive[presto]&quot;</span>
+<div class="highlight"><pre><span></span><code>%pip<span class="w"> </span>install<span class="w"> </span>ipython-sql
+%pip<span class="w"> </span>install<span class="w"> </span>sqlalchemy
+%pip<span class="w"> </span>install<span class="w"> </span>sqlalchemy<span class="w"> </span><span class="s2">&quot;pyhive[presto]&quot;</span>
 </code></pre></div>
 </div>
 <p>Once the drivers have been loaded, you will need to extract the certificate from the watsonx.data server that we will use in the connection.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-P<span class="w"> </span>port<span class="w"> </span>watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks<span class="w"> </span>/Users/myname/Downloads
 </code></pre></div>
 </div>
 <p>Change the target directory to a location that you can remember! </p>
@@ -1994,7 +1994,7 @@ cur.description
 <p><img alt="Browser" src="../wxd-images/connection-pandas.png" /></p>
 <p>You can use the features of Pandas to generate plots of the data in your notebook. First make sure you have <code>matplotlib</code> installed.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>%pip install matplotlib
+<div class="highlight"><pre><span></span><code>%pip<span class="w"> </span>install<span class="w"> </span>matplotlib
 </code></pre></div>
 </div>
 <p>The following query will compute the total account balance across all nation key values.</p>
@@ -2021,49 +2021,49 @@ cur.description
 <p>Ports 10000/1 are not open by default in the 1.1.0 image. For release 1.1.1, you can skip this step.</p>
 <p>You must explicitly open ports 10000/1 with the <code>firewall-cmd</code> command. In a command line shell, as the root user, enter the following commands:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>sudo su -
-firewall-cmd --add-port<span class="o">={</span><span class="m">10000</span>/tcp,10001/tcp<span class="o">}</span> --zone<span class="o">=</span>public --permanent
-firewall-cmd --reload
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
+firewall-cmd<span class="w"> </span>--add-port<span class="o">={</span><span class="m">10000</span>/tcp,10001/tcp<span class="o">}</span><span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--permanent
+firewall-cmd<span class="w"> </span>--reload
 </code></pre></div>
 </div>
 <p>You can use the following command to check that the ports are now open.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>firewall-cmd --list-ports
+<div class="highlight"><pre><span></span><code>firewall-cmd<span class="w"> </span>--list-ports
 </code></pre></div>
 </div>
 <h3 id="create-your-service">Create your Service</h3>
 <p>When creating your service, make sure to map the internal Docker port to either port 10000 or 10001. If you cannot remap the port, see the section on port redirection.</p>
 <p>For instance, the following command will start Microsoft SQLServer in Docker by mapping the host port 10000 to the SQLServer port of 1433 to 10000 (<code>-p 10000:1443</code>).  </p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>docker run -e <span class="s2">&quot;ACCEPT_EULA=Y&quot;</span> -e <span class="s2">&quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot;</span> <span class="se">\</span>
--p <span class="m">10000</span>:1433 --name mssql-server --hostname mssql-server <span class="se">\</span>
--d mcr.microsoft.com/mssql/server:2019-latest
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;ACCEPT_EULA=Y&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot;</span><span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">10000</span>:1433<span class="w"> </span>--name<span class="w"> </span>mssql-server<span class="w"> </span>--hostname<span class="w"> </span>mssql-server<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span>mcr.microsoft.com/mssql/server:2019-latest
 </code></pre></div>
 </div>
 <p>You can check the port mapping with the following command.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>docker container ls --format <span class="s2">&quot;table {{.ID}}\t{{.Names}}\t{{.Ports}}&quot;</span> -a <span class="p">|</span> grep mssql-server
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>container<span class="w"> </span>ls<span class="w"> </span>--format<span class="w"> </span><span class="s2">&quot;table {{.ID}}\t{{.Names}}\t{{.Ports}}&quot;</span><span class="w"> </span>-a<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>mssql-server
 </code></pre></div>
 </div>
 <p>When creating a connection to this database using an external tool, make sure to use the port number supplied in the reservation details (Open Port 1 is for port 10000 and Open Port 2 is for port 10001).</p>
 <h3 id="port-redirection">Port Redirection</h3>
 <p>If you already have an existing service mapped to a different port, you can use port redirection to use either port 10000 or 10001. For instance, assume that the previous creation of the SQLServer database used port 1433.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>docker run -e <span class="s2">&quot;ACCEPT_EULA=Y&quot;</span> -e <span class="s2">&quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot;</span> <span class="se">\</span>
--p <span class="m">1433</span>:1433 --name mssql-server --hostname mssql-server <span class="se">\</span>
--d mcr.microsoft.com/mssql/server:2019-latest
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;ACCEPT_EULA=Y&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot;</span><span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">1433</span>:1433<span class="w"> </span>--name<span class="w"> </span>mssql-server<span class="w"> </span>--hostname<span class="w"> </span>mssql-server<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span>mcr.microsoft.com/mssql/server:2019-latest
 </code></pre></div>
 </div>
 <p>Once the service is up and running, you can redirect the traffic on port 10000/1 to the port of your docker service.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>firewall-cmd --add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">10000</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">1433</span> --permanent --zone<span class="o">=</span>public
-firewall-cmd --reload
+<div class="highlight"><pre><span></span><code>firewall-cmd<span class="w"> </span>--add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">10000</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">1433</span><span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>public
+firewall-cmd<span class="w"> </span>--reload
 </code></pre></div>
 </div>
 <p>If you need to remove the redirection, use the following command.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>firewall-cmd --remove-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">10000</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">1433</span>:toaddr<span class="o">=</span> --permanent --zone<span class="o">=</span>public
-firewall-cmd --reload
+<div class="highlight"><pre><span></span><code>firewall-cmd<span class="w"> </span>--remove-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">10000</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">1433</span>:toaddr<span class="o">=</span><span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>public
+firewall-cmd<span class="w"> </span>--reload
 </code></pre></div>
 </div>
 <h3 id="accessing-your-service">Accessing your Service</h3>

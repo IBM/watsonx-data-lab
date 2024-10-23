@@ -1517,7 +1517,7 @@ User account management and access management varies between the different deplo
 <h3 id="add-a-user">Add a User</h3>
 <p>The syntax for adding a user is:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./user-mgmt add-user &lt;username&gt; <span class="o">[</span>User <span class="p">|</span> Admin<span class="o">]</span> &lt;password&gt;
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>add-user<span class="w"> </span>&lt;username&gt;<span class="w"> </span><span class="o">[</span>User<span class="w"> </span><span class="p">|</span><span class="w"> </span>Admin<span class="o">]</span><span class="w"> </span>&lt;password&gt;
 </code></pre></div>
 </div>
 <p>The values are:</p>
@@ -1528,57 +1528,57 @@ User account management and access management varies between the different deplo
 </ul>
 <p>The following command will add the user <code>watsonx</code> with a password of <code>watsonx.data</code>. This will be a standard user with no privileges. The first step is to make sure you are connected as the root user in watsonx.data server and have switched to the proper directory.</p>
 <div class="admonition abstract">
-<p><div class="highlight"><pre><span></span><code>sudo su -
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /root/ibm-lh-dev/bin
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
 </code></pre></div></p>
 </div>
 <p>The next command will add a new user to the system.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./user-mgmt add-user watsonx User watsonx.data
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>add-user<span class="w"> </span>watsonx<span class="w"> </span>User<span class="w"> </span>watsonx.data
 </code></pre></div>
 </div>
 <h3 id="change-a-users-password">Change a User's Password</h3>
 <p>The syntax for changing a password is:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./user-mgmt change-password &lt;username&gt;
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>change-password<span class="w"> </span>&lt;username&gt;
 </code></pre></div>
 </div>
 <p>This command will require that the user enter the new password. You can issue the command and provide the new password at the prompt. The other way to simulate the enter command is to use the Linux <code>yes</code> function which repeats a value multiple times.</p>
 <p>The following command will change the password of <code>watsonx</code> to <code>hellowatson</code>.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>yes hellowatson <span class="p">|</span> ./user-mgmt change-password watsonx
+<div class="highlight"><pre><span></span><code>yes<span class="w"> </span>hellowatson<span class="w"> </span><span class="p">|</span><span class="w"> </span>./user-mgmt<span class="w"> </span>change-password<span class="w"> </span>watsonx
 </code></pre></div>
 </div>
 <h3 id="validate-a-users-password">Validate a User's Password</h3>
 <p>You can validate a password by using the following command:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./user-mgmt test-user-cred &lt;username&gt;
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>test-user-cred<span class="w"> </span>&lt;username&gt;
 </code></pre></div>
 </div>
 <p>The username is the name of the user that you want to check the password for. This command will require that the user enter the existing password to check it. You can use the <code>yes</code> function (as described above) to simulate the enter command.</p>
 <p>The following command will check that we have changed the password of watsonx to <code>hellowatson</code>.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>yes hellowatson <span class="p">|</span> ./user-mgmt test-user-cred watsonx
+<div class="highlight"><pre><span></span><code>yes<span class="w"> </span>hellowatson<span class="w"> </span><span class="p">|</span><span class="w"> </span>./user-mgmt<span class="w"> </span>test-user-cred<span class="w"> </span>watsonx
 </code></pre></div>
 </div>
 <h3 id="delete-a-user">Delete a User</h3>
 <p>To delete a user, use the following command:</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./user-mgmt delete-user &lt;username&gt;
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>delete-user<span class="w"> </span>&lt;username&gt;
 </code></pre></div>
 </div>
 <p>The error messages on group ownership can be safely ignored.</p>
 <p>The following command will remove our watsonx user.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./user-mgmt delete-user watsonx
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>delete-user<span class="w"> </span>watsonx
 </code></pre></div>
 </div>
 <h2 id="roles-and-policies">Roles and Policies</h2>
 <p>In this section you will add a new user and provide them with privileges over the infrastructure and data. First start by adding a new user to the watsonx.data system.</p>
 <p>If you haven't already, make sure you are connected to the server as the root user and are in the <code>/root/ibm-lh-dev/bin</code> directory. Add <code>user1</code> to the system with a password of <code>password</code>.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>./user-mgmt add-user user1 User password
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>add-user<span class="w"> </span>user1<span class="w"> </span>User<span class="w"> </span>password
 </code></pre></div>
 </div>
 <h3 id="access-control">Access Control</h3>

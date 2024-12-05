@@ -110,8 +110,8 @@ The following script is used to ingest the taxi data (yellow_tripdata_2022_01) i
     dir=/mnt/infra/staging
     cd \${dir}
     source ./keys.sh
-    table_name="iceberg_data.ingest.yellow_tripdata_2022_01_localfile"
-    file="yellow_tripdata_2022-01.parquet"
+    table_name="iceberg_data.ingest.sls_product_lookup_localfile"
+    file="gosalesdw.sls_product_lookup.parquet"
     export STAGING_S3_CREDS="AWS_SECRET_ACCESS_KEY=\${secret_key}\\
     ,AWS_ACCESS_KEY_ID=\${access_key}\\
     ,AWS_REGION=us-east-1\\
@@ -119,17 +119,17 @@ The following script is used to ingest the taxi data (yellow_tripdata_2022_01) i
     ,ENDPOINT_URL=http://ibm-lh-minio:9000"
     export ENABLED_INGEST_MODE=PRESTO
     ibm-lh data-copy \\
-       --source-data-files \${dir}/\${file} \\
-       --target-tables \${table_name} \\
-       --ingestion-engine-endpoint "hostname=ibm-lh-presto-svc,port=8443" \\
-       --staging-location s3://iceberg-bucket/ingest/ \\
-       --staging-hive-catalog hive_data \\
-       --staging-hive-schema staging \\
-       --create-if-not-exist \\
-       --trust-store-path \${dir}/lh-ssl-ts.jks \\
-       --trust-store-password \${keystore_password} \\
-       --dbuser ibmlhadmin \\
-       --dbpassword password
+    --source-data-files \${dir}/\${file} \\
+    --target-table \${table_name} \\
+    --ingestion-engine-endpoint "hostname=ibm-lh-presto-svc,port=8443" \\
+    --staging-location s3://iceberg-bucket/ingest/ \\
+    --staging-hive-catalog hive_data \\
+    --staging-hive-schema staging \\
+    --create-if-not-exist \\
+    --trust-store-path \${dir}/lh-ssl-ts.jks \\
+    --trust-store-password \${keystore_password} \\
+    --dbuser ibmlhadmin \\
+    --dbpassword password
     EOF
     sed -i '/^$/d' ${staging}/ingest-local.sh
     chmod +x ${staging}/ingest-local.sh

@@ -27,12 +27,12 @@ In addition, there is an Appendix which includes common errors and potential fix
 
 The watsonx.data system is running on a virtual machine with the following resources:
 
-   * 4 vCPUs
-   * 16Gb of memory
+   * 8 vCPUs
+   * 32Gb of memory
    * 400Gb of disk
 
 This is sufficient for running this exercises found in this lab but should not be used for performance testing or dealing with large data sets.
 
-## Watsonx.data Level 3 Technical Training
+## Watsonx.data Level 3/4 Technical Training
 
-This system is used as a basis for the watsonx.data Level 3 Technical Training. For the detailed lab material, please refer to the following PDF found in Seismic: [https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj](https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj)
+The 2.0.2 system is used as a basis for the watsonx.data Level 3/4 Technical Training. For the detailed lab material, please refer to the following PDF found in Seismic: [https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj](https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj)

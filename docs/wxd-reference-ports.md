@@ -8,16 +8,13 @@ These URLs and Port numbers are needed to access the watsonx.data services. The 
 
 * SSH for watsonx userid - ssh -p xxxxx watsonx@region.services.cloud.techzone.ibm.com
 * SSH Browser - Server: http://region.services.cloud.techzone.ibm.com:33333/terminals/1
-* MySQL Port - Server: region.services.cloud.techzone.ibm.com Port: 12345
-* PostgreSQL Port - Server: region.services.cloud.techzone.ibm.com Port: 23456
-* Portainer console - https://region.services.cloud.techzone.ibm.com:34567
-* Apache Superset - http://region.services.cloud.techzone.ibm.com:43221
+* Diagnostic Port - http://region.services.cloud.techzone.ibm.com:12345
 * Presto console - https://region.services.cloud.techzone.ibm.com:15152
 * Presto Port - Server: region.services.cloud.techzone.ibm.com Port: 15152
 * Jupyter Notebook - Server: http://region.services.cloud.techzone.ibm.com:33333/notebooks/Table_of_Contents.ipynb
 * Minio Endpoint - Server: region.services.cloud.techzone.ibm.com Port: 25623
 * Minio console - http://region.services.cloud.techzone.ibm.com:14352
-* Hive Thrift URL - thrift://region.services.cloud.techzone.ibm.com:35421
+* Thrift URL - thrift://region.services.cloud.techzone.ibm.com:35421
 * Watsonx UI - https://region.services.cloud.techzone.ibm.com:41311
 * Db2 Port - Server: region.services.cloud.techzone.ibm.com Port: 24312
 * Milvus Port - Server: region.services.cloud.techzone.ibm.com Port: 34312
@@ -42,23 +39,24 @@ The following URLs and Ports are used to access the watsonx.data services. Most 
 
 **Note**: Mac OSX users should be aware that accessing the MinIO console may occasionally cause Firefox and Chrome to lock up. If you find that this occurs, try using Safari which appears to work fine.
 
-The ports that are used in the lab listed below, including their available when you first access the lab. The internal port number is always the same when running in the VMware image using the VM Remote Console. When using your workstation's browser, you will need to use the server name and port number supplied in the TechZone reservation. 
+The ports that are used in the lab listed below, including if they are available externally. The port numbers shown will be used when accessing them in the VM Remote Console. When using your workstation's browser, you will need to use the server name and port number supplied in the TechZone reservation. 
 
-|Service|Port|Active|
+|Service|Port|External|
 |-------|------|----|
 | watsonx.data management console|9443|Yes
 | Presto console|8443|Yes
 | MinIO console (S3 buckets)|9001|Yes
 | MinIO S3 Endpoint|9000|Yes
-| Portainer (Docker container management)|6443|Yes
+| Portainer (Docker container management)|6443|**No**
 | Apache Superset (Query and Graphing)|8088|**No**
 | Jupyter Notebook|8888|Yes
 | Presto External Port|8443|Yes
-| Hive metadata Port|9043|Yes
+| Thrift metadata Port|8380|Yes
 | Milvus| 19530 | Yes
-| MySQL External Port|3306|Yes
-| Postgres External Port|5432|Yes
+| MySQL Port|3306|**No**
+| Postgres Port|5432|**No**
 | Db2 Database Port|50000|Yes
+| Diagnostics Port|8501|Yes
 
 **Note**: The following port is not active unless the service is started:
 

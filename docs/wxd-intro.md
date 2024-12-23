@@ -55,8 +55,8 @@ In addition, there is an Appendix which includes common errors and potential fix
 
 The watsonx.data system is running on a virtual machine with the following resources:
 
-   * 4 vCPUs
-   * 16Gb of memory
+   * 8 vCPUs
+   * 32Gb of memory
    * 400Gb of disk
 
 This is sufficient for running this exercises found in this lab but should not be used for performance testing or dealing with large data sets.

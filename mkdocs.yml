@@ -16,7 +16,7 @@ nav:
     - Userids and Passwords: "wxd-reference-passwords.md"
     - Documentation: "wxd-reference-documentation.md"
   - Lab Instructions: "wxd-lab-instructions.md"
-  - System Status and Utilties: "wxd-status.md"
+  - System Status and Utilities: "wxd-status.md"
   - Jupyter Notebooks: "wxd-jupyter.md"  
   - Watsonx.data Overview:
     - Overview: "wxd-intro-overview.md"

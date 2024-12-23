@@ -430,7 +430,7 @@
   
     <li class="md-nav__item">
       <a href="../wxd-status/" class="md-nav__link">
-        System Status and Utilties
+        System Status and Utilities
       </a>
     </li>
   
@@ -1362,16 +1362,13 @@
 <ul>
 <li>SSH for watsonx userid - ssh -p xxxxx watsonx@region.services.cloud.techzone.ibm.com</li>
 <li>SSH Browser - Server: http://region.services.cloud.techzone.ibm.com:33333/terminals/1</li>
-<li>MySQL Port - Server: region.services.cloud.techzone.ibm.com Port: 12345</li>
-<li>PostgreSQL Port - Server: region.services.cloud.techzone.ibm.com Port: 23456</li>
-<li>Portainer console - https://region.services.cloud.techzone.ibm.com:34567</li>
-<li>Apache Superset - http://region.services.cloud.techzone.ibm.com:43221</li>
+<li>Diagnostic Port - http://region.services.cloud.techzone.ibm.com:12345</li>
 <li>Presto console - https://region.services.cloud.techzone.ibm.com:15152</li>
 <li>Presto Port - Server: region.services.cloud.techzone.ibm.com Port: 15152</li>
 <li>Jupyter Notebook - Server: http://region.services.cloud.techzone.ibm.com:33333/notebooks/Table_of_Contents.ipynb</li>
 <li>Minio Endpoint - Server: region.services.cloud.techzone.ibm.com Port: 25623</li>
 <li>Minio console - http://region.services.cloud.techzone.ibm.com:14352</li>
-<li>Hive Thrift URL - thrift://region.services.cloud.techzone.ibm.com:35421</li>
+<li>Thrift URL - thrift://region.services.cloud.techzone.ibm.com:35421</li>
 <li>Watsonx UI - https://region.services.cloud.techzone.ibm.com:41311</li>
 <li>Db2 Port - Server: region.services.cloud.techzone.ibm.com Port: 24312</li>
 <li>Milvus Port - Server: region.services.cloud.techzone.ibm.com Port: 34312</li>
@@ -1392,13 +1389,13 @@ The <code>port</code> number that is provided in the reservation is mapped to th
 <h2 id="watsonxdata-open-ports">Watsonx.data Open Ports</h2>
 <p>The following URLs and Ports are used to access the watsonx.data services. Most browsers will work with these URLs. </p>
 <p><strong>Note</strong>: Mac OSX users should be aware that accessing the MinIO console may occasionally cause Firefox and Chrome to lock up. If you find that this occurs, try using Safari which appears to work fine.</p>
-<p>The ports that are used in the lab listed below, including their available when you first access the lab. The internal port number is always the same when running in the VMware image using the VM Remote Console. When using your workstation's browser, you will need to use the server name and port number supplied in the TechZone reservation. </p>
+<p>The ports that are used in the lab listed below, including if they are available externally. The port numbers shown will be used when accessing them in the VM Remote Console. When using your workstation's browser, you will need to use the server name and port number supplied in the TechZone reservation. </p>
 <table>
 <thead>
 <tr>
 <th>Service</th>
 <th>Port</th>
-<th>Active</th>
+<th>External</th>
 </tr>
 </thead>
 <tbody>
@@ -1425,7 +1422,7 @@ The <code>port</code> number that is provided in the reservation is mapped to th
 <tr>
 <td>Portainer (Docker container management)</td>
 <td>6443</td>
-<td>Yes</td>
+<td><strong>No</strong></td>
 </tr>
 <tr>
 <td>Apache Superset (Query and Graphing)</td>
@@ -1443,8 +1440,8 @@ The <code>port</code> number that is provided in the reservation is mapped to th
 <td>Yes</td>
 </tr>
 <tr>
-<td>Hive metadata Port</td>
-<td>9043</td>
+<td>Thrift metadata Port</td>
+<td>8380</td>
 <td>Yes</td>
 </tr>
 <tr>
@@ -1453,18 +1450,23 @@ The <code>port</code> number that is provided in the reservation is mapped to th
 <td>Yes</td>
 </tr>
 <tr>
-<td>MySQL External Port</td>
+<td>MySQL Port</td>
 <td>3306</td>
-<td>Yes</td>
+<td><strong>No</strong></td>
 </tr>
 <tr>
-<td>Postgres External Port</td>
+<td>Postgres Port</td>
 <td>5432</td>
-<td>Yes</td>
+<td><strong>No</strong></td>
 </tr>
 <tr>
 <td>Db2 Database Port</td>
 <td>50000</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Diagnostics Port</td>
+<td>8501</td>
 <td>Yes</td>
 </tr>
 </tbody>

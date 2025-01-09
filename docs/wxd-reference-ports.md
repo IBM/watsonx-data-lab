@@ -52,6 +52,7 @@ The ports that are used in the lab listed below, including if they are available
 | Jupyter Notebook|8888|Yes
 | Presto External Port|8443|Yes
 | Thrift metadata Port|8380|Yes
+| Hive metadata Port|9083|**Replaced**
 | Milvus| 19530 | Yes
 | MySQL Port|3306|**No**
 | Postgres Port|5432|**No**

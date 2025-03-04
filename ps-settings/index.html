@@ -1,0 +1,697 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Simulator Options - pureScale Simulator</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#options" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pureScale Simulator" class="md-header__button md-logo" aria-label="pureScale Simulator" data-md-component="logo">
+      
+  <img src="../ps-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pureScale Simulator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Simulator Options
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pureScale Simulator" class="md-nav__button md-logo" aria-label="pureScale Simulator" data-md-component="logo">
+      
+  <img src="../ps-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    pureScale Simulator
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-reservation/" class="md-nav__link">
+        Reserving an Instance
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Using the Simulator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using the Simulator" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using the Simulator
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-getting-started/" class="md-nav__link">
+        Accessing the System
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-startup/" class="md-nav__link">
+        Starting the Simulator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-components/" class="md-nav__link">
+        pureScale Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-clients/" class="md-nav__link">
+        Client Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-members/" class="md-nav__link">
+        Member Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-cf/" class="md-nav__link">
+        Cluster Caching Facility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-gpfs/" class="md-nav__link">
+        Spectrum Scale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-playback/" class="md-nav__link">
+        Script Playback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-recording/" class="md-nav__link">
+        Recording a Script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Simulator Options
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Simulator Options
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-and-help" class="md-nav__link">
+    Tutorial and Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-display" class="md-nav__link">
+    Message Display
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation-speed" class="md-nav__link">
+    Animation Speed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-review" class="md-nav__link">
+    Session Review
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracing-advanced" class="md-nav__link">
+    Tracing (Advanced)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tutorial-and-help" class="md-nav__link">
+    Tutorial and Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-display" class="md-nav__link">
+    Message Display
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation-speed" class="md-nav__link">
+    Animation Speed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-review" class="md-nav__link">
+    Session Review
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tracing-advanced" class="md-nav__link">
+    Tracing (Advanced)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="options">Options</h1>
+<p>There are a variety of options that are available to the user to control the speed of animation and the length that messages are displayed. The buttons on the far-right side of the simulator are: </p>
+<ul>
+<li>Message (Info) display</li>
+<li>Animation speed</li>
+<li>Session Review</li>
+<li>Tracing (Advanced)</li>
+<li>Tutorial</li>
+<li>Help </li>
+</ul>
+<p><img alt="alt text" src="../ps-images/sim-options-buttons.png" /> </p>
+<h2 id="tutorial-and-help">Tutorial and Help</h2>
+<p>The two buttons on the far-right side of the toolbar are used to guide you using the simulator. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-help.png" /> </p>
+<p>The TUTORIAL button will run a script taking you through some of the features that are found in the simulator, while the HELP button displays the full help information (this file). </p>
+<h2 id="message-display">Message Display</h2>
+<p>The Message (INFO) button is used to control the display of informational messages on the screen. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-infoon.png" /> </p>
+<p>The default value for informational messages is on. This means that the simulator will display messages as it runs and wait 1.5 seconds before continuing. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-info-example.png" />  </p>
+<p>These messages are usually placed beside one of the objects on the screen, such as clients, members, CF, or the file system. If you want to skip the message, you can click anywhere on the black background or the green sidebar that displays on the far right-hand side of the display while the simulation is running. </p>
+<p><img alt="alt text" src="../ps-images/sim-playback-pause.png" />  </p>
+<p>If you click on the message itself, the background color of the message will turn yellow. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-info-pause.png" /> </p>
+<p>When the message is yellow, the system will pause until you click on the message again, the black background, or the green arrow on the sidebar. </p>
+<p>Clicking on the INFO button will change its status to OFF. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-infooff.png" /> </p>
+<p>When messages are off, no informational messages will be shown. Your simulations will run fast, but you won't know what is going on! However, there are situations where you may be debugging or testing a configuration and you want to skip the messages that are being shown. See the session review button for details on how to review the messages you may have missed.</p>
+<p>If you press the INFO button one more time it will change to a status of PAUSE. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-infopause.png" /> </p>
+<p>When the messages are in PAUSE status, every message will pause waiting for you to click on the message again, the black background or the arrow on the sidebar. 
+If you click the INFO button one more time it will cycle back to messages being ON. </p>
+<h2 id="animation-speed">Animation Speed</h2>
+<p>When the simulation runs, the messages that are sent between clients, members, database, and the CF are animated using a series of dots. For example, the following image shows a message being sent between a client and a member. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-infoexample.png" /> </p>
+<p>On average, these dots use between 1 to 2 seconds to reach their destination depending on distance (Note! In a real pureScale system, one of these communication requests takes about 15 microseconds!). You have the option of speeding up the animation and the length of time a message is displayed by clicking on this button. The values of the animation speed can be: </p>
+<ul>
+<li>1.0x - The default speed of 1-2 seconds depending on distance </li>
+<li>1.5x - A 50% increase in speed </li>
+<li>2.0x - Twice as fast </li>
+<li>4.0x - Four times as fast </li>
+<li>Off </li>
+</ul>
+<p>If the animation speed is set to a numeric value (1.0, 1.5, 2.0, 4.0), the messages will continue to be displayed, but the pause time (for INFO ON) will be reduced. So instead of the default 1.5 seconds for a message to display, a 2.0x setting will make the message stay on the screen for only .75 seconds. You have the option of clicking on a message to pause it for further reading or use the PAUSE setting for messages. </p>
+<p>The final value (OFF) will draw all the dots immediately from the source to the destination without individually turning them on and off. This mode speeds up the drawing of the communication lines, but it does not speed up the messages. The messages will continue to pause for 1.5 seconds before continuing. This mode is a compromise if you want to speed up the simulation but still have time to read the messages. </p>
+<p>You can change the default values that the program uses for the message delay, message format, and the animation speed by modifying the _options.psc file found in the <code>system</code> directory. To change the amount of time that a message pauses before continuing, you would change the following line to include the delay time. In this example, the pause time is set to 3.5 seconds.</p>
+<div class="highlight"><pre><span></span><code><span class="err">op</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="err">message</span><span class="p">,</span><span class="mf">3.5</span>
+</code></pre></div>
+<h2 id="session-review">Session Review</h2>
+<p>All the actions that take place during a session are recorded. You may decide to run the simulator with the messages turned off or with very fast animation. At any point in time, you can click on the review button to display the actions and messages that were displayed during the running of the simulator.</p>
+<p><img alt="alt text" src="../ps-images/sim-options-review.png" /> </p>
+<p>The program will display the actions and messages in a separate window. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-review-panel.png" /> </p>
+<p>The system will continue to record the steps during your session unless you press the reset button. The reset button will clear the contents of the recording buffer.</p>
+<h2 id="tracing-advanced">Tracing (Advanced)</h2>
+<p>The pureScale simulator is built upon several scripts that run in the background. If an error occurs, the trace window will appear and describe what went wrong. If you do encounter this, please let us know so we can figure out what the problem is. If you are interested in what the scripts are doing, click on the TRACE button. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-trace.png" /> </p>
+<p>The following image is a sample trace window that would get generated when you start a SELECT statement from a client. </p>
+<p><img alt="alt text" src="../ps-images/sim-options-trace-window.png" /> </p>
+<p>The top of the trace window will show what statement is currently being executed while the bottom half will show the status of variables within the procedure. The trace window will update as the simulation runs. If your INFO setting is set to PAUSE, you will end up single stepping through the code. You must click on the black background or the green arrow at the top corner of the trace window to continue to the next step.</p>
+<p>If the INFO setting is ON, the code will run at the rate of statement every 1.5 seconds. Setting the animation button to 2x or 4x may make it more bearable to watch the code running! 
+This trace window is usually reserved for debugging scripts, so you shouldn't have to use this for running your simulations unless you are curious about what is happening "under the covers". </p>
+<p>Pressing the TRACE button again will remove the trace window from the screen.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../ps-recording/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Recording a Script" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Recording a Script
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ps-disclaimer/" class="md-footer__link md-footer__link--next" aria-label="Next: Disclaimer" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Disclaimer
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

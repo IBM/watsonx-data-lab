@@ -1,0 +1,726 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Client Configuration - pureScale Simulator</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#client-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pureScale Simulator" class="md-header__button md-logo" aria-label="pureScale Simulator" data-md-component="logo">
+      
+  <img src="../ps-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pureScale Simulator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Client Configuration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pureScale Simulator" class="md-nav__button md-logo" aria-label="pureScale Simulator" data-md-component="logo">
+      
+  <img src="../ps-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    pureScale Simulator
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-reservation/" class="md-nav__link">
+        Reserving an Instance
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Using the Simulator
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using the Simulator" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Using the Simulator
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-getting-started/" class="md-nav__link">
+        Accessing the System
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-startup/" class="md-nav__link">
+        Starting the Simulator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-components/" class="md-nav__link">
+        pureScale Components
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Client Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Client Configuration
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#select-button" class="md-nav__link">
+    Select Button
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-button" class="md-nav__link">
+    Update Button
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-and-rollback" class="md-nav__link">
+    Commit and Rollback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locking-mode" class="md-nav__link">
+    Locking Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-type" class="md-nav__link">
+    Connection Type
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-members/" class="md-nav__link">
+        Member Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-cf/" class="md-nav__link">
+        Cluster Caching Facility
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-gpfs/" class="md-nav__link">
+        Spectrum Scale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-playback/" class="md-nav__link">
+        Script Playback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-recording/" class="md-nav__link">
+        Recording a Script
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-settings/" class="md-nav__link">
+        Simulator Options
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ps-acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#select-button" class="md-nav__link">
+    Select Button
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-button" class="md-nav__link">
+    Update Button
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commit-and-rollback" class="md-nav__link">
+    Commit and Rollback
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locking-mode" class="md-nav__link">
+    Locking Mode
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-type" class="md-nav__link">
+    Connection Type
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="client-configuration">Client Configuration</h1>
+<p>The main interface to running a simulation is through the client. Examining the client, you will see that there are several buttons and values in it. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-details.png" /> </p>
+<p>There are five sections in the client: </p>
+<ul>
+<li>Buttons - these control the execution of the simulation and client</li>
+<li>Row Selected - used for selecting one of sixteen rows to process </li>
+<li>Power Off - used to kill a client to test error recovery </li>
+<li>Current Row - the row that was selected or updated in a transaction </li>
+<li>Row Value - the value of a row returned during a select, or the value that the row was updated to </li>
+</ul>
+<p>The buttons are the key component of the client since they control how the simulation runs. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-buttons.png" /> </p>
+<p>Some of these buttons may be grayed out depending on what the client is currently doing. However, the two buttons that are used to control the actual SQL that the client will run are always available. The buttons from left to right are: </p>
+<ul>
+<li>Select - used to select a row from the table </li>
+<li>Update - used to update the value of a particular row </li>
+<li>Commit - only available when an update has been done </li>
+<li>Rollback - only available when an update has been done </li>
+<li>Locking mode - changes the locking behavior for a select only </li>
+<li>Connect mode - determines how the client will connect </li>
+</ul>
+<p>Each one of these buttons is described in detail below. </p>
+<h3 id="select-button">Select Button</h3>
+<p>The Select button is used to select a row from the table. There are sixteen rows in the table and each one contains a first name. These names are randomly loaded into the Db2 table that resides on the IBM® Spectrum Scale file system. </p>
+<p>The client can only select one row at a time (no SELECT * ... available here!). To indicate which row you want to select, click on one of the sixteen row numbers found below the buttons. </p>
+<p><img alt="alt text" src="../ps-images/sim-record-numbers.png" /> </p>
+<p>When you select a row, the square with the row number will turn blue, and the blue box below the monitor will be updated to contain the number. For instance, selecting row 5 with this client will result in the following display. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-5.png" /> </p>
+<p>Once a row has been selected, the SELECT button can be pressed and the simulation will start. If you do not have a valid configuration, an error message will be displayed beside the client. </p>
+<p><img alt="alt text" src="../ps-images/sim-bad-config.png" /> </p>
+<p>Once the select transaction has completed, the row value in the client will be updated to contain the value of the row from the table. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-5-value.png" /> </p>
+<h3 id="update-button">Update Button</h3>
+<p>The update button is found beside the select button and works similarly. The client can only update one row during a "click" but many rows can be updated before a commit or rollback is done. In other words, the client could potentially update all 16 rows before requiring an update or a commit to occur. </p>
+<p>Selecting a row for update is identical to retrieving a row. You first need to select the row number and the box containing the row number will turn blue. Before issuing an update, you must place a value beside the row number box below the monitor. </p>
+<p>The following image shows the client replacing the value in row 5 with the value ABCD.</p>
+<p><img alt="alt text" src="../ps-images/sim-client-update.png" /> </p>
+<p>You can also click on the row number box beside the row value to generate a random name. This is more convenient if you want to use the mouse to run the simulation rather than using the keyboard to enter a value. </p>
+<p>Once you've entered a value for the row you can press the update button. If you do not supply a value for the row, an error message will be generated. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-no-value.png" /> </p>
+<p>Once an update has successfully completed, the row box in the grid will turn yellow to indicate that this row has been updated. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-updated.png" /> </p>
+<p>The colors of the boxes will reset to gray when all updates are either committed or rolled back. </p>
+<h3 id="commit-and-rollback">Commit and Rollback</h3>
+<p>The Commit and Rollback buttons are only available when you have successfully updated a row. Prior to this, the commit and rollback buttons are grayed out. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-no-update.png" /> </p>
+<p>Once we update a row, we will implicitly create a transaction. The implications of this are that any subsequent SELECT or UPDATE that is run from this client can only connect to the member that the original update went to. In other words, all transactions within this unit of work will have affinity (or be restricted to) to the member that the transaction started on.</p>
+<p><img alt="alt text" src="../ps-images/sim-client-buttons.png" /> </p>
+<p>Selecting the green arrow (Commit) will cause the updates to be committed on the CF and all locks released. Selecting the red "X" (Rollback) will cause the updates to be rolled back and no changes will have been placed into the table. </p>
+<h3 id="locking-mode">Locking Mode</h3>
+<p>The locking mode button lets you change how SELECTs (not UPDATES!) are handled by the member. By default, the client will request that currently committed semantics be used by the client. This will (in most cases) give the client the last properly committed value for a row. For instance, with the normal locking mode (closed lock) any select statement to a member will only read committed information. Normally if there are no locks on a row you would receive the current data that is in the local buffer pool or what is on disk. </p>
+<p>The image below shows that client #1 has retrieved the contents of row #1 (JEFF). </p>
+<p><img alt="alt text" src="../ps-images/sim-locking-1.png" /> </p>
+<p>The next image shows client #2 updating the value of row #1 to the value ABCD. </p>
+<p><img alt="alt text" src="../ps-images/sim-locking-2.png" /> </p>
+<p>The value in the buffer has changed to ABCD for row #1. Note also that the log file will now contain the original value of the row before the update. </p>
+<p><img alt="alt text" src="../ps-images/sim-locking-3.png" /> </p>
+<p>When client #1 requests the row again, it will return the value of JEFF from the log file rather than the value from the buffer. The reason is that with currently committed semantics, we get the last known committed value of the row from the log, rather than the current "dirty" data in the buffer. Note that the row is not committed to disk or the CF until the client does a COMMIT. </p>
+<p><img alt="alt text" src="../ps-images/sim-locking-4.png" /> </p>
+<p>If we want to get the value of the row currently in the buffer, we will change the locking mode to UR (Uncommitted Read). Clicking on the lock icon will change it to an open lock. </p>
+<p><img alt="alt text" src="../ps-images/sim-locking-5.png" /> </p>
+<p>Now issuing a SELECT statement will result in the current data on the page being returned to the client. </p>
+<p><img alt="alt text" src="../ps-images/sim-locking-6.png" /> </p>
+<p>Note that the client that initiated an update against a row will always see the current contents of the row, regardless of the locking model. Since the client did the update, they will always see the change that they made, rather than the previous, committed version. </p>
+<p>Clients that attempt to update a row that is currently locked on a different member will always wait for that update to complete. For read requests, the member will go to disk or the CF if the page is not in the current bufferpool. The reason for this is that a member cannot go "off" member to get the previous value of the row in the log.</p>
+<p>For instance, the following image shows an updated row in member #1 (row 1 = TIFF) and member #2 requesting the same row via member #2. The client (#2) will have to wait for the update to complete before updating the contents of the row. </p>
+<p><img alt="alt text" src="../ps-images/sim-locking-7.png" /> </p>
+<p>If you use UR mode (uncommitted read), a client will read the contents of a row in the bufferpool even if it is locked.  </p>
+<h3 id="connection-type">Connection Type</h3>
+<p>For a select or update to take place, a connection must first be made to a Db2 member. In a pureScale system, a connection to a member is done when the client first connects; however, the connection can move to another member during subsequent CONNECT requests or at a transaction boundary. </p>
+<p>In the pureScale simulator, a new connection occurs whenever a SELECT takes place. The same is true when an UPDATE occurs, except that the client will NOT connect to a different member (for any subsequent SELECTs or UPDATEs) until a COMMIT or ROLLBACK occurs. The connection type box will turn gray when an UPDATE occurs, so all subsequent SELECTs and UPDATEs will continue to go to the same member. </p>
+<p>Whenever a transaction is started from a client, it will connect to one of the Db2 members that is available. Which member it connects to is based on the Connection Type icon found at the far right of the buttons at the top of the client. </p>
+<p><img alt="alt text" src="../ps-images/sim-client-no-update.png" /> </p>
+<p>By default, the connection is set to workload balancing. The small graph icon represents CPU performance.</p>
+<p><img alt="alt text" src="../ps-images/sim-cpu-usage.png" /> </p>
+<p>When running with workload balancing, the connection will go to the least-used member. At the top of each member is the current load of the machine. </p>
+<p><img alt="alt text" src="../ps-images/sim-cpu-usage-1.png" /> </p>
+<p>The load of the member over time is shown as a small graph underneath the CPU image. </p>
+<p><img alt="alt text" src="../ps-images/sim-cpu-usage-1-graph.png" /> </p>
+<p>When the client attempts a connection, it will look to see which the least-busy member is and connect there. The loads on the systems are random and change as the simulation runs.</p>
+<p>If you want to set the load at a level (to guarantee you can show the client going to the least busy member), you can click on the graph in the member. This will display a grid with 4 CPU levels:</p>
+<p><img alt="alt text" src="../ps-images/sim-cpu-usage-custom-1.png" /> </p>
+<p>When you click on 20, 40, 60, or 80, the CPU level of that member will be fixed at that amount.</p>
+<p><img alt="alt text" src="../ps-images/sim-cpu-usage-custom-2.png" /> </p>
+<p>The CPU level will remain at the level (40 in this example) until you click on the 40 again. The performance of the member will then begin to fluctuate as before.</p>
+<p>Clicking on the connection button will make it change to round-robin mode. </p>
+<p><img alt="alt text" src="../ps-images/sim-connect-roundrobin.png" /> </p>
+<p>Round-robin mode means that at the start of any transaction the client will connect to the next available member. For instance, the first connection will always be to member 1. The second connection will be to member 2, and so on and eventually returning to member 1. If a member is not available, the connection will go to the next available member. </p>
+<p>The next three connection options are based on "affinity" or connection to a specific server. Clicking on the connection button will now change it from round-robin to connecting directly to members 1, 2, or 3 as shown in the following images.</p>
+<p><img alt="alt text" src="../ps-images/sim-connect-affinity.png" /> </p>
+<p>When using affinity-based connections, the client will not be able to run transactions if their affinity server is not available.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../ps-components/" class="md-footer__link md-footer__link--prev" aria-label="Previous: pureScale Components" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              pureScale Components
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ps-members/" class="md-footer__link md-footer__link--next" aria-label="Next: Member Configuration" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Member Configuration
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

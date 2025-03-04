@@ -1,0 +1,1673 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Analytic Workloads - watsonx.data Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#analytic-workload" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="watsonx.data Lab" class="md-header__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            watsonx.data Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Analytic Workloads
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="watsonx.data Lab" class="md-nav__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    watsonx.data Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-revisions/" class="md-nav__link">
+        What's New
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ibmid/" class="md-nav__link">
+        Requesting an IBMid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-techzone/" class="md-nav__link">
+        Requesting an image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-access/" class="md-nav__link">
+        Accessing the reservation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-workshop/" class="md-nav__link">
+        Accessing a workshop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ports/" class="md-nav__link">
+        Available Ports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-console/" class="md-nav__link">
+        VM Remote Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ssh/" class="md-nav__link">
+        SSH and SCP Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-passwords/" class="md-nav__link">
+        Userids and Passwords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-lab-instructions/" class="md-nav__link">
+        Lab Instructions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-status/" class="md-nav__link">
+        System Status and Utilities
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-jupyter/" class="md-nav__link">
+        Jupyter Notebooks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Watsonx.data Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data Overview" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Watsonx.data UI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data UI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-watsonui/" class="md-nav__link">
+        Watsonx UI Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-infrastructure/" class="md-nav__link">
+        Infrastructure Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-datamanager/" class="md-nav__link">
+        Data Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryworkspace/" class="md-nav__link">
+        Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryhistory/" class="md-nav__link">
+        Query History
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-accesscontrol/" class="md-nav__link">
+        Access Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Presto SQL with Query Workspace
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL with Query Workspace" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL with Query Workspace
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-query/" class="md-nav__link">
+        Using the Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-prestocli/" class="md-nav__link">
+        Presto SQL Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Analytic Workloads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Analytic Workloads
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-table-with-user-defined-partitions" class="md-nav__link">
+    Creating a Table with User-defined Partitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins-and-aggregations" class="md-nav__link">
+    Joins and Aggregations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepared-statements" class="md-nav__link">
+    Prepared statements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Presto SQL using CLI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL using CLI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL using CLI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-prestocli/" class="md-nav__link">
+        Presto CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-analytics/" class="md-nav__link">
+        Analytic Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-systemconnector/" class="md-nav__link">
+        System Connector
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-presto/" class="md-nav__link">
+        Presto UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-minio/" class="md-nav__link">
+        MinIO UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-objectstore/" class="md-nav__link">
+        Working with Object Store Buckets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-useradmin/" class="md-nav__link">
+        User Administration and Roles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-ingest/" class="md-nav__link">
+        Ingesting Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Additional Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Additional Features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka/" class="md-nav__link">
+        Apache Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka-ui/" class="md-nav__link">
+        Apache Kafka Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus/" class="md-nav__link">
+        Milvus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus-ui/" class="md-nav__link">
+        Milvus Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-superset/" class="md-nav__link">
+        Apache Superset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-dbeaver/" class="md-nav__link">
+        dBeaver
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-portainer/" class="md-nav__link">
+        Portainer Console
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Dataset Details
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dataset Details" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Dataset Details
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-intro/" class="md-nav__link">
+        Dataset Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-load/" class="md-nav__link">
+        Loading External Datasets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-gosales/" class="md-nav__link">
+        Great Outdoors Company
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-ontime/" class="md-nav__link">
+        Ontime Flight Performance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-taxi/" class="md-nav__link">
+        Taxi Rides
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-connections/" class="md-nav__link">
+        Database Connections
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-vmware/" class="md-nav__link">
+        VMWare Image
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-certificate/" class="md-nav__link">
+        Watsonx.data Certificates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-table-with-user-defined-partitions" class="md-nav__link">
+    Creating a Table with User-defined Partitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joins-and-aggregations" class="md-nav__link">
+    Joins and Aggregations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prepared-statements" class="md-nav__link">
+    Prepared statements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="analytic-workload">Analytic Workload</h1>
+<p>This section will explore some of the analytic workloads that you can run with watsonx.data.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Before starting, make sure you are in the Query Workspace by clicking this icon on the left side<br><img alt="icon" src="../wxd-images/wxd-intro-workspace-icon.png" /></p>
+</div>
+<p>For the analytic workloads, you are going to create a new schema in the <code>iceberg_data</code> catalog. The next statement will create the <code>workshop</code> schema in the existing <code>iceberg-bucket</code>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Create the workshop schema in the iceberg_data catalog</p>
+<div class="highlight"><pre><span></span><code>CREATE SCHEMA IF NOT EXISTS iceberg_data.workshop 
+with (location=&#39;s3a://iceberg-bucket/&#39;);
+</code></pre></div>
+</div>
+<p>This SQL will create a new Apache Iceberg table using existing data in the sample Customer table as part of the TPCH catalog schema called TINY.   </p>
+<div class="admonition abstract">
+<p class="admonition-title">Create the workshop customer table</p>
+<div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.customer as 
+  select * from tpch.tiny.customer;
+</code></pre></div>
+</div>
+<p>Let us start with some simple examples of running queries and analyzing the execution. </p>
+<div class="admonition abstract">
+<p class="admonition-title">Run a simple scan query which selects customer names and market segment</p>
+<div class="highlight"><pre><span></span><code>use iceberg_data.workshop; 
+select 
+  name, mktsegment 
+from 
+  customer 
+limit 3;
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-simple-scan.png" /></p>
+<p>To understand the query execution plan we use the explain statement.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Run an explain against the previous statement</p>
+<div class="highlight"><pre><span></span><code>use iceberg_data.workshop;
+explain select name, mktsegment from customer;
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-query-explain.png" /></p>
+<p>What you see above is the hierarchy of logical operations to execute the query. It is very difficult to read since the information is found on one line. One option is to export the data and view the results in a spreadsheet. </p>
+<div class="admonition abstract">
+<p class="admonition-title">Explain the query and focus on IO operations</p>
+<div class="highlight"><pre><span></span><code>use iceberg_data.workshop;
+explain (type io) select name, mktsegment from customer;
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-io-explain.png" /></p>
+<p>Explain physical execution plan for the query.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Explain physical execution plan for the query</p>
+<div class="highlight"><pre><span></span><code>use iceberg_data.workshop;
+explain (type distributed) select name, mktsegment from customer;
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-physical-explain.png" />    </p>
+<p>A fragment represents a stage of the distributed plan. The Presto scheduler schedules the execution by each stage, and stages can be run on separate instances.</p>
+<p>Rather than executing these explain queries, the SQL interface provides an explain button beside the Run button.</p>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-explain-button.png" /> </p>
+<div class="admonition abstract">
+<p class="admonition-title">Enter the following query into the SQL window and press the Explain button</p>
+<div class="highlight"><pre><span></span><code>select 
+  name, mktsegment 
+from 
+  iceberg_data.workshop.customer 
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-explain-output.png" /> </p>
+<div class="admonition abstract">
+<p class="admonition-title">Click on the TableScan operator</p>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-explain-tablescan.png" /> </p>
+<p>The panel on the right side provides information about the work the engine will do to retrieve the data. The Presto optimizer estimates that 1500 rows will be retrieved and take approximately 16000 cpu units.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Close the explain window</p>
+</div>
+<p>Another way of viewing the explain information is to run the query and then review the Query history. </p>
+<div class="admonition abstract">
+<p class="admonition-title">Run the query that is currently in the SQL window</p>
+</div>
+<p>Once the query completes, switch to the Query history screen.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Click on the Query History icon on the left side of the screen<br><img alt="icon" src="../wxd-images/wxd-intro-history-icon.png" /></p>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-query-history.png" /> </p>
+<div class="admonition abstract">
+<p class="admonition-title">Refresh the browser to update the Query history</p>
+</div>
+<p>Once you have refreshed the screen, look for your query in the list. It should be near the top.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Click on the kebab <span style="font-style:bold; color:blue;">&vellip;</span> icon and select View Execution Plan</p>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-selected-query.png" /> </p>
+<p>You will see all the explain output that you created with the earlier SQL statements.</p>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-explain-all.png" /> </p>
+<div class="admonition abstract">
+<p class="admonition-title">Close the explain output by pressing the [x] on the screen</p>
+</div>
+<h3 id="creating-a-table-with-user-defined-partitions">Creating a Table with User-defined Partitions</h3>
+<div class="admonition abstract">
+<p class="admonition-title">Before starting, make sure you are in the Query Workspace by clicking this icon on the left side<br><img alt="icon" src="../wxd-images/wxd-intro-workspace-icon.png" /></p>
+</div>
+<p>Tables can be partitioned in watsonx.data. This SQL will create a partitioned table, based on column mktsegment with data copied from the TPCH.TINY.CUSTOMER table.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Create a partitioned table</p>
+<div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.part_customer 
+  with (partitioning = array[&#39;mktsegment&#39;]) 
+as select * from tpch.tiny.customer;
+</code></pre></div>
+</div>
+<p>The new table <code>part_customer</code> will be created in the <code>iceberg_bucket</code> with multiple files corresponding to the partitioning. We are going to use the Infrastructure manager to view the file structure.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Click on the Infrastructure icon on the left side of the screen<br><img alt="icon" src="../wxd-images/wxd-intro-infrastructure-icon.png" /></p>
+</div>
+<p>Find the <code>iceberg-bucket</code> in the Infrastructure diagram.</p>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-iceberg-bucket.png" /> </p>
+<div class="admonition abstract">
+<p class="admonition-title">Click on the iceberg-bucket</p>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-iceberg-bucket-details.png" /> </p>
+<div class="admonition abstract">
+<p class="admonition-title">Click on Objects <span style="color:blue">&rarr;</span> part_customer <span style="color:blue">&rarr;</span> data</p>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-iceberg-customer.png" /> </p>
+<p>The <code>partitioning = array['mktsegment']</code> clause in the create table statement resulted in 5 different files being created, each with data specific to that segment. By partitioning the table this way, the Presto engine is able to optimize queries by only scanning partitions that match your SQL predicates.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Close the current window [x] and then  return to the Query Workspace by clicking this icon on the left side<br><img alt="icon" src="../wxd-images/wxd-intro-workspace-icon.png" /></p>
+</div>
+<p>Now that have created a partitioned table, we will execute an SQL statement that will make use of this fact.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Run a query against the partitioned table</p>
+<div class="highlight"><pre><span></span><code>select
+  * 
+from 
+  iceberg_data.&quot;workshop&quot;.part_customer 
+where 
+  mktsegment=&#39;MACHINERY&#39;;
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-partitioned-results.png" /> </p>
+<p>Due to the partitioning of this table by <code>mktsegment</code>, it will completely skip scanning a large percentage of the objects in the object store.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Press the explain keyword in the SQL window to view the execution plan and then select the ScanFilter</p>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-partitioned-explain.png" /> </p>
+<p>You should see that the optimizer expected to read only 288 rows when running this query. This is due to the table being partitioned and scans only needing to be run against one of the partitions.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Close the explain window</p>
+</div>
+<h2 id="joins-and-aggregations">Joins and Aggregations</h2>
+<p>This section will create an orders table to test joins and aggregations.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Create the Orders Table</p>
+<div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.orders as 
+  select * from tpch.tiny.orders;
+</code></pre></div>
+</div>
+<p>The following SQL uses a windowing function to compute a result set.</p>
+<div class="admonition abstract">
+<p class="admonition-title">SQL with a Windowing function</p>
+<div class="highlight"><pre><span></span><code>SELECT 
+  orderkey, clerk, totalprice, 
+  rank() OVER (PARTITION BY clerk ORDER BY totalprice DESC) AS rnk 
+FROM 
+  iceberg_data.workshop.orders 
+ORDER BY 
+  clerk, rnk;
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-windowing.png" /> </p>
+<h2 id="prepared-statements">Prepared statements</h2>
+<p>Presto provides a feature for preparing statements for repeated execution. Using this method will reduce the overhead of optimizing the statement every time you run it.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Save a query as a prepared statement</p>
+<div class="highlight"><pre><span></span><code>prepare 
+  customer_by_segment
+from 
+  select * from iceberg_data.workshop.customer where mktsegment=?;
+</code></pre></div>
+</div>
+<p>Once the statement has been prepared, you can execute the statement by supplying it with some parameters. In this example we are combining the two statements because the session context is not shared between SQL executions.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Execute prepared statement using parameters</p>
+<div class="highlight"><pre><span></span><code>prepare 
+  customer_by_segment
+from 
+  select * from iceberg_data.workshop.customer where mktsegment=?;    
+execute customer_by_segment using &#39;FURNITURE&#39;;
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/wxd-intro-sql-execute-results.png" />     </p>
+<p>Note that the prepared statement only exists during the current session.</p>
+<h2 id="summary">Summary</h2>
+<p>In this lab you ran some analytic workloads, learned how to view the explain plans for a query, created a partitioned table, and created prepared statements that can be executed multiple times. </p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../wxd-intro-prestocli/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Presto SQL Overview" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Presto SQL Overview
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../wxd-intro-advanced/" class="md-footer__link md-footer__link--next" aria-label="Next: Advanced Functions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Advanced Functions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1748 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>User Administration and Roles - watsonx.data Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#watsonxdata-user-administration-and-roles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="watsonx.data Lab" class="md-header__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            watsonx.data Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              User Administration and Roles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="watsonx.data Lab" class="md-nav__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    watsonx.data Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-revisions/" class="md-nav__link">
+        What's New
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ibmid/" class="md-nav__link">
+        Requesting an IBMid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-techzone/" class="md-nav__link">
+        Requesting an image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-access/" class="md-nav__link">
+        Accessing the reservation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-workshop/" class="md-nav__link">
+        Accessing a workshop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ports/" class="md-nav__link">
+        Available Ports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-console/" class="md-nav__link">
+        VM Remote Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ssh/" class="md-nav__link">
+        SSH and SCP Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-passwords/" class="md-nav__link">
+        Userids and Passwords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-lab-instructions/" class="md-nav__link">
+        Lab Instructions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-status/" class="md-nav__link">
+        System Status and Utilities
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-jupyter/" class="md-nav__link">
+        Jupyter Notebooks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Watsonx.data Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data Overview" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Watsonx.data UI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data UI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-watsonui/" class="md-nav__link">
+        Watsonx UI Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-infrastructure/" class="md-nav__link">
+        Infrastructure Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-datamanager/" class="md-nav__link">
+        Data Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryworkspace/" class="md-nav__link">
+        Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryhistory/" class="md-nav__link">
+        Query History
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-accesscontrol/" class="md-nav__link">
+        Access Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Presto SQL with Query Workspace
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL with Query Workspace" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL with Query Workspace
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-query/" class="md-nav__link">
+        Using the Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-prestocli/" class="md-nav__link">
+        Presto SQL Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-analytics/" class="md-nav__link">
+        Analytic Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Presto SQL using CLI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL using CLI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL using CLI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-prestocli/" class="md-nav__link">
+        Presto CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-analytics/" class="md-nav__link">
+        Analytic Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-systemconnector/" class="md-nav__link">
+        System Connector
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-presto/" class="md-nav__link">
+        Presto UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-minio/" class="md-nav__link">
+        MinIO UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-objectstore/" class="md-nav__link">
+        Working with Object Store Buckets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          User Administration and Roles
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        User Administration and Roles
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-administration" class="md-nav__link">
+    User Administration
+  </a>
+  
+    <nav class="md-nav" aria-label="User Administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-user" class="md-nav__link">
+    Add a User
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-a-users-password" class="md-nav__link">
+    Change a User's Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-a-users-password" class="md-nav__link">
+    Validate a User's Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-user" class="md-nav__link">
+    Delete a User
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roles-and-policies" class="md-nav__link">
+    Roles and Policies
+  </a>
+  
+    <nav class="md-nav" aria-label="Roles and Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    Access Control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#granting-access" class="md-nav__link">
+    Granting Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policies" class="md-nav__link">
+    Policies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-policy-enforcement" class="md-nav__link">
+    Testing Policy Enforcement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-ingest/" class="md-nav__link">
+        Ingesting Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Additional Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Additional Features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka/" class="md-nav__link">
+        Apache Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka-ui/" class="md-nav__link">
+        Apache Kafka Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus/" class="md-nav__link">
+        Milvus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus-ui/" class="md-nav__link">
+        Milvus Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-superset/" class="md-nav__link">
+        Apache Superset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-dbeaver/" class="md-nav__link">
+        dBeaver
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-portainer/" class="md-nav__link">
+        Portainer Console
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Dataset Details
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dataset Details" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Dataset Details
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-intro/" class="md-nav__link">
+        Dataset Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-load/" class="md-nav__link">
+        Loading External Datasets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-gosales/" class="md-nav__link">
+        Great Outdoors Company
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-ontime/" class="md-nav__link">
+        Ontime Flight Performance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-taxi/" class="md-nav__link">
+        Taxi Rides
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-connections/" class="md-nav__link">
+        Database Connections
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-vmware/" class="md-nav__link">
+        VMWare Image
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-certificate/" class="md-nav__link">
+        Watsonx.data Certificates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-administration" class="md-nav__link">
+    User Administration
+  </a>
+  
+    <nav class="md-nav" aria-label="User Administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-a-user" class="md-nav__link">
+    Add a User
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-a-users-password" class="md-nav__link">
+    Change a User's Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-a-users-password" class="md-nav__link">
+    Validate a User's Password
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-user" class="md-nav__link">
+    Delete a User
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roles-and-policies" class="md-nav__link">
+    Roles and Policies
+  </a>
+  
+    <nav class="md-nav" aria-label="Roles and Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    Access Control
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#granting-access" class="md-nav__link">
+    Granting Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#policies" class="md-nav__link">
+    Policies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-policy-enforcement" class="md-nav__link">
+    Testing Policy Enforcement
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="watsonxdata-user-administration-and-roles">Watsonx.data User Administration and Roles</h1>
+<p>Security and access control within watsonx.data are based on roles. A role is a set of privileges that control the actions that users can perform. Authorization is granted by assigning a specific role to a user, or by adding the user to a group that has been assigned one or more roles.</p>
+<p>Access control at the infrastructural level allows permissions to be granted on the engines, catalogs, buckets, and databases. Roles for these components include Admin, Manager, User, Writer, and Reader (depending on the component).</p>
+<p>Access to the data itself is managed through data control policies. Policies can be created to permit or deny access to schemas, tables, and columns.
+User account management and access management varies between the different deployment options for watsonx.data. For instance, in the managed cloud service (SaaS), the service owner would need to invite other users to the environment and give them appropriate service access.</p>
+<p>With the standalone software, users can be added within the console’s Access control page. In the Developer Edition, users can be added using a command line tool.</p>
+<p><strong>Credits:</strong> Portions of text found in this section were copied from Kelly Schlamb's watsonx.data L3 course.</p>
+<h2 id="user-administration">User Administration</h2>
+<p>This lab is using the Developer edition of the watsonx.data software, which means that the Access control panel is not available. In order to manage users, the <code>user-mgmt</code> command will need to be used. The <code>user-mgmt</code> command is found in the <code>/root/ibm-lh-dev/bin</code> directory. Examples of using the command are found below.</p>
+<h3 id="add-a-user">Add a User</h3>
+<p>The syntax for adding a user is:</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>add-user<span class="w"> </span>&lt;username&gt;<span class="w"> </span><span class="o">[</span>User<span class="w"> </span><span class="p">|</span><span class="w"> </span>Admin<span class="o">]</span><span class="w"> </span>&lt;password&gt;
+</code></pre></div>
+</div>
+<p>The values are:</p>
+<ul>
+<li><code>username</code> - The name of the user</li>
+<li><code>[User|Admin]</code> - The type of user. Note that the type of user is case-sensitive!</li>
+<li><code>password</code> - The password for the user.</li>
+</ul>
+<p>The following command will add the user <code>watsonx</code> with a password of <code>watsonx.data</code>. This will be a standard user with no privileges. The first step is to make sure you are connected as the root user in watsonx.data server and have switched to the proper directory.</p>
+<div class="admonition abstract">
+<p><div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
+</code></pre></div></p>
+</div>
+<p>The next command will add a new user to the system.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>add-user<span class="w"> </span>watsonx<span class="w"> </span>User<span class="w"> </span>watsonx.data
+</code></pre></div>
+</div>
+<h3 id="change-a-users-password">Change a User's Password</h3>
+<p>The syntax for changing a password is:</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>change-password<span class="w"> </span>&lt;username&gt;
+</code></pre></div>
+</div>
+<p>This command will require that the user enter the new password. You can issue the command and provide the new password at the prompt. The other way to simulate the enter command is to use the Linux <code>yes</code> function which repeats a value multiple times.</p>
+<p>The following command will change the password of <code>watsonx</code> to <code>hellowatson</code>.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>yes<span class="w"> </span>hellowatson<span class="w"> </span><span class="p">|</span><span class="w"> </span>./user-mgmt<span class="w"> </span>change-password<span class="w"> </span>watsonx
+</code></pre></div>
+</div>
+<h3 id="validate-a-users-password">Validate a User's Password</h3>
+<p>You can validate a password by using the following command:</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>test-user-cred<span class="w"> </span>&lt;username&gt;
+</code></pre></div>
+</div>
+<p>The username is the name of the user that you want to check the password for. This command will require that the user enter the existing password to check it. You can use the <code>yes</code> function (as described above) to simulate the enter command.</p>
+<p>The following command will check that we have changed the password of watsonx to <code>hellowatson</code>.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>yes<span class="w"> </span>hellowatson<span class="w"> </span><span class="p">|</span><span class="w"> </span>./user-mgmt<span class="w"> </span>test-user-cred<span class="w"> </span>watsonx
+</code></pre></div>
+</div>
+<h3 id="delete-a-user">Delete a User</h3>
+<p>To delete a user, use the following command:</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>delete-user<span class="w"> </span>&lt;username&gt;
+</code></pre></div>
+</div>
+<p>The error messages on group ownership can be safely ignored.</p>
+<p>The following command will remove our watsonx user.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>delete-user<span class="w"> </span>watsonx
+</code></pre></div>
+</div>
+<h2 id="roles-and-policies">Roles and Policies</h2>
+<p>In this section you will add a new user and provide them with privileges over the infrastructure and data. First start by adding a new user to the watsonx.data system.</p>
+<p>If you haven't already, make sure you are connected to the server as the root user and are in the <code>/root/ibm-lh-dev/bin</code> directory. Add <code>user1</code> to the system with a password of <code>password</code>.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>./user-mgmt<span class="w"> </span>add-user<span class="w"> </span>user1<span class="w"> </span>User<span class="w"> </span>password
+</code></pre></div>
+</div>
+<h3 id="access-control">Access Control</h3>
+<p>To view what users are currently authorized to use the system, select the Access control icon found on the left side of the watsonx.data UI.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-accessicon.png" /></p>
+<p>A list of objects that make up the watsonx.data infrastructure are displayed.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-infrastructure.png" /></p>
+<p>You can see that the objects are made up of:</p>
+<ul>
+<li>Engines</li>
+<li>Catalogs</li>
+<li>Buckets</li>
+</ul>
+<p>In a real-world scenario where a user will be querying data from a table, that user will need to be given a minimum of User access to an engine (to be able to run the query), User access for the catalog associated with the data (to be able to see the schema information associated with the table), and Reader access to the bucket associated with the data (to be able to read the data
+from object storage).</p>
+<p>Additionally, a policy has to be created to permit the user to access the table in question. </p>
+<h3 id="granting-access">Granting Access</h3>
+<p>Select the presto-01 engine (highlighted in red above) to view the current users that have access to the engine. </p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentengine.png" /></p>
+<p>At this point, only the administrative user (ibmlhadmin) can use the Presto engine. Click on the Add Access button to add a new authorized user to the list.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-adduser.png" /></p>
+<p>The role button has been selected in the dialog to show the role options of Admin, Manager, or User. An Admin user can grant any role to a user, while a Manager can only grant User privileges. For this lab, grant <code>user1</code> "user" privileges and then press Add.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-useradded.png" /></p>
+<p>Close the dialog by clicking on the [x] on the top right of the screen. Now <code>user1</code> needs to be granted access to a catalog. In this case, the <code>iceberg_data</code> and <code>hive_data</code> catalogs are required for the Presto engine and are implicitly granted to the user.  Click on the <code>iceberg_data</code> line to confirm that this is the case.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentcatalog.png" /></p>
+<p>You should see that <code>user1</code> has already been granted access to the catalog. If your version of watsonx.data Developer Edition does <strong>not</strong> have access granted to <code>user1</code>, add it manually using the same steps as for engine access.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentcataloguser.png" /></p>
+<p>Close the dialog to return to the Access control screen. The final step is to grant access to the underlying buckets. Because <code>user</code> was implicitly granted access to the <code>iceberg_data</code> and <code>hive_data</code> catalogs, the underlying buckets <code>iceberg-bucket</code> and <code>hive-bucket</code> were also added to their access list. Click on <code>iceberg-bucket</code> to view the access control.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-currentbucket.png" /></p>
+<p>Again, if <code>user1</code> does not have access to the bucket, add access using the same steps as adding engine access. When done viewing the screen, close the dialog to return to the Access control dialog.</p>
+<h3 id="policies">Policies</h3>
+<p>After access has been granted to engines, catalogs, and buckets, the final step is to create a policy to grant access to tables. Click on the Policy tab to display the current policies in place (there should be none).</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policies.png" /></p>
+<p>The Add Policy button is highlighted on the far right side of the screen. Pressing the button will display the new Access Control Policy dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-newpolicy.png" /></p>
+<p>Fill in the following information:</p>
+<ul>
+<li>Policy name: selectflights</li>
+<li>Description: blank</li>
+<li>Policy status: active</li>
+</ul>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-1.png" /></p>
+<p>You can always activate a policy after you have created it. Click Next.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-2.png" /></p>
+<p>Here we need to select which schemas that the user will be able to access. For this example, select the <code>ontime</code> schema. After selecting the schema, a set of tables associated with the schema will be listed.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-3.png" /></p>
+<p>You can choose which tables can be searched. If you choose an individual table, you can restrict which columns can be searched. Select the <code>ontime</code> table and then select the following columns (you will need to scroll down the page):</p>
+<ul>
+<li><code>flightdate</code></li>
+<li><code>reporting_airline</code></li>
+<li><code>flight_number_reporting_airline</code></li>
+<li><code>originairportid</code></li>
+<li><code>destairportid</code></li>
+</ul>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-4.png" /></p>
+<p>Once you have selected the columns, press the Next button to display the Rules dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-5.png" /></p>
+<p>The Rules dialog allows you to fine-tune what actions can be done by a user against the data. Press the Add Rule button to display the Add Rule dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-6.png" /></p>
+<p>Rules can be used to <strong>Allow</strong> actions or to <strong>Deny</strong> actions. In our example, we want to allow <code>user1</code> to SELECT data from the data, but with no other options. </p>
+<p><strong>Note</strong>: In production versions of watsonx.data, you can provide access to a group which makes it simpler to create a set of rules that apply to a group and then add a user to a group. That way a user will inherit the rules that were applied to the group rather than having to create rules for that individual. The developer edition displays GROUP as an option, but it is not implemented.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-7.png" /></p>
+<p>Once the fields are filled in, press the Add button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-8.png" /></p>
+<p>You can continue to add additional rules to the list. Since we only want the one rule, select the Review button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-9.png" /></p>
+<p>Once you have confirmed that the data objects and rules look correct, press the Save button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-10.png" /></p>
+<p>The <code>selectflights</code> policy is now in place and is actively enforced. Before testing the policy enforcement, use the SQL icon on the left side to navigate to the <code>hive_data</code> catalog and view the schemas that are associated with it. Expand the <code>ontime</code> schema to view the tables and the columns that are available in the <code>ontime</code> table.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-admin-view.png" /></p>
+<p>When you connect as <code>user1</code>, you will be able to compare what objects can be accessed from that userid.</p>
+<h3 id="testing-policy-enforcement">Testing Policy Enforcement</h3>
+<p>To test whether the rules are enforced, you will need to log out of the current watsonx.data UI session. At the top of the Access Control screen, you will see the user icon on the top right. Clicking on the icon will display the logout dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-access-policy-11.png" /></p>
+<p>Log out to the main watsonx.data UI screen. You will be prompted to confirm log out.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-logout.png" /></p>
+<p>Once back to the main log in panel, enter <code>user</code> and <code>password</code> into the dialog.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-login.png" /></p>
+<p>Your watsonx.data UI should now display <code>user1</code>.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-user1.png" /></p>
+<p>Navigate to the SQL icon and then select <code>hive_data</code> -&gt; <code>ontime</code> -&gt; <code>ontime</code>. </p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy.png" /></p>
+<p>You should notice that <code>user1</code> was restricted to seeing only the <code>ontime</code> schema in the <code>hive_data</code> catalog. In addition, the user was restricted to accessing one of the tables (<code>ontime</code>) and 5 columns. Attempting to run a SELECT statement against all the data will result in a policy error.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy-error.png" /></p>
+<p>Correcting the SQL to include only permitted columns results in an answer set.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-policy-okay.png" /></p>
+<p>The policy rules have been enforced for <code>user1</code>, preventing them from viewing any other schemas or tables in the system. In addition, the SQL that they could execute was restricted to specific columns in the table.</p>
+<p>Before moving onto any other sections, make sure to log out as <code>user1</code> and reconnect as the <code>ibmlhadmin</code> user.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../wxd-objectstore/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Working with Object Store Buckets" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Working with Object Store Buckets
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../wxd-ingest/" class="md-footer__link md-footer__link--next" aria-label="Next: Ingesting Data" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Ingesting Data
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

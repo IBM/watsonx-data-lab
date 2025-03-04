@@ -1,0 +1,2154 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Database Connections - watsonx.data Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database-connections" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="watsonx.data Lab" class="md-header__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            watsonx.data Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Database Connections
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="watsonx.data Lab" class="md-nav__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    watsonx.data Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-revisions/" class="md-nav__link">
+        What's New
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ibmid/" class="md-nav__link">
+        Requesting an IBMid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-techzone/" class="md-nav__link">
+        Requesting an image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-access/" class="md-nav__link">
+        Accessing the reservation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-workshop/" class="md-nav__link">
+        Accessing a workshop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ports/" class="md-nav__link">
+        Available Ports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-console/" class="md-nav__link">
+        VM Remote Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ssh/" class="md-nav__link">
+        SSH and SCP Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-passwords/" class="md-nav__link">
+        Userids and Passwords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-lab-instructions/" class="md-nav__link">
+        Lab Instructions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-status/" class="md-nav__link">
+        System Status and Utilities
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-jupyter/" class="md-nav__link">
+        Jupyter Notebooks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Watsonx.data Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data Overview" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Watsonx.data UI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data UI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-watsonui/" class="md-nav__link">
+        Watsonx UI Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-infrastructure/" class="md-nav__link">
+        Infrastructure Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-datamanager/" class="md-nav__link">
+        Data Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryworkspace/" class="md-nav__link">
+        Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryhistory/" class="md-nav__link">
+        Query History
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-accesscontrol/" class="md-nav__link">
+        Access Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Presto SQL with Query Workspace
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL with Query Workspace" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL with Query Workspace
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-query/" class="md-nav__link">
+        Using the Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-prestocli/" class="md-nav__link">
+        Presto SQL Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-analytics/" class="md-nav__link">
+        Analytic Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Presto SQL using CLI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL using CLI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL using CLI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-prestocli/" class="md-nav__link">
+        Presto CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-analytics/" class="md-nav__link">
+        Analytic Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-systemconnector/" class="md-nav__link">
+        System Connector
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-presto/" class="md-nav__link">
+        Presto UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-minio/" class="md-nav__link">
+        MinIO UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-objectstore/" class="md-nav__link">
+        Working with Object Store Buckets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-useradmin/" class="md-nav__link">
+        User Administration and Roles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-ingest/" class="md-nav__link">
+        Ingesting Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Additional Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Additional Features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka/" class="md-nav__link">
+        Apache Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka-ui/" class="md-nav__link">
+        Apache Kafka Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus/" class="md-nav__link">
+        Milvus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus-ui/" class="md-nav__link">
+        Milvus Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-superset/" class="md-nav__link">
+        Apache Superset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-dbeaver/" class="md-nav__link">
+        dBeaver
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-portainer/" class="md-nav__link">
+        Portainer Console
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Dataset Details
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dataset Details" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Dataset Details
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-intro/" class="md-nav__link">
+        Dataset Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-load/" class="md-nav__link">
+        Loading External Datasets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-gosales/" class="md-nav__link">
+        Great Outdoors Company
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-ontime/" class="md-nav__link">
+        Ontime Flight Performance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-taxi/" class="md-nav__link">
+        Taxi Rides
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Database Connections
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Database Connections
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#watsonxdata-connection-certificate" class="md-nav__link">
+    Watsonx.data Connection Certificate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#watsonxdata-presto-access" class="md-nav__link">
+    Watsonx.data Presto Access
+  </a>
+  
+    <nav class="md-nav" aria-label="Watsonx.data Presto Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#presto-internal-access" class="md-nav__link">
+    Presto Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#presto-external-access" class="md-nav__link">
+    Presto External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db2-access" class="md-nav__link">
+    Db2 Access
+  </a>
+  
+    <nav class="md-nav" aria-label="Db2 Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db2-internal-access" class="md-nav__link">
+    Db2 Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db2-external-access" class="md-nav__link">
+    Db2 External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postgresql-access" class="md-nav__link">
+    PostgreSQL Access
+  </a>
+  
+    <nav class="md-nav" aria-label="PostgreSQL Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-internal-access" class="md-nav__link">
+    PostgreSQL Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-external-access" class="md-nav__link">
+    PostgreSQL External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql-access" class="md-nav__link">
+    MySQL Access
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql-internal-access" class="md-nav__link">
+    MySQL Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-external-access" class="md-nav__link">
+    MySQL External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-database-to-watsonxdata" class="md-nav__link">
+    Adding a Database to watsonx.data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-watsonxdata-via-python" class="md-nav__link">
+    Accessing watsonx.data via Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-and-jupyter-connection-code" class="md-nav__link">
+    Python and Jupyter Connection Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-watsonxdata-via-pandas-dataframes" class="md-nav__link">
+    Accessing watsonx.data via Pandas Dataframes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-service" class="md-nav__link">
+    Adding a Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-local-firewall-version-110-only" class="md-nav__link">
+    Open the local Firewall (Version 1.1.0 Only)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-your-service" class="md-nav__link">
+    Create your Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-redirection" class="md-nav__link">
+    Port Redirection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-your-service" class="md-nav__link">
+    Accessing your Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-vmware/" class="md-nav__link">
+        VMWare Image
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-certificate/" class="md-nav__link">
+        Watsonx.data Certificates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#watsonxdata-connection-certificate" class="md-nav__link">
+    Watsonx.data Connection Certificate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#watsonxdata-presto-access" class="md-nav__link">
+    Watsonx.data Presto Access
+  </a>
+  
+    <nav class="md-nav" aria-label="Watsonx.data Presto Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#presto-internal-access" class="md-nav__link">
+    Presto Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#presto-external-access" class="md-nav__link">
+    Presto External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db2-access" class="md-nav__link">
+    Db2 Access
+  </a>
+  
+    <nav class="md-nav" aria-label="Db2 Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db2-internal-access" class="md-nav__link">
+    Db2 Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db2-external-access" class="md-nav__link">
+    Db2 External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postgresql-access" class="md-nav__link">
+    PostgreSQL Access
+  </a>
+  
+    <nav class="md-nav" aria-label="PostgreSQL Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-internal-access" class="md-nav__link">
+    PostgreSQL Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-external-access" class="md-nav__link">
+    PostgreSQL External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql-access" class="md-nav__link">
+    MySQL Access
+  </a>
+  
+    <nav class="md-nav" aria-label="MySQL Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql-internal-access" class="md-nav__link">
+    MySQL Internal Access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql-external-access" class="md-nav__link">
+    MySQL External Access
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-database-to-watsonxdata" class="md-nav__link">
+    Adding a Database to watsonx.data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-watsonxdata-via-python" class="md-nav__link">
+    Accessing watsonx.data via Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-and-jupyter-connection-code" class="md-nav__link">
+    Python and Jupyter Connection Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-watsonxdata-via-pandas-dataframes" class="md-nav__link">
+    Accessing watsonx.data via Pandas Dataframes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-service" class="md-nav__link">
+    Adding a Service
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#open-the-local-firewall-version-110-only" class="md-nav__link">
+    Open the local Firewall (Version 1.1.0 Only)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-your-service" class="md-nav__link">
+    Create your Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-redirection" class="md-nav__link">
+    Port Redirection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-your-service" class="md-nav__link">
+    Accessing your Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="database-connections">Database Connections</h1>
+<p>There are three database systems that can be accessed inside and outside the virtual machine environment: watsonx.data Presto, Db2 LUW, MySQL and PostgreSQL.</p>
+<p>In order to access these images outside the Virtual machine image, you need the server name and port for the service. You will also need to download the <code>presto-key.jks</code> file for connecting to Presto.</p>
+<ul>
+<li><a href="#watsonxdata-connection-certificate">Connection Certificate</a></li>
+<li><a href="#watsonxdata-presto-access">Accessing watsonx.data (Presto)</a></li>
+<li><a href="#db2-access">Accessing Db2</a></li>
+<li><a href="#postgresql-access">Accessing PostgreSQL</a></li>
+<li><a href="#mysql-access">Accessing MySQL</a></li>
+<li><a href="#adding-a-database-to-watsonxdata">Adding a database to watsonx.data</a></li>
+<li><a href="#accessing-watsonxdata-via-python">Accessing watsonx.data via Python</a></li>
+<li><a href="#accessing-watsonxdata-via-pandas-dataframes">Accessing watsonx.data via Pandas Dataframes</a></li>
+<li><a href="#generating-a-certificate">Generating a Certificate</a></li>
+<li><a href="#adding-a-service">Adding a Service</a></li>
+</ul>
+<h2 id="watsonxdata-connection-certificate">Watsonx.data Connection Certificate</h2>
+<p>When connecting to the watsonx.data Presto database, you will need to have the connection certificate available to the client that you are using. Usually this location is your workstation, but it could be another service like CP4D.</p>
+<p>To extract the certificate to your local file system, use the following command in a terminal window. Replace the <code>port</code> and <code>region.services.cloud.techzone.com</code> with the SSH values found in the TechZone reservation.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-P<span class="w"> </span>port<span class="w"> </span>watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks<span class="w"> </span>/Users/myname/Downloads
+</code></pre></div>
+</div>
+<p>Change the target directory to a location that you can remember! </p>
+<p>You can also download the certificate by using the Jupyter Notebook link and opening the Credentials notebook. There you will find links to the certificates.</p>
+<p><img alt="Browser" src="../wxd-images/jupyter-credentials.png" /></p>
+<h2 id="watsonxdata-presto-access">Watsonx.data Presto Access</h2>
+<p>When connecting to the Presto engine, choose the PrestoDB driver.</p>
+<h3 id="presto-internal-access">Presto Internal Access</h3>
+<p>For local access the following credentials are used:</p>
+<ul>
+<li>Hostname: <code style="color:blue;font-size:medium;">localhost</code></li>
+<li>Port: <code style="color:blue;font-size:medium;">8443</code></li>
+<li>Username: <code style="color:blue;font-size:medium;">ibmlhadmin</code></li>
+<li>Password: <code style="color:blue;font-size:medium;">password</code></li>
+<li>Database: <code style="color:blue;font-size:medium;">tpch</code></li>
+</ul>
+<p>In addition, you need to set the following driver properties:</p>
+<ul>
+<li><code style="color:blue;font-size:medium;">SSL</code> <code style="color:blue;font-size:medium;">True</code></li>
+<li><code style="color:blue;font-size:medium;">SSLTrustStorePath</code> <code style="color:blue;font-size:medium;">/certs/presto-key.jks</code></li>
+<li><code style="color:blue;font-size:medium;">SSLTrustStorePassword</code> <code style="color:blue;font-size:medium;">watsonx.data</code></li>
+</ul>
+<h3 id="presto-external-access">Presto External Access</h3>
+<p>The watsonx.data Presto database requires that the certificate be extracted from the image. See the section above on <a href="#watsonxdata-connection-certificate">Connection Certificate</a> for more details.</p>
+<p>In the following settings, remember to update the Hostname and Port to the values provided in your TechZone reservation.</p>
+<p>The database connection settings are:</p>
+<ul>
+<li>Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.ibm.com</code></li>
+<li>Port: <code style="color:blue;font-size:medium;">port</code></li>
+<li>Username: <code style="color:blue;font-size:medium;">ibmlhadmin</code></li>
+<li>Password: <code style="color:blue;font-size:medium;">password</code></li>
+<li>Database: <code style="color:blue;font-size:medium;">tpch</code></li>
+</ul>
+<p>In addition, you need to set the following driver properties:</p>
+<ul>
+<li><code style="color:blue;font-size:medium;">SSL</code> <code style="color:blue;font-size:medium;">True</code></li>
+<li><code style="color:blue;font-size:medium;">SSLTrustStorePath</code> <code style="color:blue;font-size:medium;">/mydownload/presto-key.jks</code></li>
+<li><code style="color:blue;font-size:medium;">SSLTrustStorePassword</code> <code style="color:blue;font-size:medium;">watsonx.data</code></li>
+</ul>
+<p><strong>Note</strong>: The <code>/mydownload/presto-key.jks</code> value needs to be replaced with the location that you copied the key in the earlier step.</p>
+<h2 id="db2-access">Db2 Access</h2>
+<p>When connecting to the Db2 engine, select the Db2 LUW driver.</p>
+<h3 id="db2-internal-access">Db2 Internal Access</h3>
+<p>The Db2 server can be accessed on port 50000 inside the virtual machine using the following credentials:</p>
+<ul>
+<li>Hostname - <code style="color:blue;font-size:medium;">watsonxdata</code></li>
+<li>Port - <code style="color:blue;font-size:medium;">50000</code></li>
+<li>Username - <code style="color:blue;font-size:medium;">db2inst1</code></li>
+<li>Password - <code style="color:blue;font-size:medium;">db2inst1</code></li>
+<li>Database - <code style="color:blue;font-size:medium;">gosales</code></li>
+<li>SSL - <code style="color:blue;font-size:medium;">off</code></li>
+</ul>
+<h3 id="db2-external-access">Db2 External Access</h3>
+<p>When accessing the database outside the virtual machine, you must change the host to <code>region.services.cloud.techzone.ibm.com</code> and the port number based on your TechZone reservation. All the other settings remain the same.</p>
+<ul>
+<li>Hostname - <code style="color:blue;font-size:medium;">region.services.cloud.techzone.ibm.com</code></li>
+<li>Port - <code style="color:blue;font-size:medium;">port</code></li>
+<li>Username - <code style="color:blue;font-size:medium;">db2inst1</code></li>
+<li>Password - <code style="color:blue;font-size:medium;">db2inst1</code></li>
+<li>Database - <code style="color:blue;font-size:medium;">gosales</code></li>
+<li>SSL - <code style="color:blue;font-size:medium;">off</code></li>
+</ul>
+<h2 id="postgresql-access">PostgreSQL Access</h2>
+<p>When connecting to the PostgreSQL engine, select the PostgreSQL driver. In order to connect to the PostgreSQL system, you will need to extract the admin password using the following command when connected to the watsonx.data system.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/certs/passwords
+</code></pre></div>
+</div>
+<p>You can also retrieve the credentials by opening up the Credentials notebook in the Jupyter notebook service.</p>
+<h3 id="postgresql-internal-access">PostgreSQL Internal Access</h3>
+<p>When accessing the PostgreSQL database in the system, use the following settings.</p>
+<ul>
+<li>Hostname –<code style="color:blue;font-size:medium;">ibm-lh-postgres</code></li>
+<li>Port – <code style="color:blue;font-size:medium;">5432</code></li>
+<li>Username – <code style="color:blue;font-size:medium;">admin</code></li>
+<li>Password – The value that was extracted in the earlier step</li>
+<li>Database – <code style="color:blue;font-size:medium;">gosalesdw</code>   </li>
+</ul>
+<h3 id="postgresql-external-access">PostgreSQL External Access</h3>
+<p>The following credentials are used for remote access.</p>
+<ul>
+<li>Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.com</code></li>
+<li>Port: <code style="color:blue;font-size:medium;">port</code></li>
+<li>Username: <code style="color:blue;font-size:medium;">admin</code></li>
+<li>Password: The value that was extracted in the earlier step</li>
+<li>Database name: <code style="color:blue;font-size:medium;">gosalesdw</code></li>
+</ul>
+<h2 id="mysql-access">MySQL Access</h2>
+<p>When connecting to the MySQL engine, select the MySQL driver. </p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>ibm-lh-postgres<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>POSTGRES_PASSWORD<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*=//&#39;</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Postgres Userid   : admin&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Postgres Password : &quot;</span><span class="w"> </span><span class="nv">$POSTGRES_PASSWORD</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$POSTGRES_PASSWORD</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/postgres.pw
+</code></pre></div>
+</div>
+<h3 id="mysql-internal-access">MySQL Internal Access</h3>
+<p>When accessing the MySQL database in the system, use the following settings.</p>
+<ul>
+<li>Hostname –<code style="color:blue;font-size:medium;">watsonxdata</code></li>
+<li>Port – <code style="color:blue;font-size:medium;">3306</code></li>
+<li>Username – <code style="color:blue;font-size:medium;">root</code></li>
+<li>Password - <code style="color:blue;font-size:medium;">password</code></li>
+<li>Database – <code style="color:blue;font-size:medium;">gosalesdw</code>   </li>
+</ul>
+<p>You must set the <code>allowPublicKeyRetrieval</code> to <code>True</code> for the connection to work with dBeaver.</p>
+<p><img alt="Browser" src="../wxd-images/mysql-publickey.png" /></p>
+<h3 id="mysql-external-access">MySQL External Access</h3>
+<p>The following credentials are used for remote access.</p>
+<ul>
+<li>Hostname: <code style="color:blue;font-size:medium;">region.services.cloud.techzone.com</code></li>
+<li>Port: <code style="color:blue;font-size:medium;">port</code></li>
+<li>Username: <code style="color:blue;font-size:medium;">root</code></li>
+<li>Password - <code style="color:blue;font-size:medium;">password</code></li>
+<li>Database name: <code style="color:blue;font-size:medium;">gosalesdw</code>   </li>
+</ul>
+<p>You must set the <code>allowPublicKeyRetrieval</code> to <code>True</code> for the connection to work with dBeaver (see above).   </p>
+<h2 id="adding-a-database-to-watsonxdata">Adding a Database to watsonx.data</h2>
+<p>When adding a database engine to the watsonx.data system, make sure to change the database display name since that needs to be unique. For instance, when you add <code>gosales</code> database from Db2 to the system, the display name could be <code>gosales</code> as well. However, if you now add the PostgreSQL database to the system, the display name cannot be the same. You may want to differentiate databases with the same name by prefixing them with the database type. For instance, the <code>gosales</code> database could be shown as <code>db2_gosales</code> or <code>pg_gosales</code> so that you keep the names distinct.</p>
+<p>Once a database has been added, make sure to wait for a few moments before attempting to access the database. The Presto server takes a few moments to start up. To make sure that it is running, run the <code>check_presto</code> command in a terminal window and wait until it says the service is ready.</p>
+<p>When attempting to view the contents of a new database, the process may take a few minutes to complete. Refresh the browser window if you haven't seen any changes to the display.</p>
+<h2 id="accessing-watsonxdata-via-python">Accessing watsonx.data via Python</h2>
+<p>In order to access the watsonx.data database (Presto), you will need to install the Presto client using the following command on your local machine.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>pip3<span class="w"> </span>install<span class="w"> </span>presto-python-client
+</code></pre></div>
+</div>
+<p>Once the installation is complete, extract the certificate from the watsonx.data server that we will use in the connection.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>scp -P port watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks /Users/myname/Downloads
+</code></pre></div>
+</div>
+<p>Change the target directory to a location that you can remember! </p>
+<p>You can also download the certificate by using the Jupyter Notebook link and opening the Certificate notebook. </p>
+<h2 id="python-and-jupyter-connection-code">Python and Jupyter Connection Code</h2>
+<p>Your Python or Jupyter notebook code will need to import the <code>prestodb</code> library and then connect to watsonx.data using the <code>connect</code> call.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">prestodb</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">prestodb</span><span class="o">.</span><span class="n">dbapi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+      <span class="n">host</span><span class="o">=</span><span class="s1">&#39;watsonxdata&#39;</span><span class="p">,</span>
+      <span class="n">port</span><span class="o">=</span><span class="mi">8443</span><span class="p">,</span>
+      <span class="n">user</span><span class="o">=</span><span class="s1">&#39;ibmlhadmin&#39;</span><span class="p">,</span>
+      <span class="n">catalog</span><span class="o">=</span><span class="s1">&#39;tpch&#39;</span><span class="p">,</span>
+      <span class="n">schema</span><span class="o">=</span><span class="s1">&#39;tiny&#39;</span><span class="p">,</span>
+      <span class="n">http_scheme</span><span class="o">=</span><span class="s1">&#39;https&#39;</span><span class="p">,</span>
+      <span class="n">auth</span><span class="o">=</span><span class="n">prestodb</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">BasicAuthentication</span><span class="p">(</span><span class="s2">&quot;ibmlhadmin&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">_http_session</span><span class="o">.</span><span class="n">verify</span> <span class="o">=</span> <span class="s1">&#39;/certs/lh-ssl-ts.crt&#39;</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>In the above connection string, you will need to replace the following values:</p>
+<ul>
+<li>host - <code>watsonxdata</code> when connecting to the image externally, and <code>ibm-lh-presto-svc</code> when connecting internally </li>
+<li>catalog - What is the name of the catalog that we are accessing</li>
+<li>schema - The schema inside the catalog that will be used</li>
+</ul>
+<p>You also need to update the <code>conn._http_session.verify</code> value with the location where you downloaded the <code>lh-ssl-ts.crt</code> file. For internal connections, this value will be <code>/certs/lh-ssl-ts.crt</code>.</p>
+<p>Once connected, you can run an SQL statement and return the results.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM tpch.tiny.customer&quot;</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p>The <code>rows</code> variable contains the answer set from the select statement. You can manipulate the <code>row</code> variable to view the results. </p>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
+rows[0]
+
+[1,
+ 'Customer#000000001',
+ 'IVhzIApeRb ot,c,E',
+ 15,
+ '25-989-741-2988',
+ 711.56,
+ 'BUILDING',
+ 'to the even, regular platelets. regular, ironic epitaphs nag e']
+</pre>
+
+<p>The PrestoDB driver supports the DBAPI spec. For more details on the use of the DBAPI interface, please refer to <a href="https://peps.python.org/pep-0249/" target="_blank">https://peps.python.org/pep-0249/</a>.</p>
+<p>For instance, if you want to find the description of the columns returned, you would use the <code>description</code> function.</p>
+<pre style="font-size: small; color: darkgreen; overflow: auto">
+cur.description
+
+[('custkey', 'bigint', None, None, None, None, None),
+ ('name', 'varchar(25)', None, None, None, None, None),
+ ('address', 'varchar(40)', None, None, None, None, None),
+ ('nationkey', 'bigint', None, None, None, None, None),
+ ('phone', 'varchar(15)', None, None, None, None, None),
+ ('acctbal', 'double', None, None, None, None, None),
+ ('mktsegment', 'varchar(10)', None, None, None, None, None),
+ ('comment', 'varchar(117)', None, None, None, None, None)]
+</pre>
+
+<h2 id="accessing-watsonxdata-via-pandas-dataframes">Accessing watsonx.data via Pandas Dataframes</h2>
+<p>The following code is required for accessing watsonx.data in Jupyter notebooks.  Run the following code inside a notebook code cell.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>%pip<span class="w"> </span>install<span class="w"> </span>ipython-sql<span class="o">==</span><span class="m">0</span>.4.1
+%pip<span class="w"> </span>install<span class="w"> </span><span class="nv">sqlalchemy</span><span class="o">==</span><span class="m">1</span>.4.46
+%pip<span class="w"> </span>install<span class="w"> </span><span class="nv">sqlalchemy</span><span class="o">==</span><span class="m">1</span>.4.46<span class="w"> </span><span class="s2">&quot;pyhive[presto]&quot;</span>
+</code></pre></div>
+</div>
+<p>The notebook may need a restart of the kernel to pick up the changes to the driver.</p>
+<p>If you are running in a Jupyter Lab environment, you can use the most current versions of the drivers.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>%pip<span class="w"> </span>install<span class="w"> </span>ipython-sql
+%pip<span class="w"> </span>install<span class="w"> </span>sqlalchemy
+%pip<span class="w"> </span>install<span class="w"> </span>sqlalchemy<span class="w"> </span><span class="s2">&quot;pyhive[presto]&quot;</span>
+</code></pre></div>
+</div>
+<p>Once the drivers have been loaded, you will need to extract the certificate from the watsonx.data server that we will use in the connection.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-P<span class="w"> </span>port<span class="w"> </span>watsonx@region.services.cloud.techzone.ibm.com:/certs/presto-key.jks<span class="w"> </span>/Users/myname/Downloads
+</code></pre></div>
+</div>
+<p>Change the target directory to a location that you can remember! </p>
+<p>You can also download the certificate by using the Jupyter Notebook link and opening the Certificate notebook. </p>
+<p>In your Jupyter notebook, you will need to import a number of libraries.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+</code></pre></div>
+</div>
+<p>Create a notebook cell which will contain all the credentials that are required to connect. Change the <code>catalog</code>, <code>schema</code> and <code>certfile</code> to your values.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="n">userid</span>    <span class="o">=</span> <span class="s2">&quot;ibmlhadmin&quot;</span>
+<span class="n">password</span>  <span class="o">=</span> <span class="s2">&quot;password&quot;</span>
+<span class="n">hostname</span>  <span class="o">=</span> <span class="s2">&quot;watsonxdata&quot;</span>
+<span class="n">port</span>      <span class="o">=</span> <span class="s2">&quot;8443&quot;</span>
+<span class="n">catalog</span>   <span class="o">=</span> <span class="s2">&quot;tpch&quot;</span>
+<span class="n">schema</span>    <span class="o">=</span> <span class="s2">&quot;tiny&quot;</span>
+<span class="n">certfile</span>  <span class="o">=</span> <span class="s2">&quot;/certs/lh-ssl-ts.crt&quot;</span>
+<span class="n">connect_args</span><span class="o">=</span><span class="p">{</span>
+      <span class="s1">&#39;protocol&#39;</span><span class="p">:</span> <span class="s1">&#39;https&#39;</span><span class="p">,</span> 
+      <span class="s1">&#39;requests_kwargs&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;verify&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">certfile</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">}</span>
+      <span class="p">}</span>
+</code></pre></div>
+</div>
+<p>In the above settings, you will need to replace the following values:</p>
+<ul>
+<li>hostname - <code>region.services.cloud.techzone.ibm.com</code> when connecting to the image externally, and  <code>ibm-lh-presto-svc</code> when connecting internally </li>
+<li>catalog - What is the name of the catalog that we are accessing</li>
+<li>schema - The schema inside the catalog that will be used</li>
+</ul>
+<p>You also need to update the <code>certfile</code> value with the location where you downloaded the <code>lh-ssl-ts.crt</code> file. For internal connections, this value will be <code>/certs/lh-ssl-ts.crt</code>.   </p>
+<p>To create a connection to the database, use the following syntax.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+   <span class="sa">f</span><span class="s2">&quot;presto://</span><span class="si">{</span><span class="n">userid</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">catalog</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">schema</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+   <span class="n">connect_args</span><span class="o">=</span><span class="n">connect_args</span>
+   <span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Now that you have established a connection, you can use the Pandas <code>read_sql_query</code> function to execute a SELECT statement against the database.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="n">mypresto</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;SELECT * from tpch.tiny.customer&#39;</span><span class="p">,</span><span class="n">engine</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>The variable <code>mypresto</code> contains the dataframe generated from the SELECT statement.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="n">mypresto</span>
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/connection-pandas.png" /></p>
+<p>You can use the features of Pandas to generate plots of the data in your notebook. First make sure you have <code>matplotlib</code> installed.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>%pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+</code></pre></div>
+</div>
+<p>The following query will compute the total account balance across all nation key values.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="n">sumbynation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s1">&#39;SELECT &quot;nationkey&quot;, sum(&quot;acctbal&quot;) from tpch.tiny.customer group by &quot;nationkey&quot; order by 2&#39;</span><span class="p">,</span><span class="n">engine</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<p>Finally, we plot the results.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;FirstName&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;LastName&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<p><img alt="Browser" src="../wxd-images/connection-graph.png" /></p>
+<h2 id="adding-a-service">Adding a Service</h2>
+<p>The watsonx.data developer edition includes two open ports which can be used to externalize a service that you create in the image. For instance, you may choose to create a MongoDB or MSSQL container using Docker and want to access this service from your own dBeaver or Mongo tooling.</p>
+<p>Since port numbers vary between different databases, the watsonx.data system provides two port numbers that can be used by your service.</p>
+<ul>
+<li>Open Port 1 - Server: region.services.cloud.techzone.ibm.com: Port: 12345</li>
+<li>Open Port 2 - Server: region.services.cloud.techzone.ibm.com: Port: 23456</li>
+</ul>
+<p>The internal port numbers are 10000 (Port 1) and 10001 (Port 2). The following steps are required to use these ports with your service.</p>
+<h3 id="open-the-local-firewall-version-110-only">Open the local Firewall (Version 1.1.0 Only)</h3>
+<p>Ports 10000/1 are not open by default in the 1.1.0 image. For release 1.1.1, you can skip this step.</p>
+<p>You must explicitly open ports 10000/1 with the <code>firewall-cmd</code> command. In a command line shell, as the root user, enter the following commands:</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>su<span class="w"> </span>-
+firewall-cmd<span class="w"> </span>--add-port<span class="o">={</span><span class="m">10000</span>/tcp,10001/tcp<span class="o">}</span><span class="w"> </span>--zone<span class="o">=</span>public<span class="w"> </span>--permanent
+firewall-cmd<span class="w"> </span>--reload
+</code></pre></div>
+</div>
+<p>You can use the following command to check that the ports are now open.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>firewall-cmd<span class="w"> </span>--list-ports
+</code></pre></div>
+</div>
+<h3 id="create-your-service">Create your Service</h3>
+<p>When creating your service, make sure to map the internal Docker port to either port 10000 or 10001. If you cannot remap the port, see the section on port redirection.</p>
+<p>For instance, the following command will start Microsoft SQLServer in Docker by mapping the host port 10000 to the SQLServer port of 1433 to 10000 (<code>-p 10000:1443</code>).  </p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;ACCEPT_EULA=Y&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot;</span><span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">10000</span>:1433<span class="w"> </span>--name<span class="w"> </span>mssql-server<span class="w"> </span>--hostname<span class="w"> </span>mssql-server<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span>mcr.microsoft.com/mssql/server:2019-latest
+</code></pre></div>
+</div>
+<p>You can check the port mapping with the following command.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>container<span class="w"> </span>ls<span class="w"> </span>--format<span class="w"> </span><span class="s2">&quot;table {{.ID}}\t{{.Names}}\t{{.Ports}}&quot;</span><span class="w"> </span>-a<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>mssql-server
+</code></pre></div>
+</div>
+<p>When creating a connection to this database using an external tool, make sure to use the port number supplied in the reservation details (Open Port 1 is for port 10000 and Open Port 2 is for port 10001).</p>
+<h3 id="port-redirection">Port Redirection</h3>
+<p>If you already have an existing service mapped to a different port, you can use port redirection to use either port 10000 or 10001. For instance, assume that the previous creation of the SQLServer database used port 1433.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;ACCEPT_EULA=Y&quot;</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;MSSQL_SA_PASSWORD=Passw0rd12345678!&quot;</span><span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">1433</span>:1433<span class="w"> </span>--name<span class="w"> </span>mssql-server<span class="w"> </span>--hostname<span class="w"> </span>mssql-server<span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span>mcr.microsoft.com/mssql/server:2019-latest
+</code></pre></div>
+</div>
+<p>Once the service is up and running, you can redirect the traffic on port 10000/1 to the port of your docker service.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>firewall-cmd<span class="w"> </span>--add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">10000</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">1433</span><span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>public
+firewall-cmd<span class="w"> </span>--reload
+</code></pre></div>
+</div>
+<p>If you need to remove the redirection, use the following command.</p>
+<div class="admonition abstract">
+<div class="highlight"><pre><span></span><code>firewall-cmd<span class="w"> </span>--remove-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">10000</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">1433</span>:toaddr<span class="o">=</span><span class="w"> </span>--permanent<span class="w"> </span>--zone<span class="o">=</span>public
+firewall-cmd<span class="w"> </span>--reload
+</code></pre></div>
+</div>
+<h3 id="accessing-your-service">Accessing your Service</h3>
+<p>When referring to your service from an external location, always use the port numbers that are provided for Open Port 1 or 2. </p>
+<ul>
+<li>Open Port 1 - Server: region.services.cloud.techzone.ibm.com: Port: 12345</li>
+<li>Open Port 2 - Server: region.services.cloud.techzone.ibm.com: Port: 23456</li>
+</ul>
+<p>Your server will be <code>region.services.cloud.techzone.ibm.com</code> and the port number will be either of the two port numbers provided. Remember that this port number will need to be opened in the server and a Docker mapping to the open port or a firewall port redirection will be required.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../wxd-datasets-taxi/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Taxi Rides" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Taxi Rides
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../wxd-vmware/" class="md-footer__link md-footer__link--next" aria-label="Next: VMWare Image" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              VMWare Image
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4936 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Great Outdoors Company - watsonx.data Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#000000">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="black">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#great-outdoors-company" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="watsonx.data Lab" class="md-header__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            watsonx.data Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Great Outdoors Company
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="watsonx.data Lab" class="md-nav__button md-logo" aria-label="watsonx.data Lab" data-md-component="logo">
+      
+  <img src="../wxd-images/IBM_logo®_rev_RGB.png" alt="logo">
+
+    </a>
+    watsonx.data Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-revisions/" class="md-nav__link">
+        What's New
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Getting Started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Getting Started" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Getting Started
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ibmid/" class="md-nav__link">
+        Requesting an IBMid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-techzone/" class="md-nav__link">
+        Requesting an image
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-access/" class="md-nav__link">
+        Accessing the reservation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-workshop/" class="md-nav__link">
+        Accessing a workshop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ports/" class="md-nav__link">
+        Available Ports
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-console/" class="md-nav__link">
+        VM Remote Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-ssh/" class="md-nav__link">
+        SSH and SCP Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-passwords/" class="md-nav__link">
+        Userids and Passwords
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-lab-instructions/" class="md-nav__link">
+        Lab Instructions
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-status/" class="md-nav__link">
+        System Status and Utilities
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-jupyter/" class="md-nav__link">
+        Jupyter Notebooks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Watsonx.data Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data Overview" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_2" type="checkbox" id="__nav_7_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_2">
+          Watsonx.data UI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Watsonx.data UI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          Watsonx.data UI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-watsonui/" class="md-nav__link">
+        Watsonx UI Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-infrastructure/" class="md-nav__link">
+        Infrastructure Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-datamanager/" class="md-nav__link">
+        Data Manager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryworkspace/" class="md-nav__link">
+        Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-queryhistory/" class="md-nav__link">
+        Query History
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-accesscontrol/" class="md-nav__link">
+        Access Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" type="checkbox" id="__nav_7_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_3">
+          Presto SQL with Query Workspace
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL with Query Workspace" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL with Query Workspace
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-query/" class="md-nav__link">
+        Using the Query Workspace
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-prestocli/" class="md-nav__link">
+        Presto SQL Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-analytics/" class="md-nav__link">
+        Analytic Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-intro-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" type="checkbox" id="__nav_7_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_4">
+          Presto SQL using CLI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Presto SQL using CLI" data-md-level="2">
+        <label class="md-nav__title" for="__nav_7_4">
+          <span class="md-nav__icon md-icon"></span>
+          Presto SQL using CLI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-prestocli/" class="md-nav__link">
+        Presto CLI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-analytics/" class="md-nav__link">
+        Analytic Workloads
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-advanced/" class="md-nav__link">
+        Advanced Functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-timetravel/" class="md-nav__link">
+        Time Travel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-federation/" class="md-nav__link">
+        Federation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-systemconnector/" class="md-nav__link">
+        System Connector
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-presto/" class="md-nav__link">
+        Presto UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-minio/" class="md-nav__link">
+        MinIO UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-objectstore/" class="md-nav__link">
+        Working with Object Store Buckets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-useradmin/" class="md-nav__link">
+        User Administration and Roles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-ingest/" class="md-nav__link">
+        Ingesting Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Additional Features
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Additional Features" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Features
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka/" class="md-nav__link">
+        Apache Kafka
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-kafka-ui/" class="md-nav__link">
+        Apache Kafka Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus/" class="md-nav__link">
+        Milvus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-milvus-ui/" class="md-nav__link">
+        Milvus Console
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-superset/" class="md-nav__link">
+        Apache Superset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-dbeaver/" class="md-nav__link">
+        dBeaver
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-portainer/" class="md-nav__link">
+        Portainer Console
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-reference-documentation/" class="md-nav__link">
+        Documentation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-troubleshooting/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          Dataset Details
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Dataset Details" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Dataset Details
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-intro/" class="md-nav__link">
+        Dataset Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-load/" class="md-nav__link">
+        Loading External Datasets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Great Outdoors Company
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Great Outdoors Company
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-definitions" class="md-nav__link">
+    Table Definitions
+  </a>
+  
+    <nav class="md-nav" aria-label="Table Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dist_inventory_fact" class="md-nav__link">
+    DIST_INVENTORY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dist_product_forecase_fact" class="md-nav__link">
+    DIST_PRODUCT_FORECASE_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dist_returned_items_fact" class="md-nav__link">
+    DIST_RETURNED_ITEMS_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dist_return_reason_dim" class="md-nav__link">
+    DIST_RETURN_REASON_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_employee_dim" class="md-nav__link">
+    EMP_EMPLOYEE_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_fact" class="md-nav__link">
+    EMP_EXPENSE_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_plan_fact" class="md-nav__link">
+    EMP_EXPENSE_PLAN_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_type_dim" class="md-nav__link">
+    EMP_EXPENSE_TYPE_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_unit_lookup" class="md-nav__link">
+    EMP_EXPENSE_UNIT_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_position_dim" class="md-nav__link">
+    EMP_POSITION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_position_lookup" class="md-nav__link">
+    EMP_POSITION_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_position_summary_fact" class="md-nav__link">
+    EMP_POSITION_SUMMARY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_ranking_dim" class="md-nav__link">
+    EMP_RANKING_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_ranking_fact" class="md-nav__link">
+    EMP_RANKING_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_recruitment_dim" class="md-nav__link">
+    EMP_RECRUITMENT_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_recruitment_fact" class="md-nav__link">
+    EMP_RECRUITMENT_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_succession_fact" class="md-nav__link">
+    EMP_SUCCESSION_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_succession_status_dim" class="md-nav__link">
+    EMP_SUCCESSION_STATUS_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_summary_fact" class="md-nav__link">
+    EMP_SUMMARY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_survey_fact" class="md-nav__link">
+    EMP_SURVEY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_survey_targ_fact" class="md-nav__link">
+    EMP_SURVEY_TARG_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_survey_topic_dim" class="md-nav__link">
+    EMP_SURVEY_TOPIC_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_termination_lookup" class="md-nav__link">
+    EMP_TERMINATION_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_training_dim" class="md-nav__link">
+    EMP_TRAINING_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_training_fact" class="md-nav__link">
+    EMP_TRAINING_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_class_lookup" class="md-nav__link">
+    FIN_ACCOUNT_CLASS_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_dim" class="md-nav__link">
+    FIN_ACCOUNT_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_name_lookup" class="md-nav__link">
+    FIN_ACCOUNT_NAME_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_type_lookup" class="md-nav__link">
+    FIN_ACCOUNT_TYPE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_finance_fact" class="md-nav__link">
+    FIN_FINANCE_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_subm_currency_lookup" class="md-nav__link">
+    FIN_SUBM_CURRENCY_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_subm_dim" class="md-nav__link">
+    FIN_SUBM_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_subm_type_lookup" class="md-nav__link">
+    FIN_SUBM_TYPE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_branch_dim" class="md-nav__link">
+    GO_BRANCH_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_gender_lookup" class="md-nav__link">
+    GO_GENDER_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_org_dim" class="md-nav__link">
+    GO_ORG_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_org_name_lookup" class="md-nav__link">
+    GO_ORG_NAME_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_region_dim" class="md-nav__link">
+    GO_REGION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_satisfaction_dim" class="md-nav__link">
+    GO_SATISFACTION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_time_dim" class="md-nav__link">
+    GO_TIME_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_time_quarter_lookup" class="md-nav__link">
+    GO_TIME_QUARTER_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_activity_status_dim" class="md-nav__link">
+    MRK_ACTIVITY_STATUS_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_bundle_group_lookup" class="md-nav__link">
+    MRK_BUNDLE_GROUP_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_campaign_lookup" class="md-nav__link">
+    MRK_CAMPAIGN_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_product_survey_dim" class="md-nav__link">
+    MRK_PRODUCT_SURVEY_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_product_survey_fact" class="md-nav__link">
+    MRK_PRODUCT_SURVEY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_prod_survey_targ_fact" class="md-nav__link">
+    MRK_PROD_SURVEY_TARG_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_promotion_dim" class="md-nav__link">
+    MRK_PROMOTION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_promotion_fact" class="md-nav__link">
+    MRK_PROMOTION_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_promotion_plan_fact" class="md-nav__link">
+    MRK_PROMOTION_PLAN_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_rtl_survey_dim" class="md-nav__link">
+    MRK_RTL_SURVEY_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_rtl_survey_fact" class="md-nav__link">
+    MRK_RTL_SURVEY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_rtl_survey_targ_fact" class="md-nav__link">
+    MRK_RTL_SURVEY_TARG_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_order_method_dim" class="md-nav__link">
+    SLS_ORDER_METHOD_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_brand_lookup" class="md-nav__link">
+    SLS_PRODUCT_BRAND_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_color_lookup" class="md-nav__link">
+    SLS_PRODUCT_COLOR_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_dim" class="md-nav__link">
+    SLS_PRODUCT_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_line_lookup" class="md-nav__link">
+    SLS_PRODUCT_LINE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_lookup" class="md-nav__link">
+    SLS_PRODUCT_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_size_lookup" class="md-nav__link">
+    SLS_PRODUCT_SIZE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_type_lookup" class="md-nav__link">
+    SLS_PRODUCT_TYPE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_rtl_dim" class="md-nav__link">
+    SLS_RTL_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_sales_fact" class="md-nav__link">
+    SLS_SALES_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_sales_order_dim" class="md-nav__link">
+    SLS_SALES_ORDER_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_sales_targ_fact" class="md-nav__link">
+    SLS_SALES_TARG_FACT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-ontime/" class="md-nav__link">
+        Ontime Flight Performance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-datasets-taxi/" class="md-nav__link">
+        Taxi Rides
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-connections/" class="md-nav__link">
+        Database Connections
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-vmware/" class="md-nav__link">
+        VMWare Image
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-certificate/" class="md-nav__link">
+        Watsonx.data Certificates
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_15" type="checkbox" id="__nav_15" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_15">
+          Appendix
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+        <label class="md-nav__title" for="__nav_15">
+          <span class="md-nav__icon md-icon"></span>
+          Appendix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-disclaimer/" class="md-nav__link">
+        Disclaimer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wxd-glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-definitions" class="md-nav__link">
+    Table Definitions
+  </a>
+  
+    <nav class="md-nav" aria-label="Table Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dist_inventory_fact" class="md-nav__link">
+    DIST_INVENTORY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dist_product_forecase_fact" class="md-nav__link">
+    DIST_PRODUCT_FORECASE_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dist_returned_items_fact" class="md-nav__link">
+    DIST_RETURNED_ITEMS_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dist_return_reason_dim" class="md-nav__link">
+    DIST_RETURN_REASON_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_employee_dim" class="md-nav__link">
+    EMP_EMPLOYEE_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_fact" class="md-nav__link">
+    EMP_EXPENSE_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_plan_fact" class="md-nav__link">
+    EMP_EXPENSE_PLAN_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_type_dim" class="md-nav__link">
+    EMP_EXPENSE_TYPE_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_expense_unit_lookup" class="md-nav__link">
+    EMP_EXPENSE_UNIT_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_position_dim" class="md-nav__link">
+    EMP_POSITION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_position_lookup" class="md-nav__link">
+    EMP_POSITION_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_position_summary_fact" class="md-nav__link">
+    EMP_POSITION_SUMMARY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_ranking_dim" class="md-nav__link">
+    EMP_RANKING_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_ranking_fact" class="md-nav__link">
+    EMP_RANKING_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_recruitment_dim" class="md-nav__link">
+    EMP_RECRUITMENT_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_recruitment_fact" class="md-nav__link">
+    EMP_RECRUITMENT_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_succession_fact" class="md-nav__link">
+    EMP_SUCCESSION_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_succession_status_dim" class="md-nav__link">
+    EMP_SUCCESSION_STATUS_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_summary_fact" class="md-nav__link">
+    EMP_SUMMARY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_survey_fact" class="md-nav__link">
+    EMP_SURVEY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_survey_targ_fact" class="md-nav__link">
+    EMP_SURVEY_TARG_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_survey_topic_dim" class="md-nav__link">
+    EMP_SURVEY_TOPIC_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_termination_lookup" class="md-nav__link">
+    EMP_TERMINATION_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_training_dim" class="md-nav__link">
+    EMP_TRAINING_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emp_training_fact" class="md-nav__link">
+    EMP_TRAINING_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_class_lookup" class="md-nav__link">
+    FIN_ACCOUNT_CLASS_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_dim" class="md-nav__link">
+    FIN_ACCOUNT_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_name_lookup" class="md-nav__link">
+    FIN_ACCOUNT_NAME_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_account_type_lookup" class="md-nav__link">
+    FIN_ACCOUNT_TYPE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_finance_fact" class="md-nav__link">
+    FIN_FINANCE_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_subm_currency_lookup" class="md-nav__link">
+    FIN_SUBM_CURRENCY_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_subm_dim" class="md-nav__link">
+    FIN_SUBM_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fin_subm_type_lookup" class="md-nav__link">
+    FIN_SUBM_TYPE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_branch_dim" class="md-nav__link">
+    GO_BRANCH_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_gender_lookup" class="md-nav__link">
+    GO_GENDER_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_org_dim" class="md-nav__link">
+    GO_ORG_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_org_name_lookup" class="md-nav__link">
+    GO_ORG_NAME_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_region_dim" class="md-nav__link">
+    GO_REGION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_satisfaction_dim" class="md-nav__link">
+    GO_SATISFACTION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_time_dim" class="md-nav__link">
+    GO_TIME_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go_time_quarter_lookup" class="md-nav__link">
+    GO_TIME_QUARTER_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_activity_status_dim" class="md-nav__link">
+    MRK_ACTIVITY_STATUS_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_bundle_group_lookup" class="md-nav__link">
+    MRK_BUNDLE_GROUP_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_campaign_lookup" class="md-nav__link">
+    MRK_CAMPAIGN_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_product_survey_dim" class="md-nav__link">
+    MRK_PRODUCT_SURVEY_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_product_survey_fact" class="md-nav__link">
+    MRK_PRODUCT_SURVEY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_prod_survey_targ_fact" class="md-nav__link">
+    MRK_PROD_SURVEY_TARG_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_promotion_dim" class="md-nav__link">
+    MRK_PROMOTION_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_promotion_fact" class="md-nav__link">
+    MRK_PROMOTION_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_promotion_plan_fact" class="md-nav__link">
+    MRK_PROMOTION_PLAN_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_rtl_survey_dim" class="md-nav__link">
+    MRK_RTL_SURVEY_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_rtl_survey_fact" class="md-nav__link">
+    MRK_RTL_SURVEY_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrk_rtl_survey_targ_fact" class="md-nav__link">
+    MRK_RTL_SURVEY_TARG_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_order_method_dim" class="md-nav__link">
+    SLS_ORDER_METHOD_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_brand_lookup" class="md-nav__link">
+    SLS_PRODUCT_BRAND_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_color_lookup" class="md-nav__link">
+    SLS_PRODUCT_COLOR_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_dim" class="md-nav__link">
+    SLS_PRODUCT_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_line_lookup" class="md-nav__link">
+    SLS_PRODUCT_LINE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_lookup" class="md-nav__link">
+    SLS_PRODUCT_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_size_lookup" class="md-nav__link">
+    SLS_PRODUCT_SIZE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_product_type_lookup" class="md-nav__link">
+    SLS_PRODUCT_TYPE_LOOKUP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_rtl_dim" class="md-nav__link">
+    SLS_RTL_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_sales_fact" class="md-nav__link">
+    SLS_SALES_FACT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_sales_order_dim" class="md-nav__link">
+    SLS_SALES_ORDER_DIM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sls_sales_targ_fact" class="md-nav__link">
+    SLS_SALES_TARG_FACT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="great-outdoors-company">Great Outdoors Company</h1>
+<p>The Sample Outdoors Company, or GO Sales, or any variation of the Sample Outdoors name, is the name of a fictitious business operation whose sample data is used to develop sample applications for IBM® and IBM customers. Its fictitious records include sample data for sales transactions, product distribution, finance, and human resources. Any resemblance to actual names, addresses, contact numbers, or transaction values, is coincidental. </p>
+<p>Two links that provide more details on the database.</p>
+<ul>
+<li><a href="https://www.ibm.com/docs/en/cognos-analytics/11.1.0?topic=packages-sample-outdoors-company" target="_blank">Great Outdoors Company</a></li>
+<li><a href="https://www.ibm.com/docs/en/data-studio/4.1.1?topic=database-gsdb-reference" target="_blank">Great Outdoors Database Reference</a></li>
+</ul>
+<p>The second link will say that there is no content available, but if you click on the down arrow you will see the table names.</p>
+<h2 id="disclaimer">Disclaimer</h2>
+<p>The Sample Outdoors Company, or GO Sales, or any variation of the Sample Outdoors name, is the name of a fictitious business operation whose sample data is used to develop sample applications for IBM® and IBM customers. Its fictitious records include sample data for sales transactions, product distribution, finance, and human resources. Any resemblance to actual names, addresses, contact numbers, or transaction values, is coincidental. Unauthorized duplication is prohibited.</p>
+<h2 id="table-definitions">Table Definitions</h2>
+<p>These tables are created under the GOSALESDW schema. Thanks to Michael Schapira for generating the following ER diagram. You may need to download the image to zoom in on the relationships.</p>
+<p><img alt="Browser" src="../wxd-images/GOSALESDW.png" /></p>
+<h4 id="dist_inventory_fact">DIST_INVENTORY_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>OPENING_INVENTORY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>QUANTITY_SHIPPED</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ADDITIONS</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>UNIT_COST</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>CLOSING_INVENTORY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>AVERAGE_UNIT_COST</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dist_product_forecase_fact">DIST_PRODUCT_FORECASE_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BASE_PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>UNIT_COST</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>UNIT_PRICE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>EXPECTED_VOLUME</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dist_returned_items_fact">DIST_RETURNED_ITEMS_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_SITE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORDER_METHOD_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SALES_ORDER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETURN_REASON_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETURN_QUANTITY</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="dist_return_reason_dim">DIST_RETURN_REASON_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RETURN_REASON_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETURN_REASON_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>REASON_DESCRIPTION_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_employee_dim">EMP_EMPLOYEE_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MANAGER_CODE1</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MANAGER1</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_MB1</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_CODE2</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MANAGER2</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_MB2</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_CODE3</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MANAGER3</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_MB3</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_CODE4</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MANAGER4</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_MB4</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_CODE5</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MANAGER5</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_MB5</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_CODE6</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MANAGER6</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_MB6</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>EMPLOYEE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_NAME</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>FIRST_NAME</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>LAST_NAME</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>EMPLOYEE_NAME_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>FIRST_NAME_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>LAST_NAME_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>MANAGER_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ADDRESS1</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ADDRESS2</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ADDRESS1_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ADDRESS2_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CITY</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CITY_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>PROV_STATE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>PROV_STATE_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>POSTAL_ZONE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>BRANCH_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BIRTH_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>GENDER_CODE</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>WORK_PHONE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>EXTENSION</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>FAX</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>EMAIL</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>DATE_HIRED</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>TERMINATION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>TERMINATION_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>POSITION_START_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>POSITION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_LEVEL</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>ACTIVE_INDICATOR</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>RECORD_START_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>RECORD_END_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>MANAGER_KEY</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_expense_fact">EMP_EXPENSE_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_TYPE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ACCOUNT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_UNIT_QUANTITY</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>EXPENSE_TOTAL</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_expense_plan_fact">EMP_EXPENSE_PLAN_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_TYPE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ACCOUNT_KEY</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>EXPENSE_PLAN_TOTAL</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_expense_type_dim">EMP_EXPENSE_TYPE_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXPENSE_TYPE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_GROUP_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_TYPE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_UNIT_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_GROUP_EN</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>EXPENSE_TYPE_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_expense_unit_lookup">EMP_EXPENSE_UNIT_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EXPENSE_UNIT_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_UNIT_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_position_dim">EMP_POSITION_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_CODE1</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_CODE2</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_CODE3</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_PARENT</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MIN_SALARY</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>MAX_SALARY</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>PAID_HOURLY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_LEVEL</td>
+<td>SMALLINT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_position_lookup">EMP_POSITION_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POSITION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_position_summary_fact">EMP_POSITION_SUMMARY_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_COUNT</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PLANNED_POSITION_COUNT</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>INTERNAL_HIRES</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXTERNAL_HIRES</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>TERMINATIONS</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_ranking_dim">EMP_RANKING_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMPLOYEE_RANKING_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RANKING_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RANKING_DESCRIPTION_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_ranking_fact">EMP_RANKING_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_RANKING_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RANKING_CODE</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_recruitment_dim">EMP_RECRUITMENT_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RECRUITMENT_MEDIUM_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RECRUITMENT_MEDIUM_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RECRUITMENT_TYPE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RECRUITMENT_MEDIUM_NAME_EN</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RECRUITMENT_TYPE_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_recruitment_fact">EMP_RECRUITMENT_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST_DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RECRUITMENT_MEDIUM_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_POSTING_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>POSITION_FILLED_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>POSITION_START_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>DAYS_TO_FILL</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_succession_fact">EMP_SUCCESSION_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SUCCESSOR_EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SUCCESSOR_POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SUCCESSOR_STATUS_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PERCENT_READY</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>TARGET_PERCENT_READY</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_succession_status_dim">EMP_SUCCESSION_STATUS_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUCCESSOR_STATUS_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SUCCESSOR_STATUS_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SUCCESSOR_STATUS_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_summary_fact">EMP_SUMMARY_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SALARY</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>PAY_INCREASE</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>BONUS</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>VACATION_DAYS_TAKEN</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>SICK_DAYS_TAKEN</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_survey_fact">EMP_SURVEY_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_TOPIC_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_TOPIC_SCORE</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>SATISFACTION_KEY</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_survey_targ_fact">EMP_SURVEY_TARG_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_TOPIC_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_TOPIC_TARGET</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>EMPLOYEE_SURVEY_BENCHMARK</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_survey_topic_dim">EMP_SURVEY_TOPIC_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMPLOYEE_TOPIC_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_TOPIC_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_TOPIC_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_termination_lookup">EMP_TERMINATION_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TERMINATION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>TERMINATION_REASON_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_training_dim">EMP_TRAINING_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TRAINING_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>COURSE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>COURSE_COST</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>COURSE_DAYS</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>COURSE_NAME_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="emp_training_fact">EMP_TRAINING_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>POSITION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EXPENSE_TYPE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>TRAINING_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>COURSE_COST</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>COURSE_DAYS</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_account_class_lookup">FIN_ACCOUNT_CLASS_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCOUNT_CLASS_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ACCOUNT_CLASS_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_account_dim">FIN_ACCOUNT_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCOUNT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE1</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE2</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE3</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE4</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE5</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE6</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE7</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE8</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE9</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE10</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE11</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE12</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE13</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE14</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE15</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE16</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_PARENT</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>DEBIT_OR_CREDIT</td>
+<td>CHAR(3)</td>
+</tr>
+<tr>
+<td>ACCOUNT_TYPE_CODE</td>
+<td>CHAR(3)</td>
+</tr>
+<tr>
+<td>ACCOUNT_CLASS_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ACCOUNT_LEVEL</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>AGGREGATION_SIGN</td>
+<td>CHAR(3)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_account_name_lookup">FIN_ACCOUNT_NAME_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCOUNT_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ACCOUNT_NAME_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_account_type_lookup">FIN_ACCOUNT_TYPE_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACCOUNT_TYPE_CODE</td>
+<td>CHAR(3)</td>
+</tr>
+<tr>
+<td>ACCOUNT_TYPE_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_finance_fact">FIN_FINANCE_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUBMISSION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ACCOUNT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>AMOUNT_YEAR_TO_DATE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>AMOUNT_MONTH</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_subm_currency_lookup">FIN_SUBM_CURRENCY_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUBMISSION_CURRENCY_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>SUBMISSION_CURRENCY_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_subm_dim">FIN_SUBM_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UBMISSION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>UBMISSION_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>UBMISSION_NAME_EN</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>UBMISSION_YEAR</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>UBMISSION_TYPE_CODE</td>
+<td>CHAR(3)</td>
+</tr>
+<tr>
+<td>UBMISSION_CURRENCY_CODE</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fin_subm_type_lookup">FIN_SUBM_TYPE_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUBMISSION_TYPE_CODE</td>
+<td>CHAR(3)</td>
+</tr>
+<tr>
+<td>SUBMISSION_TYPE_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_branch_dim">GO_BRANCH_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ADDRESS1</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ADDRESS2</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CITY</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>PROV_STATE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ADDRESS1_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ADDRESS2_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CITY_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>PROV_STATE_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>POSTAL_ZONE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>COUNTRY_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>WAREHOUSE_BRANCH_CODE</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_gender_lookup">GO_GENDER_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GENDER_CODE</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>GENDER_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_org_dim">GO_ORG_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_CODE1</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ORGANIZATION_CODE2</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ORGANIZATION_CODE3</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ORGANIZATION_CODE4</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ORGANIZATION_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ORGANIZATION_PARENT</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ORGANIZATION_LEVEL</td>
+<td>SMALLINT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_org_name_lookup">GO_ORG_NAME_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORGANIZATION_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ORGANIZATION_NAME_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_region_dim">GO_REGION_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNTRY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>COUNTRY_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>FLAG_IMAGE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ISO_THREE_LETTER_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ISO_TWO_LETTER_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>ISO_THREE_DIGIT_CODE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>REGION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>REGION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>REGION_EN</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>COUNTRY_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_satisfaction_dim">GO_SATISFACTION_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SATISFACTION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SATISFACTION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SATISFACTION_LOWER_LIMIT</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>SATISFACTION_UPPER_LIMIT</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>SATISFACTION_DESCRIPTION_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_time_dim">GO_TIME_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>DAY_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>CURRENT_MONTH</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>MONTH_NUMBER</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>QUARTER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>CURRENT_QUARTER</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>CURRENT_YEAR</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>DAY_OF_WEEK</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>DAY_OF_MONTH</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>DAYS_IN_MONTH</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>DAY_OF_YEAR</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>WEEK_OF_MONTH</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>WEEK_OF_QUARTER</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>WEEK_OF_YEAR</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>MONTH_EN</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>WEEKDAY_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="go_time_quarter_lookup">GO_TIME_QUARTER_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QUARTER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>QUARTER_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_activity_status_dim">MRK_ACTIVITY_STATUS_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACTIVITY_STATUS_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ACTIVITY_STATUS_CODE</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>ACTIVITY_STATUS_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_bundle_group_lookup">MRK_BUNDLE_GROUP_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BUNDLE_GROUP_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BUNDLE_GROUP_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_campaign_lookup">MRK_CAMPAIGN_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAMPAIGN_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>CAMPAIGN_NAME_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_product_survey_dim">MRK_PRODUCT_SURVEY_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_SURVEY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TOPIC_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TOPIC_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_product_survey_fact">MRK_PRODUCT_SURVEY_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RTL_COUNTRY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_SURVEY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TOPIC_SCORE</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_prod_survey_targ_fact">MRK_PROD_SURVEY_TARG_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_SURVEY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TOPIC_TARGET</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_promotion_dim">MRK_PROMOTION_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PROMOTION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PROMOTION_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>CAMPAIGN_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BUNDLE_GROUP_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PROMOTION_NAME_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_promotion_fact">MRK_PROMOTION_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORDER_DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RTL_COUNTRY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PROMOTION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SALES_ORDER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>QUANTITY</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>UNIT_COST</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>UNIT_PRICE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>UNIT_SALE_PRICE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>GROSS_MARGIN</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>SALE_TOTAL</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>GROSS_PROFIT</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_promotion_plan_fact">MRK_PROMOTION_PLAN_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RTL_COUNTRY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PROMOTION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>UNIT_COST</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>UNIT_PRICE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>UNIT_SALE_PRICE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>PROMOTION_PLAN_QUANTITY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PROMOTION_PLAN_REVENUE</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_rtl_survey_dim">MRK_RTL_SURVEY_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RETAILER_SURVEY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_TOPIC_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_TOPIC_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_rtl_survey_fact">MRK_RTL_SURVEY_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BRANCH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RTL_COUNTRY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_SURVEY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_TOPIC_SCORE</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mrk_rtl_survey_targ_fact">MRK_RTL_SURVEY_TARG_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RETAILER_SURVEY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_TOPIC_WEIGHT</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_TOPIC_TARGET</td>
+<td>FLOAT</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_order_method_dim">SLS_ORDER_METHOD_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORDER_METHOD_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORDER_METHOD_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORDER_METHOD_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_product_brand_lookup">SLS_PRODUCT_BRAND_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_BRAND_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_BRAND_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_product_color_lookup">SLS_PRODUCT_COLOR_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_COLOR_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_COLOR_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_product_dim">SLS_PRODUCT_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_LINE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TYPE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TYPE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_NUMBER</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BASE_PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>BASE_PRODUCT_NUMBER</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_COLOR_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_SIZE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_BRAND_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_BRAND_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_IMAGE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>INTRODUCTION_DATE DATE</td>
+<td></td>
+</tr>
+<tr>
+<td>DISCONTINUED_DATE DATE</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_product_line_lookup">SLS_PRODUCT_LINE_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_LINE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_LINE_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_product_lookup">SLS_PRODUCT_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_NUMBER</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_LANGUAGE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>PRODUCT_NAME</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>PRODUCT_DESCRIPTION</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_product_size_lookup">SLS_PRODUCT_SIZE_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_SIZE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_SIZE_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_product_type_lookup">SLS_PRODUCT_TYPE_LOOKUP</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRODUCT_TYPE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TYPE_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_rtl_dim">SLS_RTL_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RETAILER_SITE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_SITE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_NAME</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RETAILER_NAME_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RETAILER_CONTACT_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>CONTACT_FIRST_NAME</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CONTACT_LAST_NAME</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>GENDER_CODE</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>CONTACT_PHONE_NUMBER</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CONTACT_EXTENSION</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CONTACT_FAX</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CONTACT_EMAIL</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_ADDRESS1</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_ADDRESS2</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_CITY</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_PROV_STATE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CONTACT_FIRST_NAME_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>CONTACT_LAST_NAME_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_ADDRESS1_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_ADDRESS2_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_CITY_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_PROV_STATE_MB</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_POSTAL_ZONE</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>RTL_COUNTRY_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_START_DATE</td>
+<td>DATE</td>
+</tr>
+<tr>
+<td>RETAILER_TYPE_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_TYPE_EN</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>JOB_POSITION_EN</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_sales_fact">SLS_SALES_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ORDER_DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_SITE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PROMOTION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORDER_METHOD_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SALES_ORDER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SHIP_DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>CLOSE_DAY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>QUANTITY</td>
+<td>BIGINT</td>
+</tr>
+<tr>
+<td>UNIT_COST</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>UNIT_PRICE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>UNIT_SALE_PRICE</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>GROSS_MARGIN</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>SALE_TOTAL</td>
+<td>DECIMAL</td>
+</tr>
+<tr>
+<td>GROSS_PROFIT</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_sales_order_dim">SLS_SALES_ORDER_DIM</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SALES_ORDER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORDER_DETAIL_CODE</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORDER_NUMBER</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>WAREHOUSE_BRANCH_CODE</td>
+<td>INTEGER</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sls_sales_targ_fact">SLS_SALES_TARG_FACT</h4>
+<table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONTH_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>ORGANIZATION_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RTL_COUNTRY_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>EMPLOYEE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>RETAILER_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_TYPE_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>PRODUCT_BRAND_KEY</td>
+<td>INTEGER</td>
+</tr>
+<tr>
+<td>SALES_TARGET</td>
+<td>DECIMAL</td>
+</tr>
+</tbody>
+</table>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../wxd-datasets-load/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Loading External Datasets" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Loading External Datasets
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../wxd-datasets-ontime/" class="md-footer__link md-footer__link--next" aria-label="Next: Ontime Flight Performance" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Ontime Flight Performance
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

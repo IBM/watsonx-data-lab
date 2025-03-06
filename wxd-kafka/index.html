@@ -1457,8 +1457,7 @@
 <p>The first step is to create a Kafka service in your system. The following text needs to be placed into a file called <code>kafka-compose.yaml</code>. This is the control file required to create the Kafka Docker images. The system does not contain any topics when it starts up.</p>
 <div class="admonition abstract">
 <p class="admonition-title">kafka-compose.yaml file</p>
-<div class="highlight"><pre><span></span><code>version: &#39;3&#39;
-services:
+<div class="highlight"><pre><span></span><code>services:
 zookeeper:
    image: confluentinc/cp-zookeeper:latest
    environment:
@@ -1609,6 +1608,10 @@ kafka:
 <p>You should see the Kafka catalog in the list on the left. The schema is called <span style="color:blue;background-color: transparent;">default</span> (not <span style="color:blue;background-color: transparent;">purchase</span> which we had placed into the table descriptor). If you don't see the service, you may need to refresh the screen to wait for Presto to become available. Clicking on the <span style="color:blue;background-color: transparent;">orders</span> table will display information about this topic.</p>
 <p><img alt="Add Database" src="../wxd-images/watsonx-kafka-datamanger-2.png" /></p>
 <p>When data is loaded into the queue, you will be able to click on the Data sample tab to look at the messages that have come in.</p>
+<div class="admonition alert">
+<p class="admonition-title">Data Manager 2.1.1</p>
+<p>The Data Manager in watsonx.data 2.1.1 does not display the queue data. You must use the Query Workplace to create a SQL statement to view the data.</p>
+</div>
 <p><img alt="Add Database" src="../wxd-images/watsonx-kafka-data.png" /></p>
 <p>Note that the data will not be shown on your system since the messages have not been loaded into the queue.</p>
 <p>For a working example of using Kafka, please find the Jupyter notebook link in your reservation and find the Kafka creation notebook.</p>

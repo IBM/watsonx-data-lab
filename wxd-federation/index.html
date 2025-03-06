@@ -1522,7 +1522,7 @@ pg_catalog
 </pre>
 <p>Join with data from other schemas (Sample TPCH+PostgreSQL).</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>select t1.*,customer.name from tpch.tiny.customer, pgdatadb.public.t1 limit 10;
+<div class="highlight"><pre><span></span><code>select t1.*,customer.c_name from tpch.tiny.customer, pgdatadb.public.t1 limit 10;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">

@@ -26,7 +26,7 @@ Let us start with some simple examples of running queries and analyzing the exec
     ```
     use iceberg_data.workshop; 
     select 
-      name, mktsegment 
+      c_name, c_mktsegment 
     from 
       customer 
     limit 3;

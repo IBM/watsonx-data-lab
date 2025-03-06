@@ -1423,7 +1423,7 @@ with (location=&#39;s3a://iceberg-bucket/&#39;);
 <p class="admonition-title">Run a simple scan query which selects customer names and market segment</p>
 <div class="highlight"><pre><span></span><code>use iceberg_data.workshop; 
 select 
-  name, mktsegment 
+  c_name, c_mktsegment 
 from 
   customer 
 limit 3;

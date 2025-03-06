@@ -44,6 +44,13 @@ Start the Presto Command Line interface.
     ./presto-cli
     ```
 
+Execute the following SQL statement.
+
+!!! abstract ""
+    ```
+    select * from tpch.tiny.customer limit 10;
+    ```
+
 The output on your screen will look similar to the following:
 
 ![Browser](wxd-images/presto-output.png)

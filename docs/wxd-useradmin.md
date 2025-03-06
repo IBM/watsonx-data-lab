@@ -18,7 +18,7 @@ This lab is using the Developer edition of the watsonx.data software, which mean
 ### Add a User
 The syntax for adding a user is:
 !!! abstract ""
-    ```bash
+    ```
     ./user-mgmt add-user <username> [User | Admin] <password>
     ```
 The values are:

@@ -1584,7 +1584,7 @@
 <p>Run a simple scan query which selects customer names and market segment.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select 
-   name, mktsegment 
+   c_name, c_mktsegment 
 from 
    customer 
 limit 3;
@@ -1600,7 +1600,7 @@ limit 3;
 </pre>
 <p>To understand the query execution plan we use the explain statement.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>explain select name, mktsegment from customer;
+<div class="highlight"><pre><span></span><code>explain select c_name, c_mktsegment from customer;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1616,7 +1616,7 @@ limit 3;
 <p>What you see above is the hierarchy of logical operations to execute the query.</p>
 <p>Explain the query and focus on IO operations.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>explain (type io) select name, mktsegment from customer;
+<div class="highlight"><pre><span></span><code>explain (type io) select c_name, c_mktsegment from customer;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1636,7 +1636,7 @@ limit 3;
 
 <p>Explain physical execution plan for the query.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>explain (type distributed) select name, mktsegment from customer;
+<div class="highlight"><pre><span></span><code>explain (type distributed) select c_name, c_mktsegment from customer;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1660,7 +1660,7 @@ Fragment 1 [SOURCE]
 <p>A fragment represents a stage of the distributed plan. The Presto scheduler schedules the execution by each stage, and stages can be run on separate instances.</p>
 <p>Create explain statement in a visual format.</p>
 <div class="admonition abstract">
-<div class="highlight"><pre><span></span><code>explain (format graphviz) select name, mktsegment from customer;
+<div class="highlight"><pre><span></span><code>explain (format graphviz) select c_name, c_mktsegment from customer;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1687,7 +1687,7 @@ Quit Presto.</p>
 <p>Place the explain SQL into a file that will be run as a script by Presto.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF &gt;/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
-explain (format graphviz) select name, mktsegment from customer;
+explain (format graphviz) select c_name, c_mktsegment from customer;
 EOF
 </code></pre></div>
 </div>
@@ -1732,7 +1732,7 @@ EOF
 <p>Create a partitioned table, based on column mktsegment and copy data from TPCH.TINY.CUSTOMER table.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>create table iceberg_data.workshop.part_customer 
-   with (partitioning = array[&#39;mktsegment&#39;]) 
+   with (partitioning = array[&#39;c_mktsegment&#39;]) 
 as select * from tpch.tiny.customer;
 </code></pre></div>
 </div>
@@ -1773,7 +1773,7 @@ echo &quot;MinIO Password: &quot; $LH_S3_SECRET_KEY
 from 
    iceberg_data.&quot;workshop&quot;.part_customer 
 where 
-   mktsegment=&#39;MACHINERY&#39;;
+   c_mktsegment=&#39;MACHINERY&#39;;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1801,7 +1801,7 @@ where
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>explain (format graphviz) 
    select * from iceberg_data.&quot;workshop&quot;.customer
-      where mktsegment=&#39;MACHINERY&#39;;
+      where c_mktsegment=&#39;MACHINERY&#39;;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1832,7 +1832,7 @@ Query Plan
 <p>Place the explain SQL into the following file.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF &gt;/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
-explain (format graphviz) select * from iceberg_data.&quot;workshop&quot;.customer where mktsegment=&#39;MACHINERY&#39;;
+explain (format graphviz) select * from iceberg_data.&quot;workshop&quot;.customer where c_mktsegment=&#39;MACHINERY&#39;;
 EOF
 </code></pre></div>
 </div>
@@ -1888,15 +1888,15 @@ CREATE TABLE: 15000 rows
 <p>Use a Windowing function.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>SELECT 
-   orderkey, clerk, totalprice, 
-   rank() OVER (PARTITION BY clerk ORDER BY totalprice DESC) AS rnk 
+   o_orderkey, o_clerk, o_totalprice, 
+   rank() OVER (PARTITION BY o_clerk ORDER BY o_totalprice DESC) AS rnk 
 FROM 
    orders 
 ORDER BY 
-   clerk, rnk;
+   o_clerk, rnk;
 </code></pre></div>
 </div>
-<p>Try to write a window function to show the custkey, orderdate, totalprice and priororder. The output should look like this.</p>
+<p>Try to write a window function to show the o_custkey, o_orderdate, o_totalprice and o_priororder. The output should look like this.</p>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 custkey | orderdate  | totalprice | priororder 
 ---------+------------+------------+------------
@@ -1923,7 +1923,7 @@ custkey | orderdate  | totalprice | priororder
 <div class="highlight"><pre><span></span><code>prepare 
    customer_by_segment
 from 
-   select * from customer where mktsegment=?;
+   select * from customer where c_mktsegment=?;
 </code></pre></div>
 </div>
 <p>Execute prepared statement using parameters.</p>

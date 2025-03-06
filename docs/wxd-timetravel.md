@@ -73,7 +73,7 @@ Let us look at the snapshots available for the customer table in the workshop sc
 Querying the customer table in the workshop schema, we can see the record inserted with name=’Deepak’.
 !!! abstract ""
       ```
-      select * from customer where name='Deepak';
+      select * from customer where c_name='Deepak';
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |  name  | address | nationkey |    phone     | acctbal | mktsegment |      comment      
@@ -120,7 +120,7 @@ CALL
 Querying the customer table in the workshop schema, we cannot see the record inserted with name=’Deepak’.
 !!! abstract ""
       ```
-      select * from customer where name='Deepak';
+      select * from customer where c_name='Deepak';
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |  name  | address | nationkey |    phone     | acctbal | mktsegment |      comment      

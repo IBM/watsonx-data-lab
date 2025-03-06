@@ -1444,22 +1444,25 @@ export LH_S3_SECRET_KEY=$(docker exec ibm-lh-presto printenv | grep LH_S3_SECRET
 <div class="highlight"><pre><span></span><code>printf &quot;\nAccess Key: $LH_S3_ACCESS_KEY \nSecret Key: $LH_S3_SECRET_KEY\n&quot;
 </code></pre></div>
 </div>
-<p>Click on the Add component menu and select Add bucket.</p>
+<p>Click on the Add component button.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-add-bucket.png" /></p>
+<p>Then select the Minio storage option.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-add-minio.png" /></p>
+<p>Press the next button to view the Add component - Minio. Select the Associate Catalog button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-add-minio-details.png" /></p>
 <p>Fill in the dialog with the following values.</p>
 <ul>
-<li>Bucket type – <code style="color:blue;font-size:medium;">MinIO</code></li>
+<li>Display name – <code style="color:blue;font-size:medium;">customer</code>  </li>
 <li>Bucket name – <code style="color:blue;font-size:medium;">customer</code></li>
-<li>Display name – <code style="color:blue;font-size:medium;">customer</code></li>
 <li>Endpoint – <code style="color:blue;font-size:medium;">http://ibm-lh-minio-svc:9000</code></li>
 <li>Access key – $LH_S3_ACCESS_KEY (contents of this value)</li>
 <li>Secret key –  $LH_S3_SECRET_KEY (contents of this value)</li>
-<li>Activate now – <code style="color:blue;font-size:medium;">Yes</code></li>
 <li>Catalog type - <code style="color:blue;font-size:medium;">Apache Iceberg</code></li>
 <li>Catalog name - <code style="color:blue;font-size:medium;">customer</code></li>
 </ul>
-<p><img alt="Browser" src="../wxd-images/watsonx-add-bucket-1.png" />   </p>
-<p>When done press Add and Activate now. Your UI should change to display the new bucket (Your screen may be slightly different). <strong>Note</strong>: This step may take a minute to complete.</p>
+<p>Press the Test button to make sure that the credentials are correct. Once the connection has been verified, press the Associate button.</p>
+<p><img alt="Browser" src="../wxd-images/watsonx-add-minio-associate.png" /></p>
+<p>Your UI should change to display the new bucket (Your screen may be slightly different). <strong>Note</strong>: This step may take a minute to complete.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-add-bucket-2.png" />   </p>
 <p>At this point you need to Associate the bucket with the Presto engine. When you hover your mouse over the Customer catalog and the Associate icon will display.</p>
 <p><img alt="Browser" src="../wxd-images/watsonx-add-bucket-3.png" />   </p>

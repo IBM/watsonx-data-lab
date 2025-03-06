@@ -2,7 +2,7 @@
 
 The following links provide more information on the components in this lab.
 
-* watsonx.data - <a href="https://www.ibm.com/docs/en/watsonxdata/1.1.x" target="_blank">https://www.ibm.com/docs/en/watsonxdata/1.1.x</a>
+* watsonx.data - <a href="https://www.ibm.com/docs/en/watsonx/watsonxdata/2.1.x" target="_blank">https://www.ibm.com/docs/en/watsonx/watsonxdata/2.1.x</a>
 * Presto SQL - <a href="https://prestodb.io/docs/current/sql.html" target="_blank">https://prestodb.io/docs/current/sql.html</a>
 * Presto Console - <a href="https://prestodb.io/docs/current/admin/web-interface.html" target="_blank">https://prestodb.io/docs/current/admin/web-interface.html</a>
 * MinIO - <a href="https://min.io/docs/minio/linux/administration/minio-console.html" target="_blank">https://min.io/docs/minio/linux/administration/minio-console.html</a>

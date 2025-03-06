@@ -2,11 +2,41 @@
 
 All the commands in the lab will require you execute commands in a terminal window. Access to a terminal window can be accomplished in the three ways as described below:
 
+* [Enabling SSH](#enabling-ssh)
 * [Use the SSH Command Locally](#ssh-command)
 * [Use SSH Browser Window](#web-browser-terminal)
 * [Terminal window in the VM](#terminal-window-in-the-vm)
 
 If you are unable to use `ssh` because of connection restrictions, the Browser Window SSH option is the easiest one to use.
+
+## Enabling SSH
+
+The SSH port is initially disabled for security reasons. In order to open up the SSH port, you must use the Virtual Console that is provided for you in the reservation.
+
+Scroll down your reservation page until you see the blue Console button.
+
+![Browser](wxd-images/techzone-remote-console.png)
+
+Pressing the Console button will open a login window. 
+
+![Browser](wxd-images/techzone-console-login.png)
+
+Select the `watsonx` userid and enter the password `watsonx.data`.
+
+![Browser](wxd-images/techzone-console-main.png)
+
+Select the terminal icon to open a terminal window.
+
+![Browser](wxd-images/techzone-console-terminal.png)
+
+Type in the following command to start the SSH service.
+
+!!! abstract "Start SSH Service"
+    ```bash
+    sudo systemctl start sshd
+    ```
+
+At this point you will be able to the SSH service which is described in the next section.
 
 ## SSH Command
 
@@ -29,33 +59,6 @@ To become the root user, issue the following command.
 sudo su -
 ```
 Password for both users is <code style="color:blue;font-size:medium;">watsonx.data</code>.
-
-## Web Browser Terminal
-
-An SSH service in a browser window is provided in this image. As part of the reservation, you will see a URL with the following description:
-
- * SSH Browser - http://region.services.cloud.techzone.ibm.com:port/terminals/1
-
-When you first click on this link, the browser will display a login prompt.
-
-![Browser](wxd-images/watsonx-ssh-browser-url.png)
-
-The password is `watsonx.data`. Once you press the `Log in` button, you will be connected to a terminal session inside the watsonx.data server. 
-
-![Browser](wxd-images/watsonx-ssh-browser-example.png)
-
-The system will log you in as the `root` user. There is no need to use the `sudo su -` command to become the root user. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.
-
-!!! abstract "Switch to the command directory"
-    ```bash
-    cd /root/ibm-lh-dev/bin
-    ```
-
-!!! info "Cut and Paste"
-
-    The Browser SSH screen supports full cut and paste operations. This makes it easy to copy scripts into this window without having to retype the commands.
-
-All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentally close this window, you can open another one using the SSH browser link in the reservation.
 
 ## Terminal Window in the VM
 

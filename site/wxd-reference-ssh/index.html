@@ -357,15 +357,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ssh-command" class="md-nav__link">
-    SSH Command
+  <a href="#enabling-ssh" class="md-nav__link">
+    Enabling SSH
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-browser-terminal" class="md-nav__link">
-    Web Browser Terminal
+  <a href="#ssh-command" class="md-nav__link">
+    SSH Command
   </a>
   
 </li>
@@ -1356,15 +1356,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ssh-command" class="md-nav__link">
-    SSH Command
+  <a href="#enabling-ssh" class="md-nav__link">
+    Enabling SSH
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#web-browser-terminal" class="md-nav__link">
-    Web Browser Terminal
+  <a href="#ssh-command" class="md-nav__link">
+    SSH Command
   </a>
   
 </li>
@@ -1400,11 +1400,29 @@
 <h1 id="ssh-access">SSH Access</h1>
 <p>All the commands in the lab will require you execute commands in a terminal window. Access to a terminal window can be accomplished in the three ways as described below:</p>
 <ul>
+<li><a href="#enabling-ssh">Enabling SSH</a></li>
 <li><a href="#ssh-command">Use the SSH Command Locally</a></li>
 <li><a href="#web-browser-terminal">Use SSH Browser Window</a></li>
 <li><a href="#terminal-window-in-the-vm">Terminal window in the VM</a></li>
 </ul>
 <p>If you are unable to use <code>ssh</code> because of connection restrictions, the Browser Window SSH option is the easiest one to use.</p>
+<h2 id="enabling-ssh">Enabling SSH</h2>
+<p>The SSH port is initially disabled for security reasons. In order to open up the SSH port, you must use the Virtual Console that is provided for you in the reservation.</p>
+<p>Scroll down your reservation page until you see the blue Console button.</p>
+<p><img alt="Browser" src="../wxd-images/techzone-remote-console.png" /></p>
+<p>Pressing the Console button will open a login window. </p>
+<p><img alt="Browser" src="../wxd-images/techzone-console-login.png" /></p>
+<p>Select the <code>watsonx</code> userid and enter the password <code>watsonx.data</code>.</p>
+<p><img alt="Browser" src="../wxd-images/techzone-console-main.png" /></p>
+<p>Select the terminal icon to open a terminal window.</p>
+<p><img alt="Browser" src="../wxd-images/techzone-console-terminal.png" /></p>
+<p>Type in the following command to start the SSH service.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Start SSH Service</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>sshd
+</code></pre></div>
+</div>
+<p>At this point you will be able to the SSH service which is described in the next section.</p>
 <h2 id="ssh-command">SSH Command</h2>
 <p>Your TechZone reservation will include the server name and port number to use when connecting using ssh. The port number is referred to as <tt style="font-size: large; color: darkgreen;">port</tt> in the command below, while the server will be referred to as <tt style="font-size: large; color: darkgreen;">region.services.cloud.techzone.ibm.com</tt>. Replace these values with those found in your reservation.</p>
 <p>You have the choice of using the VM Remote console and logging in as the watsonx user to issues commands, or using a local terminal shell (iTerm, Hyper, terminal) to run commands against the watsonx.data server. You can have multiple connections into the machine at any one time. </p>
@@ -1417,26 +1435,6 @@
 <div class="highlight"><pre><span></span><code>sudo su -
 </code></pre></div>
 Password for both users is <code style="color:blue;font-size:medium;">watsonx.data</code>.</p>
-<h2 id="web-browser-terminal">Web Browser Terminal</h2>
-<p>An SSH service in a browser window is provided in this image. As part of the reservation, you will see a URL with the following description:</p>
-<ul>
-<li>SSH Browser - http://region.services.cloud.techzone.ibm.com:port/terminals/1</li>
-</ul>
-<p>When you first click on this link, the browser will display a login prompt.</p>
-<p><img alt="Browser" src="../wxd-images/watsonx-ssh-browser-url.png" /></p>
-<p>The password is <code>watsonx.data</code>. Once you press the <code>Log in</code> button, you will be connected to a terminal session inside the watsonx.data server. </p>
-<p><img alt="Browser" src="../wxd-images/watsonx-ssh-browser-example.png" /></p>
-<p>The system will log you in as the <code>root</code> user. There is no need to use the <code>sudo su -</code> command to become the root user. Note that you are not in the correct directory to run commands. You must issue the following command to be in the command directory.</p>
-<div class="admonition abstract">
-<p class="admonition-title">Switch to the command directory</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/root/ibm-lh-dev/bin
-</code></pre></div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Cut and Paste</p>
-<p>The Browser SSH screen supports full cut and paste operations. This makes it easy to copy scripts into this window without having to retype the commands.</p>
-</div>
-<p>All the commands in the lab can now be run from within this browser rather than using the VM Remote console. If at any time you accidentally close this window, you can open another one using the SSH browser link in the reservation.</p>
 <h2 id="terminal-window-in-the-vm">Terminal Window in the VM</h2>
 <p>If you use the <a href="../wxd-reference-console/">Remote VM Console</a>, you can log into the watsonx.data user and use a Terminal shell to run commands against the watsonx.data server. </p>
 <p>Select the Terminal application in the virtual machine to issue commands. </p>

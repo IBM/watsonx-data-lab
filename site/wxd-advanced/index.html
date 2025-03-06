@@ -1465,7 +1465,7 @@
 <p>Note: We are using a combination of the <code>concat</code> string function and the <code>cast</code> conversion function as part of this query.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select 
-   concat(cast(custkey as varchar),&#39;--&#39;,name) 
+   concat(cast(c_custkey as varchar),&#39;--&#39;,c_name) 
 from 
    customer
 limit 2;
@@ -1483,11 +1483,11 @@ limit 2;
 Select orders from the last 2 days.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select
-   orderdate 
+   o_orderdate 
 from 
    orders 
 where 
-   orderdate &gt;  date &#39;1998-08-02&#39; - interval &#39;2&#39; day;
+   o_orderdate &gt;  date &#39;1998-08-02&#39; - interval &#39;2&#39; day;
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -1510,11 +1510,11 @@ where
 <p>Number of orders by year.</p>
 <div class="admonition abstract">
 <div class="highlight"><pre><span></span><code>select 
-   distinct year(orderdate), count(orderkey) 
+   distinct year(o_orderdate), count(o_orderkey) 
 from 
    orders 
 group by 
-   year(orderdate);
+   year(o_orderdate);
 </code></pre></div>
 </div>
 <pre style="font-size: small; color: darkgreen; overflow: auto">

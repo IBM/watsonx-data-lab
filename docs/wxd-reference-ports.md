@@ -7,10 +7,10 @@ The top of your TechZone reservation will contain a list of published services a
 These URLs and Port numbers are needed to access the watsonx.data services. The list will contain the following information: 
 
 * SSH for watsonx userid - ssh -p xxxxx watsonx@region.services.cloud.techzone.ibm.com
-* SSH Browser - Server: http://region.services.cloud.techzone.ibm.com:33333/terminals/1
 * Diagnostic Port - http://region.services.cloud.techzone.ibm.com:12345
 * Presto console - https://region.services.cloud.techzone.ibm.com:15152
 * Presto Port - Server: region.services.cloud.techzone.ibm.com Port: 15152
+* Postgres Port - Server: region.services.cloud.techzone.ibm.com Port: 23454
 * Jupyter Notebook - Server: http://region.services.cloud.techzone.ibm.com:33333/notebooks/Table_of_Contents.ipynb
 * Minio Endpoint - Server: region.services.cloud.techzone.ibm.com Port: 25623
 * Minio console - http://region.services.cloud.techzone.ibm.com:14352
@@ -18,6 +18,7 @@ These URLs and Port numbers are needed to access the watsonx.data services. The 
 * Watsonx UI - https://region.services.cloud.techzone.ibm.com:41311
 * Db2 Port - Server: region.services.cloud.techzone.ibm.com Port: 24312
 * Milvus Port - Server: region.services.cloud.techzone.ibm.com Port: 34312
+* Milvus Rest - Server: region.services.cloud.techzone.ibm.com Port: 35433
 
 There are two additional ports which are available for use with any service you install in the system. These ports are:
 
@@ -47,15 +48,16 @@ The ports that are used in the lab listed below, including if they are available
 | Presto console|8443|Yes
 | MinIO console (S3 buckets)|9001|Yes
 | MinIO S3 Endpoint|9000|Yes
-| Portainer (Docker container management)|6443|**No**
+| Portainer (Docker container management)|6443|Yes
 | Apache Superset (Query and Graphing)|8088|**No**
 | Jupyter Notebook|8888|Yes
 | Presto External Port|8443|Yes
 | Thrift metadata Port|8380|Yes
 | Hive metadata Port|9083|**Replaced**
 | Milvus| 19530 | Yes
+| Milvus| 9091 | Yes
 | MySQL Port|3306|**No**
-| Postgres Port|5432|**No**
+| Postgres Port|5432|Yes
 | Db2 Database Port|50000|Yes
 | Diagnostics Port|8501|Yes
 

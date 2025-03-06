@@ -64,25 +64,33 @@ Get the S3 bucket credentials.
     printf "\nAccess Key: $LH_S3_ACCESS_KEY \nSecret Key: $LH_S3_SECRET_KEY\n"
     ```
 
-Click on the Add component menu and select Add bucket.
+Click on the Add component button.
 
 ![Browser](wxd-images/watsonx-add-bucket.png)
+
+Then select the Minio storage option.
+
+![Browser](wxd-images/watsonx-add-minio.png)
+
+Press the next button to view the Add component - Minio. Select the Associate Catalog button.
+
+![Browser](wxd-images/watsonx-add-minio-details.png)
  
 Fill in the dialog with the following values.
 
-   * Bucket type – <code style="color:blue;font-size:medium;">MinIO</code>
+   * Display name – <code style="color:blue;font-size:medium;">customer</code>  
    * Bucket name – <code style="color:blue;font-size:medium;">customer</code>
-   * Display name – <code style="color:blue;font-size:medium;">customer</code>
    * Endpoint – <code style="color:blue;font-size:medium;">http://ibm-lh-minio-svc:9000</code>
    * Access key – $LH_S3_ACCESS_KEY (contents of this value)
    * Secret key –  $LH_S3_SECRET_KEY (contents of this value)
-   * Activate now – <code style="color:blue;font-size:medium;">Yes</code>
    * Catalog type - <code style="color:blue;font-size:medium;">Apache Iceberg</code>
    * Catalog name - <code style="color:blue;font-size:medium;">customer</code>
-   
-![Browser](wxd-images/watsonx-add-bucket-1.png)   
-   
-When done press Add and Activate now. Your UI should change to display the new bucket (Your screen may be slightly different). **Note**: This step may take a minute to complete.
+
+Press the Test button to make sure that the credentials are correct. Once the connection has been verified, press the Associate button.
+
+![Browser](wxd-images/watsonx-add-minio-associate.png)
+
+Your UI should change to display the new bucket (Your screen may be slightly different). **Note**: This step may take a minute to complete.
 
 ![Browser](wxd-images/watsonx-add-bucket-2.png)   
  

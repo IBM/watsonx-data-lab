@@ -28,7 +28,7 @@ Note: We are using a combination of the `concat` string function and the `cast` 
 !!! abstract ""
       ```
       select 
-         concat(cast(custkey as varchar),'--',name) 
+         concat(cast(c_custkey as varchar),'--',c_name) 
       from 
          customer
       limit 2;
@@ -48,11 +48,11 @@ Select orders from the last 2 days.
 !!! abstract ""
       ```
       select
-         orderdate 
+         o_orderdate 
       from 
          orders 
       where 
-         orderdate >  date '1998-08-02' - interval '2' day;
+         o_orderdate >  date '1998-08-02' - interval '2' day;
       ```
 
 <pre style="font-size: small; color: darkgreen; overflow: auto">
@@ -76,11 +76,11 @@ Number of orders by year.
 !!! abstract ""
       ```
       select 
-         distinct year(orderdate), count(orderkey) 
+         distinct year(o_orderdate), count(o_orderkey) 
       from 
          orders 
       group by 
-         year(orderdate);
+         year(o_orderdate);
       ```
 
 <pre style="font-size: small; color: darkgreen; overflow: auto">

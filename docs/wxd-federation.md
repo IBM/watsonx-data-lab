@@ -180,7 +180,7 @@ Select the table we created in Postgres.
 Join with data from other schemas (Sample TPCH+PostgreSQL).
 !!! abstract ""
     ```
-    select t1.*,customer.name from tpch.tiny.customer, pgdatadb.public.t1 limit 10;
+    select t1.*,customer.c_name from tpch.tiny.customer, pgdatadb.public.t1 limit 10;
     ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 c1 | c2 |        name        

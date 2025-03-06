@@ -919,6 +919,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#start-the-ingest-process" class="md-nav__link">
+    Start the Ingest Process
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1369,6 +1376,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#start-the-ingest-process" class="md-nav__link">
+    Start the Ingest Process
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1464,37 +1478,36 @@ chmod +x ${staging}/keys.sh
 </div>
 <p>The following script is used to ingest the taxi data (yellow_tripdata_2022_01) into watsonx.data. </p>
 <div class="admonition abstract">
-<p>```</p>
-</div>
-<p>cat &lt;<EOF > ${staging}/ingest-local.sh</p>
-<h1 id="binbash">!/bin/bash</h1>
-<p>dir=/mnt/infra/staging
+<div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF &gt; ${staging}/ingest-local.sh
+#!/bin/bash
+dir=/mnt/infra/staging
 cd \${dir}
 source ./keys.sh
-table_name="iceberg_data.ingest.yellow_tripdata_2022_01_localfile"
-file="yellow_tripdata_2022-01.parquet"
-export STAGING_S3_CREDS="AWS_SECRET_ACCESS_KEY=\${secret_key}\
-,AWS_ACCESS_KEY_ID=\${access_key}\
-,AWS_REGION=us-east-1\
-,BUCKET_NAME=iceberg-bucket\
-,ENDPOINT_URL=http://ibm-lh-minio:9000"
+table_name=&quot;iceberg_data.ingest.yellow_tripdata_2022_01_localfile&quot;
+file=&quot;yellow_tripdata_2022-01.parquet&quot;
+export STAGING_S3_CREDS=&quot;AWS_SECRET_ACCESS_KEY=\${secret_key}\\
+,AWS_ACCESS_KEY_ID=\${access_key}\\
+,AWS_REGION=us-east-1\\
+,BUCKET_NAME=iceberg-bucket\\
+,ENDPOINT_URL=http://ibm-lh-minio:9000&quot;
 export ENABLED_INGEST_MODE=PRESTO
-ibm-lh data-copy \
-   --source-data-files \${dir}/\${file} \
-   --target-table \${table_name} \
-   --ingestion-engine-endpoint "hostname=ibm-lh-presto-svc,port=8443" \
-   --staging-location s3://iceberg-bucket/ingest/ \
-   --staging-hive-catalog hive_data \
-   --staging-hive-schema staging \
-   --create-if-not-exist \
-   --trust-store-path \${dir}/lh-ssl-ts.jks \
-   --trust-store-password \${keystore_password} \
-   --dbuser ibmlhadmin \
-   --dbpassword password
+ibm-lh data-copy \\
+--source-data-files \${dir}/\${file} \\
+--target-table \${table_name} \\
+--ingestion-engine-endpoint &quot;hostname=ibm-lh-presto-svc,port=8443&quot; \\
+--staging-location s3://iceberg-bucket/ingest/ \\
+--staging-hive-catalog hive_data \\
+--staging-hive-schema staging \\
+--create-if-not-exist \\
+--trust-store-path \${dir}/lh-ssl-ts.jks \\
+--trust-store-password \${keystore_password} \\
+--dbuser ibmlhadmin \\
+--dbpassword password
 EOF
-sed -i '/^$/d' ${staging}/ingest-local.sh
+sed -i &#39;/^$/d&#39; ${staging}/ingest-local.sh
 chmod +x ${staging}/ingest-local.sh
-    ```</p>
+</code></pre></div>
+</div>
 <h3 id="start-the-ingest-process">Start the Ingest Process</h3>
 <p>Start the <code>ibm-lh</code> container again:</p>
 <div class="admonition abstract">

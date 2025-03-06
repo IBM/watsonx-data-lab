@@ -21,7 +21,6 @@ The first step is to create a Kafka service in your system. The following text n
 
 !!! abstract "kafka-compose.yaml file"
       ```
-      version: '3'
       services:
       zookeeper:
          image: confluentinc/cp-zookeeper:latest
@@ -207,6 +206,9 @@ You should see the Kafka catalog in the list on the left. The schema is called <
 ![Add Database](wxd-images/watsonx-kafka-datamanger-2.png)
 
 When data is loaded into the queue, you will be able to click on the Data sample tab to look at the messages that have come in.
+
+!!! alert "Data Manager 2.1.1"
+    The Data Manager in watsonx.data 2.1.1 does not display the queue data. You must use the Query Workplace to create a SQL statement to view the data.
 
 ![Add Database](wxd-images/watsonx-kafka-data.png)
 

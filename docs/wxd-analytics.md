@@ -28,7 +28,7 @@ Run a simple scan query which selects customer names and market segment.
 !!! abstract ""
       ```
       select 
-         name, mktsegment 
+         c_name, c_mktsegment 
       from 
          customer 
       limit 3;
@@ -44,7 +44,7 @@ Run a simple scan query which selects customer names and market segment.
 To understand the query execution plan we use the explain statement.
 !!! abstract ""
       ```
-      explain select name, mktsegment from customer;
+      explain select c_name, c_mktsegment from customer;
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 - Output[name, mktsegment] => [name:varchar, mktsegment:varchar]
@@ -61,7 +61,7 @@ What you see above is the hierarchy of logical operations to execute the query.
 Explain the query and focus on IO operations.
 !!! abstract ""
       ```
-      explain (type io) select name, mktsegment from customer;
+      explain (type io) select c_name, c_mktsegment from customer;
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 {
@@ -81,7 +81,7 @@ Explain the query and focus on IO operations.
 Explain physical execution plan for the query.
 !!! abstract ""
       ```
-      explain (type distributed) select name, mktsegment from customer;
+      explain (type distributed) select c_name, c_mktsegment from customer;
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Fragment 0 [SINGLE]
@@ -106,7 +106,7 @@ A fragment represents a stage of the distributed plan. The Presto scheduler sche
 Create explain statement in a visual format.
 !!! abstract ""
       ```
-      explain (format graphviz) select name, mktsegment from customer;
+      explain (format graphviz) select c_name, c_mktsegment from customer;
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 digraph logical_plan {
@@ -133,7 +133,7 @@ Place the explain SQL into a file that will be run as a script by Presto.
 !!! abstract ""
       ```
       cat <<EOF >/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
-      explain (format graphviz) select name, mktsegment from customer;
+      explain (format graphviz) select c_name, c_mktsegment from customer;
       EOF
       ```
 Run Presto by pointing to the file with the SQL in it.
@@ -187,7 +187,7 @@ Create a partitioned table, based on column mktsegment and copy data from TPCH.T
 !!! abstract ""
       ```
       create table iceberg_data.workshop.part_customer 
-         with (partitioning = array['mktsegment']) 
+         with (partitioning = array['c_mktsegment']) 
       as select * from tpch.tiny.customer;
       ```
 Quit Presto.
@@ -239,7 +239,7 @@ Now that have created a partitioned table, we will execute a SQL statement that 
       from 
          iceberg_data."workshop".part_customer 
       where 
-         mktsegment='MACHINERY';
+         c_mktsegment='MACHINERY';
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
  custkey |        name        |                 address                  | nationkey |      phone      | acctbal | mktsegment |                                                       comment                                                        
@@ -268,7 +268,7 @@ We run an explain against this query using the following command.
       ```
       explain (format graphviz) 
          select * from iceberg_data."workshop".customer
-            where mktsegment='MACHINERY';
+            where c_mktsegment='MACHINERY';
       ```
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 Query Plan                                                                                                                                                    
@@ -299,7 +299,7 @@ Place the explain SQL into the following file.
 !!! abstract ""
       ```
       cat <<EOF >/root/ibm-lh-dev/localstorage/volumes/infra/explain.sql
-      explain (format graphviz) select * from iceberg_data."workshop".customer where mktsegment='MACHINERY';
+      explain (format graphviz) select * from iceberg_data."workshop".customer where c_mktsegment='MACHINERY';
       EOF
       ```
 Run the Presto command to generate the explain output.
@@ -367,15 +367,15 @@ Use a Windowing function.
 !!! abstract ""
       ```
       SELECT 
-         orderkey, clerk, totalprice, 
-         rank() OVER (PARTITION BY clerk ORDER BY totalprice DESC) AS rnk 
+         o_orderkey, o_clerk, o_totalprice, 
+         rank() OVER (PARTITION BY o_clerk ORDER BY o_totalprice DESC) AS rnk 
       FROM 
          orders 
       ORDER BY 
-         clerk, rnk;
+         o_clerk, rnk;
       ```
 
-Try to write a window function to show the custkey, orderdate, totalprice and priororder. The output should look like this.
+Try to write a window function to show the o_custkey, o_orderdate, o_totalprice and o_priororder. The output should look like this.
 <pre style="font-size: small; color: darkgreen; overflow: auto">
 custkey | orderdate  | totalprice | priororder 
 ---------+------------+------------+------------
@@ -404,7 +404,7 @@ Save a query as a prepared statement.
       prepare 
          customer_by_segment
       from 
-         select * from customer where mktsegment=?;
+         select * from customer where c_mktsegment=?;
       ```
 Execute prepared statement using parameters.
 !!! abstract ""

@@ -1,5 +1,52 @@
 # Image Revisions
 
+### March 5th, 2025 (2.1.1)
+
+* Updated the lab to GA watsonx.data 2.1.1 code
+
+* Detected defects
+    - Column names changed in TPCH tables
+    
+        All TPCH tables have their column names changed to include the first letter of the base table they are in. For instance, the "name" column in the "customer" table is now "c_name". This caused considerable breakage in the examples used in this lab and the reasoning behind this disruptive change is currently unknown. 
+        
+        The SQL has been updated to work with the new names, but the column names shown in the results were not updated. If you want to use the 2.1.0 versions of the SQL, please refer to the Jupyter notebooks which contain a version for 2.1.0 and 2.1.1.
+        
+        TPCH 2.1.0 Table
+        ![Version 2.1.0](wxd-images/tpch-210.png)
+
+        TPCH 2.1.1 Table
+        ![Version 2.1.1](wxd-images/tpch-211.png)
+
+    - Kafka Queue Sample Data not available in Data Manager
+    
+        The Data sample tab does not display any data for the Kafka queue, even though there is data in the queue. Using the Query Workspace, you are able to view the data.
+
+        ![Version 2.1.1](wxd-images/kafka-211.png)
+
+    - Kafka Query JSON Descriptor fails on upload of OSX files
+
+        If you have multiple copies of a JSON descriptor for a Kafka queue, the upload of the descriptor will fail if the filename contains any special characters. For instance, in OSX, downloading a file multiple times will result in the file name containing brackets to indicate a version (i.e., my-data(2).json). Uploading this file will result in a failure. The fix is to rename the file to remove the brackets from the name.
+
+* Updated System Status and Utilities
+
+    The section on System Status and Utilities has been updated to include the new Diagnostic console. This console makes it easier to view the current status of your watsonx.data system and to restart services if necessary. See [Diagnostic Console](wxd-status.md#diagnostic-console) for more details.
+
+* SSH Port is Off by default
+
+    The SSH port (22) is available for use, but disabled when the system initially starts for security reasons. Please see the section on [Enabling SSH](wxd-reference-ssh.md#enabling-ssh) to start the service.
+
+* Port Updates
+
+    * Port 3306 (MySQL) has been removed.
+
+    * Port 8088 (Apache Superset) has been removed. The service is still available if you use the Virtual Machine console and use `localhost:8088` to connect to it.
+    
+    * Port 9091 has been opened up for calling the Milvus REST interface.
+
+    * Port 5432 (Postgres) is back. Did you miss it? I forgot it when creating the 2.1.0 image.
+
+* See updates for 2.1.1 at [IBM watsonx.data 2.1.x Documentation](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.1.x?topic=overview-whats-new-in-watsonxdata)    
+
 ### December 23rd, 2024 (2.1.0)
 
 * Updated the lab to GA watsonx.data 2.1.0 code
@@ -14,7 +61,7 @@
 
 * Updated the lab to GA watsonx.data 2.0.0 code
 
-* See updates for 2.0.0 at [IBM watsonx.data 2.0.x Documentation](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.0.x?topic=watsonxdata-whats-new-in)
+* See updates for 2.0.0 at [IBM watsonx.data 2.0.x Documentation](https://www.ibm.com/docs/en/watsonx/watsonxdata/2.0.x?topic=watsonxdata-whats-new-in-watsonxdata)
 
 ### May 3, 2024 (1.1.4)
 

@@ -4,14 +4,13 @@ All the commands in the lab will require you execute commands in a terminal wind
 
 * [Enabling SSH](#enabling-ssh)
 * [Use the SSH Command Locally](#ssh-command)
-* [Use SSH Browser Window](#web-browser-terminal)
 * [Terminal window in the VM](#terminal-window-in-the-vm)
 
-If you are unable to use `ssh` because of connection restrictions, the Browser Window SSH option is the easiest one to use.
+If you are unable to use `ssh` because of connection restrictions, the terminal window in the VM is the only option that you can use.
 
 ## Enabling SSH
 
-The SSH port is initially disabled for security reasons. In order to open up the SSH port, you must use the Virtual Console that is provided for you in the reservation.
+The SSH port should be enabled in your system. If the SSH connection times out, it may be that the SSH port has been disabled for security reasons. In order to open up the SSH port, you must use the Virtual Console that is provided for you in the reservation.
 
 Scroll down your reservation page until you see the blue Console button.
 

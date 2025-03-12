@@ -31,10 +31,6 @@
 
     The section on System Status and Utilities has been updated to include the new Diagnostic console. This console makes it easier to view the current status of your watsonx.data system and to restart services if necessary. See [Diagnostic Console](wxd-status.md#diagnostic-console) for more details.
 
-* SSH Port is Off by default
-
-    The SSH port (22) is available for use, but disabled when the system initially starts for security reasons. Please see the section on [Enabling SSH](wxd-reference-ssh.md#enabling-ssh) to start the service.
-
 * Port Updates
 
     * Port 3306 (MySQL) has been removed.

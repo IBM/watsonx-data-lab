@@ -1,5 +1,9 @@
 # Image Revisions
 
+### June 21st, 2025 (2.2.0)
+
+* Updated the lab to GA watsonx.data 2.2.0 code
+
 ### March 5th, 2025 (2.1.1)
 
 * Updated the lab to GA watsonx.data 2.1.1 code

@@ -35,4 +35,4 @@ This is sufficient for running this exercises found in this lab but should not b
 
 ## Watsonx.data Level 3/4 Technical Training
 
-The 2.0.2 system is used as a basis for the watsonx.data Level 3/4 Technical Training. For the detailed lab material, please refer to the following PDF found in Seismic: [https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj](https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj)
+The 2.1.0 system is used as a basis for the watsonx.data Level 3/4 Technical Training. For the detailed lab material, please refer to the following PDF found in Seismic: [https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj](https://ibm.seismic.com/Link/Content/DCG37pjmPj7VmGCHj2Df8fHVmDJj)
